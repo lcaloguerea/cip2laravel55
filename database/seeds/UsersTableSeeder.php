@@ -19,10 +19,8 @@ class UsersTableSeeder extends Seeder
 
         $user->rut 					= '111111111-1';
         $user->type 				= 'admin';
-        $user->name_1				= 'Leo';
-        $user->name_2			    = 'Aristides';
-        $user->lName_1 				= 'Caloguerea';
-        $user->lName_2 				= 'Farias';
+        $user->name				    = 'Leo';
+        $user->lName 				= 'Caloguerea';
         $user->confirmed	        = 'yes';
         $user->confirmed_code       =  str_random();
         $user->department	        = 'Developer';
@@ -39,10 +37,8 @@ class UsersTableSeeder extends Seeder
             $samples_temp[] = [            
             	'rut'			=> $faker->isbn10,
             	'type'			=> 'user',
-                'name_1' 		=> $faker->firstName,
-                'name_2' 		=> $faker->firstName,
-                'lName_1'		=> $faker->lastName,
-                'lName_2'		=> $faker->lastName,
+                'name'   		=> $faker->firstName,
+                'lName' 		=> $faker->lastName,
                 'confirmed'		=> $faker->randomElement(['yes', 'no']),
                 'confirmed_code'=> str_random(),
                 'department'	=> $faker->jobTitle.' Department',

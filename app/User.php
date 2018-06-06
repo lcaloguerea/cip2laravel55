@@ -17,10 +17,8 @@ class User extends Authenticatable
     protected $fillable = [
         'rut',
         'type',
-        'name_1',
-        'name_2',
-        'lName_1',
-        'lName_2',
+        'name',
+        'lName',
         'confirmed',
         'confirmed_code',
         'department',

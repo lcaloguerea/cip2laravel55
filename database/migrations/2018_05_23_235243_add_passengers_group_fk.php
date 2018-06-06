@@ -36,7 +36,7 @@ class AddPassengersGroupFk extends Migration
     {
         Schema::table('passengers_group', function (Blueprint $table) {
             $table->dropForeign('passengers_group_reservation_id_foreign');
-            $table->dropForeign('passengers_passenger_id_foreign');
+            $table->dropForeign('passengers_group_passenger_id_foreign');
         });
     }
 }

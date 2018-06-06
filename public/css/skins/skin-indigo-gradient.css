@@ -1,0 +1,402 @@
+/*
+ * Skin: Indigo Gradient
+ * ----------
+ */
+
+.skin-indigo-gradient  .spinner {
+    background-color: #3f51b5;
+}
+/* General Links */
+
+.skin-indigo-gradient a {
+    color: #3949ab;
+}
+.skin-indigo-gradient a:hover,
+.skin-indigo-gradient a:active,
+.skin-indigo-gradient a:focus {
+    outline: none;
+    text-decoration: none;
+    color: #3f51b5;
+}
+.skin-indigo-gradient .form-control:focus {
+    border-color: #3949ab;
+}
+.skin-indigo-gradient .top-menu-header .navbar {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .top-menu-header .navbar .nav > li > a {
+    color: #ffffff;
+}
+.skin-indigo-gradient .top-menu-header .navbar .nav > li > a:hover,
+.skin-indigo-gradient .top-menu-header .navbar .nav > li > a:active,
+.skin-indigo-gradient .top-menu-header .navbar .nav > li > a:focus,
+.skin-indigo-gradient .top-menu-header .navbar .nav .open > a,
+.skin-indigo-gradient .top-menu-header .navbar .nav .open > a:hover,
+.skin-indigo-gradient .top-menu-header .navbar .nav .open > a:focus,
+.skin-indigo-gradient .top-menu-header .navbar .nav > .active > a {
+    background: #3f51b5;
+    color: #f6f6f6;
+}
+.skin-indigo-gradient .top-menu-header .navbar .sidebar-toggle {
+    color: #ffffff;
+}
+.skin-indigo-gradient .top-menu-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6;
+    background: rgba(0, 0, 0, 0.1);
+}
+.skin-indigo-gradient .top-menu-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.skin-indigo-gradient .top-menu-header .navbar .sidebar-toggle:hover {
+    background-color: #3f51b5;
+}
+@media (max-width: 767px) {
+    .skin-indigo-gradient .top-menu-header .navbar .dropdown-menu li.divider {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .skin-indigo-gradient .top-menu-header .navbar .dropdown-menu li a {
+        color: #333;
+    }
+}
+.skin-indigo-gradient .top-menu-header .logo {
+    background-color: #3949ab;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-indigo-gradient .top-menu-header .logo:hover {
+    background-color: #3f51b5;
+}
+.skin-indigo-gradient #top-menu-navbar-search a {
+    color: #3f51b5;
+}
+.skin-indigo-gradient .top-menu-header li.user-header {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .wrapper,
+.skin-indigo-gradient .sidebar-left,
+.skin-indigo-gradient .left-side {
+    background-color: #222d32;
+}
+.skin-indigo-gradient .user-panel > .info,
+.skin-indigo-gradient .user-panel > .info > a {
+    color: #fff;
+}
+.skin-indigo-gradient .sidebar-menu > li.header {
+    color: #CFD8DC;
+    background: #1a2226;
+}
+.skin-indigo-gradient .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+    border-left-color: transparent;
+}
+.skin-indigo-gradient .sidebar-menu > li:hover > a,
+.skin-indigo-gradient .sidebar-menu > li.active > a {
+    color: #ffffff;
+        background: #1e282c;
+    border-left-color: #3949ab;
+}
+.skin-indigo-gradient .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #1a2226;
+}
+.skin-indigo-gradient .sidebar a {
+    color: #fff;
+}
+.skin-indigo-gradient .sidebar a:hover {
+    text-decoration: none;
+}
+.skin-indigo-gradient .treeview-menu > li > a {
+    color: #CFD8DC
+}
+.skin-indigo-gradient .treeview-menu > li.active > a,
+.skin-indigo-gradient .treeview-menu > li > a:hover {
+    color: #ffffff;
+}
+.skin-indigo-gradient .sidebar-form {
+    border-radius: 3px;
+    border: 1px solid #374850;
+    margin: 10px 10px;
+}
+.skin-indigo-gradient .sidebar-form input[type="text"],
+.skin-indigo-gradient .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid transparent;
+    height: 35px;
+}
+.skin-indigo-gradient .sidebar-form input[type="text"] {
+    color: #666;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+}
+.skin-indigo-gradient .sidebar-form input[type="text"]:focus,
+.skin-indigo-gradient .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #fff;
+    color: #666;
+}
+.skin-indigo-gradient .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color: #fff;
+}
+.skin-indigo-gradient .sidebar-form .btn {
+    color: #999;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0;
+}
+.skin-indigo-gradient.layout-top-nav .top-menu-header > .logo {
+    background-color: #3949ab;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-indigo-gradient.layout-top-nav .top-menu-header > .logo:hover {
+    background-color: #3f51b5;
+}
+.skin-indigo-gradient .main-footer a {
+    color: #3949ab;
+}
+.skin-indigo-gradient .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
+.skin-indigo-gradient .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
+.skin-indigo-gradient .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%) !important;
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%) !important;
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%) !important;
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5)) !important;
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%) !important;
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%) !important;
+    color: #fff !important;
+    border: none;
+    margin: -1px;
+    border: none;
+    margin: -1px;
+}
+.skin-indigo-gradient .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: #3949ab;
+}
+/*
+*  Prices Table
+*/
+
+.skin-indigo-gradient .pricing-container .pricing-item {
+    color: #333;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+}
+.skin-indigo-gradient .pricing-container .pricing-deco {
+    background: #3949ab;
+}
+.skin-indigo-gradient .pricing-container .pricing-title {
+    color: #fff;
+}
+.skin-indigo-gradient .pricing-container .pricing-price {
+    color: #fff;
+}
+.skin-indigo-gradient .pricing-container .pricing-action {
+    color: #fff;
+    background: #3949ab;
+}
+.skin-indigo-gradient .pricing-container .pricing-action:hover,
+.pricing-container .pricing-action:focus {
+    background-color: #262626;
+}
+/* second prices */
+
+.skin-indigo-gradient #generic-price-table {
+    background-color: #f1f1f1;
+}
+.skin-indigo-gradient #generic-price-table .generic-content {
+    background-color: #fff;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price {
+    background-color: #f6f6f6;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price .generic-head-content .head_bg {
+    border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price .generic-head-content .head span {
+    color: #525252;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .sign {
+    color: #414141;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .currency {
+    color: #414141;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .cent {
+    color: #414141;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .month {
+    color: #414141;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-feature-list ul li {
+    color: #a7a7a7;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-feature-list ul li span {
+    color: #414141;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-feature-list ul li:hover {
+    background-color: #3949ab;
+    border-left: 5px solid #3f51b5;
+}
+.skin-indigo-gradient #generic-price-table .generic-content .generic-price-btn a {
+    border: 1px solid #3949ab;
+    color: #3949ab;
+}
+.skin-indigo-gradient #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head_bg,
+.skin-indigo-gradient #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head_bg {
+    border-color: #3949ab rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #3949ab;
+    color: #fff;
+}
+.skin-indigo-gradient #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head span,
+.skin-indigo-gradient #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head span {
+    color: #fff;
+}
+.skin-indigo-gradient #generic-price-table .generic-content:hover .generic-price-btn a,
+.skin-indigo-gradient #generic-price-table .generic-content.active .generic-price-btn a {
+    background-color: #3949ab;
+    color: #fff;
+}
+.skin-indigo-gradient .bottom_btn {
+    background-color: #333333;
+}
+.skin-indigo-gradient .bottom_btn:hover {
+    background-color: #666;
+    color: #FFF;
+}
+/*Datatable Pagination*/
+
+.skin-indigo-gradient .dataTables_paginate .pagination .active a {
+    background-color: #3949ab;
+    border-color: #3949ab;
+}
+.skin-indigo-gradient .dataTable a {
+    color: #3949ab;
+}
+/*Bootstrap Pagination*/
+
+.skin-indigo-gradient .pagination > li > a:focus,
+.skin-indigo-gradient .pagination > li > a:active {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+    border-color: #3949ab;
+    color: #fff;
+}
+/*Login, register, Lock Screen, Forgot Password, Page Offline */
+
+.skin-indigo-gradient .box-login,
+.skin-indigo-gradient .box-register,
+.skin-indigo-gradient .box-lockscreen,
+.skin-indigo-gradient .box-forgot,
+.skin-indigo-gradient .box-offline,
+.skin-indigo-gradient .box-error {
+    border-top: 3px solid #3949ab;
+}
+.skin-indigo-gradient .box-login a,
+.skin-indigo-gradient .box-register a,
+.skin-indigo-gradient .box-lockscreen a,
+.skin-indigo-gradient .box-forgot a,
+.skin-indigo-gradient .box-offline a,
+.skin-indigo-gradient .box-error a {
+    color: #3949ab;
+}
+/*buttons*/
+
+.skin-indigo-gradient .btn-primary,
+.skin-indigo-gradient .dropdown-toggle.btn-primary {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .btn-primary:hover,
+.skin-indigo-gradient .dropdown-toggle.btn-primary:hover {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .btn-primary:active,
+.skin-indigo-gradient .dropdown-toggle.btn-primary:active,
+.skin-indigo-gradient .btn-primary.active,
+.skin-indigo-gradient .dropdown-toggle.btn-primary.active {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .btn-primary:focus,
+.skin-indigo-gradient .dropdown-toggle.btn-primary:focus {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .btn-primary .ink,
+.skin-indigo-gradient .dropdown-toggle.btn-primary .ink {
+	background-image: -ms-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -moz-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -o-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #3949ab), color-stop(100, #3f51b5));
+	background-image: -webkit-linear-gradient(left, #3949ab 0%, #3f51b5 100%);
+	background-image: linear-gradient(to right, #3949ab 0%, #3f51b5 100%);
+}
+.skin-indigo-gradient .btn-flat.btn-primary {
+    color: #3949ab;
+}
+.skin-indigo-gradient .btn-flat.btn-primary:hover {
+    color: #3949ab;
+    background-color: #e5e5e5;
+}
+.skin-indigo-gradient .btn-flat.btn-primary:active,
+.skin-indigo-gradient .btn-flat.btn-primary.active {
+    color: #3949ab;
+    background-color: #cccccc;
+}
+.skin-indigo-gradient .add-icon i {
+    color: #fff;
+}
+.skin-indigo-gradient .all-drivers .information .email a {
+    color: #3949ab;
+}
+/*mail*/
+
+.skin-indigo-gradient .nav-stacked > li.active > a,
+.nav-stacked > li.active > a:hover {
+    border-left-color: #3949ab;
+}
+
+/*Price Car*/
+
+.skin-indigo-gradient .price-car {
+    background-color: #3949ab !important;
+}
+
+/*Others*/
+
+.skin-indigo-gradient .return-up {
+    background: #3949ab;
+}

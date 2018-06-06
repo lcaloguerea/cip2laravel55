@@ -1,0 +1,359 @@
+/*
+ * Skin: Red
+ * ----------
+ */
+
+.skin-red  .spinner {
+    background-color: #e60000;
+}
+/* General Links */
+
+.skin-red a {
+    color: #d50000;
+}
+.skin-red a:hover,
+.skin-red a:active,
+.skin-red a:focus {
+    outline: none;
+    text-decoration: none;
+    color: #e60000;
+}
+.skin-red .form-control:focus {
+    border-color: #d50000;
+}
+.skin-red .top-menu-header .navbar {
+    background-color: #d50000;
+}
+.skin-red .top-menu-header .navbar .nav > li > a {
+    color: #ffffff;
+}
+.skin-red .top-menu-header .navbar .nav > li > a:hover,
+.skin-red .top-menu-header .navbar .nav > li > a:active,
+.skin-red .top-menu-header .navbar .nav > li > a:focus,
+.skin-red .top-menu-header .navbar .nav .open > a,
+.skin-red .top-menu-header .navbar .nav .open > a:hover,
+.skin-red .top-menu-header .navbar .nav .open > a:focus,
+.skin-red .top-menu-header .navbar .nav > .active > a {
+    background: #e60000;
+    color: #f6f6f6;
+}
+.skin-red .top-menu-header .navbar .sidebar-toggle {
+    color: #ffffff;
+}
+.skin-red .top-menu-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6;
+    background: rgba(0, 0, 0, 0.1);
+}
+.skin-red .top-menu-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.skin-red .top-menu-header .navbar .sidebar-toggle:hover {
+    background-color: #e60000;
+}
+@media (max-width: 767px) {
+    .skin-red .top-menu-header .navbar .dropdown-menu li.divider {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .skin-red .top-menu-header .navbar .dropdown-menu li a {
+        color: #333;
+    }
+}
+.skin-red .top-menu-header .logo {
+    background-color: #d50000;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-red .top-menu-header .logo:hover {
+    background-color: #e60000;
+}
+.skin-red #top-menu-navbar-search a {
+    color: #e60000;
+}
+.skin-red .top-menu-header li.user-header {
+    background-color: #d50000;
+}
+.skin-red .wrapper,
+.skin-red .sidebar-left,
+.skin-red .left-side {
+    background-color: #222d32;
+}
+.skin-red .user-panel > .info,
+.skin-red .user-panel > .info > a {
+    color: #fff;
+}
+.skin-red .sidebar-menu > li.header {
+    color: #CFD8DC;
+    background: #1a2226;
+}
+.skin-red .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+    border-left-color: transparent;
+}
+.skin-red .sidebar-menu > li:hover > a,
+.skin-red .sidebar-menu > li.active > a {
+    color: #ffffff;
+        background: #1e282c;
+    border-left-color: #d50000;
+}
+.skin-red .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #1a2226;
+}
+.skin-red .sidebar a {
+    color: #fff;
+}
+.skin-red .sidebar a:hover {
+    text-decoration: none;
+}
+.skin-red .treeview-menu > li > a {
+    color: #CFD8DC
+}
+.skin-red .treeview-menu > li.active > a,
+.skin-red .treeview-menu > li > a:hover {
+    color: #ffffff;
+}
+.skin-red .sidebar-form {
+    border-radius: 3px;
+    border: 1px solid #374850;
+    margin: 10px 10px;
+}
+.skin-red .sidebar-form input[type="text"],
+.skin-red .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid transparent;
+    height: 35px;
+}
+.skin-red .sidebar-form input[type="text"] {
+    color: #666;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+}
+.skin-red .sidebar-form input[type="text"]:focus,
+.skin-red .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #fff;
+    color: #666;
+}
+.skin-red .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color: #fff;
+}
+.skin-red .sidebar-form .btn {
+    color: #999;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0;
+}
+.skin-red.layout-top-nav .top-menu-header > .logo {
+    background-color: #d50000;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-red.layout-top-nav .top-menu-header > .logo:hover {
+    background-color: #e60000;
+}
+.skin-red .main-footer a {
+    color: #d50000;
+}
+.skin-red .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
+.skin-red .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
+.skin-red .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
+    background-color: #d50000 !important;
+    color: #fff !important;
+    border: none;
+    margin: -1px;
+    border: none;
+    margin: -1px;
+    border: none;
+    margin: -1px;
+}
+.skin-red .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: #d50000;
+}
+/*
+*  Prices Table
+*/
+
+.skin-red .pricing-container .pricing-item {
+    color: #333;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+}
+.skin-red .pricing-container .pricing-deco {
+    background: #d50000;
+}
+.skin-red .pricing-container .pricing-title {
+    color: #fff;
+}
+.skin-red .pricing-container .pricing-price {
+    color: #fff;
+}
+.skin-red .pricing-container .pricing-action {
+    color: #fff;
+    background: #d50000;
+}
+.skin-red .pricing-container .pricing-action:hover,
+.pricing-container .pricing-action:focus {
+    background-color: #262626;
+}
+/* second prices */
+
+.skin-red #generic-price-table {
+    background-color: #f1f1f1;
+}
+.skin-red #generic-price-table .generic-content {
+    background-color: #fff;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price {
+    background-color: #f6f6f6;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price .generic-head-content .head_bg {
+    border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price .generic-head-content .head span {
+    color: #525252;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .sign {
+    color: #414141;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .currency {
+    color: #414141;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .cent {
+    color: #414141;
+}
+.skin-red #generic-price-table .generic-content .generic-head-price .generic-price-tag .month {
+    color: #414141;
+}
+.skin-red #generic-price-table .generic-content .generic-feature-list ul li {
+    color: #a7a7a7;
+}
+.skin-red #generic-price-table .generic-content .generic-feature-list ul li span {
+    color: #414141;
+}
+.skin-red #generic-price-table .generic-content .generic-feature-list ul li:hover {
+    background-color: #d50000;
+    border-left: 5px solid #e60000;
+}
+.skin-red #generic-price-table .generic-content .generic-price-btn a {
+    border: 1px solid #d50000;
+    color: #d50000;
+}
+.skin-red #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head_bg,
+.skin-red #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head_bg {
+    border-color: #d50000 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #d50000;
+    color: #fff;
+}
+.skin-red #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head span,
+.skin-red #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head span {
+    color: #fff;
+}
+.skin-red #generic-price-table .generic-content:hover .generic-price-btn a,
+.skin-red #generic-price-table .generic-content.active .generic-price-btn a {
+    background-color: #d50000;
+    color: #fff;
+}
+.skin-red .bottom_btn {
+    background-color: #333333;
+}
+.skin-red .bottom_btn:hover {
+    background-color: #666;
+    color: #FFF;
+}
+/*Datatable Pagination*/
+
+.skin-red .dataTables_paginate .pagination .active a {
+    background-color: #d50000;
+    border-color: #d50000;
+}
+.skin-red .dataTable a {
+    color: #d50000;
+}
+/*Bootstrap Pagination*/
+
+.skin-red .pagination > li > a:focus,
+.skin-red .pagination > li > a:active {
+    background-color: #d50000;
+    border-color: #d50000;
+    color: #fff;
+}
+/*Login, register, Lock Screen, Forgot Password, Page Offline */
+
+.skin-red .box-login,
+.skin-red .box-register,
+.skin-red .box-lockscreen,
+.skin-red .box-forgot,
+.skin-red .box-offline,
+.skin-red .box-error {
+    border-top: 3px solid #d50000;
+}
+.skin-red .box-login a,
+.skin-red .box-register a,
+.skin-red .box-lockscreen a,
+.skin-red .box-forgot a,
+.skin-red .box-offline a,
+.skin-red .box-error a {
+    color: #d50000;
+}
+/*buttons*/
+
+.skin-red .btn-primary,
+.skin-red .dropdown-toggle.btn-primary {
+    background-color: #d50000;
+}
+.skin-red .btn-primary:hover,
+.skin-red .dropdown-toggle.btn-primary:hover {
+    background-color: #d50000;
+}
+.skin-red .btn-primary:active,
+.skin-red .dropdown-toggle.btn-primary:active,
+.skin-red .btn-primary.active,
+.skin-red .dropdown-toggle.btn-primary.active {
+    background-color: #d50000;
+}
+.skin-red .btn-primary:focus,
+.skin-red .dropdown-toggle.btn-primary:focus {
+    background-color: #d50000;
+}
+.skin-red .btn-primary .ink,
+.skin-red .dropdown-toggle.btn-primary .ink {
+    background-color: #d50000;
+}
+.skin-red .btn-flat.btn-primary {
+    color: #d50000;
+}
+.skin-red .btn-flat.btn-primary:hover {
+    color: #d50000;
+    background-color: #e5e5e5;
+}
+.skin-red .btn-flat.btn-primary:active,
+.skin-red .btn-flat.btn-primary.active {
+    color: #d50000;
+    background-color: #cccccc;
+}
+.skin-red .add-icon i {
+    color: #fff;
+}
+.skin-red .all-drivers .information .email a {
+    color: #d50000;
+}
+/*mail*/
+
+.skin-red .nav-stacked > li.active > a,
+.nav-stacked > li.active > a:hover {
+    border-left-color: #d50000;
+}
+
+/*Price Car*/
+
+.skin-red .price-car {
+    background-color: #d50000 !important;
+}
+
+/*Others*/
+
+.skin-red .return-up {
+    background: #d50000;
+}

@@ -1,0 +1,402 @@
+/*
+ * Skin: Pink Gradient
+ * ----------
+ */
+
+.skin-pink-gradient  .spinner {
+    background-color: #e91e63;
+}
+/* General Links */
+
+.skin-pink-gradient a {
+    color: #e91e63;
+}
+.skin-pink-gradient a:hover,
+.skin-pink-gradient a:active,
+.skin-pink-gradient a:focus {
+    outline: none;
+    text-decoration: none;
+    color: #d81b60;
+}
+.skin-pink-gradient .form-control:focus {
+    border-color: #d81b60;
+}
+.skin-pink-gradient .top-menu-header .navbar {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .top-menu-header .navbar .nav > li > a {
+    color: #ffffff;
+}
+.skin-pink-gradient .top-menu-header .navbar .nav > li > a:hover,
+.skin-pink-gradient .top-menu-header .navbar .nav > li > a:active,
+.skin-pink-gradient .top-menu-header .navbar .nav > li > a:focus,
+.skin-pink-gradient .top-menu-header .navbar .nav .open > a,
+.skin-pink-gradient .top-menu-header .navbar .nav .open > a:hover,
+.skin-pink-gradient .top-menu-header .navbar .nav .open > a:focus,
+.skin-pink-gradient .top-menu-header .navbar .nav > .active > a {
+    background: #e91e63;
+    color: #f6f6f6;
+}
+.skin-pink-gradient .top-menu-header .navbar .sidebar-toggle {
+    color: #ffffff;
+}
+.skin-pink-gradient .top-menu-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6;
+    background: rgba(0, 0, 0, 0.1);
+}
+.skin-pink-gradient .top-menu-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.skin-pink-gradient .top-menu-header .navbar .sidebar-toggle:hover {
+    background-color: #e91e63;
+}
+@media (max-width: 767px) {
+    .skin-pink-gradient .top-menu-header .navbar .dropdown-menu li.divider {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .skin-pink-gradient .top-menu-header .navbar .dropdown-menu li a {
+        color: #333;
+    }
+}
+.skin-pink-gradient .top-menu-header .logo {
+    background-color: #d81b60;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-pink-gradient .top-menu-header .logo:hover {
+    background-color: #e91e63;
+}
+.skin-pink-gradient #top-menu-navbar-search a {
+    color: #e91e63;
+}
+.skin-pink-gradient .top-menu-header li.user-header {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .wrapper,
+.skin-pink-gradient .sidebar-left,
+.skin-pink-gradient .left-side {
+    background-color: #222d32;
+}
+.skin-pink-gradient .user-panel > .info,
+.skin-pink-gradient .user-panel > .info > a {
+    color: #fff;
+}
+.skin-pink-gradient .sidebar-menu > li.header {
+    color: #CFD8DC;
+    background: #1a2226;
+}
+.skin-pink-gradient .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+    border-left-color: transparent;
+}
+.skin-pink-gradient .sidebar-menu > li:hover > a,
+.skin-pink-gradient .sidebar-menu > li.active > a {
+    color: #ffffff;
+        background: #1e282c;
+    border-left-color: #d81b60;
+}
+.skin-pink-gradient .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #1a2226;
+}
+.skin-pink-gradient .sidebar a {
+    color: #fff;
+}
+.skin-pink-gradient .sidebar a:hover {
+    text-decoration: none;
+}
+.skin-pink-gradient .treeview-menu > li > a {
+    color: #CFD8DC
+}
+.skin-pink-gradient .treeview-menu > li.active > a,
+.skin-pink-gradient .treeview-menu > li > a:hover {
+    color: #ffffff;
+}
+.skin-pink-gradient .sidebar-form {
+    border-radius: 3px;
+    border: 1px solid #374850;
+    margin: 10px 10px;
+}
+.skin-pink-gradient .sidebar-form input[type="text"],
+.skin-pink-gradient .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid transparent;
+    height: 35px;
+}
+.skin-pink-gradient .sidebar-form input[type="text"] {
+    color: #666;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+}
+.skin-pink-gradient .sidebar-form input[type="text"]:focus,
+.skin-pink-gradient .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #fff;
+    color: #666;
+}
+.skin-pink-gradient .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color: #fff;
+}
+.skin-pink-gradient .sidebar-form .btn {
+    color: #999;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0;
+}
+.skin-pink-gradient.layout-top-nav .top-menu-header > .logo {
+    background-color: #d81b60;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-pink-gradient.layout-top-nav .top-menu-header > .logo:hover {
+    background-color: #e91e63;
+}
+.skin-pink-gradient .main-footer a {
+    color: #d81b60;
+}
+.skin-pink-gradient .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
+.skin-pink-gradient .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
+.skin-pink-gradient .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%) !important;
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%) !important;
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%) !important;
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63)) !important;
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%) !important;
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%) !important;
+    color: #fff !important;
+    border: none;
+    margin: -1px;
+    border: none;
+    margin: -1px;
+}
+.skin-pink-gradient .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: #d81b60;
+}
+/*
+*  Prices Table
+*/
+
+.skin-pink-gradient .pricing-container .pricing-item {
+    color: #333;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+}
+.skin-pink-gradient .pricing-container .pricing-deco {
+    background: #d81b60;
+}
+.skin-pink-gradient .pricing-container .pricing-title {
+    color: #fff;
+}
+.skin-pink-gradient .pricing-container .pricing-price {
+    color: #fff;
+}
+.skin-pink-gradient .pricing-container .pricing-action {
+    color: #fff;
+    background: #d81b60;
+}
+.skin-pink-gradient .pricing-container .pricing-action:hover,
+.pricing-container .pricing-action:focus {
+    background-color: #262626;
+}
+/* second prices */
+
+.skin-pink-gradient #generic-price-table {
+    background-color: #f1f1f1;
+}
+.skin-pink-gradient #generic-price-table .generic-content {
+    background-color: #fff;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price {
+    background-color: #f6f6f6;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price .generic-head-content .head_bg {
+    border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price .generic-head-content .head span {
+    color: #525252;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .sign {
+    color: #414141;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .currency {
+    color: #414141;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .cent {
+    color: #414141;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .month {
+    color: #414141;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-feature-list ul li {
+    color: #a7a7a7;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-feature-list ul li span {
+    color: #414141;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-feature-list ul li:hover {
+    background-color: #d81b60;
+    border-left: 5px solid #e91e63;
+}
+.skin-pink-gradient #generic-price-table .generic-content .generic-price-btn a {
+    border: 1px solid #d81b60;
+    color: #d81b60;
+}
+.skin-pink-gradient #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head_bg,
+.skin-pink-gradient #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head_bg {
+    border-color: #d81b60 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #d81b60;
+    color: #fff;
+}
+.skin-pink-gradient #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head span,
+.skin-pink-gradient #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head span {
+    color: #fff;
+}
+.skin-pink-gradient #generic-price-table .generic-content:hover .generic-price-btn a,
+.skin-pink-gradient #generic-price-table .generic-content.active .generic-price-btn a {
+    background-color: #d81b60;
+    color: #fff;
+}
+.skin-pink-gradient .bottom_btn {
+    background-color: #333333;
+}
+.skin-pink-gradient .bottom_btn:hover {
+    background-color: #666;
+    color: #FFF;
+}
+/*Datatable Pagination*/
+
+.skin-pink-gradient .dataTables_paginate .pagination .active a {
+    background-color: #d81b60;
+    border-color: #d81b60;
+}
+.skin-pink-gradient .dataTable a {
+    color: #d81b60;
+}
+/*Bootstrap Pagination*/
+
+.skin-pink-gradient .pagination > li > a:focus,
+.skin-pink-gradient .pagination > li > a:active {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+    border-color: #d81b60;
+    color: #fff;
+}
+/*Login, register, Lock Screen, Forgot Password, Page Offline */
+
+.skin-pink-gradient .box-login,
+.skin-pink-gradient .box-register,
+.skin-pink-gradient .box-lockscreen,
+.skin-pink-gradient .box-forgot,
+.skin-pink-gradient .box-offline,
+.skin-pink-gradient .box-error {
+    border-top: 3px solid #d81b60;
+}
+.skin-pink-gradient .box-login a,
+.skin-pink-gradient .box-register a,
+.skin-pink-gradient .box-lockscreen a,
+.skin-pink-gradient .box-forgot a,
+.skin-pink-gradient .box-offline a,
+.skin-pink-gradient .box-error a {
+    color: #d81b60;
+}
+/*buttons*/
+
+.skin-pink-gradient .btn-primary,
+.skin-pink-gradient .dropdown-toggle.btn-primary {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .btn-primary:hover,
+.skin-pink-gradient .dropdown-toggle.btn-primary:hover {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .btn-primary:active,
+.skin-pink-gradient .dropdown-toggle.btn-primary:active,
+.skin-pink-gradient .btn-primary.active,
+.skin-pink-gradient .dropdown-toggle.btn-primary.active {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .btn-primary:focus,
+.skin-pink-gradient .dropdown-toggle.btn-primary:focus {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .btn-primary .ink,
+.skin-pink-gradient .dropdown-toggle.btn-primary .ink {
+	background-image: -ms-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -moz-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -o-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #D81B60), color-stop(100, #E91E63));
+	background-image: -webkit-linear-gradient(left, #D81B60 0%, #E91E63 100%);
+	background-image: linear-gradient(to right, #D81B60 0%, #E91E63 100%);
+}
+.skin-pink-gradient .btn-flat.btn-primary {
+    color: #d81b60;
+}
+.skin-pink-gradient .btn-flat.btn-primary:hover {
+    color: #d81b60;
+    background-color: #e5e5e5;
+}
+.skin-pink-gradient .btn-flat.btn-primary:active,
+.skin-pink-gradient .btn-flat.btn-primary.active {
+    color: #d81b60;
+    background-color: #cccccc;
+}
+.skin-pink-gradient .add-icon i {
+    color: #fff;
+}
+.skin-pink-gradient .all-drivers .information .email a {
+    color: #d81b60;
+}
+/*mail*/
+
+.skin-pink-gradient .nav-stacked > li.active > a,
+.nav-stacked > li.active > a:hover {
+    border-left-color: #d81b60;
+}
+
+/*Price Car*/
+
+.skin-pink-gradient .price-car {
+    background-color: #d81b60 !important;
+}
+
+/*Others*/
+
+.skin-pink-gradient .return-up {
+    background: #d81b60;
+}

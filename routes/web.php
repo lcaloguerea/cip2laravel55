@@ -15,10 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/users', 'UserController@index');
-
-Route::get('/users/{id}', function ($id){
-	//comillas dobles permiten concatenar el elemento id
-	return "Showing user details: {$id}";
+Route::get('/admin', function () {
+    return view('admin/index');
 });
+
+Route::get('/admin/mailbox', function () {
+    return view('mail/mailbox');
+});
+
+Route::get('/admin/users-cards', 'UserController@getCards');
+Route::get('/admin/users-list', 'UserController@getList');
+Route::get('/admin/user-profile/{id}', 'UserController@getProfile');

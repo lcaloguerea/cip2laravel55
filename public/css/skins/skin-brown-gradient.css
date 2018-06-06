@@ -1,0 +1,402 @@
+/*
+ * Skin: Brown Gradient
+ * ----------
+ */
+
+.skin-brown-gradient  .spinner {
+    background-color: #6d4c41;
+}
+/* General Links */
+
+.skin-brown-gradient a {
+    color: #5d4037;
+}
+.skin-brown-gradient a:hover,
+.skin-brown-gradient a:active,
+.skin-brown-gradient a:focus {
+    outline: none;
+    text-decoration: none;
+    color: #6d4c41;
+}
+.skin-brown-gradient .form-control:focus {
+    border-color: #5d4037;
+}
+.skin-brown-gradient .top-menu-header .navbar {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .top-menu-header .navbar .nav > li > a {
+    color: #ffffff;
+}
+.skin-brown-gradient .top-menu-header .navbar .nav > li > a:hover,
+.skin-brown-gradient .top-menu-header .navbar .nav > li > a:active,
+.skin-brown-gradient .top-menu-header .navbar .nav > li > a:focus,
+.skin-brown-gradient .top-menu-header .navbar .nav .open > a,
+.skin-brown-gradient .top-menu-header .navbar .nav .open > a:hover,
+.skin-brown-gradient .top-menu-header .navbar .nav .open > a:focus,
+.skin-brown-gradient .top-menu-header .navbar .nav > .active > a {
+    background: #6d4c41;
+    color: #f6f6f6;
+}
+.skin-brown-gradient .top-menu-header .navbar .sidebar-toggle {
+    color: #ffffff;
+}
+.skin-brown-gradient .top-menu-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6;
+    background: rgba(0, 0, 0, 0.1);
+}
+.skin-brown-gradient .top-menu-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.skin-brown-gradient .top-menu-header .navbar .sidebar-toggle:hover {
+    background-color: #6d4c41;
+}
+@media (max-width: 767px) {
+    .skin-brown-gradient .top-menu-header .navbar .dropdown-menu li.divider {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .skin-brown-gradient .top-menu-header .navbar .dropdown-menu li a {
+        color: #333;
+    }
+}
+.skin-brown-gradient .top-menu-header .logo {
+    background-color: #5d4037;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-brown-gradient .top-menu-header .logo:hover {
+    background-color: #6d4c41;
+}
+.skin-brown-gradient #top-menu-navbar-search a {
+    color: #6d4c41;
+}
+.skin-brown-gradient .top-menu-header li.user-header {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .wrapper,
+.skin-brown-gradient .sidebar-left,
+.skin-brown-gradient .left-side {
+    background-color: #222d32;
+}
+.skin-brown-gradient .user-panel > .info,
+.skin-brown-gradient .user-panel > .info > a {
+    color: #fff;
+}
+.skin-brown-gradient .sidebar-menu > li.header {
+    color: #CFD8DC;
+    background: #1a2226;
+}
+.skin-brown-gradient .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+    border-left-color: transparent;
+}
+.skin-brown-gradient .sidebar-menu > li:hover > a,
+.skin-brown-gradient .sidebar-menu > li.active > a {
+    color: #ffffff;
+        background: #1e282c;
+    border-left-color: #5d4037;
+}
+.skin-brown-gradient .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #1a2226;
+}
+.skin-brown-gradient .sidebar a {
+    color: #fff;
+}
+.skin-brown-gradient .sidebar a:hover {
+    text-decoration: none;
+}
+.skin-brown-gradient .treeview-menu > li > a {
+    color: #CFD8DC
+}
+.skin-brown-gradient .treeview-menu > li.active > a,
+.skin-brown-gradient .treeview-menu > li > a:hover {
+    color: #ffffff;
+}
+.skin-brown-gradient .sidebar-form {
+    border-radius: 3px;
+    border: 1px solid #374850;
+    margin: 10px 10px;
+}
+.skin-brown-gradient .sidebar-form input[type="text"],
+.skin-brown-gradient .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid transparent;
+    height: 35px;
+}
+.skin-brown-gradient .sidebar-form input[type="text"] {
+    color: #666;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+}
+.skin-brown-gradient .sidebar-form input[type="text"]:focus,
+.skin-brown-gradient .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #fff;
+    color: #666;
+}
+.skin-brown-gradient .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color: #fff;
+}
+.skin-brown-gradient .sidebar-form .btn {
+    color: #999;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0;
+}
+.skin-brown-gradient.layout-top-nav .top-menu-header > .logo {
+    background-color: #5d4037;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-brown-gradient.layout-top-nav .top-menu-header > .logo:hover {
+    background-color: #6d4c41;
+}
+.skin-brown-gradient .main-footer a {
+    color: #5d4037;
+}
+.skin-brown-gradient .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
+.skin-brown-gradient .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
+.skin-brown-gradient .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%) !important;
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%) !important;
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%) !important;
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41)) !important;
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%) !important;
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%) !important;
+    color: #fff !important;
+    border: none;
+    margin: -1px;
+    border: none;
+    margin: -1px;
+}
+.skin-brown-gradient .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: #5d4037;
+}
+/*
+*  Prices Table
+*/
+
+.skin-brown-gradient .pricing-container .pricing-item {
+    color: #333;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+}
+.skin-brown-gradient .pricing-container .pricing-deco {
+    background: #5d4037;
+}
+.skin-brown-gradient .pricing-container .pricing-title {
+    color: #fff;
+}
+.skin-brown-gradient .pricing-container .pricing-price {
+    color: #fff;
+}
+.skin-brown-gradient .pricing-container .pricing-action {
+    color: #fff;
+    background: #5d4037;
+}
+.skin-brown-gradient .pricing-container .pricing-action:hover,
+.pricing-container .pricing-action:focus {
+    background-color: #262626;
+}
+/* second prices */
+
+.skin-brown-gradient #generic-price-table {
+    background-color: #f1f1f1;
+}
+.skin-brown-gradient #generic-price-table .generic-content {
+    background-color: #fff;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price {
+    background-color: #f6f6f6;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price .generic-head-content .head_bg {
+    border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price .generic-head-content .head span {
+    color: #525252;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .sign {
+    color: #414141;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .currency {
+    color: #414141;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .cent {
+    color: #414141;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-head-price .generic-price-tag .month {
+    color: #414141;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-feature-list ul li {
+    color: #a7a7a7;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-feature-list ul li span {
+    color: #414141;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-feature-list ul li:hover {
+    background-color: #5d4037;
+    border-left: 5px solid #6d4c41;
+}
+.skin-brown-gradient #generic-price-table .generic-content .generic-price-btn a {
+    border: 1px solid #5d4037;
+    color: #5d4037;
+}
+.skin-brown-gradient #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head_bg,
+.skin-brown-gradient #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head_bg {
+    border-color: #5d4037 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #5d4037;
+    color: #fff;
+}
+.skin-brown-gradient #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head span,
+.skin-brown-gradient #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head span {
+    color: #fff;
+}
+.skin-brown-gradient #generic-price-table .generic-content:hover .generic-price-btn a,
+.skin-brown-gradient #generic-price-table .generic-content.active .generic-price-btn a {
+    background-color: #5d4037;
+    color: #fff;
+}
+.skin-brown-gradient .bottom_btn {
+    background-color: #333333;
+}
+.skin-brown-gradient .bottom_btn:hover {
+    background-color: #666;
+    color: #FFF;
+}
+/*Datatable Pagination*/
+
+.skin-brown-gradient .dataTables_paginate .pagination .active a {
+    background-color: #5d4037;
+    border-color: #5d4037;
+}
+.skin-brown-gradient .dataTable a {
+    color: #5d4037;
+}
+/*Bootstrap Pagination*/
+
+.skin-brown-gradient .pagination > li > a:focus,
+.skin-brown-gradient .pagination > li > a:active {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+    border-color: #5d4037;
+    color: #fff;
+}
+/*Login, register, Lock Screen, Forgot Password, Page Offline */
+
+.skin-brown-gradient .box-login,
+.skin-brown-gradient .box-register,
+.skin-brown-gradient .box-lockscreen,
+.skin-brown-gradient .box-forgot,
+.skin-brown-gradient .box-offline,
+.skin-brown-gradient .box-error {
+    border-top: 3px solid #5d4037;
+}
+.skin-brown-gradient .box-login a,
+.skin-brown-gradient .box-register a,
+.skin-brown-gradient .box-lockscreen a,
+.skin-brown-gradient .box-forgot a,
+.skin-brown-gradient .box-offline a,
+.skin-brown-gradient .box-error a {
+    color: #5d4037;
+}
+/*buttons*/
+
+.skin-brown-gradient .btn-primary,
+.skin-brown-gradient .dropdown-toggle.btn-primary {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .btn-primary:hover,
+.skin-brown-gradient .dropdown-toggle.btn-primary:hover {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .btn-primary:active,
+.skin-brown-gradient .dropdown-toggle.btn-primary:active,
+.skin-brown-gradient .btn-primary.active,
+.skin-brown-gradient .dropdown-toggle.btn-primary.active {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .btn-primary:focus,
+.skin-brown-gradient .dropdown-toggle.btn-primary:focus {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .btn-primary .ink,
+.skin-brown-gradient .dropdown-toggle.btn-primary .ink {
+	background-image: -ms-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -moz-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -o-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #5d4037), color-stop(100, #6d4c41));
+	background-image: -webkit-linear-gradient(left, #5d4037 0%, #6d4c41 100%);
+	background-image: linear-gradient(to right, #5d4037 0%, #6d4c41 100%);
+}
+.skin-brown-gradient .btn-flat.btn-primary {
+    color: #5d4037;
+}
+.skin-brown-gradient .btn-flat.btn-primary:hover {
+    color: #5d4037;
+    background-color: #e5e5e5;
+}
+.skin-brown-gradient .btn-flat.btn-primary:active,
+.skin-brown-gradient .btn-flat.btn-primary.active {
+    color: #5d4037;
+    background-color: #cccccc;
+}
+.skin-brown-gradient .add-icon i {
+    color: #fff;
+}
+.skin-brown-gradient .all-drivers .information .email a {
+    color: #5d4037;
+}
+/*mail*/
+
+.skin-brown-gradient .nav-stacked > li.active > a,
+.nav-stacked > li.active > a:hover {
+    border-left-color: #5d4037;
+}
+
+/*Price Car*/
+
+.skin-brown-gradient .price-car {
+    background-color: #5d4037 !important;
+}
+
+/*Others*/
+
+.skin-brown-gradient .return-up {
+    background: #5d4037;
+}

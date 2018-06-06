@@ -1,0 +1,355 @@
+/*
+ * Skin: Yellow
+ * ----------
+ */
+
+.skin-yellow .spinner {
+    background-color: #ffce3b;
+}
+/* General Links */
+
+.skin-yellow a {
+    color: #ffd000;
+}
+.skin-yellow a:hover,
+.skin-yellow a:active,
+.skin-yellow a:focus {
+    outline: none;
+    text-decoration: none;
+    color: #ffce3b;
+}
+.skin-yellow .form-control:focus {
+    border-color: #ffc824;
+}
+.skin-yellow .top-menu-header .navbar {
+    background-color: #ffc824;
+}
+.skin-yellow .top-menu-header .navbar .nav > li > a {
+    color: #ffffff;
+}
+.skin-yellow .top-menu-header .navbar {
+    background-color: #ffc824;
+}
+.skin-yellow .top-menu-header .navbar .nav > li > a {
+    color: #ffffff;
+}
+.skin-yellow .top-menu-header .navbar .nav > li > a:hover,
+.skin-yellow .top-menu-header .navbar .nav > li > a:active,
+.skin-yellow .top-menu-header .navbar .nav > li > a:focus,
+.skin-yellow .top-menu-header .navbar .nav .open > a,
+.skin-yellow .top-menu-header .navbar .nav .open > a:hover,
+.skin-yellow .top-menu-header .navbar .nav .open > a:focus,
+.skin-yellow .top-menu-header .navbar .nav > .active > a {
+    background: #ffce3b;
+    color: #f6f6f6;
+}
+.skin-yellow .top-menu-header .navbar .sidebar-toggle {
+    color: #ffffff;
+}
+.skin-yellow .top-menu-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6;
+    background: rgba(0, 0, 0, 0.1);
+}
+.skin-yellow .top-menu-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.skin-yellow .top-menu-header .navbar .sidebar-toggle:hover {
+    background-color: #ffce3b;
+}
+@media (max-width: 767px) {
+    .skin-yellow .top-menu-header .navbar .dropdown-menu li.divider {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .skin-yellow .top-menu-header .navbar .dropdown-menu li a {
+        color: #333;
+    }
+}
+.skin-yellow .top-menu-header .logo {
+    background-color: #ffc824;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.skin-yellow .top-menu-header .logo:hover {
+    background-color: #ffce3b;
+}
+.skin-yellow #top-menu-navbar-search a {
+    color: #ffc824;
+}
+.skin-yellow .top-menu-header li.user-header {
+    background-color: #ffc824;
+}
+.skin-yellow .wrapper,
+.skin-yellow .sidebar-left,
+.skin-yellow .left-side {
+    background-color: #222d32;
+}
+.skin-yellow .user-panel > .info,
+.skin-yellow .user-panel > .info > a {
+    color: #fff;
+}
+.skin-yellow .sidebar-menu > li.header {
+    color: #CFD8DC;
+    background: #1a2226;
+}
+.skin-yellow .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+    border-left-color: transparent;
+}
+.skin-yellow .sidebar-menu > li:hover > a,
+.skin-yellow .sidebar-menu > li.active > a {
+    color: #ffffff;
+        background: #1e282c;
+    border-left-color: #ffc824;
+}
+.skin-yellow .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #1a2226;
+}
+.skin-yellow .sidebar a {
+    color: #fff;
+}
+.skin-yellow .sidebar a:hover {
+    text-decoration: none;
+}
+.skin-yellow .treeview-menu > li > a {
+    color: #CFD8DC
+}
+.skin-yellow .treeview-menu > li.active > a,
+.skin-yellow .treeview-menu > li > a:hover {
+    color: #ffffff;
+}
+.skin-yellow .sidebar-form {
+    border-radius: 3px;
+    border: 1px solid #374850;
+    margin: 10px 10px;
+}
+.skin-yellow .sidebar-form input[type="text"],
+.skin-yellow .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid transparent;
+    height: 35px;
+}
+.skin-yellow .sidebar-form input[type="text"] {
+    color: #666;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+}
+.skin-yellow .sidebar-form input[type="text"]:focus,
+.skin-yellow .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #fff;
+    color: #666;
+}
+.skin-yellow .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color: #fff;
+}
+.skin-yellow .sidebar-form .btn {
+    color: #999;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0;
+}
+.skin-yellow .main-footer a {
+    color: #ffc824;
+}
+.skin-yellow .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
+.skin-yellow .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
+.skin-yellow .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
+    background-color: #ffc824 !important;
+    color: #fff !important;
+    border: none;
+    margin: -1px;
+    border: none;
+    margin: -1px;
+}
+.skin-yellow .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: #ffc824;
+}
+/*
+*  Prices Table
+*/
+
+.skin-yellow .pricing-container .pricing-item {
+    color: #333;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+}
+.skin-yellow .pricing-container .pricing-deco {
+    background: #ffc824;
+}
+.skin-yellow .pricing-container .pricing-title {
+    color: #fff;
+}
+.skin-yellow .pricing-container .pricing-price {
+    color: #fff;
+}
+.skin-yellow .pricing-container .pricing-action {
+    color: #fff;
+    background: #ffc824;
+}
+.skin-yellow .pricing-container .pricing-action:hover,
+.pricing-container .pricing-action:focus {
+    background-color: #262626;
+}
+/* second prices */
+
+.skin-yellow #generic-price-table {
+    background-color: #f1f1f1;
+}
+.skin-yellow #generic-price-table .generic-content {
+    background-color: #fff;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price {
+    background-color: #f6f6f6;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price .generic-head-content .head_bg {
+    border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price .generic-head-content .head span {
+    color: #525252;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .sign {
+    color: #414141;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .currency {
+    color: #414141;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price .generic-price-tag .price .cent {
+    color: #414141;
+}
+.skin-yellow #generic-price-table .generic-content .generic-head-price .generic-price-tag .month {
+    color: #414141;
+}
+.skin-yellow #generic-price-table .generic-content .generic-feature-list ul li {
+    color: #a7a7a7;
+}
+.skin-yellow #generic-price-table .generic-content .generic-feature-list ul li span {
+    color: #414141;
+}
+.skin-yellow #generic-price-table .generic-content .generic-feature-list ul li:hover {
+    background-color: #ffc824;
+    border-left: 5px solid #ffce3b;
+}
+.skin-yellow #generic-price-table .generic-content .generic-price-btn a {
+    border: 1px solid #ffc824;
+    color: #ffc824;
+}
+.skin-yellow #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head_bg,
+.skin-yellow #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head_bg {
+    border-color: #ffc824 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #ffc824;
+    color: #fff;
+}
+.skin-yellow #generic-price-table .generic-content:hover .generic-head-price .generic-head-content .head span,
+.skin-yellow #generic-price-table .generic-content.active .generic-head-price .generic-head-content .head span {
+    color: #fff;
+}
+.skin-yellow #generic-price-table .generic-content:hover .generic-price-btn a,
+.skin-yellow #generic-price-table .generic-content.active .generic-price-btn a {
+    background-color: #ffc824;
+    color: #fff;
+}
+.skin-yellow .bottom_btn {
+    background-color: #333333;
+}
+.skin-yellow .bottom_btn:hover {
+    background-color: #666;
+    color: #FFF;
+}
+/*Datatable Pagination*/
+
+.skin-yellow .dataTables_paginate .pagination .active a {
+    background-color: #ffc824;
+    border-color: #ffc824;
+}
+.skin-yellow .dataTable a {
+    color: #ffc824;
+}
+/*Bootstrap Pagination*/
+
+.skin-yellow .pagination > li > a:focus,
+.skin-yellow .pagination > li > a:active {
+    background-color: #ffc824;
+    border-color: #ffc824;
+    color: #fff;
+}
+/*Login, register, Lock Screen, Forgot Password, Page Offline */
+
+.skin-yellow .box-login,
+.skin-yellow .box-register,
+.skin-yellow .box-lockscreen,
+.skin-yellow .box-forgot,
+.skin-yellow .box-offline,
+.skin-yellow .box-error {
+    border-top: 3px solid #ffc824;
+}
+.skin-yellow .box-login a,
+.skin-yellow .box-register a,
+.skin-yellow .box-lockscreen a,
+.skin-yellow .box-forgot a,
+.skin-yellow .box-offline a,
+.skin-yellow .box-error a {
+    color: #ffc824;
+}
+/*buttons*/
+
+.skin-yellow .btn-primary,
+.skin-yellow .dropdown-toggle.btn-primary {
+    background-color: #ffc824;
+}
+.skin-yellow .btn-primary:hover,
+.skin-yellow .dropdown-toggle.btn-primary:hover {
+    background-color: #ffc824;
+}
+.skin-yellow .btn-primary:active,
+.skin-yellow .dropdown-toggle.btn-primary:active,
+.skin-yellow .btn-primary.active,
+.skin-yellow .dropdown-toggle.btn-primary.active {
+    background-color: #ffc824;
+}
+.skin-yellow .btn-primary:focus,
+.skin-yellow .dropdown-toggle.btn-primary:focus {
+    background-color: #ffc824;
+}
+.skin-yellow .btn-primary .ink,
+.skin-yellow .dropdown-toggle.btn-primary .ink {
+    background-color: #ffc824;
+}
+.skin-yellow .btn-flat.btn-primary {
+    color: #ffc824;
+}
+.skin-yellow .btn-flat.btn-primary:hover {
+    color: #ffc824;
+    background-color: #e5e5e5;
+}
+.skin-yellow .btn-flat.btn-primary:active,
+.skin-yellow .btn-flat.btn-primary.active {
+    color: #ffc824;
+    background-color: #cccccc;
+}
+.skin-yellow .add-icon i {
+    color: #fff;
+}
+.skin-yellow .all-drivers .information .email a {
+    color: #ffc824;
+}
+/*mail*/
+
+.skin-yellow .nav-stacked > li.active > a,
+.nav-stacked > li.active > a:hover {
+    border-left-color: #ffc824;
+}
+
+/*Price Car*/
+
+.skin-yellow .price-car {
+    background-color: #ffc824 !important;
+}
+
+/*Others*/
+
+.skin-yellow .return-up {
+    background: #ffc824;
+}
