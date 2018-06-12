@@ -64,7 +64,9 @@
                     <div id= "js_card" class="row">
                     @foreach($users as $item)
 
-
+                     @if($loop->index <= 7)
+                            
+                        
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="box all-drivers">
                                 <div class="box-body">
@@ -89,6 +91,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                     @endforeach
 

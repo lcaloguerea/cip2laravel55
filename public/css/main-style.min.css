@@ -3139,12 +3139,19 @@ table.text-center,table.text-center td,table.text-center th{
     border-radius:20px;
     margin:-20px 20px 7px 48px
 }
-.login-page,.register-page{
-    background-color:#e8e8e8;
+.login-page{
+    background: url("/img/login_bg.jpg") no-repeat center center fixed;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
-    background-size:cover
+    background-size:cover;
+}
+.register-page{
+    background: url("/img/register_bg.jpg") no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
 }
 .login-page .box-login,.register-page .box-register{
     width:360px;
@@ -3153,7 +3160,7 @@ table.text-center,table.text-center td,table.text-center th{
     position:absolute;
     right:0;
     left:0;
-    border-top:3px solid #ffc824
+    border-top:3px solid #137c00
 }
 @media (max-width:768px){
     .login-page .box-login,.register-page .box-register{

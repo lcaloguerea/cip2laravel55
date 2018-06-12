@@ -4471,7 +4471,7 @@
 .skin-yellow .box-forgot,
 .skin-yellow .box-offline,
 .skin-yellow .box-error {
-    border-top: 3px solid #ffc824;
+    border-top: 3px solid #137c00;
 }
 .skin-yellow .box-login a,
 .skin-yellow .box-register a,
@@ -4479,7 +4479,7 @@
 .skin-yellow .box-forgot a,
 .skin-yellow .box-offline a,
 .skin-yellow .box-error a {
-    color: #ffc824;
+    color: #137c00;
 }
 /*buttons*/
 

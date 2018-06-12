@@ -190,7 +190,7 @@
                 </a>
                 <ul class="dropdown-menu user-menu animated flipInY">
                   <li><a href="driver-profile.html"><i class="ti-user"></i> Perfil</a></li>
-                  <li><a href="mailbox.html"><i class="fa fa-fw fa-envelope-o"></i> Correo</a></li>
+                  <li><a href="/admin/mailbox"><i class="fa fa-fw fa-envelope-o"></i> Correo</a></li>
                   <li><a href="#"><i class="ti-settings"></i> Opciones</a></li>
                   <li class="divider"></li>
                   <li><a href="sign-in.html"><i class="ti-power-off"></i> Salir</a></li>

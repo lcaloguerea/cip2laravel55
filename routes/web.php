@@ -26,3 +26,10 @@ Route::get('/admin/mailbox', function () {
 Route::get('/admin/users-cards', 'UserController@getCards');
 Route::get('/admin/users-list', 'UserController@getList');
 Route::get('/admin/user-profile/{id}', 'UserController@getProfile');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
