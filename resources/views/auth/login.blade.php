@@ -1,69 +1,88 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CIP Admin</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        <link rel="stylesheet" href="{{asset('js/iCheck/all.css')}}" /> 
+        <!-- Icons -->
+        <link href="{{asset('icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
+    </head>
+    
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+    <body class="skin-yellow login-page">
+        <div class="box-login">
+            <div class="box-login-body">
+                <h3><span><b>CIP</b>Admin</span></h3>
+                <p class="box-login-msg">Inicio de sesion</p>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+                <form class="login-form" method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="form-group input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input class="form-control" type="text" name='email' placeholder="Email" value="{{ old('email') }}" autofocus/>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input class="form-control" type="password" name='password' placeholder="Password" />
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif                        
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="checkbox">
+                            <label for="terms" style="padding-left: 12px;">
+                                <input class="icheck_flat_20" type="checkbox" id="terms" {{ old('remember') ? 'checked' : '' }}> Recordarme
+                            </label>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-default" id="login">Ingresar</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <a href="/register">Aún no tengo cuenta</a>
+                        <br>
+                        <a href="{{ route('password.request') }}">Olvidaste tu contraseña?</a>
+                        <br>
+                        <a href="/">Regresar a la página principal</a>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-</div>
+
+        <!-- JS scripts -->
+        <script src="{{asset('jQuery/jquery-2.2.3.min.js')}}"></script>
+        <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/iCheck/icheck.min.js')}}"></script>
+        <script src="{{asset('js/pages/jquery-icheck.js')}}"></script>
+        <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
+    </body>
+</html>
+
+
+@section('scripts')
+    <script>
+        $(document).on('ready',function(){
+
+            $('#login').on('click')
+            console.log("Hola");         
+
+        });
+    </script>
 @endsection

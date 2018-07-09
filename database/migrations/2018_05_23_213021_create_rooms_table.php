@@ -17,10 +17,11 @@ class CreateRoomsTable extends Migration
             $table->increments('id_room');
             $table->integer('price');
             $table->enum('status',['free','occupied']);
-            $table->enum('confirm',['0','1']);
+            $table->enum('type',['single','shared','matrimonial']);
+            $table->timestamps();
 
             //fk active reservation 
-            $table->integer('acive_reservation_id')->nullable();
+            $table->integer('active_reservation_id')->nullable();
 
         });
     }

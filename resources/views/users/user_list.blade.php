@@ -77,7 +77,7 @@
                                         <tbody>
                                         @foreach($users as $item)
                                             <tr>
-                                                <td><a href="#">{{$item->id_user}}</a></td>
+                                                <td><a href="user-profile/{{$item->id_user}}">{{$item->id_user}}</a></td>
                                                 <td>{{$item->name}}</td>
                                                 <td>{{$item->lName}}</td>
                                                 <td>{{$item->rut}}</td>

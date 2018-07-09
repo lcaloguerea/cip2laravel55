@@ -26,7 +26,8 @@ class UsersTableSeeder extends Seeder
         $user->department	        = 'Developer';
         $user->email                = 'l.caloguerea@gmail.com';
         $user->phone 				= '+56966080281';
-        $user->password             = 'cip2laravel55';
+        $user->password             = bcrypt('cip2laravel55');
+        $user->uAvatar              = '/img/dimebag.jpg';
             
         $user->save();
         $samples_temp = [];
@@ -44,7 +45,8 @@ class UsersTableSeeder extends Seeder
                 'department'	=> $faker->jobTitle.' Department',
                 'email'			=> $faker->unique->email ,
                 'phone'			=> $faker->e164PhoneNumber,
-                'password'		=> bcrypt('secret') 
+                'password'		=> bcrypt('secret'),
+                'uAvatar'       => '/img/icons/icon-user.png' 
             ];
 
         }

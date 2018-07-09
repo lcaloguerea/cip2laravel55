@@ -82,6 +82,8 @@
                     </div>
                     <div class="form-group text-center">
                         <a href="/login">Ya tengo cuenta</a>
+                        <br>
+                        <a href="/">Volver a la página principal</a>
                     </div>
                 </form>
             </div>

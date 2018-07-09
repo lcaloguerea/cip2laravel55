@@ -66,7 +66,7 @@
                                     
                                 </div>
                                 <div class="widget-user-image">
-                                    <img class="img-circle" src="{{$user->avatar}}" alt="User Avatar">
+                                    <img class="img-circle" src="{{$user->uAvatar}}" alt="User Avatar">
                                 </div>
                                 <div class="box-footer">
                                     <div class="socials-networks" style="padding-top: 16px;">
@@ -174,7 +174,7 @@
                                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                                     </div>
                                                     <div class="timeline-footer">
-                                                        <a class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
+                                                        <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
                                                     </div>
                                                 </div>
                                             </li>

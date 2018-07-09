@@ -1,6 +1,6 @@
       <header class="top-menu-header">
         <!-- Logo -->
-        <a href="index.html" class="logo">
+        <a href="/admin" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><img style="width: 40px; height: 40px;" src="{{asset('img/icons/hostel_white-128.png')}}" class="img-circle" alt="Logo Mini"/></span>
           <!-- logo for regular state and mobile devices -->
@@ -193,7 +193,7 @@
                   <li><a href="/admin/mailbox"><i class="fa fa-fw fa-envelope-o"></i> Correo</a></li>
                   <li><a href="#"><i class="ti-settings"></i> Opciones</a></li>
                   <li class="divider"></li>
-                  <li><a href="sign-in.html"><i class="ti-power-off"></i> Salir</a></li>
+                  <li><a href="/"><i class="ti-power-off"></i> Salir</a></li>
                 </ul>
               </li>
             </ul>

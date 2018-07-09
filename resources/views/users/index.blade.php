@@ -70,7 +70,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="box all-drivers">
                                 <div class="box-body">
-                                    <img class="member-online img-circle" src="{{$item->avatar}}" alt="User Image">
+                                    <img class="member-online img-circle" src="{{$item->uAvatar}}" alt="User Image">
                                     <p class="name">{{$item->name}} {{$item->lName}}</p>
                                     <div class="information">
                                         <p class="">{{$item->type}}</p>
@@ -79,7 +79,7 @@
                                         <p class="location text-muted">{{$item->phone}}</p>
                                     </div>
                                     <div class="text-center action-profile">
-                                        <a href="user-profile/{{$item->id_user}}" class="btn btn-default">View Profile</a>
+                                        <a href="user-profile/{{$item->id_user}}" class="btn btn-default">Ver Perfil</a>
                                     </div>
                                     <!-- <div class="socials-networks">
                                         <ul>

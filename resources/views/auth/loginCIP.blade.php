@@ -23,19 +23,31 @@
                 <h3><span><b>CIP</b>Admin</span></h3>
                 <p class="box-login-msg">Inicio de sesion</p>
 
-                <form class="login-form" method="post">
-                    <div class="form-group input-group">
+                <form class="login-form" method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group input-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input class="form-control" type="text" name='email' placeholder="Email" autofocus/>
+                        <input class="form-control" type="text" name='email' placeholder="Email" value="{{ old('email') }}" autofocus/>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
-                    <div class="form-group input-group">
+                    <div class="form-group input-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input class="form-control" type="password" name='password' placeholder="Password" />
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif                        
                     </div>
                     <div class="form-group input-group">
                         <div class="checkbox">
                             <label for="terms" style="padding-left: 12px;">
-                                <input class="icheck_flat_20" type="checkbox" id="terms"> Recordarme
+                                <input class="icheck_flat_20" type="checkbox" id="terms" {{ old('remember') ? 'checked' : '' }}> Recordarme
                             </label>
                         </div>
                     </div>
@@ -44,6 +56,9 @@
                     </div>
                     <div class="form-group text-center">
                         <a href="/register">Aún no tengo cuenta</a>
+                                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
                     </div>
                 </form>
             </div>

@@ -25,7 +25,7 @@ class Rut implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
+    
     }
 
     /**
@@ -35,6 +35,6 @@ class Rut implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'Rut invalido.';
     }
 }

@@ -38,8 +38,8 @@
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="clients.html">Ver lista</a></li>
-                <li><a href="client-profile.html">Ver ficha</a></li>
+                <li><a href="{{URL::to('admin/passengers-list')}}">Ver lista</a></li>
+                <li><a href="{{URL::to('admin/passengers-cards')}}">Ver ficha</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -49,12 +49,12 @@
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="cars.html">Ver lista</a></li>
-                <li><a href="add-car.html">Ver ficha</a></li>
+                <li><a href="{{URL::to('admin/rooms-list')}}">Ver lista</a></li>
+                <li><a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
                 <li><a href="car-detail.html">Administrar</a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="calendar.html"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+            <li class="treeview"><a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
             <li class="treeview">
               <a href="#"><i class="fa fa-usd"></i> <span>Pagos</span>
               <span class="pull-right-container">
@@ -66,7 +66,7 @@
                 </li>
                 <li><a href="add-payment.html">Agregar modo de pago</a>
                 </li>
-                <li><a href="invoice.html">Boleta</a>
+                <li><a href="{{URL::to('admin/payments/b_invoice')}}">Boleta</a>
                 </li>
                 <li><a href="invoice2.html">Factura</a>
                 </li>

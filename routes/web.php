@@ -23,13 +23,26 @@ Route::get('/admin/mailbox', function () {
     return view('mail/mailbox');
 });
 
+Route::get('/admin/calendar', function () {
+    return view('calendar/index');
+});
+
+Route::get('/admin/payments/b_invoice', function () {
+    return view('payments/b_invoice');
+});
+
 Route::get('/admin/users-cards', 'UserController@getCards');
 Route::get('/admin/users-list', 'UserController@getList');
 Route::get('/admin/user-profile/{id}', 'UserController@getProfile');
+
+Route::get('/admin/rooms-list', 'RoomsController@getList');
+Route::get('/admin/rooms-cards', 'RoomsController@getCards');
+
+Route::get('/admin/passengers-list', 'PassengersController@getList');
+Route::get('/admin/passenger-profile/{id}', 'PassengersController@getProfile');
+Route::get('/admin/passengers-cards', 'PassengersController@getCards');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

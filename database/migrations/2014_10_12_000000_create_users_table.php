@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->enum('type',['admin','user']);
             $table->string('name');
             $table->string('lName');;
-            $table->string('avatar')->default('/img/icons/icon-user.png');
+            $table->string('uAvatar')->default('/img/icons/icon-user.png');
             $table->enum('confirmed',['yes','no']);
             $table->string('confirmed_code',50)->nullable();
             $table->string('department'); //departamente o facultad

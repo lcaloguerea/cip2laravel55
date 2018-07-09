@@ -44,42 +44,7 @@ $(function () {
             day: 'day'
         },
         //Random default events
-        events: [
-            {
-                title: 'All Day Event',
-                start: new Date(y, m, 1),
-                className: 'b-red'
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, 4),
-                className: 'b-red'
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d),
-                allDay: false,
-                className: 'b-purple'
-            },
-            {
-                title: 'Conference',
-                start: new Date(y, m, 12),
-                allDay: false,
-                className: 'b-lime'
-            },
-            {
-                start: new Date(y, m, 26),
-                title: 'Birthday Party',
-                allDay: false,
-                className: 'b-orange'
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                url: 'http://google.com/',
-                className: 'b-maroon'
-            }
-        ],
+        
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar !!!
         drop: function (date, allDay) { // this function is called when something is dropped
