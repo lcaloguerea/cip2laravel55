@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div style="padding-top: 200px" class="modal-dialog modal-dialog-centered" role="document">
+  <div style="padding-top: 100px" class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Disponibilidad</h5>
@@ -9,12 +9,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <strong>Resultado de búsqueda de disponibilidad para el rango de fecha1 a fecha2 arrojó</strong>
+        <strong>Mostrando resultados disponibles entre las fechas <span id="in"></span> y <span id="out"></span>:</strong>
         <br>
         <ul style="padding-top: 12px">
-            <li>Single: N/A</li>
-            <li>Single compartida: N/A</li>
-            <li>matrimonial: N/A</li>
+            <li>Single: <span id="s"></span> habitaciones disponibles</li>
+            <li>Single compartida: <span id="c"></span> habitaciones disponibles</li>
+            <li>matrimonial: <span id="m"></span> habitaciones disponibles</li>
         </ul>
       </div>
       <div class="modal-footer">

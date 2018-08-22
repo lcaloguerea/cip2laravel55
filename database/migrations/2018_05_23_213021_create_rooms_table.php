@@ -21,7 +21,7 @@ class CreateRoomsTable extends Migration
             $table->timestamps();
 
             //fk active reservation 
-            $table->integer('active_reservation_id')->nullable();
+            $table->integer('active_reservation_id')->unsigned()->nullable();
 
         });
     }

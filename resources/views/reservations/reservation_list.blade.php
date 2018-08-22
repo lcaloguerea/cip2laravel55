@@ -45,12 +45,12 @@
             <div class="content-wrapper">
                 <section class="content-title">
                     <h1>
-                        Lista de usuarios
+                        Lista de reservas
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
-                        <li>Usuarios</li>
+                        <li>Reservas</li>
                         <li class="active">Lista</li>
                     </ol>
                 </section>
@@ -65,31 +65,42 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Rut</th>
-                                                <th>Departamento</th>
-                                                <th>Email</th>
-                                                <th>Telefono</th>
+                                                <th>Usuario</th>
+                                                <th>Huésped(es)</th>
                                                 <th>Estado</th>
+                                                <th>Check In</th>
+                                                <th>Check Out</th>
+                                                <th>Tipo de pago</th>
+                                                <th>Habitación</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($users as $item)
+                                        @foreach($reservs as $item)
                                             <tr>
-                                                <td><a href="user-profile/{{$item->id}}">{{$item->id}}</a></td>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->lName}}</td>
-                                                <td>{{$item->rut}}</td>
-                                                <td>{{$item->department}}</td>
-                                                <td>{{$item->email}}</td>
-                                                <td>{{$item->phone}}</td>
-                                                @if($item->confirmed == "yes")
-                                                <td><span class="label label-success">Confirmado</span></td>
-                                                @else
-                                                <td><span class="label label-danger">Sin confirmar</span></td>
-                                                @endif
-
+                                                <td><a href="#">{{$item->id_res}}</a></td>
+                                                <td><a href="user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
+                                                <td>
+                                                @foreach($pGroups as $pg)
+                                                    @if($pg->reservation_id == $item->id_res)
+                                                        <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                    @endif
+                                                @endforeach
+                                                </td>
+                                                <td>
+                                                    @if($item->status == "started")
+                                                        <span class="badge bg-green">Iniciada</span>
+                                                    @elseif($item->status == "cancelled")
+                                                        <span class="badge bg-red">Cancelada</span>
+                                                    @elseif($item->status == "waiting")
+                                                        <span class="badge bg-yellow">En espera</span>
+                                                    @elseif($item->status == "finished")
+                                                        <span class="badge bg-blue">Finalizada</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
+                                                <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
+                                                <td>{{$item->payment_m}}</td>
+                                                <td>{{$item->room_id}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

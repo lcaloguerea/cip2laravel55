@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -81,7 +82,7 @@
                 <div class="col-12 col-md">
                     <div class="wellcome-heading">
                         <h2>Casa de Investigadores y Postgrado</h2>
-                        <div style=" background-color: #9572e8;  border-radius: 24px 24px 24px 0px;" class="col-12 col-md-6">
+                        <div style=" background-color: #8ea253;  border-radius: 24px 24px 24px 0px;" class="col-12 col-md-6">
                             <p style="font-size: 30px; height: auto; text-align: center; color: white;">Comienza tu estadía con nosotros hoy.</p>
                         </div>
                     </div>
@@ -260,21 +261,21 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <h5>Check in</h5>
-                        <input class="datepicker"></input>
+                        <input id="chIn" class="datepicker"></input>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <h5>Check out</h5>
-                        <input class="datepicker"></input>
+                        <input id="chOut" class="datepicker2"></input>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <div class="col-12">
-                            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn submit-btn">Buscar</button>
+                           <button type="button" id="srchDisp" class="btn submit-btn">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -747,8 +748,55 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
         var $input = $('.datepicker').pickadate()
         var picker = $input.pickadate('picker')
+        var $input2 = $('.datepicker2').pickadate()
+        var picker2 = $input2.pickadate('picker')
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('#srchDisp').on('click',function(e){
+
+
+            e.preventDefault();
+
+            var hola = picker.get("select","yyyy-mm-dd");
+            var inFormatedForUser = picker.get("select","dd-mm-yyyy");
+            $('#in').text(inFormatedForUser);
+            var hola2 = picker2.get("select","yyyy-mm-dd");
+            var outFormatedForUser = picker2.get("select","dd-mm-yyyy");
+            $('#out').text(outFormatedForUser);
+
+            var checkIn = hola;
+            var checkOut = hola2;
+
+            $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+               data:{checkIn:checkIn, checkOut:checkOut},
+                //Cambiar a type: POST si necesario
+                type: 'POST',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url: '/disp' ,
+                success:function(data){
+                    $('#s').text(data.single);
+                    $('#c').text(data.compartida);
+                    $('#m').text(data.matrimonial);
+                    $("#exampleModalCenter").modal();
+
+
+           }
+            }); 
+
+        });
+
 
 });
 </script>

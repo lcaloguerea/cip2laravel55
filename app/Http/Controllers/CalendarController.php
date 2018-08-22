@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function getProfile($id)
     {
-    	$user = User::where('id_user',$id) -> first();
+    	$user = User::where('id',$id) -> first();
     	return view('users.user_profile', compact('user'));
     }
 }

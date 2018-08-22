@@ -184,7 +184,7 @@
                 <!-- Menu Toggle Button -->
                 <a href="#" data-toggle="dropdown" aria-expanded="false">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">Leo Caloguerea<i class="fa fa-angle-down pull-right"></i></span>
+                  <span class="hidden-xs">{{Auth::user()->name}} {{Auth::user()->lName}}<i class="fa fa-angle-down pull-right"></i></span>
                   <!-- The user image in the navbar-->
                   <img src="{{asset('img/dimebag.jpg')}}" class="user-image" alt="User Image">
                 </a>
@@ -193,7 +193,12 @@
                   <li><a href="/admin/mailbox"><i class="fa fa-fw fa-envelope-o"></i> Correo</a></li>
                   <li><a href="#"><i class="ti-settings"></i> Opciones</a></li>
                   <li class="divider"></li>
-                  <li><a href="/"><i class="ti-power-off"></i> Salir</a></li>
+                  <li>
+                    <form method="POST" action="{{route('logout')}}">
+                    {{ csrf_field() }}
+                      <button type="btn" class="btn btn-block btn-xs btn-success"><i class="ti-power-off"></i> Salir</button>
+                    </form>
+                  </li>
                 </ul>
               </li>
             </ul>

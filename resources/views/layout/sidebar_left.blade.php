@@ -6,9 +6,9 @@
               <img src="{{asset('img/dimebag.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="info">
-              <p>Leo</p>
-               <p>Caloguerea</p>
-              <p><small>Developer</small>
+              <p>{{Auth::user()->name}}</p>
+               <p>{{Auth::user()->lName}}</p>
+              <p><small>{{Auth::user()->type}}</small>
               </p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -53,6 +53,11 @@
                 <li><a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
                 <li><a href="car-detail.html">Administrar</a></li>
               </ul>
+            </li>
+            <li class="treeview">
+              <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
+              <span class="pull-right-container">
+              </a>
             </li>
             <li class="treeview"><a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
             <li class="treeview">

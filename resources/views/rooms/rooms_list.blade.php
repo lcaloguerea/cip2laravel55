@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Taxi Admin</title>
+        <title>CIP Admin</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -69,6 +69,7 @@
                                                 <th>Precio</th>
                                                 <th>Estado</th>
                                                 <th>Reserva activa</th>
+                                                <th>Huésped(es)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -87,6 +88,18 @@
                                                   <td>Ocupada</td>
                                                 @endif
                                                 <td>{{$item->active_reservation_id}}</td>
+                                                @if($item->status == 'occupied')
+                                                    <td>
+                                                    @foreach($pGroups as $pg)
+                                                        @if($pg->reservation_id == $item->active_reservation_id)
+                                                            <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                        @endif
+                                                    @endforeach
+                                                    </td>
+                                                @else
+                                                    <td></td>
+                                                @endif
+
                                             </tr>
                                         @endforeach
                                         </tbody>

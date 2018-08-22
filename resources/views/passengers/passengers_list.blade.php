@@ -84,8 +84,8 @@
                                                 <td>{{$item->lName_1}}</td>
                                                 <td>{{$item->nationality}}</td>
                                                 <td>{{$item->email}}</td>
-                                                <td><img style="height: 20px; width: 30px" src="/img/icons/flag-cl.icon"></td>
-                                                <td><img style="height: 20px; width: 30px" src="/img/icons/flag-gr.png"></td>
+                                                <td title="{{$item->countryo->name}}">{{CountryFlag::get($item->countryo->iso)}}</td>
+                                                <td title="{{$item->countryr->name}}">{{CountryFlag::get($item->countryr->iso)}}</td>
                                                 <td>{{$item->university}}</td>
                                             </tr>
                                         @endforeach

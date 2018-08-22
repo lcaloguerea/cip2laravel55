@@ -17,12 +17,12 @@ class AddReservationsFk extends Migration
             $table  ->foreign('room_id','reservations_room_id_foreign')
                     ->references('id_room')
                     ->on('rooms')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
             $table  ->foreign('user_id','reservations_user_id_foreign')
-                    ->references('id_user')
+                    ->references('id')
                     ->on('users')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
         });    
     }

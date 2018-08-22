@@ -17,12 +17,12 @@ class AddPassengersFk extends Migration
             $table  ->foreign('country_o','passengers_country_o_foreign')
                     ->references('id_country')
                     ->on('countries')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
             $table  ->foreign('country_r','passengers_country_r_foreign')
                     ->references('id_country')
                     ->on('countries')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
         });
     }

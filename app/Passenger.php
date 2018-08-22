@@ -2,12 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Passenger extends Authenticatable
+class Passenger extends Model
 {
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,11 +18,24 @@ class Passenger extends Authenticatable
                 'lName_2',
                 'Nationality',
                 'email',
+                'phone',
                 'university',
                 'country_o',
                 'country_r',
 
     ];
+
+    //Relación con país de origen
+    public function countryo()
+    {
+        return $this->belongsTo('App\Country', 'country_o', 'id_country'); //Id local
+    }
+
+    //Relación con país de residencia
+    public function countryr()
+    {
+        return $this->belongsTo('App\Country', 'country_r', 'id_country'); //Id local
+    }
 
     /**
      * The attributes that should be hidden for arrays.

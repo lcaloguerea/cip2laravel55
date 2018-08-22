@@ -56,7 +56,12 @@
           	@foreach($rooms as $item)
             <div class="col-md-3 col-xs-12 col-sm-6">
               <div class="box">
-                <div class="element-overlay">
+              @if($item->status == 'free')
+                <div class="ribbon ribbon-top-left"><span>Libre</span></div>
+              @else
+                <div class="ribbon-red ribbon-top-left"><span>Ocupada</span></div>
+              @endif
+
                 	@if($item->type == 'single')
                   		<img class="img-responsive" alt="room" src="{{asset('img/single.png')}}">
                   	@elseif($item->type == 'shared')
@@ -64,32 +69,33 @@
                   	@else
                   		<img class="img-responsive" alt="room" src="{{asset('img/matrimonial.png')}}">
                   	@endif
-                  <div class="element-overlay-info">
-                    <ul class="element-detail">
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-search"></i></a></li>
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
+
                 <div class="box-body body-car">
                   <h4 class="car-title text-center">Habitación N° {{$item->id_room}}</h4>
                   <div class="car-information text-center">
                     <div class="row">
-						<ul style="list-style-type: disc; padding-left: 2em; text-align: left;">
-						  @if($item->type == 'shared')
+                      <div style="height: 45px; text-align: left;">
+                        Huésped(es):
+                          @if($item->status != 'free')
+                            @foreach($pGroups as $pg)
+                              @if($pg->reservation_id == $item->active_reservation_id)
+                                <a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}"><img class="img-circle" src="{{$pg->passengersR[0]->pAvatar}}" style="height: 35px; width: 35px;"></a>
+                              @endif
+                            @endforeach
+                          @else
+                            <span class="badge bg-grey">N/A</span>
+                          @endif
+                          </div>
+						            <ul style="list-style-type: disc; padding-left: 2em; text-align: left;">
+						              @if($item->type == 'shared')
                           	<li>Tipo: Single compartida</li>
                           @else
                           	<li>Tipo: {{$item->type}}</li>
                           @endif
-                          @if($item->status == 'free')
-                          	<li>Estado: Libre</li>
-                          @else
-                          	<li>Estado: Ocupada</li>
-                          @endif
                           @if($item->active_reservation_id == null)
-                          	<li>Reserva: N/A</li>
+                          	<li>Reserva: <span class="badge bg-grey">N/A</span></li>
                           @else
-                          	<li>E{{$item->active_reservation_id}}</li>
+                          	<li><a href=""><span class="badge bg-blue">Ir a reserva {{$item->active_reservation_id}}</span></a></li>
                           @endif
                         </ul>
                       <div style="margin: 0px -9px -24px;" class="price-car text-center"><strong>$ {{$item->price}} /Day</strong></div>

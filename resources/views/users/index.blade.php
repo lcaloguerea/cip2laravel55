@@ -79,7 +79,7 @@
                                         <p class="location text-muted">{{$item->phone}}</p>
                                     </div>
                                     <div class="text-center action-profile">
-                                        <a href="user-profile/{{$item->id_user}}" class="btn btn-default">Ver Perfil</a>
+                                        <a href="user-profile/{{$item->id}}" class="btn btn-default">Ver Perfil</a>
                                     </div>
                                     <!-- <div class="socials-networks">
                                         <ul>

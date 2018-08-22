@@ -3,6 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>CIP Admin</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
@@ -28,7 +32,7 @@
 
                     <div class="form-group input-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input class="form-control" type="text" name='email' placeholder="Email" value="{{ old('email') }}" autofocus/>
+                        <input class="form-control" type="email" name='email' placeholder="Email" value="{{ old('email') }}" autofocus/>
                         @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -52,7 +56,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-block btn-default" id="login">Ingresar</button>
+                        <button type="submit" class="btn btn-block btn-default">Ingresar</button>
                     </div>
                     <div class="form-group text-center">
                         <a href="/register">Aún no tengo cuenta</a>
@@ -76,13 +80,3 @@
 </html>
 
 
-@section('scripts')
-    <script>
-        $(document).on('ready',function(){
-
-            $('#login').on('click')
-            console.log("Hola");         
-
-        });
-    </script>
-@endsection

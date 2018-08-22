@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Passenger;
+use App\Country;
+use CountryFlag;
 
 class PassengersController extends Controller
 {

@@ -17,15 +17,19 @@ class CreateReservationsTable extends Migration
             $table->increments('id_res');
             $table->string('motive', 150);
             $table->string('program');
-            $table->enum('confirm',['0','1']);
-            $table->date('confirm_date');
+            //waiting: en espera entre validacion y cancelacion (24hrs) y asignacion de hab al checkin
+            $table->enum('status',['waiting','started','cancelled','finished']);
+            $table->date('check_in');
+            $table->date('check_out');
             $table->enum('payment_m',['cash','credit_card','e_transfer']);
             
-            //fk rooms
+            //fk rooms se asigna cualquiera disponible, en recepción al validar se cambia dependiendo
+            // de las necesidades de la hostal
             $table->integer('room_id')->unsigned();
 
             //fk usuario responsable 
             $table->integer('user_id')->unsigned();
+
             $table->timestamps();
 
         });

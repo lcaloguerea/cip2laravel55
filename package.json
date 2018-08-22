@@ -19,6 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "inputmask": "^4.0.0",
         "wowjs": "^1.1.3"
     }
 }

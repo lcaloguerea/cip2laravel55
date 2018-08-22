@@ -199,7 +199,7 @@ ol {
     font-size: 24px;
     right: 30px;
     width: 50px;
-    background-color: #fb397d;
+    background-color: #036773;
     color: #fff;
     text-align: center;
     height: 50px;
@@ -233,7 +233,7 @@ p {
 
 .section-heading > h2 {
     font-weight: 300;
-    color: #5b32b4;
+    color: #038b71;
     font-size: 48px;
     margin: 0;
 }
@@ -247,7 +247,7 @@ p {
 .line-shape {
     width: 80px;
     height: 2px;
-    background-color: #fb397d;
+    background-color: #dce53f;
     margin-top: 15px;
 }
 
@@ -378,7 +378,7 @@ p {
     color: #fff;
     font-weight: 500;
     display: inline-block;
-    border: 2px solid #a883e9;
+    border: 2px solid #8ea253;
     height: 50px;
     min-width: 178px;
     line-height: 46px;
@@ -387,7 +387,7 @@ p {
 }
 
 .sing-up-button > a:hover {
-    background: #fb397d;
+    background: #8ea253;
     color: #fff;
     border-color: transparent;
     -webkit-transition-duration: 500ms;
@@ -398,7 +398,7 @@ p {
 /* stcicky css */
 
 .header_area.sticky {
-    background-color: #884bdf;
+    background-color: #038B71;
     -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     height: 70px;
@@ -685,7 +685,7 @@ p {
 }
 
 .single-feature > i {
-    color: #fb397d;
+    color: #dce53f;
     font-size: 30px;
     display: inline-block;
     float: left;
@@ -694,7 +694,7 @@ p {
 
 .single-feature > h5 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #038b71;
 }
 
 .single-feature > p {
@@ -767,7 +767,7 @@ p {
     background: -webkit-linear-gradient(right, #7873ed, #a865e1);
     background: -webkit-gradient(linear, right top, left top, from(#7873ed), to(#a865e1));
     background: -o-linear-gradient(right, #7873ed, #a865e1);
-    background: linear-gradient(to left, #7873ed, #a865e1);
+    background: linear-gradient(to left, #038B71, #036773);
     padding: 180px 0 80px 0;
     top: -100px;
 }
@@ -843,7 +843,7 @@ p {
 }
 
 .app-screenshots-area .owl-dot.active {
-    background-color: #fb397d;
+    background-color: #8ea253;
     border: transparent;
 }
 
@@ -874,13 +874,13 @@ p {
 }
 
 .single-price-plan .package-plan > h5 {
-    color: #5b32b4;
+    color: #038b71;
     font-size: 18px;
 }
 
 
 .single-price-plan .package-plan .ca-price h4 {
-    color: #fb397d;
+    color: #8ea253;
     font-size: 48px;
     position: relative;
     z-index: 1;
@@ -894,7 +894,7 @@ p {
 }
 
 .single-price-plan .plan-button > a {
-    background: #726a84;
+    background: #038b71;
     padding: 10px 0;
     border-bottom-right-radius: 30px;
     color: #ffffff;
@@ -920,7 +920,7 @@ p {
 .single-price-plan.active .package-plan,
 .single-price-plan.active .plan-button > a,
 .single-price-plan:hover .plan-button > a {
-    background-color: #a865e1;
+    background-color: #036773;
 }
 
 .single-price-plan.active .package-plan .ca-price > h4,
@@ -1107,7 +1107,7 @@ p {
 
 .member-text > h4 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #038b71;
 }
 
 .member-text > p {
@@ -1121,7 +1121,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(105, 75, 228, 0.8);
+    background-color: rgba(3, 103, 115, 0.8);
     border-radius: 30px 30px 30px 0;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -1156,7 +1156,7 @@ p {
 .team-social-icon > a {
     font-size: 14px;
     color: #fff;
-    background: #9a81d7;
+    background: #8ea253;
     height: 40px;
     width: 40px;
     line-height: 40px;
@@ -1216,7 +1216,7 @@ p {
 }
 
 .btn.submit-btn {
-    background: #fb397d;
+    background: #038b71;
     height: 48px;
     min-width: 185px;
     color: #ffffff;
@@ -1225,7 +1225,7 @@ p {
 }
 
 .btn.submit-btn:hover {
-    background: #5b32b4;
+    background: #8ea253;
     color: #fff;
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;

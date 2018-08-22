@@ -17,12 +17,12 @@ class AddPassengersGroupFk extends Migration
             $table  ->foreign('reservation_id','passengers_group_reservation_id_foreign')
                     ->references('id_res')
                     ->on('reservations')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
             $table  ->foreign('passenger_id','passengers_group_passenger_id_foreign')
                     ->references('id_passenger')
                     ->on('passengers')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
         });
     }
