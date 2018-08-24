@@ -46,6 +46,24 @@
                                     </span>
                         @endif
                     </div>
+                    <div class="form-group input-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="department" class="form-control" type="text" name='department' placeholder="Departamento" value="{{ old('department') }}" required autofocus>
+                        @if ($errors->has('department'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
+                    <div class="form-group input-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="phone" class="form-control" type="text" name='phone' placeholder="Telefono" value="{{ old('phone') }}" required autofocus>
+                        @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
                     <div class="form-group input-group{{ $errors->has('rut') ? ' has-error' : '' }}">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input id="rut" class="form-control" type="text" name='rut' placeholder="Rut (EJ: 12.345.678-9)" value="{{ old('rut') }}" required autofocus>

@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('rut')->unique();
             $table->enum('type',['admin','user']);
             $table->string('name');
-            $table->string('lName');;
+            $table->string('lName');
             $table->string('uAvatar')->default('/img/icons/icon-user.png');
-            $table->enum('confirmed',['yes','no']);
+            $table->enum('confirmed',['yes','no'])->default('no');
             $table->string('confirmed_code',50)->nullable();
             $table->string('department'); //departamente o facultad
             $table->string('email')->unique();

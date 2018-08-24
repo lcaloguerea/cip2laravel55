@@ -99,6 +99,9 @@ return [
 		'rut' => [
 			'regex'  => 'Error de formato (Ej: 12.345.678-9)',
 		],
+		'phone' => [
+			'regex'  => 'Error de formato (Ej: debe comenzar con +56)',
+		],
 	],
 
 	/*
