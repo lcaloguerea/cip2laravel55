@@ -22,11 +22,6 @@ class AdminController extends Controller
         return view('/mail/mailbox');
     }
 
-    public function getCalendar()
-    {
-        return view('/calendar/index');
-    }
-
     public function getPayment_b()
     {
         return view('/payments/b_invoice');

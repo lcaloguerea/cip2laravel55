@@ -9,14 +9,16 @@ class UserController extends Controller
         $users = User::all();
         return view('/users/index', compact('users'));
     }
+    
     public function getList()
     {
         $users = User::all();
         return view('/users/user_list', compact('users'));
     }
+
     public function getProfile($id)
     {
-        $user = User::where($id) -> first();
+        $user = User::where('id', $id) -> first();
         return view('users.user_profile', compact('user'));
     }
 }

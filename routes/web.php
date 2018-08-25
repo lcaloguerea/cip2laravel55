@@ -16,7 +16,7 @@ Route::get('/admin/rooms-list', 'RoomsController@getList');
 Route::post('login', 'Auth\LoginController@login');
 	
 Route::get('/admin/mailbox','AdminController@getMailbox');
-Route::get('/admin/calendar', 'AdminController@getCalendar');
+Route::get('/admin/calendar', 'CalendarController@getCalendar');
 Route::get('/admin/payments/b_invoice', 'AdminController@getPayment_b');
 Route::get('/admin/users-cards', 'UserController@getCards');
 Route::get('/admin/users-list', 'UserController@getList');
@@ -28,3 +28,5 @@ Route::get('/admin/passenger-profile/{id}', 'PassengersController@getProfile');
 Route::get('/admin/passengers-cards', 'PassengersController@getCards');
 Route::get('/admin/reservations-list', 'ReservationController@getList');
 Route::post('/disp', 'WelcomeUserController@postDisp');
+
+Route::get('/user/my-profile/{id}', 'ProfileController@getMyProfile');

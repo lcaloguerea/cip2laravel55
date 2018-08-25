@@ -5,18 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class UserController extends Controller
+class CalendarController extends Controller
 {
-    public function getCards()
+    public function getCalendar()
     {
-    	$users = User::all();
-    	return view('/users/index', compact('users'));
-    }
-
-    public function getList()
-    {
-    	$users = User::all();
-    	return view('/users/user_list', compact('users'));
+        return view('/calendar/index');
     }
 
 }
