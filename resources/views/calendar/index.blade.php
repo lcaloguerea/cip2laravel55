@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
+
         <link rel="stylesheet" href="{{asset('js/iCheck/all.css')}}" /> 
 
         <!-- Icons -->
@@ -15,7 +8,7 @@
         <!--animate css-->
         <link rel="stylesheet" href="{{asset('animate.css')}}">
         <!-- fullCalendar 2.2.5-->
-        <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.min.css')}}">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
         <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.print.css')}}" media="print">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
@@ -91,7 +84,9 @@
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
-                                    <div id="calendar"></div>
+                                    <div id="calendar">
+                                        {!! $calendar->calendar() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -119,11 +114,14 @@
         <script src="{{asset('js/iCheck/icheck.min.js')}}"></script>
         <script src="{{asset('js/pages/jquery-icheck.js')}}"></script>
         <!-- fullCalendar 2.2.5 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-        <script src="{{asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
         <script src="{{asset('js/pages/events.js')}}"></script>
         <!-- JS app -->
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->
     </body>
 </html>
+
+<script type="text/javascript">
+</script>

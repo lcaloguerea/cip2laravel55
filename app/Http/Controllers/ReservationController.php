@@ -13,7 +13,7 @@ class ReservationController extends Controller
     	$reservs = Reservation::all();
     	$pGroups = PassengerGroup::all();
 
-    	return view('/reservations/reservation_list', compact('reservs','pGroups'));
+    	return view('/admin/reservations/reservation_list', compact('reservs','pGroups'));
     }
 
 }

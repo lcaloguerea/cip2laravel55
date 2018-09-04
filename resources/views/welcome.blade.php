@@ -751,7 +751,7 @@
 
         var $input = $('.datepicker').pickadate()
         var picker = $input.pickadate('picker')
-        var $input2 = $('.datepicker2').pickadate()
+        var $input2 = $('.datepicker2').pickadate({ dateFormat: 'd-m-y' });
         var picker2 = $input2.pickadate('picker')
 
         $.ajaxSetup({

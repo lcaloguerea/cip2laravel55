@@ -8,17 +8,23 @@
             <div class="info">
               <p>{{Auth::user()->name}}</p>
                <p>{{Auth::user()->lName}}</p>
-              <p><small>{{Auth::user()->type}}</small>
-              </p>
+                @if(Auth::user()->type == 'admin')
+                  <p><small>Admin</small></p>
+                @else
+                  <p><small>Usuario</small></p>
+                @endif
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
           <!-- Sidebar Menu -->
+          @if(Auth::user()->type == 'admin')
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview active"><a href="/admin"><i class="fa fa-home"></i> <span>Inicio</span></a>
+            <li class="treeview">
+              <a href="/admin"><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
-            <li class="treeview"><a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-envelope"></i> <span>Mailbox</span></a>
+            <li class="treeview">
+              <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-envelope"></i> <span>Mailbox</span></a>
             </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-id-card"></i> <span>Usuarios</span>
@@ -56,10 +62,11 @@
             </li>
             <li class="treeview">
               <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
-              <span class="pull-right-container">
               </a>
             </li>
-            <li class="treeview"><a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+            <li class="treeview">
+              <a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+            </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-usd"></i> <span>Pagos</span>
               <span class="pull-right-container">
@@ -87,6 +94,24 @@
                 <li><a href="income-reports.html">Reporte de ingresos</a>
                 </li>
                 <li><a href="sales-reports.html">Reporte de gastos</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          @elseif(Auth::user()->type == 'user')
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="treeview">
+              <a href={{URL::to('user/index')}}><i class="fa fa-home"></i> <span>Inicio</span></a>
+            </li>
+            <li class="treeview">
+              <a href="{{URL::to('user/index')}}"><i class="fa fa-history"></i> <span>Mis reservas</span></a>
+            </li>
+            <li class="treeview">
+              <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-handshake-o"></i> <span>Mis huéspedes</span></a>
+            </li>
+          </ul>
+          @endif
           <!-- /. sidebar-menu -->
         </section>
     </aside>
