@@ -27,6 +27,7 @@ Route::get('/admin/user-profile/{id}', 'AdminController@getProfile');
 Route::post('/admin/avatar', 'AdminController@postUpdateAvatar');
 
 Route::get('/user/index', 'UserController@index')->name('user');
+Route::post('/user/make_reservation', 'UserController@postMakeReserv');
 	
 Route::get('/admin/rooms-cards', 'RoomsController@getCards');
 Route::get('/admin/passengers-list', 'PassengersController@getList');

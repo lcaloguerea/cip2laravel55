@@ -10,27 +10,51 @@ class CalendarController extends Controller
 {
     public function getCalendar()
     {
+        $Reservations = Reservation::all();
+
         $events = [];
+        foreach($Reservations as $r)
 
-        $events[] = \Calendar::event(
-            'Event One', //event title
-            false, //full day event?
-            '2015-02-11T0800', //start time (you can also use Carbon instead of DateTime)
-            '2015-02-12T0800', //end time (you can also use Carbon instead of DateTime)
-            0 //optionally, you can specify an event ID
-        );
+            if($r->roomR->type == 'single'){
+                $events[] = \Calendar::event(
+                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    true, //full day event?
+                    new \DateTime($r->check_in),
+                    new \DateTime($r->check_out.' +1 day'),
+                    $r->id_res,
+                    [
+                    'color' => '#d81b60',
+                ]);
+            }
+            elseif($r->roomR->type == 'shared'){
+                $events[] = \Calendar::event(
+                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    true, //full day event?
+                    new \DateTime($r->check_in),
+                    new \DateTime($r->check_out.' +1 day'),
+                    $r->id_res,
+                    [
+                    'color' => '#605ca8',
+                ]);
+            }
+            elseif($r->roomR->type == 'matrimonial'){
+                $events[] = \Calendar::event(
+                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    true, //full day event?
+                    new \DateTime($r->check_in),
+                    new \DateTime($r->check_out.' +1 day'),
+                    $r->id_res,
+                    [
+                    'color' => 'orange',
+                ]);
+            }
 
-        $events[] = \Calendar::event(
-            "Valentine's Day", //event title
-            true, //full day event?
-            new \DateTime('2018-08-14'), //start time (you can also use Carbon instead of DateTime)
-            new \DateTime('2018-08-14'), //end time (you can also use Carbon instead of DateTime)
-            'stringEventId' //optionally, you can specify an event ID
-        );
+
 
         $calendar = \Calendar::addEvents($events); //add an array with addEvents
 
-        return view('/calendar/index', compact('calendar'));
+
+        return view('/calendar/index', compact('calendar', 'events'));
     }
 
 }

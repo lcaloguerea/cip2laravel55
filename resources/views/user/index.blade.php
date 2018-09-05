@@ -16,7 +16,8 @@
 
         <link href="{{asset('pickadate.js-3.5.6/lib/themes/default.css')}}" rel="stylesheet">
         <link href="{{asset('pickadate.js-3.5.6/lib/themes/default.date.css')}}" rel="stylesheet">
-        <link href="{{asset('pickadate.js-3.5.6/lib/themes/rtl.css')}}" rel="stylesheet">
+
+        <link href="{{asset('js/sweetalert/sweetalert.css')}}" rel="stylesheet">
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -59,9 +60,7 @@
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
-                                    <div id="calendar">
-                                        {!! $calendar->calendar() !!}
-                                    </div>
+                                    {!! $calendar->calendar() !!}
                                 </div>
                             </div>
                         </div>
@@ -98,9 +97,9 @@
                                 <div class="box-body">
                                     <!-- the events -->
                                     <div id="external-events">
-                                        <div class="external-event event-title b-maroon">Single <span class="badge bg-grey pull-right" id="s"></span></div>
-                                        <div class="external-event event-title b-purple">Compartida <span class="badge bg-grey pull-right" id="c"></div>
-                                        <div class="external-event event-title b-lime">Matrimonial <span class="badge bg-grey pull-right" id="m"></div>
+                                        <div class="event-title b-maroon">Single <span class="badge bg-grey pull-right" id="s"></span></div>
+                                        <div class="event-title b-purple">Compartida <span class="badge bg-grey pull-right" id="c"></div>
+                                        <div class="event-title b-orange">Matrimonial <span class="badge bg-grey pull-right" id="m"></div>
                                         <div class="checkbox">
                                         </div>
                                         <div><button type="button" class="btn btn-primary btn-block" id="startReserv">+ Crear reserva</button></div>
@@ -131,6 +130,8 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
         <script src="{{asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
         <script src="{{asset('js/pages/events.js')}}"></script>
+        <script src="{{asset('js/pages/dialogs.js')}}"></script>
+        <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 
         <script src="{{asset('pickadate.js-3.5.6/lib/picker.js')}}"></script>
         <script src="{{asset('pickadate.js-3.5.6/lib/picker.date.js')}}"></script>
@@ -157,14 +158,28 @@
         });
 
         $('#startReserv').on('click',function(e){
-            var asd = picker.get("select","yyyy-mm-dd");
+            var inn = picker.get("select","yyyy-mm-dd");
             var inFormatedForUser = picker.get("select","dd-mm-yyyy");
-            if (inFormatedForUser == ''){
-                alert('vacio');
-            }else{
-                alert('valor');
+            var outt = picker2.get("select","yyyy-mm-dd");
+            var outFormatedForUser = picker2.get("select","dd-mm-yyyy");
+
+            var checkIn = inn;
+            var checkOut = outt;
+
+            if ((inFormatedForUser == '') || (outFormatedForUser == '')){
+                 swal({
+                    title:"Ups!!",
+                    text: "Para comenzar una nueva reserva debes ingresar las fechas, intenta nuevamente",
+                    type: "warning"
+                });
+
             }
+
+                    window.location.href = '/user/make_reservation';
+
+            
  
+        
         });
 
         $('#srchDisp').on('click',function(e){
@@ -204,3 +219,6 @@
 
 });
 </script>
+
+
+{!! $calendar->script() !!}

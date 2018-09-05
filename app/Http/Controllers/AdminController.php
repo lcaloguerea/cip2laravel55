@@ -30,14 +30,14 @@ class AdminController extends Controller
 
     public function postUpdateAvatar(Request $request)
     {
-        /*if($request->hasFile('files'))
+        if($request->hasFile('files'))
         {
            dd($request);  
         }
         else
         {
            dd($request);
-        } */
+        } 
     }
 
     public function getCards()

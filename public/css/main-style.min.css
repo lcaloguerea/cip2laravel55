@@ -3826,8 +3826,7 @@ a.btn-social,a.btn-social-icon{
 }
 .fc-content{
     padding:5px;
-    background:#f1f1f1;
-    color:#000
+    color:white
 }
 .fc-event{
     position:relative;
@@ -3836,7 +3835,7 @@ a.btn-social,a.btn-social-icon{
     border-radius:0;
     border:none;
     background-color:#fff;
-    font-weight:400;
+    font-weight:900;
     border-left:3px solid
 }
 .select2-container--default.select2-container--focus,.select2-container--default:active,.select2-container--default:focus,.select2-selection.select2-container--focus,.select2-selection:active,.select2-selection:focus{

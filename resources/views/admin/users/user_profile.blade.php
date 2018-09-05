@@ -18,6 +18,10 @@
         <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.css')}}">
         <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.css')}}">
         <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.css')}}">
+
+        <link rel="stylesheet" href="{{asset('node_modules/dropify/dist/css/dropify.min.css')}}">
+
+
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -189,7 +193,7 @@
                                                 <div class="col-md-12">
                                                     <form enctype="multipart/form-data" action="/admin/avatar" method="POST">
                                                         <label>Imagen de perfil</label>
-                                                        <input type="file" name="file" id="file" class="my-pond" data-max-file-size="3MB">
+                                                        <input id="updAvatar" name="updAvatar" class="dropify" type="file">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         <input type="hidden" name="id" value="{{ $user->id }}">
                                                         <input type="submit" value="Actualizar imagen de perfil" class="btn btn-sm btn-primary">
@@ -296,6 +300,10 @@
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
         <script src="{{asset('js/pages/jquery-pickadate.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
+
+        <script src="{{asset('node_modules/dropify/dist/js/dropify.min.js')}}"></script>
+
+
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->
     </body>
@@ -309,19 +317,9 @@
     
     $(function(){
      
-    $.fn.filepond.registerPlugin(
-        FilePondPluginImagePreview,
-        FilePondPluginImageExifOrientation,
-        FilePondPluginFileValidateSize,
-        FilePondPluginFileEncode,
-        FilePondPluginImageCrop,
-        FilePondPluginImageResize,
-        FilePondPluginImageTransform);
 
-    // Turn input element into a pond
-    $('.my-pond').filepond({
-        labelIdle: 'Arrastra tu imagen o haz click aqui'
-    });
+
+    $('.dropify').dropify();
 
 });
 

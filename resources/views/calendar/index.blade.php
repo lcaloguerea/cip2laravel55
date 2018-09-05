@@ -67,8 +67,8 @@
                                         <div class="external-event event-title b-maroon">Single 4</div>
                                         <div class="external-event event-title b-purple">Compartida 1</div>
                                         <div class="external-event event-title b-purple">Compartida 2</div>
-                                        <div class="external-event event-title b-lime">Matrimonial 1</div>
-                                        <div class="external-event event-title b-lime">Matrimonial 2</div>
+                                        <div class="external-event event-title b-orange">Matrimonial 1</div>
+                                        <div class="external-event event-title b-orange">Matrimonial 2</div>
                                         <div class="checkbox">
                                             <label style="padding-left: 0px;">
                                                 <input type="checkbox" class="icheck_flat_blue">
@@ -84,9 +84,7 @@
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
-                                    <div id="calendar">
                                         {!! $calendar->calendar() !!}
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -124,4 +122,8 @@
 </html>
 
 <script type="text/javascript">
+
+
 </script>
+
+{!! $calendar->script() !!}

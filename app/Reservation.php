@@ -24,6 +24,12 @@ class Reservation extends Model
 
     ];
 
+    public function roomR()
+    {
+        return $this->hasOne('App\Room', 'id_room' , 'room_id'); 
+
+    }
+
     public function userR()
     {
         return $this->hasOne('App\User', 'id' , 'user_id'); 
