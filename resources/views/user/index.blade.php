@@ -71,16 +71,19 @@
                                 </div>
                                 <div class="row">
                                     <!-- Single Feature Start -->
+                                <form class="form" method="POST" action="{{ route('reservation') }}">
+                                             {{ csrf_field() }}
                                     <div class="box-body">
+
                                         <div class="col-md-12">
                                             <div class="single-feature">
                                                 <h5>Check in</h5>
-                                                <input id="chIn" class="form-control datepicker">
+                                                <input id="chIn" name="chIn" type="date" class="form-control datepicker">
                                             </div>
                                             <!-- Single Feature Start -->
                                             <div class="single-feature">
                                                 <h5>Check out</h5>
-                                                <input id="chOut" class="form-control datepicker2">
+                                                <input id="chOut" name="chOut" type="date" class="form-control datepicker2">
                                             </div>
                                             <!-- Single Feature Start -->
 
@@ -98,14 +101,15 @@
                                     <!-- the events -->
                                     <div id="external-events">
                                         <div class="event-title b-maroon">Single <span class="badge bg-grey pull-right" id="s"></span></div>
-                                        <div class="event-title b-purple">Compartida <span class="badge bg-grey pull-right" id="c"></div>
-                                        <div class="event-title b-orange">Matrimonial <span class="badge bg-grey pull-right" id="m"></div>
+                                        <div class="event-title b-purple">Compartida <span class="badge bg-grey pull-right" id="c"></span></div>
+                                        <div class="event-title b-orange">Matrimonial <span class="badge bg-grey pull-right" id="m"></span></div>
                                         <div class="checkbox">
                                         </div>
-                                        <div><button type="button" class="btn btn-primary btn-block" id="startReserv">+ Crear reserva</button></div>
+                                        <div><button type="submit" class="btn btn-primary btn-block" id="startReserv">+ Crear reserva</button></div>
                                     </div>
                                 </div>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </section>
@@ -157,30 +161,7 @@
             }
         });
 
-        $('#startReserv').on('click',function(e){
-            var inn = picker.get("select","yyyy-mm-dd");
-            var inFormatedForUser = picker.get("select","dd-mm-yyyy");
-            var outt = picker2.get("select","yyyy-mm-dd");
-            var outFormatedForUser = picker2.get("select","dd-mm-yyyy");
 
-            var checkIn = inn;
-            var checkOut = outt;
-
-            if ((inFormatedForUser == '') || (outFormatedForUser == '')){
-                 swal({
-                    title:"Ups!!",
-                    text: "Para comenzar una nueva reserva debes ingresar las fechas, intenta nuevamente",
-                    type: "warning"
-                });
-
-            }
-
-                    window.location.href = '/user/make_reservation';
-
-            
- 
-        
-        });
 
         $('#srchDisp').on('click',function(e){
 
@@ -197,6 +178,16 @@
             var checkIn = hola;
             var checkOut = hola2;
 
+             if ((inFormatedForUser == '') || (outFormatedForUser == '')){
+                 swal({
+                    title:"Ups!!",
+                    text: "Para comenzar una nueva reserva debes ingresar las fechas, intenta nuevamente",
+                    type: "warning"
+                });
+
+            }
+            else{
+
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                data:{checkIn:checkIn, checkOut:checkOut},
@@ -211,8 +202,10 @@
                     $('#c').text('    Disponible '+data.compartida+' de 2');
                     $('#m').text('    Disponible '+data.matrimonial+' de 2');
 
-           }
-            }); 
+                    }
+                });
+
+            } 
 
         });
 
