@@ -14,7 +14,7 @@ class RoomsController extends Controller
     {
     	$rooms = Room::all();
         $pGroups = PassengerGroup::all();
-    	return view('/rooms/rooms_cards', compact('rooms','pGroups'));
+    	return view('/admin/rooms/rooms_cards', compact('rooms','pGroups'));
     }
 
     public function getList()
@@ -22,12 +22,12 @@ class RoomsController extends Controller
     	$rooms = Room::all();
         $pGroups = PassengerGroup::all();
 
-    	return view('/rooms/rooms_list', compact('rooms','pGroups'));
+    	return view('/admin/rooms/rooms_list', compact('rooms','pGroups'));
     }
 
     public function getProfile($id)
     {
     	$user = User::where('id',$id) -> first();
-    	return view('users.user_profile', compact('user'));
+    	return view('/admin/users/user_profile', compact('user'));
     }
 }

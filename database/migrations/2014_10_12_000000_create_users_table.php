@@ -16,11 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('rut')->unique();
-            $table->enum('type',['admin','user']);
+            $table->enum('type',['admin1','admin2','user']);
             $table->string('name');
-            $table->string('lName');;
+            $table->string('lName');
             $table->string('uAvatar')->default('/img/icons/icon-user.png');
-            $table->enum('confirmed',['yes','no']);
+            $table->enum('confirmed',['yes','no'])->default('no');
             $table->string('confirmed_code',50)->nullable();
             $table->string('department'); //departamente o facultad
             $table->string('email')->unique();

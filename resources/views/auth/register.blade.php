@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
+        <title>CIP Register</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -43,6 +43,24 @@
                         @if ($errors->has('lName'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('lNname') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
+                    <div class="form-group input-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="department" class="form-control" type="text" name='department' placeholder="Departamento" value="{{ old('department') }}" required autofocus>
+                        @if ($errors->has('department'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
+                    <div class="form-group input-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="phone" class="form-control" type="text" name='phone' placeholder="Telefono" value="{{ old('phone') }}" required autofocus>
+                        @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                         @endif
                     </div>

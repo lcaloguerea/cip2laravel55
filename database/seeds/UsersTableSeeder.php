@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
 
         $user->rut 					= '111111111-1';
-        $user->type 				= 'admin';
+        $user->type 				= 'admin1';
         $user->name				    = 'Leo';
         $user->lName 				= 'Caloguerea';
         $user->confirmed	        = 'yes';

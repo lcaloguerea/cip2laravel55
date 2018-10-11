@@ -4,7 +4,12 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><img style="width: 40px; height: 40px;" src="{{asset('img/icons/hostel_white-128.png')}}" class="img-circle" alt="Logo Mini"/></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>CIP</b>Admin</span>
+          <span class="logo-lg">
+          @if(Auth::user()->type == 'admin')
+            <b>CIP </b>Admin</span>
+          @else
+            <b>CIP </b>User</span>
+          @endif
         </a>
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top">
@@ -189,7 +194,7 @@
                   <img src="{{asset('img/dimebag.jpg')}}" class="user-image" alt="User Image">
                 </a>
                 <ul class="dropdown-menu user-menu animated flipInY">
-                  <li><a href="driver-profile.html"><i class="ti-user"></i> Perfil</a></li>
+                  <li><a href="/user/my-profile/{{Auth::user()->id}}"><i class="ti-user"></i> Perfil</a></li>
                   <li><a href="/admin/mailbox"><i class="fa fa-fw fa-envelope-o"></i> Correo</a></li>
                   <li><a href="#"><i class="ti-settings"></i> Opciones</a></li>
                   <li class="divider"></li>

@@ -13,7 +13,7 @@
     <title>CIP - Landing Page</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('img/logo_Mecesup.ico')}}" />
 
     <!-- Core Stylesheet -->
     <link href="{{asset('style.css')}}" rel="stylesheet">
@@ -82,9 +82,11 @@
                 <div class="col-12 col-md">
                     <div class="wellcome-heading">
                         <h2>Casa de Investigadores y Postgrado</h2>
+                        <br>
                         <div style=" background-color: #8ea253;  border-radius: 24px 24px 24px 0px;" class="col-12 col-md-6">
-                            <p style="font-size: 30px; height: auto; text-align: center; color: white;">Comienza tu estadía con nosotros hoy.</p>
+                            <p style="font-size: 30px; height: auto; text-align: center; color: white;">Descanso en un entorno universitario </p>
                         </div>
+                         <!--   <img style="width:300px; margin-left: auto; margin-right: auto; display:block" src="img/logo_Mecesup.png"> -->
                     </div>
                 </div>
             </div>
@@ -112,7 +114,7 @@
                     <div class="single-feature">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <h5>Ubicación</h5>
-                        <p>La Casa de Investigadores y Postgrado – CIP, se ubica en el 4° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
+                        <p>La Casa de Investigadores y Postgrado – CIP, se ubica en el 4° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -703,7 +705,7 @@
         <!-- social icon-->
         <div class="footer-social-icon">
             <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="active fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
             <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
         </div>
