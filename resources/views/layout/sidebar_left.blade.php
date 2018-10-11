@@ -8,7 +8,7 @@
             <div class="info">
               <p>{{Auth::user()->name}}</p>
                <p>{{Auth::user()->lName}}</p>
-                @if(Auth::user()->type == 'admin')
+                @if(Auth::user()->type == 'admin1' or Auth::user()->type == 'admin2')
                   <p><small>Admin</small></p>
                 @else
                   <p><small>Usuario</small></p>
@@ -17,7 +17,7 @@
             </div>
           </div>
           <!-- Sidebar Menu -->
-          @if(Auth::user()->type == 'admin')
+          @if(Auth::user()->type == 'admin1')
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">

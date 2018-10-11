@@ -10,5 +10,5 @@
       <title>CIP User</title>
     @endif
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('img/logo_Mecesup.ico')}}" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
