@@ -14,11 +14,12 @@
         "bootstrap-sass": "^3.3.7",
         "cross-env": "^5.1",
         "jquery": "^3.2",
-        "laravel-mix": "^2.1.14",
+        "laravel-mix": "^4.0.15",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "bootstrap": "^4.3.1",
         "dropify": "^0.2.2",
         "filepond": "^2.3.1",
         "filepond-plugin-file-encode": "^1.0.5",
