@@ -142,38 +142,17 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="single-team-member">
                         <div class="member-image">
-                            <img src="img/team-img/team-1.jpg" alt="">
+                            <img src="img/team-img/team-3.jpg" alt="">
                             <div class="team-hover-effects">
                                 <div class="team-social-icon">
                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="member-text">
-                            <h4>Jackson Nash</h4>
-                            <p>Tax Advice</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="single-team-member">
-                        <div class="member-image">
-                            <img src="img/team-img/team-2.jpg" alt="">
-                            <div class="team-hover-effects">
-                                <div class="team-social-icon">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="member-text">
-                            <h4>Alex Manning</h4>
-                            <p>CEO-Founder</p>
+                            <h4>Ana María Zárraga Olavarría</h4>
+                            <p>Directora Proyecto PMI AUS1203</p>
                         </div>
                     </div>
                 </div>
@@ -185,33 +164,51 @@
                                 <div class="team-social-icon">
                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="member-text">
-                            <h4>Ollie Schneider</h4>
-                            <p>Business Planner</p>
+                            <h4>Sandra Cifuentes Alvarado</h4>
+                            <p>Secretaria Proyecto PMI AUS1203</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="single-team-member">
                         <div class="member-image">
-                            <img src="img/team-img/team-4.jpg" alt="">
+                            <img src="http://www.culturalnarratives.co.uk/wp-content/uploads/2016/08/Rodrigo-Browne.jpg" alt="">
                             <div class="team-hover-effects">
                                 <div class="team-social-icon">
                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="member-text">
-                            <h4>Roger West</h4>
-                            <p>Financer</p>
+                            <h4>Rodrigo Browne Sartori</h4>
+                            <p>Director de Estudios de Postgrado</p>
+                            <p><a href="mailto:rodrigobrowne@uach.cl">rodrigobrowne@uach.cl</a></p>
+                            <p>(63) 2 221397</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single-team-member">
+                        <div class="member-image">
+                            <img src="img/team-img/team-3.jpg" alt="">
+                            <div class="team-hover-effects">
+                                <div class="team-social-icon">
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-text">
+                            <h4>Carolina Díaz Maldonado</h4>
+                            <p>Coordinadora Técnica</p>
+                            <p>Vicerrectoría Académica</p>
+                            <p><a href="mailto:Cip_reservas@uach.cl">Cip_reservas@uach.cl</a></p>
+                            <p>(63) 2 221258</p>
                         </div>
                     </div>
                 </div>

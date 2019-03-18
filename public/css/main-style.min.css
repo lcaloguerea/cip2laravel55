@@ -3855,7 +3855,7 @@ a.btn-social,a.btn-social-icon{
     border-radius:0
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected]{
-    background-color:#ffc824;
+    background-color:#55b520;
     color:#fff
 }
 .select2-results__option{
@@ -3884,7 +3884,7 @@ a.btn-social,a.btn-social-icon{
 }
 .select2-dropdown .select2-search__field:focus,.select2-search--inline .select2-search__field:focus{
     outline:0;
-    border:1px solid #ffc824
+    border:1px solid #55b520
 }
 .select2-container--default .select2-results__option[aria-disabled=true]{
     color:#999

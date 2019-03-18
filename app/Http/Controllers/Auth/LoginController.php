@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    //protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -34,15 +34,23 @@ class LoginController extends Controller
      */
 
     public function authenticated($request , $user){
-        if($user->type=='admin'){
-            return redirect()->route('admin') ;
-        }elseif($user->type=='user'){
-            return redirect()->route('user') ;
-        }
+        if($user->confirmed == 'yes'){
+            if($user->type=='admin'){
+                return redirect()->route('admin');
+                }
+            elseif($user->type=='user'){
+                return redirect()->route('user');
+                $this->middleware('guest')->except('logout');
+                }
+            elseif($user->type=='maid'){
+                return redirect()->route('maid');
+                $this->middleware('guest')->except('logout');
+                }
+            }
+        else{
+            \Session::flash('message', 'La cuenta <strong>'.$user->email.'</strong> no ha sido confirmada');
+            return redirect()->route('login');
+            }    
     }
 
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
 }

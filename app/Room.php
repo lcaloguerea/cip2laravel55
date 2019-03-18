@@ -20,6 +20,8 @@ class Room extends Model
 
     ];
 
+    protected $primaryKey = 'id_room';
+
     /**
      * The attributes that should be hidden for arrays.
      *

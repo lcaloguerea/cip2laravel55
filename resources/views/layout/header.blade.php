@@ -6,7 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @if(Auth::user()->type == 'admin')
        <title>CIP Admin</title>
-    @else
+    @elseif(Auth::user()->type == 'maid')
+      <title>CIP Maid</title>
+    @elseif(Auth::user()->type == 'user')
       <title>CIP User</title>
     @endif
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

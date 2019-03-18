@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -27,17 +29,13 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/userPanel';
+    protected $redirectTo = '/validate';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -65,6 +63,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $email = $data['email'];
+        $dest = $data['name'];
+        $codigo =  str_random();
+        //dd($email);
+
+        \Mail::send('emails.welcome',array('destinatario' => $dest, 'codigo' => $codigo), function($message) use ($email, $dest) {
+            $message->to($email,$dest)
+                ->subject('Confirma tu cuenta CIP');
+        });;
+
         return User::create([
             'name' => $data['name'],
             'lName' => $data['lName'],
@@ -73,7 +82,48 @@ class RegisterController extends Controller
             'rut' => $data['rut'],
             'phone' => $data['phone'],
             'email' => $data['email'],
+            'confirmed_code' => $codigo,
             'password' => bcrypt($data['password']),
         ]);
+
     }
+
+    public function getValidate()
+    {
+       return view('auth.validate');
+    }
+
+    //this override the autologin feature
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+    public function confirm($codigo)
+    {
+        $user = User::whereConfirmedCode($codigo)->first();
+
+        $dest = $user->name;
+        $email = $user->email;
+
+        \Mail::send('emails.validated',  array('destinatario' => $dest, 'email' => $email), function($message) use($email, $dest) {
+            $message->to($email,$dest)
+                ->subject('Validación');
+
+        });
+
+        $user->confirmed = 'yes';
+        $user->confirmed_code = null;
+        $user->save();
+
+        return view('auth.validated');
+    }
+
 }

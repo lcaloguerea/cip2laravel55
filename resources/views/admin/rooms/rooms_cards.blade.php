@@ -101,7 +101,9 @@
                       <div style="margin: 0px -9px -24px;" class="price-car text-center"><strong>$ {{$item->price}} /Day</strong></div>
                     </div>
                   </div>
-                  <button class="btn btn-block">Detalles</button>
+                  <div class="text-center action-profile">
+                      <a href="room-detail/{{$item->id_room}}" class="btn btn-info btn-block">ver habitación</a>
+                  </div>
                 </div>
               </div>
             </div>

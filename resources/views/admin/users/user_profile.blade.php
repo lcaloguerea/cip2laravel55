@@ -13,12 +13,7 @@
 
         <link rel="stylesheet" href="{{asset('node_modules/filepond/dist/filepond.css')}}">
         <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.css')}}">
-
+        <link href="{{asset('js/sweetalert/sweetalert.css')}}" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('node_modules/dropify/dist/css/dropify.min.css')}}">
 
 
@@ -64,8 +59,10 @@
                                     <h3 class="widget-user-username">{{$user->name}} {{$user->lName}}</h3>
                                     @if($user->type == 'admin')
                                         <h5 class="widget-user-desc">Administrador</h5>
-                                    @else
+                                    @elseif($user->type == 'user')
                                         <h5 class="widget-user-desc">Usuario</h5>
+                                    @elseif($user->type == 'maid')
+                                        <h5 class="widget-user-desc">Maid</h5>
                                     @endif
 
                                     
@@ -114,9 +111,11 @@
                             </div>
 
                             <div class="box">
+                            @if($user->id != Auth::user()->id)
                                 <div class="box-body">
-                                    <button type="button" class="btn btn-raised ripple-effect btn-block btn-danger">Borrar usuario</button>
+                                    <button id="btn_destroy" type="button" class="btn btn-raised ripple-effect btn-block btn-danger">Borrar usuario</button>
                                 </div>
+                                @endif
                                 <!-- /.box-body -->
                             </div>
 
@@ -125,7 +124,7 @@
                             <div class="nav-tabs-custom">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#tab_1" data-toggle="tab">Historial de reservas</a></li>
-                                    <li><a href="#tab_2" data-toggle="tab">Actualizar</a></li>
+                                        <li><a href="#tab_2" data-toggle="tab">Actualizar</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1">
@@ -193,70 +192,95 @@
                                                 <div class="col-md-12">
                                                     <form enctype="multipart/form-data" action="/admin/avatar" method="POST">
                                                         <label>Imagen de perfil</label>
-                                                        <input id="updAvatar" name="updAvatar" class="dropify" type="file">
+                                                        <input id="updAvatar" name="updAvatar" class="dropify" type="file" required >
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         <input type="hidden" name="id" value="{{ $user->id }}">
                                                         <input type="submit" value="Actualizar imagen de perfil" class="btn btn-sm btn-primary">
                                                     </form>
+                                                    <br>
                                                     <div class='row'>
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Nombre</label>
-                                                                <input class="form-control" id="first-name" name="first-name" type="text" value="{{$user->name}}" />
+                                                                <input class="form-control" id="name" name="name" type="text" value="{{$user->name}}" />
                                                             </div>
                                                         </div>
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Apellido</label>
-                                                                <input class="form-control" id="last-name" name="last-name" type="text" value="{{$user->lName}}"/>
+                                                                <input class="form-control" id="lName" name="lName" type="text" value="{{$user->lName}}"/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class='row'>
-                                                        <div class='col-md-4'>
+                                                        <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Rut</label>
                                                                 <input class="form-control" id="rut" name="rut" type="text" value="{{$user->rut}}" />
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-4'>
+                                                        <div class='col-md-6'>
                                                             <div class="form-group">
-                                                                <label>Confirmación:</label>
-                                                                <select class="form-control">
+                                                                <label>Confirmación</label>
+                                                                <select id="confirmed" class="form-control">
                                                                 @if($user->confirmed == "yes")
-                                                                    <option value="yes">Verificado</option>
-                                                                @else
+                                                                    <option selected="selected" value="yes">Verificado</option>
                                                                     <option value="no">Pendiente</option>
+                                                                @else
                                                                     <option value="yes">Verificado</option>
+                                                                    <option selected="selected" value="no">Pendiente</option>
                                                                 @endif
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-4'>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Teléfono</label>
                                                                 <input class="form-control" id="phone" name="phone" type="text" value="{{$user->phone}}"/>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class='row'>
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Email</label>
                                                                 <input class="form-control" id="email" name="email" type="text" value="{{$user->email}}"/>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Departamento</label>
                                                                 <input class="form-control" id="department" name="department" type="text" value="{{$user->department}}"/>
                                                             </div>
                                                         </div>
+                                                        <div class='col-md-6'>
+                                                            <div class="form-group">
+                                                                <label>Tipo</label>
+                                                                <select id="type" class="form-control">
+                                                                    <option value="null"></option>
+                                                                    @if($user->type == 'admin')
+                                                                        <option selected="selected" value="admin">Administrador</option>
+                                                                        <option value="user">Usuario</option>
+                                                                        <option value="maid">Maid</option>
+                                                                    @elseif($user->type == 'user')
+                                                                        <option value="admin">Administrador</option>
+                                                                        <option selected="selected" value="user">Usuario</option>
+                                                                        <option value="maid">Maid</option>
+                                                                    @elseif($user->type == 'maid')
+                                                                        <option value="admin">Administrador</option>
+                                                                        <option value="user">Usuario</option>
+                                                                        <option selected="selected" value="maid">Maid</option>
+                                                                    @endif
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class='row'>
                                                         <div class='col-md-12'>
                                                             <div class='form-group'>
-                                                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                                <button id="btn_update" type="button" class="btn btn-primary">Actualizar</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -300,6 +324,7 @@
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
         <script src="{{asset('js/pages/jquery-pickadate.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
+        <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 
         <script src="{{asset('node_modules/dropify/dist/js/dropify.min.js')}}"></script>
 
@@ -322,5 +347,104 @@
     $('.dropify').dropify();
 
 });
+
+    $('#btn_update').on('click',function(e){
+
+        e.preventDefault();
+
+        var name = $('#name').val();
+        var lName = $('#lName').val();
+        var rut = $('#rut').val();
+        var confirmed = $('#confirmed').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var department = $('#department').val();
+        var type = $('#type').val();
+
+        $.ajax({
+            // En data puedes utilizar un objeto JSON, un array o un query string
+           data:{name:name, lName:lName, rut:rut, confirmed:confirmed, phone:phone, email:email, department:department, type:type, "_token": "{{ csrf_token() }}"},
+            //Cambiar a type: POST si necesario
+            type: 'PUT',
+            // Formato de datos que se espera en la respuesta
+            dataType: "json",
+            // URL a la que se enviará la solicitud Ajax
+            url: '/admin/user/update' , //this is different because it can change user type
+            success:function(data){
+                    if(data.errors != ""){
+                        html = '<p>Por favor corregir los siguientes errores</p><br><div class="alert alert-danger fade in">';
+                        jQuery.each(data.errors, function(key, value){
+                            html += '<li>' + value + '</li>';
+                        });
+                        swal({
+                            title:"Ups!!",
+                            text: html,
+                            type: "warning",
+                            html: true
+                        });
+                    }
+                if(data.message != ""){
+                    swal({
+                        title:"Actualizado!!",
+                        text: "<strong>"+data.message+"</strong>",
+                        type: "success",
+                        html: true,
+                    },function () {
+                        window.location.reload(true);
+                    });
+                }
+            }
+        }); 
+    });
+
+    $('#btn_destroy').on('click',function(e){
+
+        var id = {{$user->id}};
+        e.preventDefault();
+
+            swal({
+            title: "Esta seguro(a)?",
+            text: name+" se borrará permanentemente del sistema!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, borrar!",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                data:{
+                id:id, "_token": "{{ csrf_token() }}",
+                },
+                //Cambiar type si necesario
+                type: 'POST',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url: '/admin/user-destroy' , 
+                success: function(json){
+                    if(json.error == ""){
+                        swal({
+                            title:"Usuario eliminado!!",
+                            text: json.message,
+                            type: "success",
+                            html: true,
+                        }, function () {
+                            window.location.href = "/admin";
+                        });
+                    }
+                    if(json.message == "")
+                    {
+                        swal({
+                            title:"Lo sentimos...",
+                            text: json.error,
+                            type: "warning",
+                            html: true
+                        });
+                    }                    
+                } 
+            });
+        });
+    });
 
 </script>

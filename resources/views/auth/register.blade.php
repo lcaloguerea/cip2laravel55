@@ -20,7 +20,7 @@
     <body class="skin-yellow register-page">
         <div class="box-register">
             <div class="box-register-body">
-                <h3><span><b>CIP</b>Admin</span></h3>
+                <h3><span><b>CIP</b> Panel</span></h3>
                 <p class="box-register-msg">Registrate aquí para comenzar</p>
 
                 <form class="register-form" method="POST" action="{{ route('register') }}">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="form-group text-center">
                         <a href="/login">Ya tengo cuenta</a>
-                        <br>
+                        |
                         <a href="/">Volver a la página principal</a>
                     </div>
                 </form>
