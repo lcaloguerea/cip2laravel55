@@ -16,12 +16,13 @@ class Passenger extends Model
                 'name_1',
                 'lName_1',
                 'lName_2',
-                'Nationality',
+                'nationality',
                 'email',
                 'phone',
                 'university',
                 'country_o',
                 'country_r',
+                'pAvatar',
 
     ];
 

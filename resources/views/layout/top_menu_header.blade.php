@@ -1,13 +1,15 @@
       <header class="top-menu-header">
         <!-- Logo -->
-        <a href="/admin" class="logo">
+        <a href="/{{Auth::user()->type}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><img style="width: 40px; height: 40px;" src="{{asset('img/icons/hostel_white-128.png')}}" class="img-circle" alt="Logo Mini"/></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg">
           @if(Auth::user()->type == 'admin')
             <b>CIP </b>Admin</span>
-          @else
+          @elseif(Auth::user()->type == 'maid')
+            <b>CIP </b>Maid</span>
+          @elseif(Auth::user()->type == 'user')
             <b>CIP </b>User</span>
           @endif
         </a>
@@ -107,96 +109,16 @@
                   <li class="footer"><a href="#">View all</a></li>
                 </ul>
               </li>
-              <!-- Tasks Menu -->
-              <li class="dropdown tasks-menu">
-                <!-- Menu Toggle Button -->
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user-o"></i>
-                <span class="label bg-black">6</span>
-                </a>
-                <ul class="dropdown-menu animated flipInX">
-                  <li class="header">Tasks</li>
-                  <li>
-                    <!-- menu: Contains the pending tasks -->
-                    <ul class="menu">
-                      <li>
-                        <!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Design some buttons
-                            <small class="pull-right">20%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">20% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <!-- /. task item -->
-                      <li>
-                        <!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Create a nice theme
-                            <small class="pull-right">40%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">40% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <!-- /. task item -->
-                      <li>
-                        <!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Some task I need to do
-                            <small class="pull-right">60%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">60% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <!-- /. task item -->
-                      <li>
-                        <!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Make beautiful transitions
-                            <small class="pull-right">80%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">80% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <!-- /. task item -->
-                    </ul>
-                    <!-- /.menu -->
-                  </li>
-                  <li class="footer"><a href="#">See All Tasks</a></li>
-                </ul>
-              </li>
               <li class="dropdown user user-menu">
                 <!-- Menu Toggle Button -->
                 <a href="#" data-toggle="dropdown" aria-expanded="false">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <span class="hidden-xs">{{Auth::user()->name}} {{Auth::user()->lName}}<i class="fa fa-angle-down pull-right"></i></span>
                   <!-- The user image in the navbar-->
-                  <img src="{{asset('img/dimebag.jpg')}}" class="user-image" alt="User Image">
+                  <img src="{{Auth::user()->uAvatar}}" class="user-image" alt="User Image">
                 </a>
                 <ul class="dropdown-menu user-menu animated flipInY">
-                  <li><a href="/user/my-profile/{{Auth::user()->id}}"><i class="ti-user"></i> Perfil</a></li>
-                  <li><a href="/admin/mailbox"><i class="fa fa-fw fa-envelope-o"></i> Correo</a></li>
-                  <li><a href="#"><i class="ti-settings"></i> Opciones</a></li>
+                  <li><a href="/{{Auth::user()->type}}/my-profile"><i class="ti-user"></i> Perfil</a></li>
                   <li class="divider"></li>
                   <li>
                     <form method="POST" action="{{route('logout')}}">

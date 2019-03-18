@@ -179,6 +179,8 @@ return [
 
         //for development-Leo
         gfazioli\Morris\MorrisServiceProvider::class,
+        'Jenssegers\Date\DateServiceProvider',
+
 
     ],
 
@@ -231,6 +233,7 @@ return [
 
         //For development - Leo
         'Morris' => gfazioli\Morris\Facades\MorrisFacade::class,
+        'Date' => Jenssegers\Date\Date::class,
 
     ],
 

@@ -100,7 +100,7 @@ return [
 			'regex'  => 'Error de formato (Ej: 12.345.678-9)',
 		],
 		'phone' => [
-			'regex'  => 'Error de formato (Ej: debe comenzar con +56)',
+			'regex'  => 'Error de formato (Ej: debe comenzar con +56, sin parentesis ni espacios)',
 		],
 	],
 
@@ -117,6 +117,19 @@ return [
 
 	'attributes' => [
 		'username' => 'usuario',
-		'password' => 'contraseña'
+		'password' => 'contraseña',
+		'department' => 'departamento',
+		'name_1' => 'nombre',
+		'name' => 'nombre',
+		'type' => 'tipo',
+		'lName_1' => 'apellido paterno',
+		'lName' => 'apellido',
+		'lName_2' => 'apellido materno',
+		'lName_2' => 'apellido materno',
+		'phone' => 'teléfono',
+		'university' => 'universidad',
+		'nationality' => 'nacionalidad',
+		'country_o' => 'país de origen',
+		'country_r' => 'país de residencia',
 	],
 ];

@@ -21,6 +21,8 @@ class PassengerGroup extends Model
 
     ];
 
+    protected $primaryKey = 'id_pgroup';
+
     //Relación huespedes por pais de origen
     public function passengersR()
     {

@@ -52,7 +52,7 @@
               <div class="info-box">
                 <div class="info-box-content">
                   <i class="fa fa-user-plus text-yellow"></i>
-                  <div class="text-center value">20</div>
+                  <div class="text-center value">{{$users}}</div>
                   <div class="text-muted text-uppercase text-center">Usuarios</div>
                 </div>
               </div>
@@ -62,7 +62,7 @@
               <div class="info-box">
                 <div class="info-box-content">
                   <i class="fa fa-suitcase text-black"></i>
-                  <div class="text-center value">30</div>
+                  <div class="text-center value">{{$passengers}}</div>
                   <div class="text-muted text-uppercase text-center">Huéspedes</div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
               <div class="info-box">
                 <div class="info-box-content">
                   <i class="fa fa-check text-purple"></i>
-                  <div class="text-center value">5</div>
+                  <div class="text-center value">{{$pActive}}</div>
                   <div class="text-muted text-uppercase text-center">Huéspedes activos</div>
                 </div>
               </div>
@@ -82,7 +82,7 @@
               <div class="info-box">
                 <div class="info-box-content">
                   <i class="fa fa-usd text-green"></i>
-                  <div class="text-center value">$5400</div>
+                  <div class="text-center value">${{number_format($income)}}</div>
                   <div class="text-muted text-uppercase text-center">Ingresos</div>
                 </div>
               </div>

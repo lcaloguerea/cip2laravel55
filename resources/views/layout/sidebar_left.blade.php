@@ -8,44 +8,50 @@
             <div class="info">
               <p>{{Auth::user()->name}}</p>
                <p>{{Auth::user()->lName}}</p>
-                @if(Auth::user()->type == 'admin1' or Auth::user()->type == 'admin2')
+                @if(Auth::user()->type == 'admin')
                   <p><small>Admin</small></p>
-                @else
-                  <p><small>Usuario</small></p>
+                @elseif(Auth::user()->type == 'maid')
+                  <p><small>Maid</small></p>
+                @elseif(Auth::user()->type == 'user')
+                  <p><small>User</small></p>
                 @endif
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
           <!-- Sidebar Menu -->
-          @if(Auth::user()->type == 'admin1')
+          @if(Auth::user()->type == 'admin')
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin') ? 'active' : '' }}">
               <a href="/admin"><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
             <li class="treeview">
               <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-envelope"></i> <span>Mailbox</span></a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin/users/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-id-card"></i> <span>Usuarios</span>
               <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{URL::to('admin/users-list')}}">Ver lista</a></li>
-                <li><a href="{{URL::to('admin/users-cards')}}">Ver fichas</a></li>
+                <li class="{{ request()->is('admin/users/list') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/users/list')}}">Ver lista</a></li>
+                <li class="{{ request()->is('admin/users/cards') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/users/cards')}}">Ver fichas</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin/passengers/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-user"></i> <span>Huéspedes</span>
               <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{URL::to('admin/passengers-list')}}">Ver lista</a></li>
-                <li><a href="{{URL::to('admin/passengers-cards')}}">Ver ficha</a></li>
+                <li class="{{ request()->is('admin/passengers/list') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/passengers/list')}}">Ver lista</a></li>
+                <li class="{{ request()->is('admin/passengers/cards') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/passengers/cards')}}">Ver ficha</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -57,14 +63,14 @@
               <ul class="treeview-menu">
                 <li><a href="{{URL::to('admin/rooms-list')}}">Ver lista</a></li>
                 <li><a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
-                <li><a href="car-detail.html">Administrar</a></li>
+                <li><a href="{{URL::to('admin/rooms-detail')}}">Administrar</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin/reservations-list') ? 'active' : '' }}">
               <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
               </a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin/calendar') ? 'active' : '' }}">
               <a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
             </li>
             <li class="treeview">
@@ -98,17 +104,36 @@
               </ul>
             </li>
           </ul>
+          @elseif(Auth::user()->type == 'maid')
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="treeview">
+              <a href={{URL::to('maid')}}><i class="fa fa-home"></i> <span>Inicio</span></a>
+            </li>
+            <li class="treeview">
+              <a href="{{URL::to('maid/supplies')}}"><i class="fa fa-history"></i> <span>Insumos</span></a>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-handshake-o"></i> <span>Mantenimiento</span></a>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-handshake-o"></i> <span>Habitaciones</span></a>
+            </li>
+          </ul>
           @elseif(Auth::user()->type == 'user')
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-              <a href={{URL::to('user/index')}}><i class="fa fa-home"></i> <span>Inicio</span></a>
+              <a href="{{URL::to('user')}}"><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
             <li class="treeview">
-              <a href="{{URL::to('user/index')}}"><i class="fa fa-history"></i> <span>Mis reservas</span></a>
+              <a href="{{URL::to('user/')}}"><i class="fa fa-history"></i> <span>Mis reservas</span></a>
             </li>
             <li class="treeview">
               <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-handshake-o"></i> <span>Mis huéspedes</span></a>
+            </li>
+            <li class="treeview">
+              <a href="{{URL::to('my-profile')}}"><i class="fa fa-id-badge"></i> <span>Mi perfil</span></a>
             </li>
           </ul>
           @endif

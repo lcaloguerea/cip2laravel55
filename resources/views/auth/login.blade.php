@@ -24,8 +24,14 @@
     <body class="skin-yellow login-page">
         <div class="box-login">
             <div class="box-login-body">
-                <h3><span><b>CIP</b>Admin</span></h3>
+                <h3><span><b>CIP</b> Panel</span></h3>
                 <p class="box-login-msg">Inicio de sesion</p>
+
+                @if (Session::has('message'))
+                <div class="alert alert-danger alert-dismissable fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {!! Session::get('message') !!}. <a href="">Enviar nuevo código?</a></div>
+                @endif
 
                 <form class="login-form" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
@@ -60,7 +66,7 @@
                     </div>
                     <div class="form-group text-center">
                         <a href="/register">Aún no tengo cuenta</a>
-                        <br>
+                        |
                         <a href="{{ route('password.request') }}">Olvidaste tu contraseña?</a>
                         <br>
                         <a href="/">Regresar a la página principal</a>

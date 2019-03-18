@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
 
         $user->rut 					= '111111111-1';
-        $user->type 				= 'admin1';
+        $user->type 				= 'admin';
         $user->name				    = 'Leo';
         $user->lName 				= 'Caloguerea';
         $user->confirmed	        = 'yes';
@@ -30,6 +30,22 @@ class UsersTableSeeder extends Seeder
         $user->uAvatar              = '/img/dimebag.jpg';
             
         $user->save();
+
+        $user = new User();
+
+        $user->rut                  = '222222222-2';
+        $user->type                 = 'maid';
+        $user->name                 = 'Patricia';
+        $user->lName                = 'Sánchez';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'Mucama';
+        $user->email                = 'patriciaximenasanchez@gmail.com';
+        $user->phone                = '+56632211136';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+            
+        $user->save();
+
         $samples_temp = [];
 
         for($i = 0; $i < 150; $i++)

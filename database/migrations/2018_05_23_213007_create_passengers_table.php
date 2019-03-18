@@ -22,6 +22,7 @@ class CreatePassengersTable extends Migration
             $table->string('pAvatar')->default('/img/icons/icon-user.png');
             $table->string('email')->unique(); //Requerido para la encuesta de satisfacción
             $table->string('phone'); //Requerido para la encuesta de satisfacción
+            $table->timestamps();
 
             //fk countries
             $table->integer('country_o')->unsigned(); //country of origin
