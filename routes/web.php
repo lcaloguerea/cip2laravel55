@@ -32,6 +32,7 @@ Route::get('/maid/supplies', 'MaidController@getSupplies');
 Route::get('my-profile', 'ProfileController@getMyProfile');
 
 Route::post('/admin/avatar', 'AdminController@postUpdateAvatar');
+Route::post('/admin/passenger/avatar', 'AdminController@postUpdatePassengerAvatar');
 
 Route::get('/user', 'UserController@index')->name('user');
 

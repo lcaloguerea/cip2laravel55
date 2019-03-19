@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Taxi Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
 
         <link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap.css')}}">
         <link rel="stylesheet" href="{{asset('responsive-tables/responsivetables.css')}}">
@@ -61,7 +53,7 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="table responsive">
+                                    <table id="passengers" class="table table-bordered table-striped datatable">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -119,8 +111,15 @@
         <!-- Slimscroll is required when using the fixed layout. -->
         <script>
             $(function () {
-                $("#payments").DataTable();
-                $(".dataTables_filter input").addClass("dataTable_search");
+            $('.datatable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "scrollX": true
+            });
             });
         </script>
     </body>

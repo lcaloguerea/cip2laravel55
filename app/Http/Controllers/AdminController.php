@@ -67,6 +67,20 @@ class AdminController extends Controller
 
     }
 
+    public function postUpdatePassengerAvatar(Request $request)
+    {
+        if($request->hasFile('updAvatar'))
+        {
+            $avatar = $request->file('updAvatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+            $passenger = Passenger::where('id_passenger', $request->id)->first();
+            $passenger->pAvatar = '/uploads/avatars/' . $filename;
+            $passenger->save();
+            return \Redirect::back();
+        }
+    }
+
     public function getCards()
     {
         $users = User::all();

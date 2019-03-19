@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
 
         <!-- Icons -->
         <link href="{{asset('icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -70,7 +61,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="box all-drivers">
                                 <div class="box-body">
-                                    <img class="member-online img-circle" src="/img/icons/icon-user.png" alt="User Image">
+                                    <img class="member-online img-circle" src="{{$item->pAvatar}}" alt="User Image">
                                     <p class="name">{{$item->name_1}} {{$item->lName_1}} {{$item->lName_2}}</p>
                                     <div class="information">
                                         <p class="">{{$item->type}}</p>
@@ -99,7 +90,6 @@
                     </div>
                 </section>
                 <!-- /. main content -->
-                <a href="add-client.html" class="add-icon"><i class="fa fa-plus"></i></a>
                 <span class="return-up"><i class="fa fa-chevron-up"></i></span>
             </div>
             <!-- /. content-wrapper -->

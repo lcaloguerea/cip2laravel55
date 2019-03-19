@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
         <link rel="stylesheet" href="{{asset('pickadate/themes/default.css')}}">
         <link rel="stylesheet" href="{{asset('pickadate/themes/default-date.css')}}">
         <!-- Icons -->
@@ -16,6 +8,7 @@
         <link rel="stylesheet" href="{{asset('animate.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
+        <link rel="stylesheet" href="{{asset('node_modules/dropify/dist/css/dropify.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -55,7 +48,7 @@
                                     
                                 </div>
                                 <div class="widget-user-image">
-                                    <img class="img-circle" src="/img/icons/icon-user.png" alt="User Avatar">
+                                    <img class="img-circle" src="{{$passenger->pAvatar}}" alt="User Avatar">
                                 </div>
                                 <div class="box-footer">
                                     <div class="socials-networks" style="padding-top: 16px;">
@@ -93,14 +86,6 @@
                                 </div>
                                 <!-- /.box-body -->
                             </div>
-
-                            <div class="box">
-                                <div class="box-body">
-                                    <button type="button" class="btn btn-raised ripple-effect btn-block btn-danger">Borrar usuario</button>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-
                         </div>
                         <div class="col-md-8">
                             <div class="nav-tabs-custom">
@@ -178,6 +163,13 @@
                                             <!-- /.box-header -->
                                             <div class="box-body">
                                                 <div class="col-md-12">
+                                                    <form enctype="multipart/form-data" action="/admin/passenger/avatar" method="POST">
+                                                        <label>Imagen de perfil</label>
+                                                        <input id="updAvatar" name="updAvatar" class="dropify" type="file" required >
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <input type="hidden" name="id" value="{{ $passenger->id_passenger }}">
+                                                        <input type="submit" value="Actualizar imagen de perfil" class="btn btn-sm btn-primary">
+                                                    </form>
                                                     <div class='row'>
                                                         <div class='col-md-4'>
                                                             <div class='form-group'>
@@ -270,8 +262,18 @@
         <script src="{{asset('pickadate/picker.js')}}"></script>
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
         <script src="{{asset('js/pages/jquery-pickadate.js')}}"></script>
+        <script src="{{asset('node_modules/dropify/dist/js/dropify.min.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->
     </body>
 </html>
+<script type="text/javascript">
+        $(function(){
+     
+
+
+    $('.dropify').dropify();
+
+});
+</script>
