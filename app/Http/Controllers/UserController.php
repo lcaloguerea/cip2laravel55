@@ -10,6 +10,8 @@ use App\Country;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\Validator;
+use Image;
+
 
 class UserController extends Controller
 {
@@ -20,14 +22,15 @@ class UserController extends Controller
     }
     public function index()
     {
-        $Reservations = Reservation::all();
+        //user cannot see cancelled or finished
+        $Reservations = Reservation::all()->where('status', '!=', 'cancelled')->where('status', '!=', 'finished');
 
         $events = [];
         foreach($Reservations as $r)
 
-            if($r->roomR->type == 'single'){
+            if($r->roomType == 'single'){
                 $events[] = \Calendar::event(
-                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    $r->roomType.' '.$r->room_id, //event title
                     true, //full day event?
                     new \DateTime($r->check_in),
                     new \DateTime($r->check_out.' +1 day'),
@@ -36,9 +39,9 @@ class UserController extends Controller
                     'color' => '#d81b60',
                 ]);
             }
-            elseif($r->roomR->type == 'shared'){
+            elseif($r->roomType == 'shared'){
                 $events[] = \Calendar::event(
-                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    $r->roomType.' '.$r->room_id, //event title
                     true, //full day event?
                     new \DateTime($r->check_in),
                     new \DateTime($r->check_out.' +1 day'),
@@ -47,9 +50,9 @@ class UserController extends Controller
                     'color' => '#605ca8',
                 ]);
             }
-            elseif($r->roomR->type == 'matrimonial'){
+            elseif($r->roomType == 'matrimonial'){
                 $events[] = \Calendar::event(
-                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    $r->roomType.' '.$r->room_id, //event title
                     true, //full day event?
                     new \DateTime($r->check_in),
                     new \DateTime($r->check_out.' +1 day'),
@@ -212,29 +215,60 @@ class UserController extends Controller
             'check_in' => $request->checkin,
             'check_out' => $request->checkout,
             'payment_m' => $request->payment_m,
-            'room_id' => $r->id_room,
+            'roomType' => $r->type,
             'user_id' => $uid,
         ]);
 
-        //dd($r);
-        $r->status = 'occupied';
-        $r->active_reservation_id = $Reserv->id;
-        $r->save();
 
         $pGrp = PassengerGroup::create([
-            'reservation_id' => $Reserv->id,
+            'reservation_id' => $Reserv->id_res,
             'passenger_id' => $request->passenger1,
         ]);
 
         if($p2 != null){
         $pGrp = PassengerGroup::create([
-            'reservation_id' => $Reserv->id,
+            'reservation_id' => $Reserv->id_res,
             'passenger_id' => $request->passenger2,
         ]);
         }
 
         return response()->json(['success'=>"Reserva registrada, enviaremos un correo con mayor información"]);
+    }
 
+    public function getMyPassengers()
+    {
+        $passengers = Passenger::all();
+        return view('user/my_passengers', compact('passengers'));
+    }
+
+    public function getPassengerProfile($id)
+    {
+        $passenger = Passenger::where('id_passenger',$id) -> first();
+        return view('/user/passenger_profile', compact('passenger'));      
+    }
+
+    public function postUpdatePassengerAvatar(Request $request)
+    {
+        if($request->hasFile('updAvatar'))
+        {
+            $avatar = $request->file('updAvatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+            $passenger = Passenger::where('id_passenger', $request->id)->first();
+            $passenger->pAvatar = '/uploads/avatars/' . $filename;
+            $passenger->save();
+            return \Redirect::back();
+        }
+
+        //add log
+    }
+
+    public function getMyReservations()
+    {
+        $reservs = Reservation::where('user_id', \Auth::id())->get();
+        //dd($reservs == null);
+        $pGroups = PassengerGroup::all();
+        return view('/user/my_reservations', compact('reservs', 'pGroups'));
     }
 
 }

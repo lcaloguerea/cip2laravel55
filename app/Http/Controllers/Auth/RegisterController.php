@@ -72,7 +72,7 @@ class RegisterController extends Controller
         \Mail::send('emails.welcome',array('destinatario' => $dest, 'codigo' => $codigo), function($message) use ($email, $dest) {
             $message->to($email,$dest)
                 ->subject('Confirma tu cuenta CIP');
-        });;
+        });
 
         return User::create([
             'name' => $data['name'],

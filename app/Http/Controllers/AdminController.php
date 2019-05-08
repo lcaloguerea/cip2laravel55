@@ -34,7 +34,13 @@ class AdminController extends Controller
         $rFinish = Reservation::where('status', 'finished')->get();
         $income = 0;
         foreach($rFinish as $rf){
-            $income += $rf->roomR->price;
+            if($rf->roomType == "single"){
+                $income += 30000;
+            }elseif($rf->roomType == "shared"){
+                $income += 35000;
+            }elseif($rf->roomType == "matrimonial"){
+                $income += 40000;
+            }
         }
  
         return view('/admin/index', compact('users', 'passengers', 'pActive', 'income'));
@@ -164,6 +170,5 @@ class AdminController extends Controller
                 'message'=> $message
                 ]);
         }
-
     }
 }

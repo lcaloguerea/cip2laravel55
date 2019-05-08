@@ -18,11 +18,12 @@ class ReservationsTableSeeder extends Seeder
 
         $reserv = new Reservation();
 
-        $reserv->motive       = 'testing reservation sistem';
+        $reserv->motive       = 'testing reservation system';
         $reserv->program      = 'testing program';
         $reserv->status       = 'started';
         $reserv->check_in     = $today;
         $reserv->check_out    = date('Y-m-d', strtotime($today. ' + 5 days'));
+        $reserv->roomType     = "single";
         $reserv->room_id      = 1;
         $reserv->user_id      = 2;
 
@@ -33,8 +34,9 @@ class ReservationsTableSeeder extends Seeder
         $reserv->motive       = 'motive2';
         $reserv->program      = 'program2';
         $reserv->status       = 'finished';
-        $reserv->check_in     = date('2018-07-20');
-        $reserv->check_out    = date('2018-07-23');
+        $reserv->check_in     = date('2019-03-20');
+        $reserv->check_out    = date('2019-03-23');
+        $reserv->roomType     = "single";
         $reserv->room_id      = 2;
         $reserv->user_id      = 3;
 
@@ -45,8 +47,9 @@ class ReservationsTableSeeder extends Seeder
         $reserv->motive       = 'motive3';
         $reserv->program      = 'program3';
         $reserv->status       = 'cancelled';
-        $reserv->check_in     = date('2018-07-20');
-        $reserv->check_out    = date('2018-07-28');
+        $reserv->check_in     = date('2019-03-20');
+        $reserv->check_out    = date('2019-03-28');
+        $reserv->roomType     = "single";
         $reserv->room_id      = 1;
         $reserv->user_id      = 4;
 
@@ -57,8 +60,9 @@ class ReservationsTableSeeder extends Seeder
         $reserv->motive       = 'motive4';
         $reserv->program      = 'program4';
         $reserv->status       = 'started';
-        $reserv->check_in     = date('2018-07-20');
-        $reserv->check_out    = date('2018-07-26');
+        $reserv->check_in     = date('2019-03-15');
+        $reserv->check_out    = date('2019-03-30');
+        $reserv->roomType     = "matrimonial";
         $reserv->room_id      = 5;
         $reserv->user_id      = 5;
 
@@ -69,8 +73,9 @@ class ReservationsTableSeeder extends Seeder
         $reserv->motive       = 'motive5';
         $reserv->program      = 'program5';
         $reserv->status       = 'waiting';
-        $reserv->check_in     = date('2018-07-28');
-        $reserv->check_out    = date('2018-07-31');
+        $reserv->check_in     = date('2019-03-28');
+        $reserv->check_out    = date('2019-03-31');
+        $reserv->roomType     = "matrimonial";
         $reserv->room_id      = 8;
         $reserv->user_id      = 5;
 
@@ -81,9 +86,10 @@ class ReservationsTableSeeder extends Seeder
         $reserv->motive       = 'motive6';
         $reserv->program      = 'program6';
         $reserv->status       = 'waiting';
-        $reserv->check_in     = date('2018-07-25');
-        $reserv->check_out    = date('2018-07-28');
-        $reserv->room_id      = 3;
+        $reserv->check_in     = date('2019-03-28');
+        $reserv->check_out    = date('2019-03-31');
+        $reserv->roomType     = "matrimonial";
+        $reserv->room_id      = 7;
         $reserv->user_id      = 5;
 
         $reserv->save();

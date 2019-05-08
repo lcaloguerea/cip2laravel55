@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
 
         <link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap.css')}}">
         <link rel="stylesheet" href="{{asset('responsive-tables/responsivetables.css')}}">
@@ -77,7 +69,7 @@
                                         <tbody>
                                         @foreach($reservs as $item)
                                             <tr>
-                                                <td><a href="#">{{$item->id_res}}</a></td>
+                                                <td><a href="/admin/reservations/reservation-detail/{{$item->id_res}}">{{$item->id_res}}</a></td>
                                                 <td><a href="user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
                                                 <td>
                                                 @foreach($pGroups as $pg)

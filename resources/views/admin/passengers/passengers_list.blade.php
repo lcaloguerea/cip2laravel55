@@ -59,7 +59,6 @@
                                                 <th>#</th>
                                                 <th>Nombre</th>
                                                 <th>Apellido paterno</th>
-                                                <th>Apellido Materno</th>
                                                 <th>Nacionalidad</th>
                                                 <th>Email</th>
                                                 <th>Origen</th>
@@ -70,9 +69,8 @@
                                         <tbody>
                                         @foreach($passengers as $item)
                                             <tr>
-                                                <td><a href="passenger-profile/{{$item->id_passenger}}">{{$item->id_passenger}}</a></td>
+                                                <td><a href="/admin/passengers/passenger-profile/{{$item->id_passenger}}">{{$item->id_passenger}}</a></td>
                                                 <td>{{$item->name_1}}</td>
-                                                <td>{{$item->lName_1}}</td>
                                                 <td>{{$item->lName_1}}</td>
                                                 <td>{{$item->nationality}}</td>
                                                 <td>{{$item->email}}</td>

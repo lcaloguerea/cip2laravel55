@@ -75,7 +75,7 @@
                                         <tbody>
                                         @foreach($rooms as $item)
                                             <tr>
-                                                <td><a href="#">{{$item->id_room}}</a></td>
+                                                <td><a href="/{{Auth::user()->type}}/room-detail/{{$item->id_room}}">{{$item->id_room}}</a></td>
                                                 @if($item->type == 'shared')
                                                   <td>Single compartida</td>
                                                   @else
@@ -92,7 +92,11 @@
                                                     <td>
                                                     @foreach($pGroups as $pg)
                                                         @if($pg->reservation_id == $item->active_reservation_id)
-                                                            <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                            @if(Auth::user()->type != "maid")
+                                                            <li><a href="/admin/passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                            @else
+                                                            <li>{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</li>
+                                                            @endif
                                                         @endif
                                                     @endforeach
                                                     </td>

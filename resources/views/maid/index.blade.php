@@ -48,6 +48,63 @@
         </section>
         <section class="content">
           <div class="row">
+            <div class="col-md-4">
+              <div class="info-box">
+                <div class="info-box-content">
+                  <i class="fa fa-wrench text-blue"></i>
+                  <div class="text-center value">Mantenimiento</div>
+                  <br>
+                  <div class="box-body no-padding">
+                        <table class="table table-condensed">
+                            <tr>
+                                <td>Aromatizadores tarros (mes)</td>
+                                <td><span class="badge bg-green">OK</span></td>
+                            </tr>
+                            <tr>
+                                <td>Bidones agua purificada (mes)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Fumigación (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Lavado de cortina (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Limpieza ext. vidrios (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Mantención A/C (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Mantención pintura (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Recarga extintores (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Revisión eléctrica/gasfiteria (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                            <tr>
+                                <td>Sanitización baños (anual)</td>
+                                <td><span class="badge bg-red"> X </span></td>
+                            </tr>
+                        </table>
+                  </div>
+                  <br>
+                <div class="text-center action-profile">
+                    <a href="#" class="btn btn-block btn-success">Ver detalles</a>
+                </div>
+                  </div>
+              </div>
+            </div>
             <div class="col-sm-6 col-lg-4">
               <div class="info-box">
                 <div class="info-box-content">
@@ -74,31 +131,7 @@
               </div>
             </div>
             <!--/.col-->
-            <div class="col-sm-6 col-lg-4">
-              <div class="info-box">
-                <div class="info-box-content">
-                  <i class="fa fa-wrench text-blue"></i>
-                  <div class="text-center value">Mantenimiento</div>
-                  <br>
-                  <div class="box-body no-padding">
-                        <table class="table table-condensed">
-                            <tr>
-                                <td>Jardín</td>
-                                <td><span class="badge bg-green">OK</span></td>
-                            </tr>
-                            <tr>
-                                <td>Agua</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                        </table>
-                  </div>
-                  <br>
-                <div class="text-center action-profile">
-                    <a href="#" class="btn btn-block btn-success">Ver detalles</a>
-                </div>
-                  </div>
-              </div>
-            </div>
+
             <!--/.col-->
             <div class="col-sm-6 col-lg-4">
               <div class="info-box">
@@ -113,7 +146,7 @@
                                 <td><span class="badge bg-green">OK</span></td>
                             </tr>
                             <tr>
-                                <td>Aseo</td>
+                                <td>Limpieza</td>
                                 <td><span class="badge bg-red"> X </span></td>
                             </tr>
                         </table>
@@ -126,11 +159,9 @@
               </div>
             </div>
             <!--/.col-->
-          </div>
 
 
-                    <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-md-8">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Huéspedes por habitación</h3>

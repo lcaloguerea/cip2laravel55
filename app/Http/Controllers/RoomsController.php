@@ -33,13 +33,30 @@ class RoomsController extends Controller
     	$room = Room::where('id_room',$id) -> first();
         $Reservations = Reservation::all();
         $upCmngRsrvs = [];
+        $Rsrvs = [];
 
         foreach($Reservations as $r)
 
-            if($r->roomR->type == $room->type and $r->check_in >= Carbon::today()){
-                $upCmngRsrvs[] = $r;
+            if($r->roomType == $room->type and $r->room_id == $room->id_room){
+                $Rsrvs[] = $r;
             }
 
-    	return view('/admin/rooms/room_detail', compact('room', 'upCmngRsrvs', 'pGroups'));
+        /*foreach($Reservations as $r)
+
+            if($r->roomR->type == $room->type and $r->check_in >= Carbon::today()){
+                $upCmngRsrvs[] = $r;
+            }*/
+
+    	return view('/admin/rooms/room_detail', compact('room', 'Rsrvs', 'pGroups'));
+    }
+
+    public function postRoomSanitization(Request $request)
+    {
+        $room = Room::where('id_room', $request->id)->first();
+        $room->sanitization = "done";
+        $room->save();
+
+        $message = 'La limpieza de la habitación '.$room->id_room.' ha sido registrada y realizada por '.\Auth::user()->name;
+        return response()->json(['message'=> $message]);
     }
 }

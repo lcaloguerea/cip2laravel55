@@ -445,14 +445,10 @@
                     <td class="item-col item">
                     </td>
                     <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
-                      <span class="total-space">Subtotal</span> <br />
-                      <span class="total-space">Tax</span>  <br />
                       <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total</span>
                     </td>
                     <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
-                      <span class="total-space">$60.000.-</span> <br />
-                      <span class="total-space">$14.400.-</span>  <br />
-                      <span class="total-space" style="font-weight:bold; color: #4d4d4d">$64.400.-</span>
+                      <span class="total-space" style="font-weight:bold; color: #4d4d4d">$46.000.-</span>
                     </td>
                   </tr>  
                 </table>
@@ -468,9 +464,10 @@
         <table cellspacing="0" cellpadding="0" width="600" class="w320">
           <tr>
             <td style="padding: 25px 0 25px; color:white; font-family: cabin">
-              <strong style="color:white">cip_reservas@uach.cl</strong><br />
-              (63) 2 221258 <br />
-              Las Encinas 220, Isla Teja. <br /><br />
+              <strong style="color:white">cip_reservas<span>@</span>uach.cl</strong><br />
+              CIP: (63) 2 211136 <br />
+              Administración: +56 8 9209785 <br />
+              Avda. las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia. <br /><br />
             </td>
           </tr>
         </table>

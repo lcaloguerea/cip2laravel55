@@ -10,6 +10,7 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
+        <link href="{{asset('js/sweetalert/sweetalert.css')}}" rel="stylesheet">
 
         <link rel="stylesheet" href="{{asset('node_modules/filepond/dist/filepond.css')}}">
         <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css')}}">
@@ -65,8 +66,16 @@
                                     <strong>Estado</strong><p>{{$room->status}}</p>
                                 </div>
                                 <div class="box-footer">
-                                    <strong>Sanitización</strong>
-                                    <address><span class="badge bg-green">Al día</span></address>
+                                    <strong>Limpieza</strong>
+                                    <address>
+                                        @if($room->sanitization == "done")
+                                            <span class="badge bg-green">Al día</span>
+                                        @else
+                                        <button id="sanitization" type="button" class="btn btn-danger btn-block">
+                                            Pendiente
+                                        </button>
+                                        @endif
+                                    </address>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -75,8 +84,8 @@
                         <div class="col-md-8">
                             <div class="nav-tabs-custom">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_1" data-toggle="tab">Historial de reservas</a></li>
-                                    <li><a href="#tab_2" data-toggle="tab">Gestionar</a></li>
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">Actividad</a></li>
+                                    <li><a href="#tab_2" data-toggle="tab">Historial</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1">
@@ -119,7 +128,7 @@
                                                 <i class="fa fa-paint-brush bg-blue"></i>
                                                 <div class="timeline-item">
                                                     <span class="time"><i class="fa fa-clock-o"></i> 17:00</span>
-                                                    <h3 class="timeline-header">Aseo realizado por <a style="color: blue" href="#"> Staff</a></h3></h3>
+                                                    <h3 class="timeline-header">Limpieza realizada por <a style="color: blue" href="#"> Staff</a></h3></h3>
                                                 </div>
                                             </li>
                                             <!-- /. timeline item -->
@@ -132,9 +141,6 @@
                                     <!-- /.tab-pane -->
                                     <div class="tab-pane" id="tab_2">
                                         <div class="box box-form no-shadow">
-                                            <div class="box-header">
-                                                <h3 class="box-title">Gestión de la habitación</h3>
-                                            </div>
                                             <!-- /.box-header -->
                     <div class="row">
                         <div class="col-xs-12">
@@ -151,11 +157,10 @@
                                                 <th>Estado</th>
                                                 <th>Check In</th>
                                                 <th>Check Out</th>
-                                                <th>Accióm</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($upCmngRsrvs as $item)
+                                        @foreach($Rsrvs as $item)
                                             <tr class="disabled">
                                                 <td><a href="#">{{$item->id_res}}</a></td>
                                                 <td><a href="user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
@@ -179,7 +184,6 @@
                                                 </td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
-                                                <td><i class="fa fa-arrow-left bg-green"></i> <i class="fa fa-arrow-right bg-red"></i></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -221,6 +225,7 @@
         <script src="{{asset('js/jquery-fullscreen/jquery.fullscreen-min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>
+        <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
         <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
         <script src="{{asset('pickadate/picker.js')}}"></script>
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
@@ -246,6 +251,45 @@
 
 
     $('.dropify').dropify();
+
+
+        $('#sanitization').on('click',function(e){
+
+        e.preventDefault();
+
+        var id = {{$room->id_room}};
+
+        swal({
+            title:"Esta seguro(a)?",
+            text: "Esta apunto de validar la limpieza de esta habitación, esto se registrará vinculandolo(a) a esta acción",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            CancelButtonText: "cancelar",
+        }, function () {
+
+            $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+               data:{id:id, "_token": "{{ csrf_token() }}"},
+                //Cambiar a type: POST si necesario
+                type: 'POST',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url: '/admin/room-sanitization' , //this is different because it can change user type
+                success:function(data){
+                        swal({
+                            title:"Actualizado!!",
+                            text: "<strong>"+data.message+"</strong>",
+                            type: "success",
+                            html: true,
+                        },function () {
+                            window.location.reload(true);
+                        });
+                }
+            }); 
+        });
+    });
 
 });
 

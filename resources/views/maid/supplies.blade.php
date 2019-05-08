@@ -54,7 +54,7 @@
                 <section class="content">
 
           <div class="row">
-            <div class="col-sm-6 col-lg-6">
+            <div class="col-sm-6 col-lg-8">
               <div class="info-box">
                 <div class="info-box-content">
                   <div class="text-center value">Suministros generales</div>
@@ -75,7 +75,7 @@
               </div>
             </div>
             <!--/.col-->
-            <div class="col-sm-6 col-lg-6">
+            <div class="col-sm-6 col-lg-4">
               <div class="info-box">
                 <div class="info-box-content">
                   <div class="text-center value">Pan</div>
@@ -83,12 +83,10 @@
                   <div class="box-body no-padding">
                         <table class="table table-condensed">
                             <tr>
-                                <td>Lista completa</td>
                                 <td><a href="#" class="btn btn-block btn-success">Abastecer</a></td>
                             </tr>
                             <tr>
-                                <td>Solo sin stock</td>
-                                <td><a href="#" class="btn btn-block btn-success">Abastecer</a></td>
+                                <td><a href="#" class="btn btn-block btn-success">Alertar</a></td>
                             </tr>
                         </table>
                   </div>
@@ -105,7 +103,7 @@
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table class="table table-bordered">
+                                    <table id="supplies" class="table table-bordered table-striped datatable">
                                         <tr>
                                             <th style="width: 10px">#</th>
                                             <th>Artículo</th>
@@ -113,17 +111,17 @@
                                         </tr>
                                         <tr>
                                             <td>1.</td>
-                                            <td>Ampolleta Led vela 5.5W, luz fria (baño)</td>
+                                            <td>Acondicionador Cava 40 ml</td>
                                             <td>
                                                 <select class="form-control">
                                                     <option class="badge bg-green" value="stock">Ok</option>
                                                     <option value="noStock">Sin stock</option>
                                                 </select>
                                             </td>
-                                        </tr>
+                                        </tr>                                        
                                         <tr>
                                             <td>2.</td>
-                                            <td>Ampolleta BC 14W (pasillo)</td>
+                                            <td>Acondicionador Florence Blanc 40ml</td>
                                             <td>
                                                 <select class="form-control">
                                                     <option class="badge bg-green" value="stock">Ok</option>
@@ -133,7 +131,7 @@
                                         </tr>
                                         <tr>
                                             <td>3.</td>
-                                            <td>Azúcar kilo</td>
+                                            <td>Ampolleta Led vela 5.5W, luz fria (baño)</td>
                                             <td>
                                                 <select class="form-control">
                                                     <option class="badge bg-green" value="stock">Ok</option>
@@ -143,7 +141,7 @@
                                         </tr>
                                         <tr>
                                             <td>4.</td>
-                                            <td>Azúcar sachet 100 unds</td>
+                                            <td>Ampolleta BC 14W (pasillo)</td>
                                             <td>
                                                 <select class="form-control">
                                                     <option class="badge bg-green" value="stock">Ok</option>
@@ -153,7 +151,7 @@
                                         </tr>
                                         <tr>
                                             <td>5.</td>
-                                            <td>Bidones agua purificada 20 Litros</td>
+                                            <td>Ampolletas Lámpara velador</td>
                                             <td>
                                                 <select class="form-control">
                                                     <option class="badge bg-green" value="stock">Ok</option>
@@ -163,7 +161,7 @@
                                         </tr>
                                         <tr>
                                             <td>6.</td>
-                                            <td>Bolsa basura 80x120</td>
+                                            <td>Antigrasa recarga</td>
                                             <td>
                                                 <select class="form-control">
                                                     <option class="badge bg-green" value="stock">Ok</option>
@@ -171,6 +169,105 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>7.</td>
+                                            <td>Antihongos baño recarga</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>8.</td>
+                                            <td>Aromatizador lata sani air</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>9.</td>
+                                            <td>Azúcar kilo</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>11.</td>
+                                            <td>Azúcar sachet 100 unds</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>12.</td>
+                                            <td>Bidones agua purificada 20 Litros</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>13.</td>
+                                            <td>Bolsa basura 80x120 (Contenedores)</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>14.</td>
+                                            <td>Bolsa basura 50x55 (Papeleros)</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>                                        <tr>
+                                            <td>15.</td>
+                                            <td>Bolsa basura 70x90 (Baños)</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>16.</td>
+                                            <td>Café grano</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>17.</td>
+                                            <td>Café Nescafé 100 sobres</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option class="badge bg-green" value="stock">Ok</option>
+                                                    <option value="noStock">Sin stock</option>
+                                                </select>
+                                            </td>
+                                        </tr>                                        
                                     </table>
                                     <br>
                                                     <div class="text-center action-profile">
@@ -178,15 +275,6 @@
                 </div>
                                 </div>
                                 <!-- /.box-body -->
-                                <div class="box-footer clearfix">
-                                    <ul class="pagination pagination-sm no-margin pull-right">
-                                        <li><a href="#">&laquo;</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>
-                                </div>
                             </div>
 
                     <!-- /.row -->
@@ -218,3 +306,17 @@
         <!-- Slimscroll is required when using the fixed layout. -->
     </body>
 </html>
+
+        <script>
+            $(function () {
+            $('.datatable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "scrollX": true
+            });
+            });
+        </script>

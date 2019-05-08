@@ -63,7 +63,6 @@
               <ul class="treeview-menu">
                 <li><a href="{{URL::to('admin/rooms-list')}}">Ver lista</a></li>
                 <li><a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
-                <li><a href="{{URL::to('admin/rooms-detail')}}">Administrar</a></li>
               </ul>
             </li>
             <li class="treeview {{ request()->is('admin/reservations-list') ? 'active' : '' }}">
@@ -80,17 +79,15 @@
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="payments.html">Registros de pagos</a>
-                </li>
-                <li><a href="add-payment.html">Agregar modo de pago</a>
+                <li><a href="#">Registros de pagos</a>
                 </li>
                 <li><a href="{{URL::to('admin/payments/b_invoice')}}">Boleta</a>
                 </li>
-                <li><a href="invoice2.html">Factura</a>
+                <li><a href="#">Factura</a>
                 </li>
               </ul>
             </li>
-            <li class="treeview">
+         <!--    <li class="treeview">
               <a href="#"><i class="fa fa-area-chart"></i> <span>Reportes</span>
               <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -102,7 +99,7 @@
                 <li><a href="sales-reports.html">Reporte de gastos</a>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
           @elseif(Auth::user()->type == 'maid')
           <ul class="sidebar-menu">
@@ -117,20 +114,28 @@
               <a href="#"><i class="fa fa-handshake-o"></i> <span>Mantenimiento</span></a>
             </li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-handshake-o"></i> <span>Habitaciones</span></a>
+              <a href="#"><i class="fa fa-bed"></i><span>Habitaciones</span>
+              <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+              </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{URL::to('maid/rooms-list')}}">Ver lista</a></li>
+                <li><a href="{{URL::to('maid/rooms-cards')}}">Ver ficha</a></li>
+              </ul>
             </li>
           </ul>
           @elseif(Auth::user()->type == 'user')
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('user') ? 'active' : '' }}">
               <a href="{{URL::to('user')}}"><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
-            <li class="treeview">
-              <a href="{{URL::to('user/')}}"><i class="fa fa-history"></i> <span>Mis reservas</span></a>
+            <li class="treeview {{ request()->is('user/my-reservations/*') ? 'active' : '' }}">
+              <a href="{{URL::to('user/my-reservations/list')}}"><i class="fa fa-history"></i> <span>Mis reservas</span></a>
             </li>
-            <li class="treeview">
-              <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-handshake-o"></i> <span>Mis huéspedes</span></a>
+            <li class="treeview {{ request()->is('user/my-passengers/*') ? 'active' : '' }}">
+              <a href="{{URL::to('user/my-passengers')}}"><i class="fa fa-handshake-o"></i> <span>Huéspedes</span></a>
             </li>
             <li class="treeview">
               <a href="{{URL::to('my-profile')}}"><i class="fa fa-id-badge"></i> <span>Mi perfil</span></a>

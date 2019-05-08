@@ -64,11 +64,11 @@
                                         <div class="event-title b-maroon">Single 1</div>
                                         <div class="event-title b-maroon">Single 2</div>
                                         <div class="event-title b-maroon">Single 3</div>
-                                        <div class="event-title b-maroon">Single 4</div>
-                                        <div class="event-title b-purple">Compartida 1</div>
-                                        <div class="event-title b-purple">Compartida 2</div>
-                                        <div class="event-title b-orange">Matrimonial 1</div>
-                                        <div class="event-title b-orange">Matrimonial 2</div>
+                                        <div class="event-title b-purple">Compartida 4</div>
+                                        <div class="event-title b-orange">Matrimonial 5</div>
+                                        <div class="event-title b-orange">Matrimonial 6</div>
+                                        <div class="event-title b-orange">Matrimonial 7</div>
+                                        <div class="event-title b-orange">Matrimonial 8</div>
                                     </div>
                                 </div>
                             </div>

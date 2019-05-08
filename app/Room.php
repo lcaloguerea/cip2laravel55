@@ -16,6 +16,7 @@ class Room extends Model
         'price',
         'status',
         'type',
+        'sanitization',
         'active_reservation_id',
 
     ];

@@ -97,10 +97,11 @@
                                         <div class='form-group'>
                                             <label>Forma de pago</label>
                                             <select id="payment_m" class="form-control">
-                                                    <option selected value="null">- -</option>
-                                                    <option id="mp1" value="cash">Efectivo</option>
-                                                    <option id="mp2" value="credit_card">Tarjeta de crédito</option>
-                                                    <option id="mp3" value="e_transfer">Transferencia</option>
+                                                <option selected value="null">- -</option>
+                                                <option id="mp1" value="cash">Efectivo</option>
+                                                <option id="mp2" value="e_transfer_l">Transferencia moneda local</option>
+                                                <option id="mp3" value="e_transfer_e">Transferencia moneda extrangera</option>
+                                                <option id="mp4" value="p_code">Código presupuestario</option>
                                             </select>
                                         </div>
                                     </div>
@@ -971,7 +972,7 @@ $(document).ready(function(){
                         success:function(data){
                         swal({
                             title:"Reserva registrada!!",
-                            text: "Gracias por decidir hospedarte con nosotros, te enviaremos un correo con el detalle de la reserva.",
+                            text: "Gracias por completar la reserva, hemos enviado a ti y a tu(s) huésped(es) un correo con el detalle de la reserva.",
                             type: "success",
                             html: true,
                         }, function () {

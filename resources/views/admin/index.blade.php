@@ -83,7 +83,7 @@
                 <div class="info-box-content">
                   <i class="fa fa-usd text-green"></i>
                   <div class="text-center value">${{number_format($income)}}</div>
-                  <div class="text-muted text-uppercase text-center">Ingresos</div>
+                  <div class="text-muted text-uppercase text-center">Ingresos/Mes</div>
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@
             <div class="col-sm-12 col-lg-4">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Ingresos habitación single
+                  <h3 class="box-title">Ingresos Single
                     <small class="text-muted">10% High then last year</small>
                   </h3>
                 </div>
@@ -137,7 +137,7 @@
             <div class="col-sm-12 col-lg-4">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Ingresos habitación doble
+                  <h3 class="box-title">Ingresos Matrimonial
                     <small class="text-muted">5% High then last year</small>
                   </h3>
                 </div>
@@ -168,7 +168,7 @@
             <div class="col-sm-12 col-lg-4">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Ingresos habitación single compartida
+                  <h3 class="box-title">Ingresos Single compartida
                     <small class="text-muted">12% less then last month</small>
                   </h3>
                 </div>
