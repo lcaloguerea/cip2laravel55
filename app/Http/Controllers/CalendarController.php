@@ -10,14 +10,14 @@ class CalendarController extends Controller
 {
     public function getCalendar()
     {
-        $Reservations = Reservation::all();
+        $Reservations = Reservation::all()->where('status', '!=', 'cancelled');
 
         $events = [];
         foreach($Reservations as $r)
 
-            if($r->roomR->type == 'single'){
+            if($r->roomType == 'single'){
                 $events[] = \Calendar::event(
-                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    $r->roomType.' '.$r->room_id, //event title
                     true, //full day event?
                     new \DateTime($r->check_in),
                     new \DateTime($r->check_out.' +1 day'),
@@ -26,9 +26,9 @@ class CalendarController extends Controller
                     'color' => '#d81b60',
                 ]);
             }
-            elseif($r->roomR->type == 'shared'){
+            elseif($r->roomType == 'shared'){
                 $events[] = \Calendar::event(
-                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    $r->roomType.' '.$r->room_id, //event title
                     true, //full day event?
                     new \DateTime($r->check_in),
                     new \DateTime($r->check_out.' +1 day'),
@@ -37,9 +37,9 @@ class CalendarController extends Controller
                     'color' => '#605ca8',
                 ]);
             }
-            elseif($r->roomR->type == 'matrimonial'){
+            elseif($r->roomType == 'matrimonial'){
                 $events[] = \Calendar::event(
-                    $r->roomR->type.' '.$r->roomR->id_room, //event title
+                    $r->roomType.' '.$r->room_id, //event title
                     true, //full day event?
                     new \DateTime($r->check_in),
                     new \DateTime($r->check_out.' +1 day'),

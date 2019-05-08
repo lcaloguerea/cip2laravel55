@@ -19,7 +19,11 @@ class EmailController extends Controller
 
     public function getWelcome()
     {
-        return view('/emails/reservDetail');
+   	/*\Mail::send('emails.ban',array('destinatario'), function($message) {
+            $message->to('hellthrash@gmail.com','developer')
+                ->subject('Testing mails views');
+        });*/
+        return view('/emails/ban');
     }  
 
 }

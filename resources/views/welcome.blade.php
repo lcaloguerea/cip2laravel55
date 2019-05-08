@@ -67,7 +67,11 @@
                 <!-- Signup btn -->
                 <div class="col-12 col-lg-2">
                     <div class="sing-up-button d-none d-lg-block">
+                        @if(Auth::check())
+                        <a href="/{{Auth::user()->type}}">Intranet</a>
+                        @else
                         <a href="/login">Inicia sesión</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -114,7 +118,7 @@
                     <div class="single-feature">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <h5>Ubicación</h5>
-                        <p>La Casa de Investigadores y Postgrado – CIP, se ubica en el 4° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
+                        <p>La Casa de Investigadores y Postgrado – CIP, se ubica en el 3° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -641,7 +645,7 @@
                         <p>Si tienes alguna duda o consulta, no dudes en dejarnos tus comentarios aquí. Te responderemos lo más pronto posible.</p>
                     </div>
                     <div class="address-text">
-                        <p><span>Dirección:</span> Las Encinas 220, Isla Teja - Valdivia, Chile</p>
+                        <p><span>Dirección:</span> Las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia, Chile</p>
                     </div>
                     <div class="phone-text">
                         <p><span>Recepción:</span> +56 63 2 211136 Anexo 2436 - Lunes a Viernes: 08:00 -12:30 am</p>
@@ -650,7 +654,7 @@
                         <p><span>Reservas:</span> +56 63 2 221258 Anexo 1258</p>
                     </div>
                     <div class="email-text">
-                        <p><span>Email:</span> info.deercreative@gmail.com</p>
+                        <p><span>Email:</span> cip_reservas@uach.cl</p>
                     </div>
                 </div>
                 <div class="col-md-6">

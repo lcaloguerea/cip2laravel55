@@ -18,6 +18,7 @@ class RoomsTableSeeder extends Seeder
         $room->price                    = 30000;
         $room->status                   = 'free';
         $room->type                     = 'single';
+        $room->sanitization             = 'done';
         $room->active_reservation_id    = null;
         $room->save();
 
@@ -26,6 +27,7 @@ class RoomsTableSeeder extends Seeder
         $room->price                    = 30000;
         $room->status                   = 'free';
         $room->type                     = 'single';
+        $room->sanitization             = 'done';
         $room->active_reservation_id    = null;
         $room->save();
 
@@ -34,14 +36,7 @@ class RoomsTableSeeder extends Seeder
         $room->price                    = 30000;
         $room->status                   = 'free';
         $room->type                     = 'single';
-        $room->active_reservation_id    = null;
-        $room->save();
-
-        $room = new Room();
-
-        $room->price                    = 30000;
-        $room->status                   = 'free';
-        $room->type                     = 'single';
+        $room->sanitization             = 'done';
         $room->active_reservation_id    = null;
         $room->save();
 
@@ -50,14 +45,7 @@ class RoomsTableSeeder extends Seeder
         $room->price                    = 35000;
         $room->status                   = 'free';
         $room->type                     = 'shared';
-        $room->active_reservation_id    = null;
-        $room->save();
-
-        $room = new Room();
-
-        $room->price                    = 35000;
-        $room->status                   = 'free';
-        $room->type                     = 'shared';
+        $room->sanitization             = 'done';
         $room->active_reservation_id    = null;
         $room->save();
 
@@ -66,6 +54,7 @@ class RoomsTableSeeder extends Seeder
         $room->price                    = 40000;
         $room->status                   = 'free';
         $room->type                     = 'matrimonial';
+        $room->sanitization             = 'done';
         $room->active_reservation_id    = null;
         $room->save();
 
@@ -74,6 +63,25 @@ class RoomsTableSeeder extends Seeder
         $room->price                    = 40000;
         $room->status                   = 'free';
         $room->type                     = 'matrimonial';
+        $room->sanitization             = 'done';
+        $room->active_reservation_id    = null;
+        $room->save();
+
+        $room = new Room();
+
+        $room->price                    = 40000;
+        $room->status                   = 'free';
+        $room->type                     = 'matrimonial';
+        $room->sanitization             = 'done';
+        $room->active_reservation_id    = null;
+        $room->save();
+
+        $room = new Room();
+
+        $room->price                    = 40000;
+        $room->status                   = 'free';
+        $room->type                     = 'matrimonial';
+        $room->sanitization             = 'done';
         $room->active_reservation_id    = null;
         $room->save();    
 

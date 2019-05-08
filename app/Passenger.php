@@ -26,6 +26,8 @@ class Passenger extends Model
 
     ];
 
+    protected $primaryKey = 'id_passenger';
+
     //Relación con país de origen
     public function countryo()
     {

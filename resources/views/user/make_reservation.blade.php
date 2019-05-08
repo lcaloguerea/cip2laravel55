@@ -97,10 +97,11 @@
                                         <div class='form-group'>
                                             <label>Forma de pago</label>
                                             <select id="payment_m" class="form-control">
-                                                    <option selected value="null">- -</option>
-                                                    <option id="mp1" value="cash">Efectivo</option>
-                                                    <option id="mp2" value="credit_card">Tarjeta de crédito</option>
-                                                    <option id="mp3" value="e_transfer">Transferencia</option>
+                                                <option selected value="null">- -</option>
+                                                <option id="mp1" value="cash">Efectivo</option>
+                                                <option id="mp2" value="e_transfer_l">Transferencia moneda local</option>
+                                                <option id="mp3" value="e_transfer_e">Transferencia moneda extrangera</option>
+                                                <option id="mp4" value="p_code">Código presupuestario</option>
                                             </select>
                                         </div>
                                     </div>
@@ -115,6 +116,12 @@
                                                     <option id="2" value="shared">Compartida</option>
                                                     <option id="3" value="matrimonial">Matrimonial</option>
                                             </select>
+                                            <br>
+                                            <div id="rtSelected" style="display:none; background-color: #222d32; border-radius: 45px;" class="info-box">
+                                                <div class="info-box-content">
+                                                    <div id="rtsValue" style="color:white"class="text-center value"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div id="addGuest" class='col-md-6'  style="display:none">
@@ -576,8 +583,12 @@ $(document).ready(function(){
                 var $selected = $('#rt').val();
                 if($selected == 'single'){
                     document.getElementById('lblR').innerHTML = "Habitación <br> simple";
+                    document.getElementById('lblP2').innerHTML = "No aplica";
                     document.getElementById('lblCapacity').innerHTML = "0/1 (Asignado/Capacidad)";
                     $("#addGuest").show(700);
+                    $("#rt").hide(700);
+                    document.getElementById('rtsValue').innerHTML = "Simple";
+                    $("#rtSelected").show(1000);
                     //$("#infoGuest1").show(1000);
                     //$("#infoGuest2").hide(1000);
 
@@ -585,13 +596,18 @@ $(document).ready(function(){
                     $("#addGuest").show(700);
                     document.getElementById('lblR').innerHTML = "Habitación <br> compartida";
                     document.getElementById('lblCapacity').innerHTML = "0/2 (Asignado/Capacidad)";
-
+                    $("#rt").hide(700);
+                    document.getElementById('rtsValue').innerHTML = "Compartida";
+                    $("#rtSelected").show(1000);
                     //$("#infoGuest1").show(1000);
                     //$("#infoGuest2").hide(1000);
                 }else if($selected == 'matrimonial'){
                     document.getElementById('lblR').innerHTML = "Habitación <br> Matrimonial";
                     document.getElementById('lblCapacity').innerHTML = "0/2 (Asignado/Capacidad)";
                     $("#addGuest").show(700);
+                    $("#rt").hide(700);
+                    document.getElementById('rtsValue').innerHTML = "Matrimonial";
+                    $("#rtSelected").show(1000);
                     //$("#infoGuest1").show(1000);
                     //$("#infoGuest2").show(1000);
                 }else if($selected == 'null'){
@@ -642,6 +658,7 @@ $(document).ready(function(){
                     $("#infoGuest1").hide(1000);
                     $("#infoGuest2").hide(1000);
                     $("#infoGuest").hide(1000);
+                    $("#rtSelected").hide(1000);
 
                     $("#form1").trigger('reset');
                     $("#form2").trigger('reset');
@@ -663,7 +680,14 @@ $(document).ready(function(){
                             type: "success",
                             html: true,
                         }, function () {
+                            $("#showGuestForm").show(1000);
+                            $("#showGuestForm2").hide(1000);
+                            document.getElementById('imgP1').src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJot6LRREXu3_W7Yf2nyBpikY_yrpugqrvLWEUq39YAC7mTV";
+                            document.getElementById('imgP2').src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJot6LRREXu3_W7Yf2nyBpikY_yrpugqrvLWEUq39YAC7mTV";
+                            document.getElementById('lblP1').innerHTML = "No asignado";
+                            document.getElementById('lblP2').innerHTML = "No asignado";
                             $("#rt").val(0);
+                            $("#rt").show(1000);
                             $("#rooms").show(1000);
                         });
                     }else{
@@ -881,8 +905,8 @@ $(document).ready(function(){
                         html: true,
                         });
                         $("#infoGuest2").hide(1000);
-
                         document.getElementById('imgP2').src= data.passenger.pAvatar;
+                        document.getElementById('lblP2').innerHTML = data.passenger.name_1+"<br>"+data.passenger.lName_1;
                         document.getElementById('idP2').value = data.passenger.id_passenger;
                         document.getElementById('lblCapacity').innerHTML = "2/"+capacity+" (Asignado/Capacidad)";
                         if(capacity == 2){
@@ -948,7 +972,7 @@ $(document).ready(function(){
                         success:function(data){
                         swal({
                             title:"Reserva registrada!!",
-                            text: "Gracias por decidir hospedarte con nosotros, te enviaremos un correo con el detalle de la reserva.",
+                            text: "Gracias por completar la reserva, hemos enviado a ti y a tu(s) huésped(es) un correo con el detalle de la reserva.",
                             type: "success",
                             html: true,
                         }, function () {

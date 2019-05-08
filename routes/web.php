@@ -26,18 +26,27 @@ Route::get('/admin/users/user-profile/{id}', 'AdminController@getProfile');
 //maid routes
 Route::get('/maid', 'MaidController@index')->name('maid');
 Route::get('/maid/supplies', 'MaidController@getSupplies');
+Route::get('/maid/rooms-list', 'RoomsController@getList');
+Route::get('/maid/rooms-cards', 'RoomsController@getCards');
+Route::get('/maid/room-detail/{id}', 'RoomsController@getRoomDetail');
+
 
 //perfiles propios
 
 Route::get('my-profile', 'ProfileController@getMyProfile');
 
 Route::post('/admin/avatar', 'AdminController@postUpdateAvatar');
+Route::post('/admin/passenger/avatar', 'AdminController@postUpdatePassengerAvatar');
 
 Route::get('/user', 'UserController@index')->name('user');
+Route::get('/user/my-passengers', 'UserController@getMyPassengers')->name('myPassengers');
+Route::get('/user/my-passengers/passenger-profile/{id}', 'UserController@getPassengerProfile');
+Route::post('/user/passenger/avatar', 'UserController@postUpdatePassengerAvatar');
 
 Route::get('register/verify/{confirmationCode}', 'Auth\RegisterController@confirm');
 
-Route::post('/user/make_reservation', 'UserController@postMakeReserv')->name('reservation');
+Route::get('/user/my-reservations/list', 'UserController@getMyReservations')->name('my-reservations');
+Route::post('/user/my-reservations/make_reservation', 'UserController@postMakeReserv')->name('reservation');
 Route::post('/user/validate_guest', 'UserController@postValidateGuest');
 Route::post('/user/load-guest', 'UserController@postLoadGuest');
 Route::post('/user/load-guest2', 'UserController@postLoadGuest2');
@@ -46,10 +55,17 @@ Route::post('/user/fetch', 'UserController@postFetch')->name('fetch');
 	
 Route::get('/admin/rooms-cards', 'RoomsController@getCards');
 Route::get('/admin/room-detail/{id}', 'RoomsController@getRoomDetail');
+Route::post('/admin/room-sanitization', 'RoomsController@postRoomSanitization');
 Route::get('/admin/passengers/list', 'PassengersController@getList');
 Route::get('/admin/passengers/passenger-profile/{id}', 'PassengersController@getProfile');
 Route::get('/admin/passengers/cards', 'PassengersController@getCards');
 Route::get('/admin/reservations-list', 'ReservationController@getList');
+Route::post('/admin/reservations/update', 'ReservationController@postReservationUpdate')->name('updateReservation');
+Route::put('/admin/reservations/invoice', 'ReservationController@putReservationInvoice')->name('reservationInvoice');
+Route::put('/admin/reservations/checkin', 'ReservationController@putReservationCheckin')->name('checkin');
+Route::put('/admin/reservations/checkout', 'ReservationController@putReservationCheckout')->name('chekout');
+Route::put('/admin/reservations/cancel', 'ReservationController@putReservationCancel')->name('cancel');
+Route::get('/admin/reservations/reservation-detail/{id}', 'ReservationController@getReservationDetail');
 Route::post('/disp', 'WelcomeUserController@postDisp');
 Route::post('/admin/user-destroy', 'AdminController@postUserDestroy');
 

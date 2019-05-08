@@ -23,18 +23,18 @@ class WelcomeUserController extends Controller
     	//filtering by rooms that overlaps with the dates selected by user
     	//in order to remove them from the availables
     	$disp =  DB::table('reservations')
-    			->select('check_in', 'check_out', 'room_id as room')
+    			->select('check_in', 'check_out', 'roomType as room')
     			->where([
                     ['status', '!=', 'cancelled'],
                     ['status', '!=', 'finished'],
-                    ['check_out', '>', $request->checkIn],
-                    ['check_out', '<', $request->checkOut]
+                    ['check_out', '>=', $request->checkIn],
+                    ['check_out', '<=', $request->checkOut]
                 	])
                 ->orWhere([
                 	['status', '!=', 'cancelled'],
                     ['status', '!=', 'finished'],
-                	['check_in', '>', $request->checkIn],
-                	['check_in', '<', $request->checkOut]
+                	['check_in', '>=', $request->checkIn],
+                	['check_in', '<=', $request->checkOut]
                 	])
                 ->orWhere([
                 	['status', '!=', 'cancelled'],
@@ -45,21 +45,35 @@ class WelcomeUserController extends Controller
     			->get();
 
     	$aux = [];
+        $single = 3;
+        $shared = 1;
+        $matrimonial = 4;
 
     	foreach($disp as $d)
-    		$aux[] = $d->room;
+            if($d->room == 'single'){
+                $single -= 1;
+            }elseif($d->room == 'shared'){
+                $shared -= 1;
+            }elseif($d->room == 'matrimonial'){
+                $matrimonial -= 1;
+            }
+    		
+        $aux[] = $single;
+        $aux[] = $shared;
+        $aux[] = $matrimonial;
+
 
     	//collect every room available between dates selected by user
-    	$dRooms = DB::table('rooms')
+    	/*$dRooms = DB::table('rooms')
     			->select('id_room', 'type')
     			->whereNotIn('id_room', $aux)
-    			->get();
+    			->get();*/ //method change because of change of table and freedom of room assignment
 
     	//Amount of room by type available
     	$arta = [
-    		'single' => $dRooms->where('type', 'single')->count(),
-    		'compartida' => $dRooms->where('type', 'shared')->count(),
-    		'matrimonial' => $dRooms->where('type', 'matrimonial')->count()];
+    		'single' => $single,//$dRooms->where('type', 'single')->count(),
+    		'compartida' => $shared,//$dRooms->where('type', 'shared')->count(),
+    		'matrimonial' => $matrimonial];//$dRooms->where('type', 'matrimonial')->count()];
 
 
 

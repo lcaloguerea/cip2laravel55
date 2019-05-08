@@ -8,7 +8,7 @@
         <!--animate css-->
         <link rel="stylesheet" href="{{asset('animate.css')}}">
         <!-- fullCalendar 2.2.5-->
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+        <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.min.css')}}"/>
         <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.print.css')}}" media="print">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
@@ -61,21 +61,14 @@
                                 <div class="box-body">
                                     <!-- the events -->
                                     <div id="external-events">
-                                        <div class="external-event event-title b-maroon">Single 1</div>
-                                        <div class="external-event event-title b-maroon">Single 2</div>
-                                        <div class="external-event event-title b-maroon">Single 3</div>
-                                        <div class="external-event event-title b-maroon">Single 4</div>
-                                        <div class="external-event event-title b-purple">Compartida 1</div>
-                                        <div class="external-event event-title b-purple">Compartida 2</div>
-                                        <div class="external-event event-title b-orange">Matrimonial 1</div>
-                                        <div class="external-event event-title b-orange">Matrimonial 2</div>
-                                        <div class="checkbox">
-                                            <label style="padding-left: 0px;">
-                                                <input type="checkbox" class="icheck_flat_blue">
-                                                Remove after drop
-                                            </label>
-                                        </div>
-                                        <div><button type="button" class="btn btn-primary btn-block">+ Add Appointment</button></div>
+                                        <div class="event-title b-maroon">Single 1</div>
+                                        <div class="event-title b-maroon">Single 2</div>
+                                        <div class="event-title b-maroon">Single 3</div>
+                                        <div class="event-title b-purple">Compartida 4</div>
+                                        <div class="event-title b-orange">Matrimonial 5</div>
+                                        <div class="event-title b-orange">Matrimonial 6</div>
+                                        <div class="event-title b-orange">Matrimonial 7</div>
+                                        <div class="event-title b-orange">Matrimonial 8</div>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +106,7 @@
         <script src="{{asset('js/pages/jquery-icheck.js')}}"></script>
         <!-- fullCalendar 2.2.5 -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+        <script src="{{asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
         <script src="{{asset('js/pages/events.js')}}"></script>
         <!-- JS app -->
         <script src="{{asset('js/app2.js')}}"></script>

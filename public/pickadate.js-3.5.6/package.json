@@ -36,7 +36,7 @@
     "test": "grunt test --verbose"
   },
   "dependencies": {
-    "jquery": ">=1.7"
+    "jquery": ">=3.4.0"
   },
   "devDependencies": {
     "commander": "^2.8.0",

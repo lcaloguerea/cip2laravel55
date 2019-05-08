@@ -368,7 +368,7 @@
                       </td>
           <tr>
             <td class="free-text">
-              Estimad@ <strong>{{ $destinatario }}</strong>,
+              Estimad@ <strong></strong>,
               <br>
               <br>
               Gracias por registrarse en la plataforma de la Casa de Investigadores y Postgrado, su usuario ha sido verificado y validado, ya puede hacer uso de la plataforma.
@@ -394,15 +394,6 @@
                           </ul>
                         </td>
                       <tr>
-                        <td class="button">
-                          <div><!--[if mso]>
-                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:155px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
-                              <w:anchorlock/>
-                              <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">Update Account</center>
-                            </v:roundrect>
-                          <![endif]--><a href='{{ URL::to('http://127.0.0.1:8000/') }}'
-                          style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">Update Account</a></div>
-                        </td>
                       </tr>
                     </table>
                   </td>
@@ -433,9 +424,10 @@
         <table cellspacing="0" cellpadding="0" width="600" class="w320">
           <tr>
             <td style="padding: 25px 0 25px; color:white; font-family: cabin">
-              <strong style="color:white">cip_reservas@uach.cl</strong><br />
-              (63) 2 221258 <br />
-              Las Encinas 220, Isla Teja. <br /><br />
+              <strong style="color:white">cip_reservas<span>@</span>uach.cl</strong><br />
+              CIP: (63) 2 211136 <br />
+              Administración: +56 8 9209785 <br />
+              Avda. las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia. <br /><br />
             </td>
           </tr>
         </table>

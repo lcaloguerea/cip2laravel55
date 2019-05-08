@@ -7,37 +7,37 @@ function MorrisArea() {
     Morris.Area({
         element: 'area_chart',
         data: [{
-                period: '2011',
+                period: '2012',
                 Positive: 10,
                 Negative: 0,
                 Neutral: 0
             }, {
-                period: '2012',
+                period: '2013',
                 Positive: 30,
                 Negative: 65,
                 Neutral: 10
             }, {
-                period: '2013',
+                period: '2014',
                 Positive: 85,
                 Negative: 42,
                 Neutral: 32
             }, {
-                period: '2014',
+                period: '2015',
                 Positive: 60,
                 Negative: 4,
                 Neutral: 20
             }, {
-                period: '2015',
+                period: '2016',
                 Positive: 30,
                 Negative: 32,
                 Neutral: 40
             }, {
-                period: '2016',
+                period: '2018',
                 Positive: 120,
                 Negative: 60,
                 Neutral: 30
             }, {
-                period: '2017',
+                period: '2019',
                 Positive: 30,
                 Negative: 8,
                 Neutral: 22

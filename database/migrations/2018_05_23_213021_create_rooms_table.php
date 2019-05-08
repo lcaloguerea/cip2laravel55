@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->integer('price');
             $table->enum('status',['free','occupied']);
             $table->enum('type',['single','shared','matrimonial']);
+            $table->enum('sanitization',['done','required']);
             $table->timestamps();
 
             //fk active reservation 

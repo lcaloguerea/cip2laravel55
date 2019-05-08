@@ -198,9 +198,9 @@
                 // URL a la que se enviará la solicitud Ajax
                 url: '/disp' ,
                 success:function(data){
-                    $('#s').text('    Disponible '+data.single+' de 4');
-                    $('#c').text('    Disponible '+data.compartida+' de 2');
-                    $('#m').text('    Disponible '+data.matrimonial+' de 2');
+                    $('#s').text('    Disponible '+data.single+' de 3');
+                    $('#c').text('    Disponible '+data.compartida+' de 1');
+                    $('#m').text('    Disponible '+data.matrimonial+' de 4');
 
                     }
                 });

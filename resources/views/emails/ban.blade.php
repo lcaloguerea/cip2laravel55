@@ -1,461 +1,345 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-   <head>
-      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cabin">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Underscore-Responsive Email Template</title>
-      <style type="text/css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+   <!--[if gte mso 9]>
+   <xml>
+      <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+   </xml>
+   <![endif]-->
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="format-detection" content="date=no" />
+   <meta name="format-detection" content="address=no" />
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="x-apple-disable-message-reformatting" />
+    <!--[if !mso]><!-->
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet" />
+    <!--<![endif]-->
+   <title>Email Template</title>
+   <!--[if gte mso 9]>
+   <style type="text/css" media="all">
+      sup { font-size: 100% !important; }
+   </style>
+   <![endif]-->
+   
+
+   <style type="text/css" media="screen">
+      /* Linked Styles */
+      body { padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#f4f4f4; -webkit-text-size-adjust:none }
+      a { color:#a63434; text-decoration:none }
+      p { padding:0 !important; margin:0 !important } 
+      img { -ms-interpolation-mode: bicubic; /* Allow smoother rendering of resized image in Internet Explorer */ }
+      .mcnPreviewText { display: none !important; }
+
+            
+      /* Mobile styles */
+      @media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
+         u + .body .gwfw { width:100% !important; width:100vw !important; }
+
+         .m-shell { width: 100% !important; min-width: 100% !important; }
+         
+         .m-center { text-align: center !important; }
+         
+         .center { margin: 0 auto !important; }
+         .nav { line-height: 26px !important; font-size: 13px !important; }
+         
+         .td { width: 100% !important; min-width: 100% !important; }
+
+         .m-br-15 { height: 15px !important; }
+         .m-br-1 { height: 1px !important; background: #cccccc !important; display: block !important; }
+         .p30-20 { padding: 30px 20px !important; }
+         .p0 { padding: 0px !important; }
 
 
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: blue;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  font-family: Cabin;
-  padding: 6px 12px;
-  width: 300px;
-  height: 50px;
-  transition: all 0.5s;
-  margin: 0px;
+         .m-td,
+         .m-hide { display: none !important; width: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; min-height: 0 !important; }
 
-}
+         .m-block { display: block !important; }
 
-.button span {
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
+         .fluid-img img { width: 100% !important; max-width: 100% !important; height: auto !important; }
+         .logo img { width: 100% !important; max-width: 206px !important; height: auto !important; }
 
+         .column,
+         .column-top,
+         .column-bottom,
+         .column-dir-top,
+         .horiontal-devider { float: left !important; width: 100% !important; display: block !important; }
 
+         .horiontal-devider { padding: 25px 0px !important; }
 
-         /* Client-specific Styles */
-         #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
-         body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}
-         /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
-         .ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */
-         .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing. */
-         #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
-         img {outline:none; text-decoration:none;border:none; -ms-interpolation-mode: bicubic;}
-         a img {border:none;}
-         .image_fix {display:block;}
-         p {margin: 0px 0px !important;}
-         table td {border-collapse: collapse;}
-         table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
-         a {color: #33b9ff;text-decoration: none;text-decoration:none!important;}
-         /*STYLES*/
-         table[class=full] { width: 100%; clear: both; }
-         /*IPAD STYLES*/
-         @media only screen and (max-width: 640px) {
-         a[href^="tel"], a[href^="sms"] {
-         text-decoration: none;
-         color: #0a8cce; /* or whatever your want */
-         pointer-events: none;
-         cursor: default;
-         }
-         .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
-         text-decoration: default;
-         color: #0a8cce !important;
-         pointer-events: auto;
-         cursor: default;
-         }
-         table[class=devicewidth] {width: 440px!important;text-align:center!important;}
-         table[class=devicewidthmob] {width: 420px!important;text-align:center!important;}
-         table[class=devicewidthinner] {width: 420px!important;text-align:center!important;}
-         img[class=banner] {width: 440px!important;height:157px!important;}
-         img[class=col2img] {width: 440px!important;height:330px!important;}
-         table[class="cols3inner"] {width: 100px!important;}
-         table[class="col3img"] {width: 131px!important;}
-         img[class="col3img"] {width: 131px!important;height: 82px!important;}
-         table[class='removeMobile']{width:10px!important;}
-         img[class="blog"] {width: 420px!important;height: 162px!important;}
-         }
-
-         /*IPHONE STYLES*/
-         @media only screen and (max-width: 480px) {
-         a[href^="tel"], a[href^="sms"] {
-         text-decoration: none;
-         color: #0a8cce; /* or whatever your want */
-         pointer-events: none;
-         cursor: default;
-         }
-         .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
-         text-decoration: default;
-         color: #0a8cce !important; 
-         pointer-events: auto;
-         cursor: default;
-         }
-         table[class=devicewidth] {width: 280px!important;text-align:center!important;}
-         table[class=devicewidthmob] {width: 260px!important;text-align:center!important;}
-         table[class=devicewidthinner] {width: 260px!important;text-align:center!important;}
-         img[class=banner] {width: 280px!important;height:100px!important;}
-         img[class=col2img] {width: 280px!important;height:210px!important;}
-         table[class="cols3inner"] {width: 260px!important;}
-         img[class="col3img"] {width: 280px!important;height: 175px!important;}
-         table[class="col3img"] {width: 280px!important;}
-         img[class="blog"] {width: 260px!important;height: 100px!important;}
-         td[class="padding-top-right15"]{padding:15px 15px 0 0 !important;}
-         td[class="padding-right15"]{padding-right:15px !important;}
-         }
-      </style>
-   </head>
-   <body>
-
-<!-- End of preheader -->      
-<!-- Start of header -->
-<table width="100%" bgcolor="#d8d8d8" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="header">
-   <tbody>
+         .content-spacing { width: 15px !important; }
+      }
+   </style>
+</head>
+<body class="body" style="padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#f4f4f4; -webkit-text-size-adjust:none;">
+   <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4" class="gwfw">
       <tr>
-         <td>
-            <table width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-               <tbody>
-                  <tr>
-                     <td width="100%">
-                        <table bgcolor="#5caa19" width="560" cellpadding="0" cellspacing="0" border="0" align="center" style="border-top-left-radius:5px;border-top-right-radius:5px;" class="devicewidth">
-                           <tbody>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="10" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td>
-                                    <!-- logo -->
-                                    <table width="194" align="left" border="0" cellpadding="0" cellspacing="0">
-                                       <tbody>
-                                          <tr>
-                                             <td width="20"></td>
-                                             <td width="174" height="60" align="middle">
-                                                <div class="imgpop">
-                                                   <p style="font-family: Cabin; color:white; font-size: 32px; width: 560px">BLOQUEADO/A </p>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                    <!-- end of logo -->
-                                 </td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="10" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                           </tbody>
-                        </table>
-                     </td>
-                  </tr>
-               </tbody>
+         <td align="center" valign="top">
+            <!-- Header -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td style="padding: 55px 10px 30px 10px;" class="p30-20" align="center">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="logo img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/VUcXLDb.jpeg" width="206" height="30" border="0" alt="" /></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
             </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-<!-- End of Header -->
+            <!-- END Header -->
 
-<!-- 3-columns -->  
+            <!-- Navigation -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td style="padding: 0px 0px 10px 0px;" align="center">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="nav" bgcolor="#01787c" style="color:#ffffff; font-family:'Cabin', Arial, sans-serif; font-size:24px; line-height:18px; text-align:center; text-transform:uppercase; font-weight:bold; min-width:auto !important; padding:15px;">
+                                       Bienvenido a CIP
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <!-- END Navigation -->
 
-<!-- end of 3-columns --> 
-<!-- leftimage -->
-<table width="100%" bgcolor="#d8d8d8" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="left-image">
-   <tbody>
-      <tr>
-         <td>
-            <table width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-               <tbody>
-                  <tr>
-                     <td width="100%">
-                        <table bgcolor="#ffffff" width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-                           <tbody>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="0" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td>
-                                    <table width="520" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-                                       <tbody>
+            <!-- Intro -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+               <tr>
+                  <td valign="top" align="center" width="650" style="padding-bottom: 10px;">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i.ibb.co/nf5k70J/thanks.jpg" width="650" height="365" border="0" alt="" /></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="p30-20" bgcolor="#ffffff" style="padding: 45px 65px;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td>
-                                                <!-- Start of left column -->
-                                                <table width="200" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
-                                                   <tbody>
-                                                      <!-- image -->
-                                                      <tr>
-                                                         <td width="200" height="150" align="center" class="devicewidth">
-                                                            <img src="https://cdn0.iconfinder.com/data/icons/users-16/16/person_minus-512.png" alt="" border="0" width="100" height="100" style="display:block; border:none; outline:none; text-decoration:none;" class="col2img">
-                                                         </td>
-                                                      </tr>
-                                                      <!-- /image -->
-                                                   </tbody>
+                                             <td class="h2 center" style="padding-bottom: 25px; color:#444444; font-family:'Roboto', Arial, sans-serif; font-size:32px; line-height:38px; font-weight:bold; text-align:center;">Estimad@ {USER}</td>
+                                          </tr>
+                                          <tr>
+                                             <td class="text center" style="color:#444444; font-family:'Roboto', Arial, sans-serif; font-size:16px; line-height:28px; min-width:auto !important; text-align:center;">La Casa de Investigadores y Postgrado fue creada con el objetivo de otorgar facilidades a los académicos y estudiantes internacionales/nacionales que nos visitan.</td>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <!-- END Intro -->
+
+
+
+            <!-- Article -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+               <tr>
+                  <td valign="top" align="center" style="padding-bottom: 10px;">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="p30-20" bgcolor="#ffffff" style="padding: 45px 40px;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <th class="column" width="236" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                
+                                                   <tr>
+                                                      <td class="h5" style="padding-bottom: 35px; color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:bold;">
+                                                         Condiciones de uso:
+                                                      </td>
+                                                   </tr>
+                                                   <tr mc:repeatable>
+                                                      <td style="padding-bottom: 22px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/Clahiue.jpeg" width="12" height="10" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Las habitaciones son de uso exclusivo para los huéspedes, si su invitado viene acompañado deberá informarnos para que se registre y se considere el cobro adicional.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr mc:repeatable>
+                                                      <td style="padding-bottom: 22px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/Clahiue.jpeg" width="12" height="10" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">El recinto se encuentra con vigilancia en forma permanente y el acceso es controlado.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr mc:repeatable>
+                                                      <td style="padding-bottom: 22px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/Clahiue.jpeg" width="12" height="10" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Por no disponer de espacio adecuado no está permitido recibir niños menores de 12 años.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
                                                 </table>
-                                                <!-- end of left column -->
-                                                <!-- spacing for mobile devices-->
-                                                <table align="left" border="0" cellpadding="0" cellspacing="0" class="mobilespacing">
-                                                   <tbody>
-                                                      <tr>
-                                                         <td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                                      </tr>
-                                                   </tbody>
+                                             </th>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <!-- END Article -->
+
+            <!-- Article Image On The Right -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+               <tr>
+                  <td valign="top" align="center" style="padding-bottom: 10px;">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" bgcolor="#ffffff" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td style="padding: 0px 40px;" class="p30-20">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td style="padding: 40px 0px;" class="p0">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction: rtl;">
+                                                   <tr>
+                                                      <th class="column-dir-top" dir="ltr" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr; vertical-align:top;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="h4" style="padding-bottom: 15px; color:#444444; font-family:'Roboto', Arial, sans-serif; font-size:20px; line-height:26px; text-align:left; font-weight:bold;">Ya casi estamos listos...</td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td class="text2" style="padding-bottom: 20px; color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Para poder acceder a la plataforma CIP solo debes activar tu cuenta a continuación.</td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td align="center">
+                                                                  <table border="0" cellspacing="0" cellpadding="0">
+                                                                     <tr>
+                                                                        <td class="text-button" style="color:#ffffff; font-family:'Roboto', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; min-width:auto !important; font-weight:bold; padding:15px 20px; background:#01787c;"><a href="#" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">Activar</span></a></td>
+                                                                     </tr>
+                                                                  </table>
+                                                               </td>
+                                                            </tr>
+                                                         </table>
+                                                      </th>
+                                                   </tr>
                                                 </table>
-                                                <!-- end of for mobile devices-->
-                                                <!-- start of right column -->
-                                                <table width="300" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidthmob">
-                                                   <tbody>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <!-- END Article Image On The Right -->
 
-                                                      <!-- Spacing -->
-                                                      <tr>
-                                                         <td width="100%" height="30" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                                      </tr>
-                                                      <!-- /Spacing -->
-                                                      <!-- content -->
-                                                      <tr>
-                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #7a6e67; text-align:left; line-height: 24px;" class="padding-right15">
-                                                            Se ha procedido a bloquear su perfil de datos por infringir las condiciones de uso de la plataforma de postulación en línea de la Oficina de Movilidad Estudiantil, Universidad Austral de Chile.
-                                                         </td>
-                                                         </td>
-                                                      </tr>
-
-                                                      <tr>
-                                                         <td width="100%" height="30" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                                      </tr>
-                                                      <!-- end of content -->
-                                                   </tbody>
+            <!-- Article Image On The Left -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+               <tr>
+                  <td valign="top" align="center" style="padding-bottom: 10px;">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" bgcolor="#ffffff" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td style="padding: 40px;" class="p30-20">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <th class="column-top" width="285" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:middle;">
+                                                         <img src="https://i.ibb.co/1Z7J7Jm/logo-Mecesup.png" width="auto" height="212" border="0" alt="" />
+                                                      </td>
+                                                   </tr>
                                                 </table>
-                                                <!-- end of right column -->
-                                             </td>
+                                             </th>
                                           </tr>
-                                       </tbody>
-                                    </table>
-                                 </td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="0" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="5" bgcolor="#2d2a26" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                           </tbody>
-                        </table>
-                     </td>
-                  </tr>
-               </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
             </table>
+            <!-- END Article Image On The Left -->
+
+            <!-- Footer -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#047c8d">
+               <tr>
+                  <td align="center" style="padding: 60px 0px 50px 0px;" class="p30-20">
+                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                        <tr>
+                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr mc:hideable>
+                                    <td>
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td class="text-footer m-center" style="color:#ffffff; font-family:'Roboto', Arial, sans-serif; font-size:12px; line-height:26px; text-align:middle; min-width:auto !important;">cip_reservas<span>@</span>uach<span>.</span>cl</strong><br />
+              CIP: (63) 2 211136 <br />
+              Administración: +56 8 9209785 <br />
+              Avda. las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia. <br /><br /></td>
+                                                   </tr>
+                                                </table>
+                                             </th>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <!-- END Footer -->
          </td>
       </tr>
-   </tbody>
-</table>
-<!-- end of left image -->
-<!-- fulltext -->
-<table width="100%" bgcolor="#d8d8d8" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="left-image">
-   <tbody>
-      <tr>
-         <td>
-            <table width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-               <tbody>
-                  <tr>
-                     <td width="100%">
-                        <table bgcolor="#ffffff" width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-                           <tbody>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="0" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td>
-                                    <table width="520" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidthinner">
-                                       <tbody>
-                                          <!-- image -->
-
-                                          <!-- /image -->
-                                          <!-- Spacing -->
-                                          <tr>
-                                             <td width="100%" height="5" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                          </tr>
-                                          <!-- /Spacing -->
-                                          <tr>
-                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #2d2a26; text-align:center; line-height: 28px;">
-                                                <strong>Condiciones de uso</strong> 
-                                             </td>
-                                          </tr>
-                                          <!-- Spacing -->
-                                          <tr>
-                                             <td width="100%" height="5" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                          </tr>
-                                          <!-- /Spacing -->
-                                          <!-- content -->
-                                          <tr>
-                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #7a6e67; text-align:left; line-height: 24px;">
-                                                <ul style="list-style-type: number; padding-left: 2em;">
-                                                   <li><p align='justify'>El estudiante se compromete a entregar información verídica.</p></li>
-                                                   <li><p align='justify'>El estudiante debe mantener un lenguaje apropiado, respetuoso y tolerante a la diversidad de opiniones. No utilizar imágenes que atenten contra las personas, de lo contrario su perfil será bloqueado y no podrá participar de la plataforma.</p></li>
-                                                   <li><p align='justify'>El estudiante acepta que la UACh, utilice los datos personales proporcionado por el mismo estudiante para que sean utilizados única y exclusivamente para el cumplimiento del objeto de la Universidad.</p></li>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #7a6e67; text-align:left; padding-left: 3em; line-height: 24px;">
-                                                <p>Atentamente,</p><p>Oficina de Movilidad Estudiantil.</p>
-                                                <br>
-                                             </td>
-                                          </tr>
-                                          <!-- end of content -->
-                                       </tbody>
-                                    </table>
-                                 </td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="0" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="5" bgcolor="#2d2a26" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                           </tbody>
-                        </table>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-<!-- end of fulltext -->
-<!-- Start of footer -->
-<table width="100%" bgcolor="#d8d8d8" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="footer">
-   <tbody>
-      <tr>
-         <td>
-            <table width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-               <tbody>
-                  <tr>
-                     <td width="100%">
-                        <table bgcolor="#303030" width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-                           <tbody>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="10" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td>
-                                    <!-- logo -->
-                                    <table width="194" align="left" border="0" cellpadding="0" cellspacing="0">
-                                       <tbody>
-                                          <tr>
-                                             <td width="20"></td>
-                                             <td width="174" height="40" align="left">
-                                                <div class="imgpop">
-                                                   <p style="font-family: Cabin; color:white; font-size: 14px; width: 400px; height: 20px; padding-left: 2em"><strong>Oficina de movilidad estudiantil</strong></p>
-                                                   <p style="font-family: Cabin; color:white; font-size: 14px; width: 400; height: 20px; padding-left: 2em">Fono +56 63 2293665</p>
-                                                   <p style="font-family: Cabin; color:white; font-size: 14px; width: 400; height: 20px; padding-left: 2em">Correo: movilidadestudiantil@uach.cl</p>
-                                                   <p style="font-family: Cabin; color:white; font-size: 14px; width: 400; height: 20px; padding-left: 2em">www.sitioweb.cl</p>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                    <!-- end of logo -->
-                                    <!-- start of social icons -->
-                                    <table width="60" height="40" align="right" vaalign="middle"  border="0" cellpadding="0" cellspacing="0">
-                                       <tbody>
-                                          <tr>
-                                             <td width="22" height="22" align="left">
-                                                <div class="imgpop">
-                                                   <a target="_blank" href="#">
-                                                   <img src="https://vignette.wikia.nocookie.net/oneokrock/images/9/9d/Facebook-logo.png/revision/latest?cb=20151129091925" alt="" border="0" width="22" height="22" style="display:block; border:none; outline:none; text-decoration:none;">
-                                                   </a>
-                                                </div>
-                                             </td>
-                                             <td align="left" width="10" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                                             <td width="22" height="22" align="right">
-                                                <div class="imgpop">
-                                                   <a target="_blank" href="#">
-                                                   <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-twitter-512.png" alt="" border="0" width="22" height="22" style="display:block; border:none; outline:none; text-decoration:none;">
-                                                   </a>
-                                                </div>
-                                             </td>
-                                             <td align="left" width="20" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                    <!-- end of social icons -->
-                                 </td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="10" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                           </tbody>
-                        </table>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-<!-- End of footer -->
-   </body>
-
-   <style>
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: blue;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  font-family: Cabin;
-  padding: 6px 12px;
-  width: 300px;
-  height: 50px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 0px;
-
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-</style>
-
-   </html>
+   </table>
+</body>
+</html>

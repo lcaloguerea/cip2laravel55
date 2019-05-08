@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         $user->lName 				= 'Caloguerea';
         $user->confirmed	        = 'yes';
         $user->confirmed_code       =  str_random();
-        $user->department	        = 'Developer';
+        $user->department	        = 'CIP';
         $user->email                = 'l.caloguerea@gmail.com';
         $user->phone 				= '+56966080281';
         $user->password             = bcrypt('cip2laravel55');
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         $user->lName                = 'Sánchez';
         $user->confirmed            = 'yes';
         $user->confirmed_code       =  str_random();
-        $user->department           = 'Mucama';
+        $user->department           = 'CIP';
         $user->email                = 'patriciaximenasanchez@gmail.com';
         $user->phone                = '+56632211136';
         $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
@@ -58,7 +58,17 @@ class UsersTableSeeder extends Seeder
                 'lName' 		=> $faker->lastName,
                 'confirmed'		=> $faker->randomElement(['yes', 'no']),
                 'confirmed_code'=> str_random(),
-                'department'	=> $faker->jobTitle.' Department',
+                'department'	=> $faker->randomElement([
+                    'Arquitectura y artes',
+                    'Ciencias',
+                    'Ciencias agrarias',
+                    'Cs. Económicas y administrativas',
+                    'Cs. Forestales y recursos naturales',
+                    'Cs. Jurídicas y sociales',
+                    'Ciencias veterinarias',
+                    'Ciencias de la ingeniería',
+                    'Filosofía y humanidades',
+                    'Medicina']),
                 'email'			=> $faker->unique->email ,
                 'phone'			=> $faker->e164PhoneNumber,
                 'password'		=> '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',

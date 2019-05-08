@@ -19,10 +19,13 @@ class Reservation extends Model
         'check_in',
         'check_out',
         'payment_m',
+        'roomType',
         'room_id',
         'user_id',
 
     ];
+
+    protected $primaryKey = 'id_res';
 
     public function roomR()
     {
