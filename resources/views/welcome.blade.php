@@ -301,7 +301,7 @@
                     <!-- Video Area Start -->
                     <div class="video-area" style="background-image: url(img/front_building.JPG);">
                         <div class="video-play-btn">
-                            <a href="https://www.youtube.com/watch?v=f5BBJ4ySgpo" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/watch?v=YSZgU6GxDJU" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
