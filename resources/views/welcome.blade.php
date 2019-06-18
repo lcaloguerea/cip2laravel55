@@ -18,6 +18,10 @@
     <!-- Core Stylesheet -->
     <link href="{{asset('style.css')}}" rel="stylesheet">
 
+    <!-- Slick-Slider -->
+    <link href="{{asset('js/slick-1.8.1/slick/slick.css')}}" rel="stylesheet">
+    <link href="{{asset('js/slick-1.8.1/slick/slick-theme.css')}}" rel="stylesheet">
+
     <!-- Responsive CSS -->
     <link href="{{asset('css/colorlib/responsive.css')}}" rel="stylesheet">
 
@@ -370,35 +374,77 @@
                 <div class="col-12 text-center">
                     <!-- Heading Text  -->
                     <div class="section-heading">
-                        <h2>App Screenshots</h2>
+                        <h2>Alrededores, Ocio y Más...</h2>
                         <div class="line-shape"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- App Screenshots Slides  -->
-                    <div class="app_screenshots_slides owl-carousel">
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-1.jpg" alt="">
+                    <div class="slick-slider" style="margin: auto 20px;">
+                        <div class="item">
+                            <img src="img/building/DSC_7023.JPG" alt="">
                         </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-2.jpg" alt="">
+                        <div class="item">
+                            <img src="img/building/DSC_7033.JPG" alt="">
                         </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-3.jpg" alt="">
+                        <div class="item">
+                            <img src="img/building/DSC_7041.JPG" alt="">
                         </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-4.jpg" alt="">
+                        <div class="item">
+                            <img src="img/recreation/DSC_7050.JPG" alt="">
                         </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-5.jpg" alt="">
+                        <div class="item">
+                            <img src="img/recreation/DSC_7054.JPG" alt="">
+                        </div>                        
+                        <div class="item">                            
+                            <img src="img/recreation/DSC_7070.JPG" alt="">
                         </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-3.jpg" alt="">
+                        <div class="item">
+                            <img src="img/recreation/DSC_7072.JPG" alt="">
+                        </div> 
+                        <div class="item">
+                            <img src="img/recreation/DSC_7076.JPG" alt="">
+                        </div>                        
+                        <div class="item">                            
+                            <img src="img/recreation/DSC_7132.JPG" alt="">
                         </div>
+                        <div class="item">
+                            <img src="img/recreation/DSC_7141.JPG" alt="">
+                        </div>                                                                      
+                        <div class="item">
+                            <img src="img/surroundings/DSC_0004.JPG" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_0015.JPG" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_0020.JPG" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_0031.JPG" alt="">
+                        </div>   
+                        <div class="item">
+                            <img src="img/surroundings/DSC_0766.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_1794.JPG" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_7102.JPG" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_7421.JPG" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="img/surroundings/DSC_7535.JPG" alt="">
+                        </div>   
+                        <div class="item">
+                            <img src="img/surroundings/DSC_8603.JPG" alt="">
+                        </div>                                             
                     </div>
                 </div>
             </div>
@@ -478,7 +524,7 @@
                         <div class="package-plan">
                             <h5>Doble</h5>
                             <div class="ca-price d-flex justify-content-center">
-                            <h4>$40.000</h4>
+                            <h4>$40.000 *</h4>
                             </div>
                         </div>
                         <div class="package-description">
@@ -507,102 +553,35 @@
                 <div class="col-12 col-md-10">
                     <div class="slider slider-for">
                         <!-- Client Feedback Text  -->
+                        @foreach($testimonials as $t)
                         <div class="client-feedback-text text-center">
                             <div class="client">
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
                             <div class="client-description text-center">
-                                <p>“ I have been using it for a number of years. I use Colorlib for usability testing. It's great for taking images and making clickable image prototypes that do the job and save me the coding time and just the general hassle of hosting. ”</p>
+                                <p>“ {{$t->comment}} ”</p>
                             </div>
                             <div class="star-icon text-center">
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
+                                @for($i=0;$i<$t->rate;$i++)
+                                    <i class="ion-ios-star"></i>
+                                @endfor
                             </div>
                             <div class="client-name text-center">
-                                <h5>Aigars Silkalns</h5>
-                                <p>Ceo Colorlib</p>
+                                <h5>{{$t->name}}</h5>
+                                <p>{{$t->department}}</p>
                             </div>
                         </div>
-                        <!-- Client Feedback Text  -->
-                        <div class="client-feedback-text text-center">
-                            <div class="client">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
-                            </div>
-                            <div class="client-description text-center">
-                                <p>“ I use Colorlib for usability testing. It's great for taking images and making clickable image prototypes that do the job and save me the coding time and just the general hassle of hosting. ”</p>
-                            </div>
-                            <div class="star-icon text-center">
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                            </div>
-                            <div class="client-name text-center">
-                                <h5>Jennifer</h5>
-                                <p>Developer</p>
-                            </div>
-                        </div>
-                        <!-- Client Feedback Text  -->
-                        <div class="client-feedback-text text-center">
-                            <div class="client">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
-                            </div>
-                            <div class="client-description text-center">
-                                <p>“ I have been using it for a number of years. I use Colorlib for usability testing. It's great for taking images and making clickable image prototypes that do the job.”</p>
-                            </div>
-                            <div class="star-icon text-center">
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                            </div>
-                            <div class="client-name text-center">
-                                <h5>Helen</h5>
-                                <p>Marketer</p>
-                            </div>
-                        </div>
-                        <!-- Client Feedback Text  -->
-                        <div class="client-feedback-text text-center">
-                            <div class="client">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
-                            </div>
-                            <div class="client-description text-center">
-                                <p>“ I have been using it for a number of years. I use Colorlib for usability testing. It's great for taking images and making clickable image prototypes that do the job and save me the coding time and just the general hassle of hosting. ”</p>
-                            </div>
-                            <div class="star-icon text-center">
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                            </div>
-                            <div class="client-name text-center">
-                                <h5>Henry smith</h5>
-                                <p>Developer</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- Client Thumbnail Area -->
                 <div class="col-12 col-md-6 col-lg-5">
                     <div class="slider slider-nav">
-                        <div class="client-thumbnail">
-                            <img src="img/bg-img/client-3.jpg" alt="">
-                        </div>
-                        <div class="client-thumbnail">
-                            <img src="img/bg-img/client-2.jpg" alt="">
-                        </div>
-                        <div class="client-thumbnail">
-                            <img src="img/bg-img/client-1.jpg" alt="">
-                        </div>
-                        <div class="client-thumbnail">
-                            <img src="img/bg-img/client-2.jpg" alt="">
-                        </div>
+                    @foreach($testimonials as $tp)
+                    <div class="client-thumbnail">
+                        <img src="{{$tp->pAvatar}}">
+                    </div>
+                    @endforeach                       
                     </div>
                 </div>
             </div>
@@ -703,28 +682,23 @@
         <div class="footer-text">
             <h2>CIP</h2>
         </div>
-        <!-- social icon-->
-        <div class="footer-social-icon">
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-        </div>
         <div class="footer-menu">
             <nav>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Terms &amp; Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+
+                    <strong>Copyright &copy; {{date("Y")}} <a href="mailto:l.caloguerea@gmail.com">Thánatos development</a>.</strong> All rights reserved.
+                
             </nav>
         </div>
         <!-- Foooter Text-->
     </footer>
     <!-- ***** Footer Area Start ***** -->
 
-
+<style type="text/css">
+          .slick-prev:before,
+      .slick-next:before {
+        color: green;
+      }
+</style>
 
     <!-- Jquery-2.2.4 JS -->
     <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
@@ -741,7 +715,7 @@
     <!-- All Plugins JS -->
     <script src="{{asset('js/plugins.js')}}"></script>
     <!-- Slick Slider Js-->
-    <script src="{{asset('js/slick.min.js')}}"></script>
+    <script src="{{asset('js/slick-1.8.1/slick/slick.min.js')}}"></script>
     <!-- Footer Reveal JS -->
     <script src="{{asset('js/footer-reveal.min.js')}}"></script>
     <!-- Active JS -->
@@ -762,6 +736,43 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+
+        $('.slick-slider').not('.slick-initialized').slick({
+dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
 
 
         $('#srchDisp').on('click',function(e){

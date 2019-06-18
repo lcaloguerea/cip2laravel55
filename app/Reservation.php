@@ -22,6 +22,8 @@ class Reservation extends Model
         'roomType',
         'room_id',
         'user_id',
+        'user_obs',
+        'guest_obs',
 
     ];
 

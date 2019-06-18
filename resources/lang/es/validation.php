@@ -131,5 +131,6 @@ return [
 		'nationality' => 'nacionalidad',
 		'country_o' => 'país de origen',
 		'country_r' => 'país de residencia',
+		'monthly' => 'Mensual',
 	],
 ];

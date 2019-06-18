@@ -17,9 +17,12 @@
    <meta name="format-detection" content="telephone=no" />
    <meta name="x-apple-disable-message-reformatting" />
     <!--[if !mso]><!-->
-   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet" />
+   <style>
+@import url('https://fonts.googleapis.com/css?family=Amaranth:400,700');
+</style>
     <!--<![endif]-->
-   <title>Email Template</title>
+   <title>Reserva registrada</title>
    <!--[if gte mso 9]>
    <style type="text/css" media="all">
       sup { font-size: 100% !important; }
@@ -30,7 +33,7 @@
    <style type="text/css" media="screen">
       /* Linked Styles */
       body { padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#f4f4f4; -webkit-text-size-adjust:none }
-      a { color:#a63434; text-decoration:none }
+      a { color:#488edc; text-decoration:none }
       p { padding:0 !important; margin:0 !important } 
       img { -ms-interpolation-mode: bicubic; /* Allow smoother rendering of resized image in Internet Explorer */ }
       .mcnPreviewText { display: none !important; }
@@ -43,17 +46,16 @@
          .m-shell { width: 100% !important; min-width: 100% !important; }
          
          .m-center { text-align: center !important; }
+         .nav { line-height: 26px !important; }
          
          .center { margin: 0 auto !important; }
-         .nav { line-height: 26px !important; font-size: 13px !important; }
          
          .td { width: 100% !important; min-width: 100% !important; }
 
          .m-br-15 { height: 15px !important; }
-         .m-br-1 { height: 1px !important; background: #cccccc !important; display: block !important; }
-         .p30-20 { padding: 30px 20px !important; }
-         .p0 { padding: 0px !important; }
-
+         .pb30 { padding-bottom: 30px !important; }
+         .p30-15 { padding: 30px 15px !important; }
+         .p0-15 { padding: 0px 15px !important; }
 
          .m-td,
          .m-hide { display: none !important; width: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; min-height: 0 !important; }
@@ -61,271 +63,476 @@
          .m-block { display: block !important; }
 
          .fluid-img img { width: 100% !important; max-width: 100% !important; height: auto !important; }
-         .logo img { width: 100% !important; max-width: 206px !important; height: auto !important; }
 
          .column,
-         .column-top,
-         .column-bottom,
-         .column-dir-top,
-         .horiontal-devider { float: left !important; width: 100% !important; display: block !important; }
-
-         .horiontal-devider { padding: 25px 0px !important; }
+         .column-top, 
+         .column-bottom, 
+         .column-dir { float: left !important; width: 100% !important; display: block !important; }
 
          .content-spacing { width: 15px !important; }
       }
+
+hr {
+   border : 0;
+   height: 1px; 
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 100, 10, 0.55), rgba(0, 0, 0, 0)); 
+}
+
    </style>
 </head>
 <body class="body" style="padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#f4f4f4; -webkit-text-size-adjust:none;">
    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4" class="gwfw">
       <tr>
          <td align="center" valign="top">
-            <!-- Header -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
                <tr>
-                  <td style="padding: 55px 10px 30px 10px;" class="p30-20" align="center">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                  <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                     <!-- Header -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                           <td style="padding: 55px 0px 35px 0px;">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td class="logo img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/VUcXLDb.jpeg" width="206" height="30" border="0" alt="" /></td>
-                                 </tr>
-                              </table>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <!-- END Header -->
-
-            <!-- Navigation -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-               <tr>
-                  <td style="padding: 0px 0px 10px 0px;" align="center">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
-                        <tr>
-                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td class="nav" bgcolor="#01787c" style="color:#ffffff; font-family:'Cabin', Arial, sans-serif; font-size:24px; line-height:18px; text-align:center; text-transform:uppercase; font-weight:bold; min-width:auto !important; padding:15px;">
-                                       Bienvenido a CIP
-                                    </td>
-                                 </tr>
-                              </table>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <!-- END Navigation -->
-
-            <!-- Intro -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
-               <tr>
-                  <td valign="top" align="center" width="650" style="padding-bottom: 10px;">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
-                        <tr>
-                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i.ibb.co/nf5k70J/thanks.jpg" width="650" height="365" border="0" alt="" /></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="p30-20" bgcolor="#ffffff" style="padding: 45px 65px;">
+                                    <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td class="h2 center" style="padding-bottom: 25px; color:#444444; font-family:'Roboto', Arial, sans-serif; font-size:32px; line-height:38px; font-weight:bold; text-align:center;">Estimad@ {USER}</td>
-                                          </tr>
-                                          <tr>
-                                             <td class="text center" style="color:#444444; font-family:'Roboto', Arial, sans-serif; font-size:16px; line-height:28px; min-width:auto !important; text-align:center;">La Casa de Investigadores y Postgrado fue creada con el objetivo de otorgar facilidades a los académicos y estudiantes internacionales/nacionales que nos visitan.</td>
-                                          </tr>
-                                       </table>
-                                    </td>
-                                 </tr>
-                              </table>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <!-- END Intro -->
-
-
-
-            <!-- Article -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
-               <tr>
-                  <td valign="top" align="center" style="padding-bottom: 10px;">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
-                        <tr>
-                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td class="p30-20" bgcolor="#ffffff" style="padding: 45px 40px;">
-                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                             <th class="column" width="236" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                
+                                             <td align="left">
+                                                <table border="0" cellspacing="0" cellpadding="0" class="center" style="text-align:center;">
                                                    <tr>
-                                                      <td class="h5" style="padding-bottom: 35px; color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:bold;">
-                                                         Condiciones de uso:
-                                                      </td>
-                                                   </tr>
-                                                   <tr mc:repeatable>
-                                                      <td style="padding-bottom: 22px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/Clahiue.jpeg" width="12" height="10" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Las habitaciones son de uso exclusivo para los huéspedes, si su invitado viene acompañado deberá informarnos para que se registre y se considere el cobro adicional.</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>
-                                                   <tr mc:repeatable>
-                                                      <td style="padding-bottom: 22px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/Clahiue.jpeg" width="12" height="10" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">El recinto se encuentra con vigilancia en forma permanente y el acceso es controlado.</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>
-                                                   <tr mc:repeatable>
-                                                      <td style="padding-bottom: 22px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://img.fenixzone.net/i/Clahiue.jpeg" width="12" height="10" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Por no disponer de espacio adecuado no está permitido recibir niños menores de 12 años.</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>
-                                                </table>
-                                             </th>
-                                          </tr>
-                                       </table>
-                                    </td>
-                                 </tr>
-                              </table>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <!-- END Article -->
-
-            <!-- Article Image On The Right -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
-               <tr>
-                  <td valign="top" align="center" style="padding-bottom: 10px;">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
-                        <tr>
-                           <td class="td" bgcolor="#ffffff" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td style="padding: 0px 40px;" class="p30-20">
-                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                             <td style="padding: 40px 0px;" class="p0">
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction: rtl;">
-                                                   <tr>
-                                                      <th class="column-dir-top" dir="ltr" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr; vertical-align:top;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="h4" style="padding-bottom: 15px; color:#444444; font-family:'Roboto', Arial, sans-serif; font-size:20px; line-height:26px; text-align:left; font-weight:bold;">Ya casi estamos listos...</td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td class="text2" style="padding-bottom: 20px; color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Para poder acceder a la plataforma CIP solo debes activar tu cuenta a continuación.</td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td align="center">
-                                                                  <table border="0" cellspacing="0" cellpadding="0">
-                                                                     <tr>
-                                                                        <td class="text-button" style="color:#ffffff; font-family:'Roboto', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; min-width:auto !important; font-weight:bold; padding:15px 20px; background:#01787c;"><a href="#" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">Activar</span></a></td>
-                                                                     </tr>
-                                                                  </table>
-                                                               </td>
-                                                            </tr>
-                                                         </table>
-                                                      </th>
+                                                      <td class="text-top" style="padding-left: 10px; color:#038b71; font-family: 'Amaranth', sans-serif; font-weight: bold;   font-size:30px; line-height:20px; text-align:left; min-width:auto !important;">CIP</td>
+                                                      <td class="content-spacing" width="10" style="font-size:0pt; line-height:0pt; text-align:left;">&nbsp;</td>
+                                                      <td class="img" width="1" bgcolor="#c0c0c0" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+                                                      <td class="content-spacing" width="10" style="font-size:0pt; line-height:0pt; text-align:left;">&nbsp;</td>
+                                                      <td class="text-top" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:20px; text-align:left; min-width:auto !important;">Casa de Investigadores y Postgrado</td>
                                                    </tr>
                                                 </table>
                                              </td>
                                           </tr>
                                        </table>
-                                    </td>
+                                    </th>
+                                    <th style="padding-bottom: 20px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="10"></th>
                                  </tr>
                               </table>
                            </td>
                         </tr>
                      </table>
-                  </td>
-               </tr>
-            </table>
-            <!-- END Article Image On The Right -->
+                     <!-- END Header -->
 
-            <!-- Article Image On The Left -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
-               <tr>
-                  <td valign="top" align="center" style="padding-bottom: 10px;">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                     <!-- Navigation -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#038b71">
                         <tr>
-                           <td class="td" bgcolor="#ffffff" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                           <td class="nav" style="color:#ffffff; font-family:'Amaranth', sans-serif; font-size:20px; line-height:18px; font-weight: 500; text-align:center; min-width:auto !important; padding:15px;">
+                             <span class="link-white" style="color:#ffffff; text-decoration:none;">RESERVA REGISTRADA</span>
+                           </td>
+                        </tr>
+                     </table>
+                     <!-- END Navigation -->
+
+                     <!-- Hero -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://letmetellyousomethingblogdotcom.files.wordpress.com/2015/03/checking-in.jpg" width="650" height="380" border="0" alt="" /></td>
+                        </tr>
+                        <tr>
+                           <td class="p30-15" style="padding: 50px 30px;">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td style="padding: 40px;" class="p30-20">
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Estimado(a) usuario,</td>
+                                 </tr>
+                                 <tr>
+                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha registrado una reserva a su nombre en la Casa de Investigadores y Postgrado. <br> A continuación le entregamos el detalle.</td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+
+                     </table>
+                     <!-- END Hero -->
+                  <hr>
+
+                     <!-- Properties / Two Columns -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td style="padding-bottom: 70px; padding-top: 70px;" class="pb30">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <th class="column-top" width="285" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/single.png')}}" width="315" height="237" border="0" alt="" /></td>
+                                          </tr>
+                                          <tr>
+                                             <td class="p0-15">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:middle;">
-                                                         <img src="https://i.ibb.co/1Z7J7Jm/logo-Mecesup.png" width="auto" height="212" border="0" alt="" />
+                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Amaranth', sans-serif; font-size:22px; line-height:32px; text-align:left;" class="h3">Detalles de su reserva:</td>
+                                                   </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i1.wp.com/sluggerotoole.com/wp-content/uploads/2016/09/Generic-calendar-page-icon.png?fit=1024%2C1024&ssl=1" width="15" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Registro: date</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                                                   
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i1.wp.com/sluggerotoole.com/wp-content/uploads/2016/09/Generic-calendar-page-icon.png?fit=1024%2C1024&ssl=1" width="15" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Check in: start</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i1.wp.com/sluggerotoole.com/wp-content/uploads/2016/09/Generic-calendar-page-icon.png?fit=1024%2C1024&ssl=1" width="15" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Check out: end</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                                                   
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://www.hotelcasamiguel.com/images/door.png" width="15" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación simple</td>
+                                                            </tr>
+                                                         </table>
                                                       </td>
                                                    </tr>
                                                 </table>
-                                             </th>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                                    <th style="padding-bottom: 30px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="20"></th>
+                                    <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="https://ironmaidencolombiafc.files.wordpress.com/2011/12/02_steve-harris.jpg?w=630&h=445" width="315" height="237" border="0" alt="" /></td>
+                                          </tr>
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Amaranth', sans-serif; font-size:22px; line-height:32px; text-align:left;" class="h3">Registrada por:</td>
+                                                   </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://banner2.kisspng.com/20180412/phw/kisspng-computer-icons-youtube-avatar-person-people-vector-5acf0e1e251dc4.6874627715235190061521.jpg" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Nombre: Nombre1 Apellido</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://image.flaticon.com/icons/png/512/138/138228.png" width="10" height="15" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Departamento: Depto</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.icons8.com/cotton/2x/secured-letter--v1.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Email: mail</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://www.siatechschools.org/wp-content/uploads/2014/10/Mobile-Phone-icon.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Teléfono: </td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                                                                                                      
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="p30-15" style="padding: 0px 30px; padding-bottom: 70px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Observaciones del responsable:</td>
+                                 </tr>
+                                 <tr>
+                                    <td class="text center" style="background-color:#e28f00;padding: 25px; color:#ffffff; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                     <!-- END Properties / Two Columns -->                 
+                     <hr>
+
+                     <!-- Hero -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 70px">
+                        <tr>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://paraquesirve.tv/wp-content/uploads/2017/10/para-que-sirve-un-reglamento_opt.jpg" width="650" height="380" border="0" alt="" /></td>
+                        </tr>
+                        <tr>
+                           <td class="p30-15" style="padding: 50px 30px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Servicio y normas:</td>
+                                 </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">No está permitido el ingreso de acompañantes, las habitaciones son de uso exclusivo de los huéspedes, si viene acompañado debe solicitar una reserva y pagar la tarifa correspondiente.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Las habitaciones cuentan con aire acondicionado, televisión satelital, Wi Fi, Frigobar, secador de pelo. Se entregan toallas y amenidades para el baño. Facilitamos plancha para ropa.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Ofrecemos una cocina completamente equipada. El desayuno funciona como autoservicio y está incluido en el precio, incluye: café de grano, leche, pan, mantequilla y mermelada.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr> 
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">El servicio de mucama y aseo, es sólo de lunes a viernes. Los fines de semana y festivos usted deberá mantener los espacios comunes en orden, considerando que comparte con otros
+                                                               huéspedes.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>  
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"><u><strong>No ofrecemos servicio de lavandería.</strong></u></td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                                                                                                   
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                              </table>
+                           </td>
+                        </tr>
+
+                     </table>
+                     <!-- END Hero -->
+
+                  <hr>
+
+                     <!-- Hero -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 0px">
+                        <tr>
+                           <td class="p30-15" style="padding: 50px 30px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Acceso:</td>
+                                 </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">El recinto es controlado por vigilancia las 24 horas. Por normativa, el personal de vigilancia hará registro de sus ingresos y salidas. De lunes a viernes después de las 21:00 horas, fines de semanas y festivos, debe ingresar por el costado izquierdo de la puerta principal.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                          
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                              </table>
+                           </td>
+                        </tr>
+
+                     </table>
+                     <!-- END Hero -->
+
+                  <hr>
+
+                     <!-- Property / Image On the Right -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td style="padding-bottom: 70px; padding-top: 70px" class="pb30">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+
+                                  <th class="column-dir" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Fira Sans', Arial, sans-serif; font-size:22px; line-height:32px; text-align:center;" class="h3">Conozca nuestra ubicación</td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td class="text2" style="padding-bottom: 18px; color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">La Casa de Investigación y Postgrado – CIP se encuentra ubicada en el 4° piso del módulo C del Ex Hotel Isla Teja, Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno universitario rodeado de naturaleza. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia. <br><br>Hal hacer click en la magina puede vernos en google maps.</td>
+                                                   </tr>
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                                    <th style="padding-bottom: 20px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="40"></th>
+                                    <th class="column-dir" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Las+Encinas+220,+Valdivia,+Regi%C3%B3n+de+los+R%C3%ADos/@-39.809574,-73.253185,16z/data=!4m5!3m4!1s0x9615ede0a0bed76b:0x33cd44510e455c4a!8m2!3d-39.809574!4d-73.2531849?hl=es-CL"><img src="http://img.fenixzone.net/i/UIHDkKc.png" width="315" height="470" border="0" alt="" /></a></td>
+                                          </tr>
+                                       </table>
+                                    </th>
+
+  
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                     <!-- END Property / Image On the Right -->
+                     <hr>
+
+
+
+
+                     <!-- CTA -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td style="padding: 50px;" class="p30-15" bgcolor="#488edc">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Tiene alguna observación?</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Si desea ingresar alguna observación extra a su reserva, puede realizarlo a través del siguiente enlace.</td>
+                                 </tr>
+                                 <tr>
+                                    <td align="center">
+                                       <table border="0" cellspacing="0" cellpadding="0" class="center" style="text-align:center;">
+                                          <tr>
+                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="{{env('APP_URL')}}" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Añadir observación </span></a></td>
                                           </tr>
                                        </table>
                                     </td>
                                  </tr>
+                                 <tr>
+                                    <td style="padding-bottom: 30px; padding-top: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:25px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Te esperamos!!</td>
+                                 </tr>                                 
                               </table>
                            </td>
                         </tr>
                      </table>
-                  </td>
-               </tr>
-            </table>
-            <!-- END Article Image On The Left -->
+                     <!-- END CTA -->
 
-            <!-- Footer -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#047c8d">
-               <tr>
-                  <td align="center" style="padding: 60px 0px 50px 0px;" class="p30-20">
-                     <table width="650" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+                     <!-- Footer -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                           <td style="padding: 50px 0px;" class="p30-15">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr mc:hideable>
+                                 <tr>
+                                    <td style="padding-bottom: 32px;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <th class="column" width="150" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td class="img m-center" style="font-size:0pt; line-height:0pt; text-align:center;"><img src="https://i.ibb.co/1Z7J7Jm/logo-Mecesup.png" width="300" height="" border="0" alt="" /></td>
+                                                   </tr>
+                                                </table>
+                                             </th>
+                                             <th style="padding-bottom: 25px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="1"></th>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
                                     <td>
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
                                              <th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td class="text-footer m-center" style="color:#ffffff; font-family:'Roboto', Arial, sans-serif; font-size:12px; line-height:26px; text-align:middle; min-width:auto !important;">cip_reservas<span>@</span>uach<span>.</span>cl</strong><br />
-              CIP: (63) 2 211136 <br />
-              Administración: +56 8 9209785 <br />
-              Avda. las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia. <br /><br /></td>
+                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 4, Isla Teja - Valdivia. <br /><br /></td>
                                                    </tr>
                                                 </table>
                                              </th>
+                                             <th style="padding-bottom: 25px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="1"></th>
                                           </tr>
                                        </table>
                                     </td>
@@ -334,10 +541,10 @@
                            </td>
                         </tr>
                      </table>
+                     <!-- END Footer -->
                   </td>
                </tr>
             </table>
-            <!-- END Footer -->
          </td>
       </tr>
    </table>

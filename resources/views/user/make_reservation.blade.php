@@ -107,6 +107,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class='form-group'>
+                                            <label>Observaciones (Opcional)</label>
+                                            <textarea class="form-control" id="user_obs" name="user_obs"></textarea>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="row">
                                     <div id="rooms" class='col-md-6' style="display:none">
                                         <div class="form-group">
                                             <label>Seleccione habitación</label>
@@ -959,10 +967,11 @@ $(document).ready(function(){
                     var payment_m = $('#payment_m').val();
                     var checkin = $('#in').val();
                     var checkout = $('#out').val();
+                    var user_obs = $('#user_obs').val();
 
                     $.ajax({
                         // En data puedes utilizar un objeto JSON, un array o un query string
-                       data:{passenger1:passenger1, passenger2:passenger2, roomType:roomType, motive:motive, program:program, payment_m:payment_m, checkin:checkin, checkout:checkout,  "_token": "{{ csrf_token() }}"},
+                       data:{passenger1:passenger1, passenger2:passenger2, roomType:roomType, motive:motive, program:program, payment_m:payment_m, checkin:checkin, checkout:checkout, user_obs:user_obs,  "_token": "{{ csrf_token() }}"},
                         //Cambiar a type: POST si necesario
                         type: 'POST',
                         // Formato de datos que se espera en la respuesta

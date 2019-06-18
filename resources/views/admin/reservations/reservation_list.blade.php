@@ -91,7 +91,7 @@
                                                 </td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
-                                                <td>{{$item->payment_m}}</td>
+                                                <td>{{trans('attributes.'.$item->payment_m)}}</td>
                                                 <td>{{$item->room_id}}</td>
                                             </tr>
                                         @endforeach
