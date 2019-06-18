@@ -1,6 +1,10 @@
 @include('layout.header')
 
-        <link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap.css')}}">
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
         <link rel="stylesheet" href="{{asset('responsive-tables/responsivetables.css')}}">
         <!-- Icons -->
         <link href="{{asset('icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -54,10 +58,9 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="table responsive">
+                                    <table id="payments" class="display nowrap" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
                                                 <th>Usuario</th>
                                                 <th>Huésped(es)</th>
                                                 <th>Estado</th>
@@ -70,7 +73,6 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{$reserv->id_res}}</td>
                                                 <td><a href="user-profile/{{$reserv->userR->id}}">{{$reserv->userR->name}} {{$reserv->userR->lName}}</a></td>
                                                 <td>
                                                 @foreach($pGroups as $pg)
@@ -92,8 +94,8 @@
                                                 </td>
                                                 <td>{{date('d-m-Y', strtotime($reserv->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($reserv->check_out))}}</td>
-                                                <td>{{$reserv->payment_m}}</td>
-                                                <td>{{$reserv->roomType}}</td>
+                                                <td>{{trans('attributes.'.$reserv->payment_m)}}</td>
+                                                <td>{{trans('attributes.'.$reserv->roomType)}}</td>
                                                 <td>@if($reserv->room_id == null)
                                                         <select id="room" class="form-control">
                                                             <option selected="selected" value="">--</option>
@@ -108,6 +110,22 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="box-body">
+                                    <div class="panel panel-warning">
+                                        <div style="padding: 1px 10px" class="panel-heading">
+                                            <div class="panel-title">
+                                                <h4>Observaciones</h4>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            @if($reserv->user_obs != "")
+                                                <p>{{$reserv->user_obs}}</p>
+                                            @else
+                                                <p>Sin observaciones.</p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -196,13 +214,23 @@
         <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>
         <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
         <!-- DataTables -->
-        <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
         <script src="{{asset('datatables/dataTables.bootstrap.min.js')}}"></script>
         <script src="{{asset('responsive-tables/responsivetables.js')}}"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->
-        <script>
+<script>
+
+var table = $('#payments').DataTable( {
+        "responsive": true,
+        "info": false,
+        "paging": false,
+        "searching": false,
+        "ordering": false,
+    } );
+
 
     $('#btn_chIn').on('click',function(e){
 

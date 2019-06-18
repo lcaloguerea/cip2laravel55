@@ -56,46 +56,16 @@
                   <br>
                   <div class="box-body no-padding">
                         <table class="table table-condensed">
+                          @foreach($maintenances as $m)
                             <tr>
-                                <td>Aromatizadores tarros (mes)</td>
-                                <td><span class="badge bg-green">OK</span></td>
+                                <td>{{$m->name}} ({{trans('attributes.'.$m->periodicity)}})</td>
+                                @if($m->status == 'done')
+                                  <td><span class="badge bg-green">OK</span></td>
+                                @else
+                                  <td><span class="badge bg-red">X</span></td>
+                                @endif
                             </tr>
-                            <tr>
-                                <td>Bidones agua purificada (mes)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Fumigación (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Lavado de cortina (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Limpieza ext. vidrios (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Mantención A/C (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Mantención pintura (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Recarga extintores (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Revisión eléctrica/gasfiteria (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
-                            <tr>
-                                <td>Sanitización baños (anual)</td>
-                                <td><span class="badge bg-red"> X </span></td>
-                            </tr>
+                          @endforeach
                         </table>
                   </div>
                   <br>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Activity;
 use App\Room;
 use App\Passenger;
 use App\PassengerGroup;
@@ -120,7 +121,7 @@ class UserController extends Controller
     public function postLoadGuest2(Request $request)
     {
 
-        dd('entre en el 2');
+        //dd('entre en el 2');
         $passenger = Passenger::where('id_passenger', $request->idP)->first();
         $data = [
             'name_1' => $passenger->name_1,
@@ -184,7 +185,7 @@ class UserController extends Controller
             'country_r' => $cr->id_country,
             'country_o' => $co->id_country,
             'nationality' => $request->nationality,
-            'email' => $request->lName_1,
+            'email' => $request->email,
             'phone' => $request->phone,
         ]);
 
@@ -206,6 +207,13 @@ class UserController extends Controller
         $p2 = Passenger::where('id_passenger', $request->passenger2)->first();
         $r = Room::where('type', $request->roomType, '')->where('status', 'free')->firstOrFail();
         $uid = \Auth::id();
+        $user = User::where('id',$uid)->first();
+        $u_dest = $user->name;
+        $u_email = $user->email;
+        $p1name = $p1->name_1;
+        $p1email = $p1->email;
+        //$p2name = $p2->name_1;
+        //$p2email = $p2->email;        
         
         //create reservation first
         $Reserv = Reservation::create([
@@ -216,6 +224,7 @@ class UserController extends Controller
             'check_out' => $request->checkout,
             'payment_m' => $request->payment_m,
             'roomType' => $r->type,
+            'user_obs' => $request->user_obs,
             'user_id' => $uid,
         ]);
 
@@ -225,12 +234,58 @@ class UserController extends Controller
             'passenger_id' => $request->passenger1,
         ]);
 
-        if($p2 != null){
-        $pGrp = PassengerGroup::create([
-            'reservation_id' => $Reserv->id_res,
-            'passenger_id' => $request->passenger2,
+        //mail to guest1
+         \Mail::send('emails.reservation_guest',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($p1email, $p1name) {
+            $message->to($p1email, $p1name)
+                ->subject('Reserva registrada');
+        });
+
+        //create activity p1
+        $activity = Activity::create([
+            'event' => 'rsrv_created',
+            'responsible_id' => $user->id,
+            'involved_id' => $p1->id_passenger,
+            'rsrv_id' => $Reserv->id_res,
         ]);
+
+
+        if($p2 != null){
+            $pGrp = PassengerGroup::create([
+                'reservation_id' => $Reserv->id_res,
+                'passenger_id' => $request->passenger2,
+            ]);
+
+            //mail to guest1
+             \Mail::send('emails.reservation_guest',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p2, 'r' => $r), function($message) use ($p2email, $p2name) {
+                $message->to($p2email, $p2name)
+                    ->subject('Reserva registrada');
+            });
+
+            //create activity p2
+            $activity = Activity::create([
+                'event' => 'rsrv_created',
+                'responsible_id' => $user->id,
+                'involved_id' => $p2->id_passenger,
+                'rsrv_id' => $Reserv->id_res,
+            ]);             
+
         }
+
+        //mail to user
+        \Mail::send('emails.reservation_user',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($u_email, $u_dest) {
+            $message->to($u_email,$u_dest)
+                ->subject('Reserva registrada');
+        });
+
+        $admin = 'Leo';
+        $aemail = 'l.caloguerea@gmail.com';
+
+        //mail to CIP staff
+        \Mail::send('emails.reservation_staff',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($aemail, $admin) {
+            $message->to($aemail,$admin)
+                ->subject('Reserva registrada');
+        });
+
 
         return response()->json(['success'=>"Reserva registrada, enviaremos un correo con mayor información"]);
     }

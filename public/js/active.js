@@ -28,9 +28,10 @@
             loop: true,
             autoplay: true,
             smartSpeed: 800,
-            margin: 30,
+            margin: 10,
             center: true,
-            dots: true,
+            autoWidth:true,
+            dots: false,
             responsive: {
                 0: {
                     items: 1
@@ -41,7 +42,9 @@
                 992: {
                     items: 5
                 }
-            }
+            },
+            nav: true,
+            navText: ["<i class='pe-7s-angle-left'</i>", "<i class='pe-7s-angle-right'</i>"]        
         });
     }
 
@@ -60,7 +63,7 @@
             slidesToScroll: 1,
             speed: 500,
             asNavFor: '.slider-for',
-            dots: true,
+            dots: false,
             centerMode: true,
             focusOnSelect: true,
             slide: 'div',
