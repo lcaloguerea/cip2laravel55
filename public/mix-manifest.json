@@ -1,3 +1,7 @@
 {
-    "/public/js/app.js": "/public/js/app.js"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/dropify.css": "/css/dropify.css",
+    "/js/index_mixed.js": "/js/index_mixed.js",
+    "/js/user-profile.js": "/js/user-profile.js"
 }

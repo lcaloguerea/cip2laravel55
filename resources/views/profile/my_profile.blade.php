@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css')}}">
         <link href="{{asset('js/sweetalert/sweetalert.css')}}" rel="stylesheet">
 
-        <link rel="stylesheet" href="{{asset('node_modules/dropify/dist/css/dropify.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/dropify.css')}}">
 
 
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -293,7 +293,7 @@
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
         <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 
-        <script src="{{asset('node_modules/dropify/dist/js/dropify.min.js')}}"></script>
+        <script src="{{asset('js/user-profile.js')}}"></script>
 
 
         <script src="{{asset('js/app2.js')}}"></script>

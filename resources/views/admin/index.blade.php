@@ -374,8 +374,9 @@
 
 
 
-    <script src="{{asset('jQuery/jquery-2.2.3.min.js')}}"></script>
-    <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
+  <script src="{{asset('jQuery/jquery-2.2.3.min.js')}}"></script>
+  <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
+
     <script src="{{asset('js/jquery-fullscreen/jquery.fullscreen-min.js')}}"></script>
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>

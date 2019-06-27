@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{asset('animate.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/dropify/dist/css/dropify.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/dropify.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -95,6 +95,48 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1">
+                                            @if($act->count() == 0)
+                                                <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
+                                                <ul class="timeline">
+                                            @else
+                                            <div style="text-align: center" class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong></div>
+                                                <ul class="timeline">
+                                                    @foreach($dates as $d)
+                                                        <li class="time-label">
+                                                            <span class="">
+                                                                {{$d}}
+                                                            </span>
+                                                        </li>
+                                                        @foreach($act as $a)
+                                                            @if($a->created_at->format('d/m/Y') == $d)
+                                                                <li>
+                                                                @if($a->event == "rsrv_created")
+                                                                    <i class="fa fa-plus bg-green"></i>
+                                                                    <div class="timeline-item">
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                                    </div>
+                                                                @elseif($a->event == "checkin")
+                                                                    <i class="fa fa-arrow-right bg-blue"></i>
+                                                                    <div class="timeline-item">
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check in de <a href="">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> y ha asignado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->actRsrvR->room_id}}">{{trans('attributes.'.$a->actRsrvR->roomType)}} N°{{$a->actRsrvR->room_id}}</a></h3>
+                                                                    </div> 
+                                                                @elseif($a->event == "checkout")
+                                                                    <i class="fa fa-arrow-left bg-orange"></i>
+                                                                    <div class="timeline-item">
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                                    </div>                                                                              
+                                                                @endif
+                                                                </li>
+                                                            @endif
+                                                        @endforeach                                                      
+                                                    @endforeach
+                                                </ul>
+                                            @endif
                                         <ul class="timeline">
                                             <!-- timeline time label -->
                                             <li class="time-label">
@@ -262,7 +304,7 @@
         <script src="{{asset('pickadate/picker.js')}}"></script>
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
         <script src="{{asset('js/pages/jquery-pickadate.js')}}"></script>
-        <script src="{{asset('node_modules/dropify/dist/js/dropify.min.js')}}"></script>
+        <script src="{{asset('js/user-profile.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->

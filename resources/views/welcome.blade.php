@@ -184,7 +184,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="single-team-member">
                         <div class="member-image">
-                            <img src="http://www.culturalnarratives.co.uk/wp-content/uploads/2016/08/Rodrigo-Browne.jpg" alt="">
+                            <img src="img/team-img/Rodrigo-Browne.jpg" alt="">
                             <div class="team-hover-effects">
                                 <div class="team-social-icon">
                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -299,7 +299,7 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Video Area Start -->
-                    <div class="video-area" style="background-image: url(img/front_building.JPG);">
+                    <div class="video-area" style="background-image: url(img/front_building-min.JPG);">
                         <div class="video-play-btn">
                             <a href="https://www.youtube.com/watch?v=YSZgU6GxDJU" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
@@ -392,7 +392,7 @@
                             <img src="img/building/DSC_7033.JPG" alt="">
                         </div>
                         <div class="item">
-                            <img src="img/building/DSC_7041.JPG" alt="">
+                            <img src="img/building/front_building-min.JPG" alt="">
                         </div>
                         <div class="item">
                             <img src="img/recreation/DSC_7050.JPG" alt="">
@@ -700,26 +700,13 @@
       }
 </style>
 
+
+
+
     <!-- Jquery-2.2.4 JS -->
     <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('js/index_mixed.js')}}"></script>
 
-    <script src="{{asset('pickadate.js-3.5.6/lib/picker.js')}}"></script>
-    <script src="{{asset('pickadate.js-3.5.6/lib/picker.date.js')}}"></script>
-    <script src="{{asset('pickadate.js-3.5.6/lib/picker.time.js')}}"></script>
-    <script src="{{asset('pickadate.js-3.5.6/lib/translations/es_ES.js')}}"></script>
-
-    <!-- Popper js -->
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <!-- Bootstrap-4 Beta JS -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <!-- All Plugins JS -->
-    <script src="{{asset('js/plugins.js')}}"></script>
-    <!-- Slick Slider Js-->
-    <script src="{{asset('js/slick-1.8.1/slick/slick.min.js')}}"></script>
-    <!-- Footer Reveal JS -->
-    <script src="{{asset('js/footer-reveal.min.js')}}"></script>
-    <!-- Active JS -->
-    <script src="{{asset('js/active.js')}}"></script>
 
     @include('search_modal')
 

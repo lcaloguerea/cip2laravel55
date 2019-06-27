@@ -2243,7 +2243,7 @@ ul.dropdown-menu.user-menu a .fa{
 }
 .btn-flat.btn-warning:hover{
     color:#ffb300;
-    background-color:#e5e5e5
+    background-color:#55b520
 }
 .btn-flat.btn-warning.active,.btn-flat.btn-warning:active{
     color:#ffa000;
@@ -2251,7 +2251,7 @@ ul.dropdown-menu.user-menu a .fa{
 }
 .btn-flat.btn-warning:focus{
     color:#ff8f00;
-    background-color:#ccc
+    background-color:#55b520
 }
 .btn-flat.btn-warning .ink{
     background-color:grey

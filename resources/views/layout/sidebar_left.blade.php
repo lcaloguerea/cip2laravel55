@@ -25,9 +25,9 @@
             <li class="treeview {{ request()->is('admin') ? 'active' : '' }}">
               <a href="/admin"><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
-            <li class="treeview">
+         <!--  <li class="treeview">
               <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-envelope"></i> <span>Mailbox</span></a>
-            </li>
+            </li>-->
             <li class="treeview {{ request()->is('admin/users/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-id-card"></i> <span>Usuarios</span>
               <span class="pull-right-container">

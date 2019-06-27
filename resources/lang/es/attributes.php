@@ -10,4 +10,7 @@ return [
     'e_transfer_l' => 'Transferencia moneda local',
     'e_transfer_e' => 'Transferencia moneda extranjera',
     'p_code' => 'Código presupuestario',
+    'user' => 'Usuario(a)',
+    'admin' => 'Administrador(a)',
+    'maid' => 'Maid',
 ];
