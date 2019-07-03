@@ -10,10 +10,14 @@ class Activity extends Model
 	protected $table = 'activity';
 
     protected $fillable = [
+                'group',
                 'event',
+                'motive',
                 'responsible_id',
                 'involved_id',
                 'rsrv_id',
+                'room_id',
+                'maintenance_id',
     		];
   
     //Relation with responsible

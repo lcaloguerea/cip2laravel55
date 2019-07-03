@@ -46,6 +46,53 @@ class UsersTableSeeder extends Seeder
             
         $user->save();
 
+        $user = new User();
+
+        $user->rut                  = '222222222-3';
+        $user->type                 = 'admin';
+        $user->name                 = 'Rodrigo';
+        $user->lName                = 'Browne';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'rodrigobrowne@uach.cl';
+        $user->phone                = '+56612312312';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+        $user->uAvatar              = '/img/team-img/Rodrigo-Browne.jpg';
+            
+        $user->save();
+
+        $user = new User();
+
+        $user->rut                  = '222222222-4';
+        $user->type                 = 'admin';
+        $user->name                 = 'Carolina';
+        $user->lName                = 'Díaz';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'cip_reservas@uach.cl';
+        $user->phone                = '+56989209785';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+            
+        $user->save();
+
+        $user = new User();
+
+        $user->rut                  = '222222222-5';
+        $user->type                 = 'maid';
+        $user->name                 = 'Elizabeth';
+        $user->lName                = 'Robles';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'elizabethroblesazocar84@gmail.com';
+        $user->phone                = '+5663321233';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+
+        $user->save();
+
+
         $samples_temp = [];
 
         for($i = 0; $i < 150; $i++)

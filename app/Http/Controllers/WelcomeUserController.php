@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 use App\Room;
 use App\Reservation;
 use App\Testimonial;
+use App\Passenger;
 
 class WelcomeUserController extends Controller
 {
     public function index()
     {
         $testimonials = Testimonial::all();
-    	return view('welcome', compact('testimonials'));
+        $p = Passenger::all();
+    	return view('welcome', compact('testimonials','p'));
     }
 
     public function postDisp(Request $request)

@@ -130,7 +130,7 @@
                     <div class="single-feature">
                         <i class="fa fa-building" aria-hidden="true"></i>
                         <h5>Habitaciones y recepción</h5>
-                        <p>Disponemos de 4 habitaciones con cama matrimonial y 4 single con cama nido. La recepción y entrega de llaves se coordina con la Sra. Patricia Sánchez, quien se encuentra de lunes a viernes en horario continuado de 08:00 a 12:30 PM. La llegada de huéspedes en otro horario debe informarse con antelación.</p>
+                        <p>Disponemos de 8 habitaciones completamente equipadas con aire acondicionado, frigobar, servicio de mucama, Wifi, secador de pelo, toallas y amenidades. La recepción y entrega de llaves se coordina de lunes a viernes 08:00 – 12:30 AM y 14:30 - 18:00 horas.</p>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -281,9 +281,8 @@
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
-                        <div class="col-12">
-                           <button type="button" id="srchDisp" class="btn submit-btn">Buscar</button>
-                        </div>
+                    <fieldset disabled="disabled">
+                           <button type="button" id="srchDisp" class="btn submit-btn">Buscar (Próximamente)</button>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -301,7 +300,7 @@
                     <!-- Video Area Start -->
                     <div class="video-area" style="background-image: url(img/front_building-min.JPG);">
                         <div class="video-play-btn">
-                            <a href="https://www.youtube.com/watch?v=YSZgU6GxDJU" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/watch?v=Bd3AO_qnvxg" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -579,7 +578,11 @@
                     <div class="slider slider-nav">
                     @foreach($testimonials as $tp)
                     <div class="client-thumbnail">
-                        <img src="{{$tp->pAvatar}}">
+                        @if($tp->passenger_id != NULL)
+                            <img src="{{$tp->psngrR->pAvatar}}">
+                        @else
+                            <img src="{{$tp->pAvatar}}">
+                        @endif
                     </div>
                     @endforeach                       
                     </div>
@@ -640,6 +643,7 @@
                     <!-- Form Start-->
                     <div class="contact_from">
                         <form action="#" method="post">
+                            <fieldset disabled="disabled">
                             <!-- Message Input Area Start -->
                             <div class="contact_input_area">
                                 <div class="row">
@@ -663,7 +667,7 @@
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-12">
-                                        <button type="submit" class="btn submit-btn">Enviar</button>
+                                        <button type="submit" class="btn submit-btn">Enviar (Próximamente)</button>
                                     </div>
                                 </div>
                             </div>

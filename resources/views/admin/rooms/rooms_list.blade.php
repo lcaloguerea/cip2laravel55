@@ -76,17 +76,17 @@
                                         @foreach($rooms as $item)
                                             <tr>
                                                 <td><a href="/{{Auth::user()->type}}/room-detail/{{$item->id_room}}">{{$item->id_room}}</a></td>
-                                                @if($item->type == 'shared')
-                                                  <td>Single compartida</td>
-                                                  @else
-                                                  <td>{{$item->type}}</td>
-                                                @endif
+                                                  <td>{{trans('attributes.'.$item->type)}}</td>
                                                 <td>{{$item->price}}</td>
-                                                @if($item->status == 'free')
-                                                  <td>Libre</td>
-                                                  @else
-                                                  <td>Ocupada</td>
-                                                @endif
+                                                <td>
+                                                    @if($item->status == "free")
+                                                    <p><span class="badge bg-green">{{trans('attributes.'.$item->status)}}</span></p>
+                                                    @elseif($item->status == "occupied")
+                                                        <p><span class="badge bg-blue">{{trans('attributes.'.$item->status)}}</span></p>
+                                                    @else
+                                                        <p><span class="badge bg-red">{{trans('attributes.'.$item->status)}}</span></p>
+                                                    @endif
+                                                </td>
                                                 <td>{{$item->active_reservation_id}}</td>
                                                 @if($item->status == 'occupied')
                                                     <td>

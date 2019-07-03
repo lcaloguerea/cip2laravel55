@@ -32600,6 +32600,17 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/sweetalert2/src/sweetalert2.scss":
+/*!*******************************************************!*\
+  !*** ./node_modules/sweetalert2/src/sweetalert2.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -45021,15 +45032,16 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!************************************************************************************************************************!*\
-  !*** multi ./resources/assets/js/app.js ./resources/assets/sass/app.scss ./node_modules/dropify/src/sass/dropify.scss ***!
-  \************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/assets/js/app.js ./resources/assets/sass/app.scss ./node_modules/dropify/src/sass/dropify.scss ./node_modules/sweetalert2/src/sweetalert2.scss ***!
+  \************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/html/cip2laravel55/resources/assets/js/app.js */"./resources/assets/js/app.js");
 __webpack_require__(/*! /var/www/html/cip2laravel55/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
-module.exports = __webpack_require__(/*! /var/www/html/cip2laravel55/node_modules/dropify/src/sass/dropify.scss */"./node_modules/dropify/src/sass/dropify.scss");
+__webpack_require__(/*! /var/www/html/cip2laravel55/node_modules/dropify/src/sass/dropify.scss */"./node_modules/dropify/src/sass/dropify.scss");
+module.exports = __webpack_require__(/*! /var/www/html/cip2laravel55/node_modules/sweetalert2/src/sweetalert2.scss */"./node_modules/sweetalert2/src/sweetalert2.scss");
 
 
 /***/ })

@@ -203,8 +203,21 @@ class UserController extends Controller
 
     public function postCreateReservation(Request $request)
     {
+        $admins = User::where('type', 'admin')
+                    ->orWhere('type', 'maid')
+                    ->orderBy('email')
+                    ->get();
+
+
+        foreach($admins as $a){
+            $gaemail[] = $a->email;
+        }
+
+
+
         $p1 = Passenger::where('id_passenger', $request->passenger1)->first();
         $p2 = Passenger::where('id_passenger', $request->passenger2)->first();
+
         $r = Room::where('type', $request->roomType, '')->where('status', 'free')->firstOrFail();
         $uid = \Auth::id();
         $user = User::where('id',$uid)->first();
@@ -212,8 +225,7 @@ class UserController extends Controller
         $u_email = $user->email;
         $p1name = $p1->name_1;
         $p1email = $p1->email;
-        //$p2name = $p2->name_1;
-        //$p2email = $p2->email;        
+       
         
         //create reservation first
         $Reserv = Reservation::create([
@@ -226,6 +238,7 @@ class UserController extends Controller
             'roomType' => $r->type,
             'user_obs' => $request->user_obs,
             'user_id' => $uid,
+            'confirmed' => 'tbc'
         ]);
 
 
@@ -250,12 +263,14 @@ class UserController extends Controller
 
 
         if($p2 != null){
+            $p2name = $p2->name_1;
+            $p2email = $p2->email; 
             $pGrp = PassengerGroup::create([
                 'reservation_id' => $Reserv->id_res,
                 'passenger_id' => $request->passenger2,
             ]);
 
-            //mail to guest1
+            //mail to guest2
              \Mail::send('emails.reservation_guest',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p2, 'r' => $r), function($message) use ($p2email, $p2name) {
                 $message->to($p2email, $p2name)
                     ->subject('Reserva registrada');
@@ -272,7 +287,7 @@ class UserController extends Controller
         }
 
         //mail to user
-        \Mail::send('emails.reservation_user',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($u_email, $u_dest) {
+        \Mail::send('emails.reservation_user',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'p2' => $p2, 'r' => $r), function($message) use ($u_email, $u_dest) {
             $message->to($u_email,$u_dest)
                 ->subject('Reserva registrada');
         });
@@ -281,8 +296,9 @@ class UserController extends Controller
         $aemail = 'l.caloguerea@gmail.com';
 
         //mail to CIP staff
-        \Mail::send('emails.reservation_staff',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($aemail, $admin) {
-            $message->to($aemail,$admin)
+        //use $gaemail instead of aemail to masive send
+        \Mail::send('emails.reservation_staff',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($gaemail, $admin) {
+            $message->to($gaemail,$gaemail)
                 ->subject('Reserva registrada');
         });
 

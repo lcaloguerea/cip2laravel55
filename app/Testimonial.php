@@ -29,4 +29,10 @@ class Testimonial extends Model
      *
      * @var array
      */
+
+    //Relation with passenger
+    public function psngrR()
+    {
+        return $this->belongsTo('App\Passenger', 'passenger_id', 'id_passenger'); //Id local
+    }
 }

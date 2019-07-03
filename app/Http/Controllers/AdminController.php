@@ -8,6 +8,9 @@ use App\Reservation;
 use App\Passenger;
 use App\PassengerGroup;
 use App\Room;
+use App\Activity;
+use App\Testimonial;
+use Jenssegers\Date\Date;
 use Image;
 use Auth;
 
@@ -101,8 +104,34 @@ class AdminController extends Controller
 
     public function getProfile($id)
     {
-        $user = User::where('id', $id) -> first();
-        return view('/admin/users/user_profile', compact('user'));
+        Date::setLocale('es');
+
+        $tst = Testimonial::all();
+
+        $act = Activity::where('responsible_id',$id)
+                    ->orderBy('created_at')
+                    ->get();
+
+        //dd($act->count());
+
+        if($act->count() == 0){
+            $user = User::where('id', $id) -> first();
+            return view('/admin/users/user_profile', compact('user','act'));
+        }
+        else{
+            foreach ($act as $a){
+                $aux = new Date($a->created_at);
+                $aux = $aux->format('d/m/Y');
+                $dates[] = $aux;
+            }
+
+            $dates = array_unique($dates);
+
+
+            $user = User::where('id', $id) -> first();
+            return view('/admin/users/user_profile', compact('user','act', 'dates','tst'));
+        }
+
     }
 
     public function postUserDestroy(Request $request)

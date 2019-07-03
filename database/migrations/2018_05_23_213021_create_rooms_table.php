@@ -16,8 +16,8 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id_room');
             $table->integer('price');
-            $table->enum('status',['free','occupied']);
             $table->enum('type',['single','shared','matrimonial']);
+            $table->enum('status',['free','occupied','locked']);
             $table->enum('sanitization',['done','required']);
             $table->timestamps();
 

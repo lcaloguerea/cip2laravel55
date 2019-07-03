@@ -13,4 +13,11 @@ return [
     'user' => 'Usuario(a)',
     'admin' => 'Administrador(a)',
     'maid' => 'Maid',
+    'confirmed' => 'Confirmada',
+    'tbc' => 'Por confirmar',
+    'cancellByUser' => 'Cancelada por usuario',
+    'ConfirmedByTime' => 'Confirmada por tiempo excedido',
+    'free' => 'Libre',
+    'locked' => 'Bloqueada',
+    'occupied' => 'Ocupada',
 ];

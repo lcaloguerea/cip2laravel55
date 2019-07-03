@@ -13,7 +13,8 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
-   .sass('node_modules/dropify/src/sass/dropify.scss', 'public/css/dropify.css');
+   .sass('node_modules/dropify/src/sass/dropify.scss', 'public/css/dropify.css')
+   .sass('node_modules/sweetalert2/src/sweetalert2.scss', 'public/css/swal2.css');
 
 mix.scripts([
     'public/pickadate.js-3.5.6/lib/picker.js',
@@ -32,3 +33,13 @@ mix.scripts([
 mix.scripts([
     'node_modules/dropify/dist/js/dropify.min.js'
 	], 'public/js/user-profile.js');
+
+mix.scripts([
+    'node_modules/sweetalert2/dist/sweetalert2.all.min.js',
+    'public/pickadate.js-3.5.6/lib/picker.js',
+    'public/pickadate.js-3.5.6/lib/picker.date.js',
+    'public/pickadate.js-3.5.6/lib/picker.time.js',
+    'public/pickadate.js-3.5.6/lib/translations/es_ES.js',
+    'public/js/popper.min.js',
+  ], 'public/js/swal2.js');
+

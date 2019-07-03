@@ -60,6 +60,7 @@
                                                 <th>#</th>
                                                 <th>Usuario</th>
                                                 <th>Huésped(es)</th>
+                                                <th>Confirmación</th>
                                                 <th>Estado</th>
                                                 <th>Check In</th>
                                                 <th>Check Out</th>
@@ -79,6 +80,7 @@
                                                     @endif
                                                 @endforeach
                                                 </td>
+                                                <td>{{trans('attributes.'.$item->confirmed)}}</td>
                                                 <td>
                                                     @if($item->status == "started")
                                                         <span class="badge bg-green">Iniciada</span>

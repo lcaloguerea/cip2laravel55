@@ -2,6 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/dropify.css": "/css/dropify.css",
+    "/css/swal2.css": "/css/swal2.css",
     "/js/index_mixed.js": "/js/index_mixed.js",
-    "/js/user-profile.js": "/js/user-profile.js"
+    "/js/user-profile.js": "/js/user-profile.js",
+    "/js/swal2.js": "/js/swal2.js"
 }

@@ -29,6 +29,14 @@ Route::get('/maid/supplies', 'MaidController@getSupplies');
 Route::get('/maid/rooms-list', 'RoomsController@getList');
 Route::get('/maid/rooms-cards', 'RoomsController@getCards');
 Route::get('/maid/room-detail/{id}', 'RoomsController@getRoomDetail');
+Route::get('/maid/reservations-list', 'ReservationController@getList');
+Route::post('/maid/reservations/update', 'ReservationController@postReservationUpdate')->name('updateReservation');
+Route::put('/maid/reservations/invoice', 'ReservationController@putReservationInvoice')->name('reservationInvoice');
+Route::put('/maid/reservations/checkin', 'ReservationController@putReservationCheckin')->name('checkin');
+Route::put('/maid/reservations/confirm', 'ReservationController@putReservationConfirm')->name('confirm');
+Route::put('/maid/reservations/checkout', 'ReservationController@putReservationCheckout')->name('chekout');
+Route::put('/maid/reservations/cancel', 'ReservationController@putReservationCancel')->name('cancel');
+Route::get('/maid/reservations/reservation-detail/{id}', 'ReservationController@getReservationDetail');
 
 
 //perfiles propios
@@ -56,6 +64,8 @@ Route::post('/user/fetch', 'UserController@postFetch')->name('fetch');
 Route::get('/admin/rooms-cards', 'RoomsController@getCards');
 Route::get('/admin/room-detail/{id}', 'RoomsController@getRoomDetail');
 Route::post('/admin/room-sanitization', 'RoomsController@postRoomSanitization');
+Route::post('/admin/room-locked', 'RoomsController@postRoomlocked');
+Route::post('/admin/room-unlocked', 'RoomsController@postRoomUnlocked');
 Route::get('/admin/passengers/list', 'PassengersController@getList');
 Route::get('/admin/passengers/passenger-profile/{id}', 'PassengersController@getProfile');
 Route::get('/admin/passengers/cards', 'PassengersController@getCards');
@@ -63,6 +73,7 @@ Route::get('/admin/reservations-list', 'ReservationController@getList');
 Route::post('/admin/reservations/update', 'ReservationController@postReservationUpdate')->name('updateReservation');
 Route::put('/admin/reservations/invoice', 'ReservationController@putReservationInvoice')->name('reservationInvoice');
 Route::put('/admin/reservations/checkin', 'ReservationController@putReservationCheckin')->name('checkin');
+Route::put('/admin/reservations/confirm', 'ReservationController@putReservationConfirm')->name('confirm');
 Route::put('/admin/reservations/checkout', 'ReservationController@putReservationCheckout')->name('chekout');
 Route::put('/admin/reservations/cancel', 'ReservationController@putReservationCancel')->name('cancel');
 Route::get('/admin/reservations/reservation-detail/{id}', 'ReservationController@getReservationDetail');

@@ -8,6 +8,7 @@ use App\Users;
 use Jenssegers\Date\Date;
 use App\Country;
 use App\Activity;
+use App\Testimonial;
 use CountryFlag;
 
 class PassengersController extends Controller
@@ -28,9 +29,13 @@ class PassengersController extends Controller
     {
         Date::setLocale('es');
 
-        $act = Activity::where('responsible_id',$id)
-                    ->orWhere('involved_id', $id)
+        $tst = Testimonial::all();
+
+        $act = Activity::where('involved_id',$id)
+                    ->orderBy('created_at')
                     ->get();
+
+        //dd($act->count());
 
         if($act->count() == 0){
             $passenger = Passenger::where('id_passenger',$id) -> first();
@@ -47,7 +52,7 @@ class PassengersController extends Controller
 
 
             $passenger = Passenger::where('id_passenger',$id) -> first();
-            return view('/admin/passengers.passenger_profile', compact('passenger','act', 'dates'));
+            return view('/admin/passengers.passenger_profile', compact('passenger','act', 'dates','tst'));
         }
 
 

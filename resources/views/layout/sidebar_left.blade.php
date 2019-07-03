@@ -113,6 +113,10 @@
             <li class="treeview">
               <a href="#"><i class="fa fa-handshake-o"></i> <span>Mantenimiento</span></a>
             </li>
+            <li class="treeview {{ request()->is('maid/reservations-list') ? 'active' : '' }}">
+              <a href="{{URL::to('maid/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
+              </a>
+            </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-bed"></i><span>Habitaciones</span>
               <span class="pull-right-container">
