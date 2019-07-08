@@ -56,16 +56,14 @@
                   <br>
                   <div class="box-body no-padding">
                         <table class="table table-condensed">
-                          @foreach($maintenances as $m)
-                            <tr>
-                                <td>{{$m->name}} ({{trans('attributes.'.$m->periodicity)}})</td>
-                                @if($m->status == 'done')
-                                  <td><span class="badge bg-green">OK</span></td>
+                          <tr>
+                                <td>Estado</td>
+                                @if($cont2 > 0)
+                                <td><span class="badge bg-red">Expirado(s)</span></td>
                                 @else
-                                  <td><span class="badge bg-red">X</span></td>
+                                <td><span class="badge bg-green">OK</span></td>
                                 @endif
                             </tr>
-                          @endforeach
                         </table>
                   </div>
                   <br>
@@ -84,12 +82,12 @@
                   <div class="box-body no-padding">
                         <table class="table table-condensed">
                             <tr>
-                                <td>Generales</td>
+                                <td>Estado</td>
+                                @if($cont > 0)
+                                <td><span class="badge bg-red">Falta stock</span></td>
+                                @else
                                 <td><span class="badge bg-green">OK</span></td>
-                            </tr>
-                            <tr>
-                                <td>Pan</td>
-                                <td><span class="badge bg-green">OK</span></td>
+                                @endif
                             </tr>
                         </table>
                   </div>
@@ -101,37 +99,33 @@
               </div>
             </div>
             <!--/.col-->
-
-            <!--/.col-->
             <div class="col-sm-6 col-lg-4">
               <div class="info-box">
                 <div class="info-box-content">
-                  <i class="fa fa-bed text-purple"></i>
-                  <div class="text-center value">Habitaciones</div>
+                  <i class="fa fa-shopping-cart text-black"></i>
+                  <div class="text-center value">Pan</div>
                   <br>
                   <div class="box-body no-padding">
                         <table class="table table-condensed">
                             <tr>
-                                <td>Asignación</td>
+                                <td>Estado</td>
+                                @if($bread->stock == "yes")
                                 <td><span class="badge bg-green">OK</span></td>
-                            </tr>
-                            <tr>
-                                <td>Limpieza</td>
-                                <td><span class="badge bg-red"> X </span></td>
+                                @else
+                                <td><span class="badge bg-red">X</span></td>
+                                @endif
                             </tr>
                         </table>
                   </div>
                   <br>
                 <div class="text-center action-profile">
-                    <a href="#" class="btn btn-block btn-success">Ver detalles</a>
+                    <a href="{{URL::to('maid/supplies')}}" class="btn btn-block btn-success">Ver detalles</a>
                 </div>
                 </div>
               </div>
             </div>
-            <!--/.col-->
 
-
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Huéspedes por habitación</h3>
@@ -144,16 +138,17 @@
                                                 <th>Tipo</th>
                                                 <th>Estado</th>
                                                 <th>Huésped(es)</th>
+                                                <th>Limpieza</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($rooms as $item)
                                             <tr>
-                                                <td><a href="#">{{$item->id_room}}</a></td>
+                                                <td><a href="/{{Auth::user()->type}}/room-detail/{{$item->id_room}}">{{$item->id_room}}</a></td>
                                                 @if($item->type == 'shared')
                                                   <td>Single compartida</td>
                                                   @else
-                                                  <td>{{$item->type}}</td>
+                                                  <td>{{trans('attributes.'.$item->type)}}</td>
                                                 @endif
                                                 @if($item->status == 'free')
                                                   <td>Libre</td>
@@ -171,7 +166,11 @@
                                                 @else
                                                     <td></td>
                                                 @endif
-
+                                                @if($item->sanitization == 'done')
+                                                <td><span class="badge bg-green">Al día</span></td>
+                                                @else
+                                                <td><span class="badge bg-orange">Pendiente</span></td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                         </tbody>

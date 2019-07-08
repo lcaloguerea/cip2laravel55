@@ -110,6 +110,9 @@
         <!-- Slimscroll is required when using the fixed layout. -->
         <script>
             $(function () {
+
+            $.fn.DataTable.ext.pager.numbers_length = 3;
+                
             $('.datatable').DataTable({
                 "paging": true,
                 "lengthChange": false,

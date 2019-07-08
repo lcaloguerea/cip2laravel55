@@ -84,16 +84,20 @@
                                     </address>
                                 </div>
 
-                                <div class="box">
-                                    <div class="box-body">
-                                        @if($room->status == "free")
+                                @if($room->status == "free")
+                                    <div class="box">
+                                        <div class="box-body">
                                             <button id="btn_locked" type="button" class="btn btn-raised ripple-effect btn-block btn-danger">Bloquear habitación</button>
-                                        @elseif($room->status == "locked")
+                                        </div>
+                                    </div> 
+                                @elseif($room->status == "locked")
+                                    <div class="box">
+                                        <div class="box-body">
                                             <button id="btn_unlocked" type="button" class="btn btn-raised ripple-effect btn-block btn-info">Desbloquear habitación</button>
-                                        @endif
-                                        
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
+                                        
                                 <!-- /.box-body -->
                             </div>
 
@@ -105,7 +109,7 @@
                                     <li><a href="#tab_2" data-toggle="tab">Historial</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_1">
+                                    <div class="tab-pane active" id="tab_1" style="overflow-y: scroll; height: 510px">
                                             @if($rAct->count() == 0)
                                                 <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
                                                 <ul class="timeline">
@@ -124,6 +128,7 @@
                                                                 @endif
                                                             </span>
                                                         </li>
+
                                                         @foreach($rAct as $a)
                                                             @if($a->created_at->format('d/m/Y') == $d)
                                                                 <li>

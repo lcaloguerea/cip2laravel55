@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PassengersGroupTableSeeder::class);
         $this->call(TestimonialsTableSeeder::class);
         $this->call(MaintenanceTableSeeder::class);
+        $this->call(SuppliesTableSeeder::class);
 
     }
 }
