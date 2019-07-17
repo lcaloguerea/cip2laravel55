@@ -5,5 +5,7 @@
     "/css/swal2.css": "/css/swal2.css",
     "/js/index_mixed.js": "/js/index_mixed.js",
     "/js/user-profile.js": "/js/user-profile.js",
-    "/js/swal2.js": "/js/swal2.js"
+    "/js/swal2.js": "/js/swal2.js",
+    "/js/calendar.js": "/js/calendar.js",
+    "/css/calendar.css": "/css/calendar.css"
 }

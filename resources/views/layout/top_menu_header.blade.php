@@ -23,92 +23,18 @@
           <div class="navbar-top-menu">
             <ul class="nav navbar-nav">
               <!-- Navbar Search -->
-              <li>
+            <!--  <li>
                 <a data-toggle="collapse" data-target="#top-menu-navbar-search" aria-expanded="false">
                 <i class="fa fa-search"></i>
                 </a>
-              </li>
+              </li>-->
               <!-- /. Navbar Search -->
               <!--Fullscreen-->
               <li>          
                 <a id="fullscreen-page" role="button"><i class="fa fa-arrows-alt"></i></a>
               </li>
               <!-- /. FulllScreen -->   
-              <!-- Messages-->
-              <li class="dropdown messages-menu">
-                <!-- Menu toggle button -->
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <span class="label bg-black">1</span>
-                </a>
-                <ul class="dropdown-menu animated flipInX">
-                  <li class="header">1 message pending</li>
-                  <li>
-                    <!-- inner menu: contains the messages -->
-                    <ul class="menu">
-                      <li>
-                        <!-- start message -->
-                        <a href="#">
-                          <div class="pull-left">
-                            <!-- User Image -->
-                            <img src="{{asset('img/dimebag.jpg')}}" class="img-circle" alt="User Image">
-                          </div>
-                          <!-- Message title and timestamp -->
-                          <h4>
-                            Steven Johnsson
-                            <small><i class="fa fa-clock-o"></i> 10 mins</small>
-                          </h4>
-                          <!-- The message -->
-                          <p>Can you check the CPU?</p>
-                        </a>
-                      </li>
-                      <!-- /. message -->
-                    </ul>
-                    <!-- /.menu -->
-                  </li>
-                  <li class="footer"><a href="#">See All Messages</a></li>
-                </ul>
-              </li>
-              <!-- /.messages-menu -->
-              <!-- Notifications Menu -->
-              <li class="dropdown notifications-menu">
-                <!-- Menu toggle button -->
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="label bg-black">4</span>
-                </a>
-                <ul class="dropdown-menu animated flipInY">
-                  <li class="header">4 notifications</li>
-                  <li>
-                    <!-- Inner Menu: contains the notifications -->
-                    <ul class="menu">
-                      <li>
-                        <!-- start notification -->
-                        <a href="#">
-                        <i class="fa fa-users text-green"></i> Your profile has been updated
-                        </a>
-                      </li>
-                      <!-- /. notification -->
-                      <li>
-                        <a href="#">
-                        <i class="fa fa-user text-green"></i> Settings updated
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                        <i class="fa fa-warning text-yellow"></i> Problem with the CPU
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                        <i class="fa fa-users text-red"></i> The meeting has been canceled
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="footer"><a href="#">View all</a></li>
-                </ul>
-              </li>
+
               <li class="dropdown user user-menu">
                 <!-- Menu Toggle Button -->
                 <a href="#" data-toggle="dropdown" aria-expanded="false">

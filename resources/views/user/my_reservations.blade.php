@@ -41,7 +41,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Reservas</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -94,7 +94,7 @@
                                                 </td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
-                                                <td>{{$item->payment_m}}</td>
+                                                <td>{{trans('attributes.'.$item->payment_m)}}</td>
                                                 <td>{{$item->room_id}}</td>
                                             </tr>
                                         @endforeach

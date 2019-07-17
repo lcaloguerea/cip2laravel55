@@ -4,14 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Jenssegers\Date\Date;
+use App\Activity;
 
 class ProfileController extends Controller
 {
     
     public function getMyProfile()
     {
+        Date::setLocale('es');
+        $act = Activity::where('responsible_id',\Auth::user()->id)
+                    ->orderBy('created_at')
+                    ->get();
+
+        foreach ($act as $a){
+                $aux = new Date($a->created_at);
+                $aux = $aux->format('d/m/Y');
+                $dates[] = $aux;
+            }
+
+
         $user = user::find(\Auth::user()->id);
-        return view('profile/my_profile', compact('user'));
+        return view('profile/my_profile', compact('user','act','dates'));
     }
 
     public function postValidateEditForm(Request $request)

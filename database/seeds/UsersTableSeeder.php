@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
 
         $user->rut                  = '222222222-2';
-        $user->type                 = 'maid';
+        $user->type                 = 'user';
         $user->name                 = 'Patricia';
         $user->lName                = 'Sánchez';
         $user->confirmed            = 'yes';
@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
 
         $user->rut                  = '222222222-3';
-        $user->type                 = 'admin';
+        $user->type                 = 'user';
         $user->name                 = 'Rodrigo';
         $user->lName                = 'Browne';
         $user->confirmed            = 'yes';
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
 
         $user->rut                  = '222222222-4';
-        $user->type                 = 'admin';
+        $user->type                 = 'user';
         $user->name                 = 'Carolina';
         $user->lName                = 'Díaz';
         $user->confirmed            = 'yes';
@@ -80,7 +80,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
 
         $user->rut                  = '222222222-5';
-        $user->type                 = 'maid';
+        $user->type                 = 'user';
         $user->name                 = 'Elizabeth';
         $user->lName                = 'Robles';
         $user->confirmed            = 'yes';

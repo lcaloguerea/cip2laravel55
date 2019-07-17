@@ -185,12 +185,6 @@
                     <div class="single-team-member">
                         <div class="member-image">
                             <img src="img/team-img/Rodrigo-Browne.jpg" alt="">
-                            <div class="team-hover-effects">
-                                <div class="team-social-icon">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
                         </div>
                         <div class="member-text">
                             <h4>Rodrigo Browne Sartori</h4>
@@ -268,21 +262,20 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <h5>Check in</h5>
-                        <input id="chIn" class="datepicker"></input>
+                        <input id="chIn" class="form-control datepicker"></input>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <h5>Check out</h5>
-                        <input id="chOut" class="datepicker2"></input>
+                        <input id="chOut" class="form-control datepicker2"></input>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
-                    <fieldset disabled="disabled">
-                           <button type="button" id="srchDisp" class="btn submit-btn">Buscar (Próximamente)</button>
+                           <button type="button" id="srchDisp" class="btn submit-btn">Buscar</button>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -484,7 +477,7 @@
                             <p>TV Satelital</p>
                             <p>WiFi</p>
                             <p>Frigobar</p>
-                            <img class="img-responsive" src="{{asset('img/single.png')}}">
+                            <img class="img-responsive" src="{{asset('img/rooms/HAB_8(1).JPG')}}">
                         </div>
                         <!-- Plan Button  -->
                         <div class="plan-button">
@@ -508,7 +501,7 @@
                             <p>TV Satelital</p>
                             <p>WiFi</p>
                             <p>Frigobar</p>
-                            <img class="img-responsive" src="{{asset('img/shared_single.png')}}">
+                            <img class="img-responsive" src="{{asset('img/rooms/HAB_3(1).JPG')}}">
                         </div>
                         <!-- Plan Button  -->
                         <div class="plan-button">
@@ -532,7 +525,7 @@
                             <p>TV Satelital</p>
                             <p>WiFi</p>
                             <p>Frigobar</p>
-                            <img class="img-responsive" src="{{asset('img/matrimonial.png')}}">
+                            <img class="img-responsive" src="{{asset('img/rooms/HAB_1.JPG')}}">
                         </div>
                         <!-- Plan Button  -->
                         <div class="plan-button">
@@ -717,6 +710,29 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
+        //prevent auto hide on some chromes
+        $('.datepicker').on('mousedown',function(event){
+            event.preventDefault();
+        })
+        
+        $('.datepicker2').on('mousedown',function(event){
+            event.preventDefault();
+        })
+
+        var yesterday = new Date((new Date()).valueOf()-1000*60*60*24);
+
+        $('.datepicker').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        });
+
+        $('.datepicker2').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        }); 
+
         var $input = $('.datepicker').pickadate()
         var picker = $input.pickadate('picker')
         var $input2 = $('.datepicker2').pickadate()
@@ -781,24 +797,32 @@ dots: false,
             var checkIn = hola;
             var checkOut = hola2;
 
-            $.ajax({
-                // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{checkIn:checkIn, checkOut:checkOut},
-                //Cambiar a type: POST si necesario
-                type: 'POST',
-                // Formato de datos que se espera en la respuesta
-                dataType: "json",
-                // URL a la que se enviará la solicitud Ajax
-                url: '/disp' ,
-                success:function(data){
-                    $('#s').text(data.single);
-                    $('#c').text(data.compartida);
-                    $('#m').text(data.matrimonial);
-                    $("#exampleModalCenter").modal();
-
-
-           }
-            }); 
+            if((checkOut >= checkIn) == false){
+                swal({
+                    title:"Ups!!",
+                    text: "El check out no puede tener fecha antes del check in, intenta nuevamente",
+                    type: "warning"
+                });
+            }else{
+            
+                        $.ajax({
+                            // En data puedes utilizar un objeto JSON, un array o un query string
+                           data:{checkIn:checkIn, checkOut:checkOut},
+                            //Cambiar a type: POST si necesario
+                            type: 'POST',
+                            // Formato de datos que se espera en la respuesta
+                            dataType: "json",
+                            // URL a la que se enviará la solicitud Ajax
+                            url: '/disp' ,
+                            success:function(data){
+                                $('#s').text(data.single);
+                                $('#c').text(data.compartida);
+                                $('#m').text(data.matrimonial);
+                                $("#exampleModalCenter").modal();
+            
+            
+                       }
+                        }); }
 
         });
 

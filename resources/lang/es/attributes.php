@@ -20,4 +20,5 @@ return [
     'free' => 'Libre',
     'locked' => 'Bloqueada',
     'occupied' => 'Ocupada',
+    'today' => 'Hoy',
 ];

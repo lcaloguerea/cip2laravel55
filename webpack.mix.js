@@ -43,3 +43,14 @@ mix.scripts([
     'public/js/popper.min.js',
   ], 'public/js/swal2.js');
 
+mix.scripts([
+    'node_modules/@fullcalendar/core/main.min.js',
+    'node_modules/@fullcalendar/daygrid/main.min.js',
+    'node_modules/@fullcalendar/list/main.min.js',
+  ], 'public/js/calendar.js');
+
+mix.styles([
+    'node_modules/@fullcalendar/core/main.min.css',
+    'node_modules/@fullcalendar/daygrid/main.min.css',
+    'node_modules/@fullcalendar/list/main.min.css',
+  ], 'public/css/calendar.css');

@@ -28,6 +28,8 @@ class AdminController extends Controller
         $passengers = Passenger::all()->count();
         $roomOc = Room::where('status', 'occupied')->get();
 
+        $lUsers = User::orderBy('id', 'desc')->take(5)->get();
+
         $pActive = 0;
         foreach($roomOc as $r){
             $pActive += PassengerGroup::where('reservation_id', $r->active_reservation_id)->count();
@@ -46,7 +48,7 @@ class AdminController extends Controller
             }
         }
  
-        return view('/admin/index', compact('users', 'passengers', 'pActive', 'income'));
+        return view('/admin/index', compact('users', 'passengers', 'pActive', 'income', 'lUsers'));
     }
 
     public function getMailbox()
@@ -65,7 +67,7 @@ class AdminController extends Controller
             {
                 $avatar = $request->file('updAvatar');
                 $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+                Image::make($avatar)->resize(300, 300)->save( './uploads/avatars/' . $filename  );
                 $user = User::find($request->id);
                 $user->uAvatar = '/uploads/avatars/' . $filename;
                 $user->save();

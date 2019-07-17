@@ -69,9 +69,6 @@
               <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
               </a>
             </li>
-            <li class="treeview {{ request()->is('admin/calendar') ? 'active' : '' }}">
-              <a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
-            </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-usd"></i> <span>Pagos</span>
               <span class="pull-right-container">
@@ -104,14 +101,14 @@
           @elseif(Auth::user()->type == 'maid')
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('maid') ? 'active' : '' }}">
               <a href={{URL::to('maid')}}><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('maid/supplies') ? 'active' : '' }}">
               <a href="{{URL::to('maid/supplies')}}"><i class="fa fa-history"></i> <span>Insumos</span></a>
             </li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-handshake-o"></i> <span>Mantenimiento</span></a>
+            <li class="treeview {{ request()->is('maid/maintenance') ? 'active' : '' }}">
+              <a href="{{URL::to('maid/maintenance')}}"><i class="fa fa-wrench"></i> <span>Mantenimiento</span></a>
             </li>
             <li class="treeview {{ request()->is('maid/reservations-list') ? 'active' : '' }}">
               <a href="{{URL::to('maid/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>

@@ -22,7 +22,7 @@
 @import url('https://fonts.googleapis.com/css?family=Amaranth:400,700');
 </style>
     <!--<![endif]-->
-   <title>Reserva registrada</title>
+   <title>Reabastecimiento completo</title>
    <!--[if gte mso 9]>
    <style type="text/css" media="all">
       sup { font-size: 100% !important; }
@@ -122,7 +122,7 @@ hr {
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#038b71">
                         <tr>
                            <td class="nav" style="color:#ffffff; font-family:'Amaranth', sans-serif; font-size:20px; line-height:18px; font-weight: 500; text-align:center; min-width:auto !important; padding:15px;">
-                             <span class="link-white" style="color:#ffffff; text-decoration:none;">RESERVA REGISTRADA</span>
+                             <span class="link-white" style="color:#ffffff; text-decoration:none;">Reabastecimiento completo</span>
                            </td>
                         </tr>
                      </table>
@@ -131,7 +131,7 @@ hr {
                      <!-- Hero -->
                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://letmetellyousomethingblogdotcom.files.wordpress.com/2015/03/checking-in.jpg" width="650" height="380" border="0" alt="" /></td>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://www.reviso.com/blog/wp-content/uploads/sites/6/inventory-management-blog-418x315.png" width="650" height="380" border="0" alt="" /></td>
                         </tr>
                         <tr>
                            <td class="p30-15" style="padding: 50px 30px;">
@@ -140,7 +140,7 @@ hr {
                                     <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Notificación de sistema:</td>
                                  </tr>
                                  <tr>
-                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha registrado una  nueva reserva en la plataforma CIP. <br> A continuación se muestran los detalles.</td>
+                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha registrado un reabastecimiento completo de todos los suministros sin stock desde el panel Maid CIP. <br> A continuación se muestran los detalles.</td>
                                  </tr>
                               </table>
                            </td>
@@ -159,69 +159,32 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="http://cipuach.uach.cl/cip/storage/app/public/DSC_2381.JPG" width="315" height="237" border="0" alt="" /></td>
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/sites/2/2016/04/twitter-list.jpg" width="315" height="237" border="0" alt="" /></td>
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Amaranth', sans-serif; font-size:22px; line-height:32px; text-align:left;" class="h3">Detalles de la reserva:</td>
+                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Amaranth', sans-serif; font-size:22px; line-height:32px; text-align:left;" class="h3">Suministros reabastecidos:</td>
                                                    </tr>
                                     <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
                                              <td class="p0-15">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          @foreach($sp as $s)
                                           <tr>
                                                       <td style="padding-bottom: 8px;">
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://cdn.onlinewebfonts.com/svg/img_225481.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">ID de reserva: {{$Reserv->id_res}}</td>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="15" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">{{$s->supply}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
-                                                   </tr>                                                    
-                                                  <tr>
-                                                      <td style="padding-bottom: 8px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i1.wp.com/sluggerotoole.com/wp-content/uploads/2016/09/Generic-calendar-page-icon.png?fit=1024%2C1024&ssl=1" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Registro: {{date('d-m-Y', strtotime($Reserv->created_at))}}</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>                                                  
-                                                   <tr>
-                                                      <td style="padding-bottom: 8px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i1.wp.com/sluggerotoole.com/wp-content/uploads/2016/09/Generic-calendar-page-icon.png?fit=1024%2C1024&ssl=1" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Check in: {{date('d-m-Y', strtotime($Reserv->check_in))}}</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td style="padding-bottom: 8px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://i1.wp.com/sluggerotoole.com/wp-content/uploads/2016/09/Generic-calendar-page-icon.png?fit=1024%2C1024&ssl=1" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Check out: {{date('d-m-Y', strtotime($Reserv->check_out))}}</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>                                                   
-                                                   <tr>
-                                                      <td style="padding-bottom: 8px;">
-                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://www.hotelcasamiguel.com/images/door.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$r->type)}}</td>
-                                                            </tr>
-                                                         </table>
-                                                      </td>
-                                                   </tr>
+                                                   </tr> 
+                                                @endforeach                                                   
+                                                  
                                                 </table>
                                              </td>
                                           </tr>
@@ -236,13 +199,13 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="https://ironmaidencolombiafc.files.wordpress.com/2011/12/02_steve-harris.jpg?w=630&h=445" width="315" height="237" border="0" alt="" /></td>
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="/img/dimebag.jpg" width="315" height="237" border="0" alt="" /></td>
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Amaranth', sans-serif; font-size:22px; line-height:32px; text-align:left;" class="h3">Registrada por:</td>
+                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Amaranth', sans-serif; font-size:22px; line-height:32px; text-align:left;" class="h3">Realizado por:</td>
                                                    </tr>
                                     <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -303,20 +266,6 @@ hr {
                               </table>
                            </td>
                         </tr>
-                        @if($Reserv->user_obs != "")
-                        <tr>
-                           <td class="p30-15" style="padding: 0px 30px; padding-bottom: 70px;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Observaciones del responsable:</td>
-                                 </tr>
-                                 <tr>
-                                    <td class="text center" style="background-color:#e28f00;padding: 25px; color:#ffffff; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">{{$Reserv->user_obs}}</td>
-                                 </tr>
-                              </table>
-                           </td>
-                           @endif
-                        </tr>
                      </table>
                      <!-- END Properties / Two Columns -->                 
                      <hr>
@@ -344,9 +293,6 @@ hr {
                                           </tr>
                                        </table>
                                     </td>
-                                 </tr>
-                                 <tr>
-                                    <td style="padding-bottom: 30px; padding-top: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:25px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Te esperamos!!</td>
                                  </tr>                                 
                               </table>
                            </td>

@@ -25,11 +25,14 @@ Route::get('/admin/users/user-profile/{id}', 'AdminController@getProfile');
 
 //maid routes
 Route::get('/maid', 'MaidController@index')->name('maid');
-Route::get('/maid/supplies', 'MaidController@getSupplies');
+Route::get('/maid/supplies', 'MaidController@getSupplies')->name('supplies');
+Route::get('/maid/maintenance', 'MaidController@getMaintenance')->name('maintenance');
 Route::post('/maid/supplies-alert', 'MaidController@postSuppliesAlert');
 Route::post('/maid/supplies-res', 'MaidController@postSuppliesRes');
 Route::post('/maid/supplies-alert-all', 'MaidController@postSuppliesAlertAll');
 Route::post('/maid/supplies-res-all', 'MaidController@postSuppliesResAll');
+Route::post('/maid/alert-m', 'MaidController@postAlertM');
+Route::post('/maid/validate-m', 'MaidController@postvalidateM');
 Route::get('/maid/rooms-list', 'RoomsController@getList');
 Route::get('/maid/rooms-cards', 'RoomsController@getCards');
 Route::get('/maid/room-detail/{id}', 'RoomsController@getRoomDetail');

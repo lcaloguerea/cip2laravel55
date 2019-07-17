@@ -60,7 +60,7 @@ return [
 		'string'  => 'El campo :attribute debe tener al menos :min caracteres.',
 		'array'   => 'El campo :attribute debe tener al menos :min elementos.',
 	],
-	'not_in'                => 'El campo :attribute seleccionado es invalido.',
+	'not_in'                => 'El :attribute seleccionado es invalido.',
 	'numeric'               => 'El campo :attribute debe ser un número.',
 	'present'               => 'El campo :attribute debe estar presente.',
 	'regex'                 => 'El formato del campo :attribute es inválido.',
@@ -132,5 +132,8 @@ return [
 		'country_o' => 'país de origen',
 		'country_r' => 'país de residencia',
 		'monthly' => 'Mensual',
+		'motive' => 'motivo',
+		'program' => 'programa',
+		'payment_m' => 'método de pago',
 	],
 ];

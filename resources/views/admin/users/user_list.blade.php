@@ -41,7 +41,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Usuarios</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -53,7 +53,7 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="table responsive">
+                                    <table id="payments" class="table responsive datatable">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -114,8 +114,10 @@
         <!-- Slimscroll is required when using the fixed layout. -->
         <script>
             $(function () {
-                $("#payments").DataTable();
-                $(".dataTables_filter input").addClass("dataTable_search");
+                $("#payments").DataTable({
+                    "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                    "lengthChange": false,
+                });
             });
         </script>
     </body>

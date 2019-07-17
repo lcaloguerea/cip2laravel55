@@ -50,7 +50,7 @@
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <div class='form-group'>
                                             <label>Departamento</label>
-                                            <select id="department" name="department" class="form-control select2">
+                                            <select id="department" name="department" class="form-control select2" value="{{ old('lName') }}" required>
                                                 <option selected="selected" value=>--</option>
                                                 <option value="CIP">CIP</option>
                                                 <option value="Arquitectura y Artes">Arquitectura y artes</option>

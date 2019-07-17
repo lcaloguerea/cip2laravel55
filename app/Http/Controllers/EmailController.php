@@ -6,6 +6,7 @@ use App\Room;
 use App\Passenger;
 use App\Reservation;
 use App\Country;
+use App\Supply;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +36,8 @@ class EmailController extends Controller
             $message->to('hellthrash@gmail.com','developer')
                 ->subject('Testing mails views');
         });*/
-        return view('/emails/reservation_staff', compact('user','Reserv', 'p1', 'r'));
+        $sp = Supply::where('stock','no')->get();
+        return view('/emails/resuplyAll', compact('user','Reserv', 'p1', 'r','sp'));
     }  
 
 }

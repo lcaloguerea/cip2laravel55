@@ -26,54 +26,20 @@ class UserController extends Controller
         //user cannot see cancelled or finished
         $Reservations = Reservation::all()->where('status', '!=', 'cancelled')->where('status', '!=', 'finished');
 
-        $events = [];
-        foreach($Reservations as $r)
-
-            if($r->roomType == 'single'){
-                $events[] = \Calendar::event(
-                    $r->roomType.' '.$r->room_id, //event title
-                    true, //full day event?
-                    new \DateTime($r->check_in),
-                    new \DateTime($r->check_out.' +1 day'),
-                    $r->id_res,
-                    [
-                    'color' => '#d81b60',
-                ]);
-            }
-            elseif($r->roomType == 'shared'){
-                $events[] = \Calendar::event(
-                    $r->roomType.' '.$r->room_id, //event title
-                    true, //full day event?
-                    new \DateTime($r->check_in),
-                    new \DateTime($r->check_out.' +1 day'),
-                    $r->id_res,
-                    [
-                    'color' => '#605ca8',
-                ]);
-            }
-            elseif($r->roomType == 'matrimonial'){
-                $events[] = \Calendar::event(
-                    $r->roomType.' '.$r->room_id, //event title
-                    true, //full day event?
-                    new \DateTime($r->check_in),
-                    new \DateTime($r->check_out.' +1 day'),
-                    $r->id_res,
-                    [
-                    'color' => 'orange',
-                ]);
-            }
+        //handle fullcalendar not been able to display last day in use
+        foreach($Reservations as $r){
+            $r->check_out = Carbon::parse($r->check_out)->addDay()->format('Y-m-d');
+        }
 
 
-
-        $calendar = \Calendar::addEvents($events); //add an array with addEvents
-
-
-        return view('/user/index', compact('calendar', 'events'));
+        return view('/user/index', compact('Reservations'));
     }
 
     public function postMakeReserv(Request $request)
     {
         $passengers = Passenger::all();
+        $chin = $request->chIn_submit;
+        $chout = $request->chOut_submit;
 
         Date::setLocale('es');
         if($request->chIn_submit != null){
@@ -87,7 +53,9 @@ class UserController extends Controller
 
         $country = Country::all();
 
-        return view('/user/make_reservation', compact('passengers', 'country','check_in','check_out'));
+        //dd(compact('passengers', 'country','check_in','check_out','chin','chout'));
+
+        return view('/user/make_reservation', compact('passengers', 'country','chin','chout'));
     }
 
     public function postLoadGuest(Request $request)
@@ -203,7 +171,22 @@ class UserController extends Controller
 
     public function postCreateReservation(Request $request)
     {
-        $admins = User::where('type', 'admin')
+        $null = "null";
+
+        $validator = \Validator::make($request->all(), [
+            'motive' => 'required',
+            'program' => 'required',
+            'payment_m' => 'required|not_in:'.$null,
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all(),
+            'passenger'=> "",
+            'passengerNew' => ""]);
+        }else{
+            $admins = User::where('type', 'admin')
                     ->orWhere('type', 'maid')
                     ->orderBy('email')
                     ->get();
@@ -212,7 +195,6 @@ class UserController extends Controller
         foreach($admins as $a){
             $gaemail[] = $a->email;
         }
-
 
 
         $p1 = Passenger::where('id_passenger', $request->passenger1)->first();
@@ -303,7 +285,10 @@ class UserController extends Controller
         });
 
 
-        return response()->json(['success'=>"Reserva registrada, enviaremos un correo con mayor información"]);
+        return response()->json(['success'=>"Reserva registrada, le enviaremos un correo con mayor información"]);
+        }
+
+        
     }
 
     public function getMyPassengers()

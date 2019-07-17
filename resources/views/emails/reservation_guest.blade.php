@@ -443,7 +443,7 @@ hr {
                                                       <td style="padding-bottom: 18px; color:#0e2337; font-family:'Fira Sans', Arial, sans-serif; font-size:22px; line-height:32px; text-align:center;" class="h3">Conozca nuestra ubicación</td>
                                                    </tr>
                                                    <tr>
-                                                      <td class="text2" style="padding-bottom: 18px; color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">La Casa de Investigación y Postgrado – CIP se encuentra ubicada en el 4° piso del módulo C del Ex Hotel Isla Teja, Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno universitario rodeado de naturaleza. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia. <br><br>Hal hacer click en la magina puede vernos en google maps.</td>
+                                                      <td class="text2" style="padding-bottom: 18px; color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">La Casa de Investigación y Postgrado – CIP se encuentra ubicada en el 3° piso del módulo C del Ex Hotel Isla Teja, Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno universitario rodeado de naturaleza. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia. <br><br>Hal hacer click en la magina puede vernos en google maps.</td>
                                                    </tr>
                                                 </table>
                                              </td>
@@ -528,7 +528,7 @@ hr {
                                              <th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 4, Isla Teja - Valdivia. <br /><br /></td>
+                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia. <br /><br /></td>
                                                    </tr>
                                                 </table>
                                              </th>

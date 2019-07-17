@@ -22,7 +22,7 @@
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
     -->
-  <body class="skin-yellow sidebar-mini">
+  <body class="skin-yellow sidebar-mini fixed">
     <div class="page-loader-wrapper" >
       <div class="spinner"></div>
     </div>
@@ -93,7 +93,7 @@
             <div class="box-header">
               <h3 class="box-title">Encuesta de satisfacción</h3>
               <div class="box-tools pull-right">
-                <a href="#" class=" btn-box-tool">View all</a>
+                <a href="#" class=" btn-box-tool">Ir a testimonios</a>
               </div>
             </div>
             <!-- /.box-header -->
@@ -107,23 +107,18 @@
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Ingresos Single
-                    <small class="text-muted">10% High then last year</small>
                   </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="stats-report">
                     <div class="stat-item">
-                      <h6>Overall</h6>
+                      <h6>General</h6>
                       <b>45.00%</b>
                     </div>
                     <div class="stat-item">
-                      <h6>Montly</h6>
+                      <h6>Mes actual</h6>
                       <b>30.40%</b>
-                    </div>
-                    <div class="stat-item">
-                      <h6>Day</h6>
-                      <b>14.50%</b>
                     </div>
                   </div>
                   <div id="sparkline1" class="sparkline">
@@ -138,23 +133,18 @@
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Ingresos Matrimonial
-                    <small class="text-muted">5% High then last year</small>
                   </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="stats-report">
                     <div class="stat-item">
-                      <h6>Overall</h6>
+                      <h6>General</h6>
                       <b>27.00%</b>
                     </div>
                     <div class="stat-item">
-                      <h6>Montly</h6>
+                      <h6>Este mes</h6>
                       <b>14.20%</b>
-                    </div>
-                    <div class="stat-item">
-                      <h6>Day</h6>
-                      <b>10.15%</b>
                     </div>
                   </div>
                   <div id="sparkline2" class="sparkline">
@@ -169,23 +159,18 @@
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Ingresos Single compartida
-                    <small class="text-muted">12% less then last month</small>
                   </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="stats-report">
                     <div class="stat-item">
-                      <h6>Overall</h6>
+                      <h6>General</h6>
                       <b>50.10%</b>
                     </div>
                     <div class="stat-item">
-                      <h6>Montly</h6>
+                      <h6>Mes actual</h6>
                       <b>45.00%</b>
-                    </div>
-                    <div class="stat-item">
-                      <h6>Day</h6>
-                      <b>24.50%</b>
                     </div>
                   </div>
                   <div id="sparkline3" class="sparkline">
@@ -199,7 +184,7 @@
           </div>
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Last clients</h3>
+              <h3 class="box-title">Últimos usuarios registrados</h3>
               <div class="box-tools pull-right">
                 <a href="#" class=" btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></a>
                 <a href="#" class=" btn-box-tool">View all</a>
@@ -214,46 +199,24 @@
                       <th>#</th>
                       <th>Usuario</th>
                       <th>Departamento</th>
+                      <th>Fecha de registro</th>
                       <th>Estado</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($lUsers as $l)
                     <tr>
-                      <td>1</td>
-                      <td>Bernie Ripley</td>
-                      <td>Lorem ipsum dolor sit amet...</td>
+                      <td><a href="/{{Auth::user()->type}}/users/user-profile/{{$l->id}}">{{$l->id}}</a></td>
+                      <td>{{$l->name}} {{$l->lName}}</td>
+                      <td>{{$l->department}}</td>
+                      <td>{{$l->created_at->format('d/m/Y')}}</td>
+                      @if($l->confirmed == 'yes')
                       <td><span class="label bg-green">Verificado</span></td>
+                      @else
+                      <td><span class="label bg-orange">Por confirmar</span></td>
+                      @endif
                     </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Bryce Edric</td>
-                      <td>Lorem ipsum dolor sit amet...</td>
-                      <td><span class="label bg-green">Verificado</span></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Bernie Ripley</td>
-                      <td>Lorem ipsum dolor sit amet...</td>
-                      <td><span class="label bg-yellow">Pendiente</span></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Bryce Edric</td>
-                      <td>Lorem ipsum dolor sit amet...</td>
-                      <td><span class="label bg-green">Verificado</span></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Bernie Ripley</td>
-                      <td>Lorem ipsum dolor sit amet...</td>
-                      <td><span class="label bg-yellow">Pendiente</span></td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Bryce Edric</td>
-                      <td>Lorem ipsum dolor sit amet...</td>
-                      <td><span class="label bg-yellow">Pendiente</span></td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -264,16 +227,15 @@
             <div class="col-md-4 col-xs-12 col-sm-6">
               <div class="box">
                 <div class="element-overlay">
-                  <img class="img-responsive" alt="user" src="{{asset('img/single.png')}}">
+                  <img class="img-responsive" alt="user" src="{{asset('img/rooms/HAB_8(1).JPG')}}">
                   <div class="element-overlay-info">
                     <ul class="element-detail">
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-search"></i></a></li>
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-link"></i></a></li>
+                      <li><a class="btn btn-outline" href="{{URL::to('admin/rooms-list')}}"><i class="fa fa-search"></i></a></li>
                     </ul>
                   </div>
                 </div>
                 <div class="box-body body-car">
-                  <h4 class="car-title text-center">Single</h4>
+                  <h4 class="car-title text-center">Simple</h4>
                   <div class="car-information text-center">
                     <div class="row">
                       <div class="col-xs-6 col-md-6"><strong>Características:</strong></div>
@@ -289,18 +251,17 @@
                       <div class="price-car text-center"><strong>$ 30.000 CLP /Day</strong></div>
                     </div>
                   </div>
-                  <button class="btn btn-block">Más detalles</button>
+                  <a href="{{URL::to('admin/rooms-cards')}}" class="btn btn-block">ver más</a>
                 </div>
               </div>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-6">
               <div class="box">
                 <div class="element-overlay">
-                  <img class="img-responsive" alt="user" src="{{asset('img/shared_single.png')}}">
+                  <img class="img-responsive" alt="user" src="{{asset('img/rooms/HAB_3(1).JPG')}}">
                   <div class="element-overlay-info">
                     <ul class="element-detail">
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-search"></i></a></li>
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-link"></i></a></li>
+                      <li><a class="btn btn-outline" href="{{URL::to('admin/rooms-list')}}"><i class="fa fa-search"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -321,23 +282,22 @@
                       <div class="price-car text-center"><strong>$ 35.000 CLP /Day</strong></div>
                     </div>
                   </div>
-                  <button class="btn btn-block">Más detalles</button>
+                  <a href="{{URL::to('admin/rooms-cards')}}" class="btn btn-block">ver más</a>
                 </div>
               </div>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-6">
               <div class="box">
                 <div class="element-overlay">
-                  <img class="img-responsive" alt="user" src="{{asset('img/matrimonial.png')}}">
+                  <img class="img-responsive" alt="user" src="{{asset('img/rooms/HAB_1.JPG')}}">
                   <div class="element-overlay-info">
                     <ul class="element-detail">
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-search"></i></a></li>
-                      <li><a class="btn btn-outline" href="#"><i class="fa fa-link"></i></a></li>
+                      <li><a class="btn btn-outline" href="{{URL::to('admin/rooms-list')}}"><i class="fa fa-search"></i></a></li>
                     </ul>
                   </div>
                 </div>
                 <div class="box-body body-car">
-                  <h4 class="car-title text-center">Doble</h4>
+                  <h4 class="car-title text-center">Matrimonial</h4>
                   <div class="car-information text-center">
                     <div class="row">
                       <div class="col-xs-6 col-md-6"><strong>Características:</strong></div>
@@ -353,7 +313,7 @@
                       <div class="price-car text-center"><strong>$ 40.000 CLP /Day</strong></div>
                     </div>
                   </div>
-                  <button class="btn btn-block">Más detalles</button>
+                  <a href="{{URL::to('admin/rooms-cards')}}" class="btn btn-block">ver más</a>
                 </div>
               </div>
             </div>

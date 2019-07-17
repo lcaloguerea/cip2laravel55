@@ -8,6 +8,7 @@ use App\PassengerGroup;
 use App\User;
 use App\Maintenance;
 use App\Supply;
+use Carbon\Carbon;
 
 class MaidController extends Controller
 {
@@ -45,6 +46,12 @@ class MaidController extends Controller
         return view('/maid/supplies', compact('supp'));
     }
 
+    public function getMaintenance()
+    {
+        $maint = Maintenance::all();
+        return view('/maid/maintenance', compact('maint'));
+    }
+
 
     public function postSuppliesAlert(Request $request)
     {
@@ -78,6 +85,18 @@ class MaidController extends Controller
 
     public function postSuppliesRes(Request $request)
     {
+
+        $admins = User::where('type', 'admin')
+                    ->orWhere('type', 'maid')
+                    ->orderBy('email')
+                    ->get();
+
+        $sp = Supply::where('stock','no')->get();
+
+        foreach($admins as $a){
+            $gaemail[] = $a->email;
+        }
+
         $outcome="";
         $aux =  array_slice($request->selectedIds, 1);
         foreach($aux as $a){
@@ -95,7 +114,28 @@ class MaidController extends Controller
                 $sup = Supply::where('id', $b)->first();
                 $sup->stock = "yes";
                 $sup->save();
+
+                /*$ma = Activity::create([
+                    'group' => 'maid',
+                    'motive' => ''.$sup->supply.'',
+                    'event' => 'resupply_some',
+                    'responsible_id' => \Auth::user()->id
+                ]);*/
             }
+            $user = \Auth::id();
+            $admin = 'Leo';
+            $aemail = 'l.caloguerea@gmail.com';
+
+      /*  //mail to CIP staff
+        //use $gaemail instead of aemail to masive send
+        \Mail::send('emails.resuplyAll',array('user' => $user, 'sp' => $sp), function($message) use ($gaemail, $admin) {
+            $message->to($gaemail,$admin)
+                ->subject('Reabastecimiento completo');
+                
+           });*/
+
+
+
             $message = 'La selección de insumos ha sido reabastecida y realizada por '.\Auth::user()->name.' '.\Auth::user()->lName;
             return response()->json(['message'=> $message,
                                     'outcome' => $outcome]);
@@ -126,6 +166,42 @@ class MaidController extends Controller
             $s->save();
         }
         $message = 'Se ha alertado a los administradores de la reposición de todo stock validada y registrado por '.\Auth::user()->name.' '.\Auth::user()->lName;
+            return response()->json(['message'=> $message]);
+    }
+
+    public function postAlertM(Request $request)
+    {
+        $m = Maintenance::where('id',$request->m_id)->first();
+
+        if($m->periodicity == "monthly"){
+            $m->status = "expired";
+            $m->save();
+        }else{
+            $m->status = "expired";
+            $m->save();
+        }
+
+        
+        $message = 'Alerta enviada y registrado por '.\Auth::user()->name.' '.\Auth::user()->lName;
+            return response()->json(['message'=> $message]);
+    }
+
+    public function postValidateM(Request $request)
+    {
+        $m = Maintenance::where('id',$request->m_id)->first();
+
+        if($m->periodicity == "monthly"){
+            $m->status = "done";
+            $m->deadline = Carbon::now()->addMonths(1);
+            $m->save();
+        }else{
+            $m->status = "done";
+            $m->deadline = Carbon::now()->addYear();
+            $m->save();
+        }
+
+        
+        $message = 'Mantenimiento validado por '.\Auth::user()->name.' '.\Auth::user()->lName;
             return response()->json(['message'=> $message]);
     }
 
