@@ -102,86 +102,6 @@
             </div>
             <!-- /.box-body -->
           </div>
-          <div class="row">
-            <div class="col-sm-12 col-lg-4">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Ingresos Single
-                  </h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <div class="stats-report">
-                    <div class="stat-item">
-                      <h6>General</h6>
-                      <b>45.00%</b>
-                    </div>
-                    <div class="stat-item">
-                      <h6>Mes actual</h6>
-                      <b>30.40%</b>
-                    </div>
-                  </div>
-                  <div id="sparkline1" class="sparkline">
-                    <canvas style="display: inline-block; width: 482px; height: 150px; vertical-align: top;" width="482" height="150"></canvas>
-                  </div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-            </div>
-            <!--/.col-->
-            <div class="col-sm-12 col-lg-4">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Ingresos Matrimonial
-                  </h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <div class="stats-report">
-                    <div class="stat-item">
-                      <h6>General</h6>
-                      <b>27.00%</b>
-                    </div>
-                    <div class="stat-item">
-                      <h6>Este mes</h6>
-                      <b>14.20%</b>
-                    </div>
-                  </div>
-                  <div id="sparkline2" class="sparkline">
-                    <canvas style="display: inline-block; width: 482px; height: 150px; vertical-align: top;" width="482" height="150"></canvas>
-                  </div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-            </div>
-            <!--/.col-->
-            <div class="col-sm-12 col-lg-4">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Ingresos Single compartida
-                  </h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <div class="stats-report">
-                    <div class="stat-item">
-                      <h6>General</h6>
-                      <b>50.10%</b>
-                    </div>
-                    <div class="stat-item">
-                      <h6>Mes actual</h6>
-                      <b>45.00%</b>
-                    </div>
-                  </div>
-                  <div id="sparkline3" class="sparkline">
-                    <canvas style="display: inline-block; width: 482px; height: 150px; vertical-align: top;" width="482" height="150"></canvas>
-                  </div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-            </div>
-            <!--/.col-->
-          </div>
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Últimos usuarios registrados</h3>
@@ -344,8 +264,72 @@
     <script src="{{asset('morris/morris.min.js')}}"></script>
     <script src="{{asset('js/chartjs/Chart.min.js')}}"></script>
     <script src="{{asset('js/sparkline/jquery.sparkline.min.js')}}"></script>
-    <script src="{{asset('js/pages/dashboard.js')}}"></script>
     <script src="{{asset('js/app2.js')}}"></script>
     <!-- Slimscroll is required when using the fixed layout. -->
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+        MorrisArea();
+ 
+        function MorrisArea() {
+            Morris.Bar({
+                element: 'area_chart',
+                barGap:0,
+                data: [{
+                        period: '2012',
+                        Simple: 4,
+                        Compartida: 4,
+                        Matrimonial: 3
+                    }, {
+                        period: '2013',
+                        Simple: 5,
+                        Compartida: 4,
+                        Matrimonial: 5
+                    }, {
+                        period: '2014',
+                        Simple: 4,
+                        Compartida: 5,
+                        Matrimonial: 5
+                    }, {
+                        period: '2015',
+                        Simple: 4.5,
+                        Compartida: 5,
+                        Matrimonial: 5
+                    }, {
+                        period: '2016',
+                        Simple: 5,
+                        Compartida: 3.5,
+                        Matrimonial: 4
+                    }, {
+                        period: '2018',
+                        Simple: 5,
+                        Compartida: 5,
+                        Matrimonial:3
+                    }, {
+                        period: '2019',
+                        Simple: 4,
+                        Compartida: 5,
+                        Matrimonial: 4
+                    }
+
+                ],
+                lineColors: ['#d81b60', '#605ca8', 'orange'],
+                xkey: 'period',
+                ymax: 5,
+                ykeys: ['Simple', 'Compartida', 'Matrimonial'],
+                labels: ['Simple', 'Compartida', 'Matrimonial'],
+                pointSize: 1,
+                lineWidth: 0,
+                resize: true,
+                fillOpacity: 0.5,
+                behaveLikeLine: true,
+                gridLineColor: '#e0e0e0',
+                hideHover: 'auto'
+            });
+        }
+
+      });
+  </script>
+ 
   </body>
 </html>

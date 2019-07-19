@@ -185,7 +185,7 @@ $(":checked").each(function() {
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Si, bloqueala!'
+                        confirmButtonText: 'Si, alertar!'
                     }).then((result) => {
                         if (result.value) {
                             $.ajax({

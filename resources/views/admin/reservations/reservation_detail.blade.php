@@ -132,6 +132,77 @@
                             </div>
                         </div>
                     </div>
+
+        @if($reserv->confirmed == "confirmed" and $reserv->invoice_id == null and Auth::user()->type == "admin")
+          <div class="row">
+
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-12">
+              <div class="info-box">
+                <div class="info-box-content">
+                  <div class="text-center value">Emitir boleta</div>
+                  <br>
+                  <div class="box-body no-padding">
+                    <div class='row'>
+                        @if($reserv->payment_m == "p_code")
+                        <div class='col-md-4'>
+                            <div class='form-group'>
+                                <label>IVA</label>
+                                <select id="iva" class="form-control select2" style="width: 100%;">
+                            <option selected="selected" value="yes">Con</option>
+                            <option value="no">Sin</option>
+                        </select>
+                            </div>
+                        </div>
+                        <div class='col-md-4{{ $errors->has('discount') ? ' has-error' : '' }}'>
+                            <div class='form-group'>
+                                <label>Descuento</label>
+                                <input class="form-control" id="discount" name="discount" type="text" placeholder="Dejar vacío si no aplica" />
+                                @if ($errors->has('lName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('discount') }}</strong>
+                                     </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class='col-md-4'>
+                            <div class='form-group'>
+                                <label>Código interno</label>
+                                <input class="form-control" id="IC" name="IC" type="text"  />
+                            </div>
+                        </div>
+                        @else
+                        <div class='col-md-4'>
+                            <div class='form-group'>
+                                <label>IVA</label>
+                                <select id="iva" class="form-control select2" style="width: 100%;">
+                            <option selected="selected" value="yes">Con</option>
+                            <option value="no">Sin</option>
+                        </select>
+                            </div>
+                        </div>
+                        <div class='col-md-8'>
+                            <div class='form-group'>
+                                <label>Descuento</label>
+                                <input class="form-control" id="discount" name="discount" type="text" placeholder="Dejar vacío si no aplica" />
+                            </div>
+                        </div>
+                        <div class='col-md-1' hidden>
+                            <div class='form-group'>
+                                <label>Código interno</label>
+                                <input class="form-control" id="IC" name="IC" type="text"  />
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+          @endif
+
                     <div class="row">
                         <div class="col-md-3 pull-left">
                             <div class='form-group'>
@@ -154,11 +225,20 @@
                                     <button id="invoice" type="button" class="btn btn-primary btn-block">
                                         Boleta
                                     </button>
-                                @endif      
+                                @endif   
+                            </div> 
+                        </div>
+                        @if($reserv->confirmed == "confirmed" and $reserv->invoice_id == null and Auth::user()->type == "admin")
+                        <div class="col-md-3 pull-left">
+                            <div class='form-group'>
+                                    <button id="invoice" type="button" class="btn btn-primary btn-block">
+                                        Boleta
+                                    </button>
                             </div>
-                        </div>                       
+                        </div>
+                        @endif                      
                     </div>
-                                                    <div class="tab-content">
+                                    <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1">
                                             @if($act->count() == 0)
                                                 <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
@@ -269,6 +349,7 @@
                                                 </ul>
                                             @endif
                                     </div>
+                                </div>
                 </section>
                 <!-- /. main content -->
                 <span class="return-up"><i class="fa fa-chevron-up"></i></span>
@@ -433,11 +514,11 @@ var table = $('#payments').DataTable( {
     });
 
     $('#invoice').on('click',function(e){
-
         e.preventDefault();
-
         var id = {{$reserv->id_res}};
-
+        var iva = document.getElementById("iva").value;
+        var discount = document.getElementById("discount").value;
+        var IC = document.getElementById("IC").value;
         swal({
             title:"Esta seguro?",
             text: "Esta por emitir un comprobante del cobro asociado a esta reserva",
@@ -445,11 +526,14 @@ var table = $('#payments').DataTable( {
             html: true,
             showCancelButton: true,
             CancelButtonText: "cancelar",
+            confirmButtonColor: "#2ECCFA",
+            confirmButtonText: "Si, generar",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
         }, function () {
-
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{id:id, "_token": "{{ csrf_token() }}"},
+               data:{id:id, iva:iva, discount:discount, IC:IC, "_token": "{{ csrf_token() }}"},
                 //Cambiar a type: POST si necesario
                 type: 'PUT',
                 // Formato de datos que se espera en la respuesta
@@ -457,15 +541,29 @@ var table = $('#payments').DataTable( {
                 // URL a la que se enviará la solicitud Ajax
                 url: '/admin/reservations/invoice' , //this is different because it can change user type
                 success:function(data){
-                        swal({
-                            title:"Actualizado!!",
-                            text: "<strong>"+data.message+"</strong>",
-                            type: "success",
-                            html: true,
-                        },function () {
-                            window.location.reload(true);
-                        });
-                }
+                            if(data.success){
+                                swal({
+                                    title:"Boleta emitida!!",
+                                    text: "Se ha generado la boleta exitosamente, puede revisarla en el menú pagos",
+                                    type: "success",
+                                    html: true,
+                                },function () {
+                                    window.location.reload(true);
+                                });
+                            }else if(data.errors){
+                                html = '<p>Por favor corregir los siguientes errores</p><br><div class="alert alert-danger fade in">';
+                                jQuery.each(data.errors, function(key, value){
+                                    html += '<li>' + value + '</li>';
+                                });
+                                alert(html)
+                                swal({
+                                    title:"Ups!!",
+                                    text: html,
+                                    type: "warning",
+                                    html: true
+                                });
+                            }
+                        }
             }); 
         });
     });

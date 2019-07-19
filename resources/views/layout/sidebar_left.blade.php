@@ -69,20 +69,26 @@
               <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
               </a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin/payments/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-usd"></i> <span>Pagos</span>
               <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#">Registros de pagos</a>
+                <li class="{{ request()->is('admin/invoices-list') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/invoices-list')}}">Registros de pagos</a>
                 </li>
-                <li><a href="{{URL::to('admin/payments/b_invoice')}}">Boleta</a>
-                </li>
-                <li><a href="#">Factura</a>
+                <li class="{{ request()->is('admin/payments/b_invoice') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/payments/b_invoice')}}">Ejemplo comprobante</a>
                 </li>
               </ul>
+            </li>
+            <li class="treeview {{ request()->is('maid/supplies') ? 'active' : '' }}">
+              <a href="{{URL::to('maid/supplies')}}"><i class="fa fa-history"></i> <span>Insumos</span></a>
+            </li>
+            <li class="treeview {{ request()->is('maid/maintenance') ? 'active' : '' }}">
+              <a href="{{URL::to('maid/maintenance')}}"><i class="fa fa-wrench"></i> <span>Mantenimiento</span></a>
             </li>
          <!--    <li class="treeview">
               <a href="#"><i class="fa fa-area-chart"></i> <span>Reportes</span>

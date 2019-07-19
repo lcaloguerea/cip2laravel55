@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
 
         <!-- Icons -->
         <link href="{{asset('icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -30,7 +22,7 @@
       |               | sidebar-mini                            |
       |---------------------------------------------------------|
     -->
-    <body class="skin-yellow sidebar-mini">
+    <body class="skin-yellow sidebar-mini fixed">
         <div class="page-loader-wrapper" >
             <div class="spinner"></div>
         </div>
@@ -44,7 +36,7 @@
                 <section class="content-title">
                     <h1>
                         Boleta
-                        <small>#10645</small>
+                        <small>#XXXX</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
@@ -55,12 +47,6 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="invoice-box">
-                        <button id="discountB" type="button" class="btn btn-primary btn">
-                            Añadir descuento
-                        </button>
-                        <input type="discount" name="discount" style="width: 50px">
-                    </div>
-                    <div class="invoice-box">
                         <table cellpadding="0" cellspacing="0">
                             <tr class="top">
                                 <td colspan="2">
@@ -70,8 +56,8 @@
                                                 <h2><img style="width: 300px" src="/img/Mecesup_AUS.png"></h2>
                                             </td>
                                             <td>
-                                                Created: {{date('d-m-Y')}}<br>
-                                                Due: {{date('d-m-Y')}}
+                                                Emitida: {{date('d-m-Y')}}<br>
+                                                Vencimiento: {{date('d-m-Y', strtotime(date('d-m-Y'). ' + 7 days'))}}
                                             </td>
                                         </tr>
                                     </table>
@@ -99,31 +85,31 @@
                             </tr>
                             <tr class="heading">
                                 <td>
-                                    Payment Method
+                                    Forma de pago
                                 </td>
                                 <td>
-                                    Invoice #
+                                    Boleta #
                                 </td>
                             </tr>
                             <tr class="details">
                                 <td>
-                                    Paypal
+                                    Efectivo
                                 </td>
                                 <td>
-                                    10645
+                                    XXXX
                                 </td>
                             </tr>
                             <tr class="heading">
                                 <td>
-                                    Order Summary
+                                    Detalle
                                 </td>
                                 <td>
-                                    Price
+                                    Valor
                                 </td>
                             </tr>
                             <tr class="item">
                                 <td>
-                                    First Item
+                                    Cobro base
                                 </td>
                                 <td>
                                     $300.00
@@ -131,7 +117,7 @@
                             </tr>
                             <tr class="item">
                                 <td>
-                                    Second Item
+                                    IVA
                                 </td>
                                 <td>
                                     $75.00
@@ -139,16 +125,16 @@
                             </tr>
                             <tr class="item last">
                                 <td>
-                                    Third Item
+                                    Descuento
                                 </td>
                                 <td>
-                                    $10.00
+                                   - $10.00
                                 </td>
                             </tr>
                             <tr class="total">
                                 <td></td>
                                 <td>
-                                    Total: $385.00
+                                    Total: $365.00
                                 </td>
                             </tr>
                         </table>

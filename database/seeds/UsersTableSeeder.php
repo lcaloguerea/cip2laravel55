@@ -119,7 +119,8 @@ class UsersTableSeeder extends Seeder
                 'email'			=> $faker->unique->email ,
                 'phone'			=> $faker->e164PhoneNumber,
                 'password'		=> '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
-                'uAvatar'       => '/img/icons/icon-user.png' 
+                'uAvatar'       => '/img/icons/icon-user.png',
+                'created_at'    => DB::raw('CURRENT_TIMESTAMP')
             ];
 
         }

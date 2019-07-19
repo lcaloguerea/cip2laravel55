@@ -11,6 +11,8 @@ use App\Room;
 use App\Activity;
 use App\Testimonial;
 use Jenssegers\Date\Date;
+use App\Invoice;
+use PDF;
 use Image;
 use Auth;
 
@@ -202,4 +204,42 @@ class AdminController extends Controller
                 ]);
         }
     }
+
+    public function generatePDF()
+
+    {
+
+        $data = ['title' => 'Welcome to HDTuto.com'];
+
+        $pdf = PDF::loadView('pdf/BCIP', $data);
+
+        return $pdf->stream('itsolutionstuff.pdf');
+
+    }
+
+    public function getInvoicesList()
+
+    {
+        $invoices = Invoice::all();
+        return view('admin/payments/payments_list', compact('invoices'));
+    }
+
+    public function getInvoiceDetail($id)
+
+    {
+        $invoice = Invoice::where('id', $id) -> first();
+        return view('admin/payments/invoice_detail', compact('invoice'));
+    }
+
+    public function postUpdateInvoice(Request $request){
+        if($request->hasFile('invoice'))
+        {
+            $inv = Invoice::where('id', $request->id)->first();
+            $filename = $inv->pdf;
+            dd($filename);
+            $request->get('invoice')->move(public_path('files') . $filename);
+            return \Redirect::back();
+        }
+    }
+
 }

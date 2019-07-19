@@ -26,7 +26,7 @@ class ReservationsTableSeeder extends Seeder
         $reserv->check_out    = date('Y-m-d', strtotime($today. ' + 5 days'));
         $reserv->roomType     = "single";
         $reserv->room_id      = 1;
-        $reserv->user_id      = 2;
+        $reserv->user_id      = 5;
 
         $reserv->save();
 
@@ -40,7 +40,7 @@ class ReservationsTableSeeder extends Seeder
         $reserv->check_out    = date('2019-03-23');
         $reserv->roomType     = "single";
         $reserv->room_id      = 2;
-        $reserv->user_id      = 3;
+        $reserv->user_id      = 6;
 
         $reserv->save();
 
@@ -54,7 +54,7 @@ class ReservationsTableSeeder extends Seeder
         $reserv->check_out    = date('2019-03-28');
         $reserv->roomType     = "single";
         $reserv->room_id      = 1;
-        $reserv->user_id      = 4;
+        $reserv->user_id      = 7;
 
         $reserv->save();
 
@@ -68,7 +68,7 @@ class ReservationsTableSeeder extends Seeder
         $reserv->check_out    = date('2019-03-30');
         $reserv->roomType     = "matrimonial";
         $reserv->room_id      = 5;
-        $reserv->user_id      = 5;
+        $reserv->user_id      = 8;
 
         $reserv->save();
 
@@ -81,8 +81,7 @@ class ReservationsTableSeeder extends Seeder
         $reserv->check_in     = date('2019-03-28');
         $reserv->check_out    = date('2019-03-31');
         $reserv->roomType     = "matrimonial";
-        $reserv->room_id      = 8;
-        $reserv->user_id      = 5;
+        $reserv->user_id      = 9;
 
         $reserv->save();
 
@@ -95,8 +94,7 @@ class ReservationsTableSeeder extends Seeder
         $reserv->check_in     = date('2019-03-28');
         $reserv->check_out    = date('2019-03-31');
         $reserv->roomType     = "matrimonial";
-        $reserv->room_id      = 7;
-        $reserv->user_id      = 5;
+        $reserv->user_id      = 10;
 
         $reserv->save();
     }

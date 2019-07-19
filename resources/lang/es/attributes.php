@@ -21,4 +21,6 @@ return [
     'locked' => 'Bloqueada',
     'occupied' => 'Ocupada',
     'today' => 'Hoy',
+    'pending' => 'Pendiente',
+    'payed' => 'Pagada',
 ];

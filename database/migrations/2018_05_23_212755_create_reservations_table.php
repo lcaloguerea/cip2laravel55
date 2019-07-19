@@ -29,6 +29,9 @@ class CreateReservationsTable extends Migration
             // de las necesidades de la hostal
             $table->integer('room_id')->unsigned()->nullable();
 
+            //fk to invoice generated or uploaded
+            $table->integer('invoice_id')->unsigned()->nullable();
+
             //fk usuario responsable 
             $table->integer('user_id')->unsigned();
 
