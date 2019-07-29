@@ -113,8 +113,8 @@ line-height: 1.6;
                                                 <h2><img style="width: 300px" src="{{ public_path('/img/Mecesup_AUS.png') }}"></h2>
                                             </td>
                                             <td>
-                                                Emitida: {{date('d-m-Y')}}<br>
-                                                Vencimiento: {{date('d-m-Y', strtotime(date('d-m-Y'). ' + 7 days'))}}<br>
+                                                Emitida: {{$send}}<br>
+                                                Pagada: {{$payed}}<br>
                                                 Valdivia - Chile
                                             </td>
                                         </tr>
@@ -132,10 +132,10 @@ line-height: 1.6;
                                                 (63) 2 211136
                                             </td>
                                             <td>
-                                                Nombre Apellido<br>
-                                                Departamento<br>
-                                                Correo<br>
-                                                Teléfono
+                                                {{$uName}} {{$uLName}}<br>
+                                                {{$department}}<br>
+                                                {{$email}}<br>
+                                                {{$phone}}
                                             </td>
                                         </tr>
                                     </table>
@@ -151,10 +151,10 @@ line-height: 1.6;
                             </tr>
                             <tr class="details">
                                 <td>
-                                    Efectivo
+                                    {{trans('attributes.'.$payment)}}
                                 </td>
                                 <td>
-                                    XXXX
+                                    {{$Nro2}}
                                 </td>
                             </tr>
                             <tr class="heading">
@@ -170,7 +170,7 @@ line-height: 1.6;
                                     Habitación
                                 </td>
                                 <td>
-                                    Simple
+                                    {{trans('attributes.'.$roomType)}}
                                 </td>
                             </tr>
                             <tr class="item">
@@ -178,7 +178,7 @@ line-height: 1.6;
                                     Costo por día
                                 </td>
                                 <td>
-                                    XXXXXX
+                                    ${{$roomPrice}}
                                 </td>
                             </tr>
                             <tr class="item">
@@ -186,23 +186,34 @@ line-height: 1.6;
                                     Días
                                 </td>
                                 <td>
-                                    X
+                                    {{$days}}
                                 </td>
                             </tr>
                             <tr class="item">
                                 <td>
                                     Invitado(s)
                                 </td>
-                                <td>
-                                    1: XXXXX XXXXX
+                                <td><?php $number = 1; ?>
+                                    @foreach($pgroup as $p)
+                                         {{$number}}: {{$p->passengersR[0]->name_1}} {{$p->passengersR[0]->lName_1}}
+                                         <?php $number++ ?> 
+                                    @endforeach
                                 </td>
-                            </tr>  
-                            <tr class="details">
+                            </tr>
+                            <tr class="item">
                                 <td>
                                     Fechas
                                 </td>
                                 <td>
-                                    XXXXXX a XXXXXX
+                                    {{$check_in}} a {{$check_out}}
+                                </td>
+                            </tr>
+                           <tr class="details">
+                                <td>
+                                    Pago
+                                </td>
+                                <td>
+                                    {{trans('attributes.'.$status)}}
                                 </td>
                             </tr>                                                     
                             <tr class="heading">
@@ -218,7 +229,7 @@ line-height: 1.6;
                                     Cobro base
                                 </td>
                                 <td>
-                                    $300.00
+                                    {{$charge}}
                                 </td>
                             </tr>
                             <tr class="item">
@@ -226,7 +237,11 @@ line-height: 1.6;
                                     IVA
                                 </td>
                                 <td>
-                                    $75.00
+                                    @if($iva != null and $iva != "no")
+                                        {{($charge)*0.19}}
+                                    @else
+                                    0
+                                    @endif
                                 </td>
                             </tr>
                             <tr class="item last">
@@ -234,13 +249,17 @@ line-height: 1.6;
                                     Descuento
                                 </td>
                                 <td>
-                                   - $10.00
+                                   @if($discount != null)
+                                        - ${{$discount}}
+                                    @else
+                                    0
+                                    @endif
                                 </td>
                             </tr>
                             <tr class="total">
                                 <td></td>
                                 <td>
-                                    Total: $365.00
+                                    Total: ${{$total}}
                                 </td>
                             </tr>
                         </table>

@@ -76,11 +76,11 @@
               </span>
               </a>
               <ul class="treeview-menu">
-                <li class="{{ request()->is('admin/invoices-list') ? 'active' : '' }}">
-                  <a href="{{URL::to('admin/invoices-list')}}">Registros de pagos</a>
-                </li>
-                <li class="{{ request()->is('admin/payments/b_invoice') ? 'active' : '' }}">
-                  <a href="{{URL::to('admin/payments/b_invoice')}}">Ejemplo comprobante</a>
+                <li class="{{ request()->is('admin/payments/invoices-list') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/payments/invoices-list')}}">Registros de pagos</a>
+                </li>               
+                <li class="{{ request()->is('admin/payments/upload') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/payments/upload')}}">Subir comprobante</a>
                 </li>
               </ul>
             </li>

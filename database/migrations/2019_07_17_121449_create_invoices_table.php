@@ -16,13 +16,13 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoice', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('type',['Boleta','Factura','CR','NCI','BCIP']);
-            $table->integer('charge');
-            $table->enum('IVA',['yes','no']);
+            $table->integer('charge')->nullable();
+            $table->enum('IVA',['yes','no','N/A']);
             $table->integer('discount')->nullable();
-            $table->integer('total');
+            $table->integer('total')->nullable();
             $table->integer('IC')->nullable(); // Internal Code fillable when is NCI
-            $table->string('r_type');            
-            $table->enum('status',['payed','pending']);
+            $table->string('r_type')->nullable();            
+            $table->enum('status',['payed','pending','other']);
             $table->string('pdf');            
             $table->timestamps();
 

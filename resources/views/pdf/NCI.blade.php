@@ -113,8 +113,8 @@ line-height: 1.6;
                                                 <h2>NOTA DE CARGO INTERNO N°{{$Nro}}</h2>
                                             </td>
                                             <td>
-                                                Emitida: {{date('d-m-Y')}}<br>
-                                                Vencimiento: {{date('d-m-Y', strtotime(date('d-m-Y'). ' + 7 days'))}}<br>
+                                                Emitida: {{$send}}<br>
+                                                Pagada: {{$payed}}<br>
                                                 Valdivia - Chile
                                             </td>
                                         </tr>
@@ -228,12 +228,20 @@ line-height: 1.6;
                                     @endforeach
                                 </td>
                             </tr>
-                            <tr class="details">
+                            <tr class="item">
                                 <td>
                                     Fechas
                                 </td>
                                 <td>
                                     {{$check_in}} a {{$check_out}}
+                                </td>
+                            </tr>
+                            <tr class="details">
+                                <td>
+                                    Pago
+                                </td>
+                                <td>
+                                    {{trans('attributes.'.$status)}}
                                 </td>
                             </tr>                                                    
                             <tr class="heading">
@@ -249,7 +257,7 @@ line-height: 1.6;
                                     Cobro base
                                 </td>
                                 <td>
-                                    {{$charge}}
+                                    ${{$charge}}
                                 </td>
                             </tr>
                             <tr class="item">
@@ -257,7 +265,7 @@ line-height: 1.6;
                                     IVA
                                 </td>
                                 <td>
-                                    @if($iva != null)
+                                    @if($iva != null and $iva != "no")
                                         {{($charge)*0.19}}
                                     @else
                                     0

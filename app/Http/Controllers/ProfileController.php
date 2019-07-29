@@ -22,8 +22,8 @@ class ProfileController extends Controller
                 $aux = $aux->format('d/m/Y');
                 $dates[] = $aux;
             }
-
-
+        $dates = array_unique($dates);
+        //dd($dates);
         $user = user::find(\Auth::user()->id);
         return view('profile/my_profile', compact('user','act','dates'));
     }

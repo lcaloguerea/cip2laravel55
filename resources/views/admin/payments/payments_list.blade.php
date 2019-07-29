@@ -47,6 +47,11 @@
                     </ol>
                 </section>
                 <section class="content">
+                    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
@@ -63,23 +68,27 @@
                                                 <th>Creada</th>
                                                 <th>Modificada</th>
                                                 <th>Reserva</th>
+                                                <th>Usuario</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($invoices as $item)
                                             <tr>
-                                                <td><a href="/admin/invoice-detail/{{$item->id}}">{{$item->id}}</td>
-                                                <td>{{$item->type}}</td>
+                                                <td><a href="/admin/payments/invoice-detail/{{$item->id}}">{{str_replace('.pdf', '', substr($item->pdf, 9))}}</a></td>
+                                                <td>{{trans('attributes.'.$item->type)}}</td>
                                                 <td>{{$item->total}}</td>
                                                 <td>{{trans('attributes.'.$item->r_type)}}</td>
                                                 <td>{{$item->created_at->format('d-m-Y h:m:s')}}</td>
                                                 <td>{{$item->updated_at->format('d-m-Y h:m:s')}}</td>
+                                                <td><a href="/admin/reservations/reservation-detail/{{$item->rsrv_id}}">{{$item->rsrv_id}}</a></td>
                                                 <td>{{$item->rsrv_id}}</td>
                                                 @if($item->status == "payed")
                                                 <td><span class="label label-success">{{trans('attributes.'.$item->status)}}</span></td>
-                                                @else
+                                                @elseif($item->status == "pending")
                                                 <td><span class="label label-danger">{{trans('attributes.'.$item->status)}}</span></td>
+                                                @elseif($item->status == "other")
+                                                <td></td>
                                                 @endif
                                         @endforeach
                                         </tbody>

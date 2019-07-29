@@ -24,9 +24,11 @@ Route::get('/admin/users/list', 'AdminController@getList')->name('usersList');
 Route::get('/admin/users/user-profile/{id}', 'AdminController@getProfile');
 
 Route::get('/admin/generate-pdf','AdminController@generatePDF');
-Route::get('/admin/invoices-list','AdminController@getInvoicesList');
-Route::get('/admin/invoice-detail/{id}','AdminController@getInvoiceDetail');
-Route::post('/admin/invoice-update', 'AdminController@postUpdateInvoice');
+Route::get('/admin/payments/invoices-list','AdminController@getInvoicesList')->name('invoiceList');
+Route::get('/admin/payments/invoice-detail/{id}','AdminController@getInvoiceDetail');
+Route::get('/admin/payments/upload', 'AdminController@getUploadInvoice');
+Route::post('/admin/payments/invoice-upload', 'AdminController@postUploadInvoice');
+Route::put('/admin/invoice-update', 'AdminController@putUpdateInvoice');
 
 //maid routes
 Route::get('/maid', 'MaidController@index')->name('maid');

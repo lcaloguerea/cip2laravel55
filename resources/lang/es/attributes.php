@@ -23,4 +23,9 @@ return [
     'today' => 'Hoy',
     'pending' => 'Pendiente',
     'payed' => 'Pagada',
+    'NCI' => 'NCI',
+    'BCIP' => 'Boleta CIP',
+    'Boleta' => 'Boleta',
+    'Factura' => 'Factura',
+    'CR' => 'CR',
 ];

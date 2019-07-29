@@ -43,7 +43,7 @@ return [
 	'image'                 => 'El campo :attribute debe ser una imagen.',
 	'in'                    => 'El campo :attribute seleccionado es inválido.',
 	'in_array'              => 'El campo :attribute no existe en :other.',
-	'integer'               => 'El campo :attribute debe ser un entero.',
+	'integer'               => 'El campo :attribute debe contener solo números.',
 	'ip'                    => 'El campo :attribute debe ser una dirección IP válida.',
 	'json'                  => 'El campo :attribute debe ser una cadena JSON válida.',
 	'max'                   => [
@@ -135,5 +135,7 @@ return [
 		'motive' => 'motivo',
 		'program' => 'programa',
 		'payment_m' => 'método de pago',
+		'IC' => 'código interno',
+		'discount' => 'descuento',
 	],
 ];

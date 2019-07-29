@@ -231,15 +231,146 @@ class AdminController extends Controller
         return view('admin/payments/invoice_detail', compact('invoice'));
     }
 
-    public function postUpdateInvoice(Request $request){
-        if($request->hasFile('invoice'))
+    public function putUpdateInvoice(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'discount' => 'nullable|integer',        
+            'IC' => 'nullable|integer',                   
+        ]);
+        $extra=""; //in case we need to notify admin for type change
+
+        if ($validator->fails())
         {
-            $inv = Invoice::where('id', $request->id)->first();
-            $filename = $inv->pdf;
-            dd($filename);
-            $request->get('invoice')->move(public_path('files') . $filename);
-            return \Redirect::back();
+            return response()->json(['errors'=>$validator->errors()->all(),
+                'message'=>""]);
+        }
+        else{
+
+            $reserv = Reservation::where('id_res', $request->id)->first();
+            $pGroup = PassengerGroup::where('reservation_id', $request->id)->get();
+            $inv = Invoice::where('id',$reserv->invoice_id)->first();
+
+
+            //gather data
+            $Nro ="";
+            $Nro2 = "";
+            $payed = "Pendiente";
+            $in = new Date($reserv->check_in);
+            $out = new Date($reserv->check_out);
+            $days = $out->diff($in);
+            $days = $days->format('%a');
+            if($inv->type == "NCI"){$Nro = str_replace('.pdf', '', substr($inv->pdf, 12));}
+            elseif($inv->type == "BCIP"){$Nro2 = str_replace('.pdf', '', substr($inv->pdf, 13));}
+            $rValue = Room::where('type', $reserv->roomType)->first();
+            $rValue = $rValue->price;
+            $charge = $rValue * $days;
+            if($request->iva == "yes"){
+                $total = $charge*1.19;
+            }else{
+                $total = $charge;
+            }
+            if($request->discount != null){
+                $total = $total - $request->discount;
+            }
+            if($request->status == "payed"){$payed = date('d-m-Y');}
+            //dd($total);
+
+            $data = [
+                'iva'           =>  $request->iva,
+                'discount'      =>  $request->discount,
+                'IC'            =>  $request->IC,
+                'Nro'           =>  $Nro,
+                'Nro2'          =>  $Nro2,
+                'uName'         =>  $reserv->userR->name,
+                'uLName'        =>  $reserv->userR->lName,
+                'department'    =>  $reserv->userR->department,
+                'phone'         =>  $reserv->userR->phone,
+                'email'         =>  $reserv->userR->email,
+                'roomType'      =>  $reserv->roomType,
+                'roomPrice'     =>  $rValue,
+                'days'          =>  $days,
+                'charge'        =>  $charge,
+                'total'         =>  $total,
+                'check_in'      =>  date('d-m-Y', strtotime($reserv->check_in)),
+                'check_out'     =>  date('d-m-Y', strtotime($reserv->check_out)),
+                'pgroup'        =>  $pGroup,
+                'payment'       =>  $reserv->payment_m,
+                'status'        =>  $request->status,
+                'send'          =>  date('d-m-Y',strtotime($inv->created_at)),
+                'payed'         =>  $payed,
+            ];
+            if($inv->type == "NCI"){ //This type generates a new pdf with updated data
+         
+                $pdf = PDF::loadView('pdf/NCI', $data);
+                $content = $pdf->download('NCI'.($Nro).'.pdf')->getOriginalContent();
+                //name and number calculated to replace the existing file
+                file_put_contents('invoices/NCI'.($Nro).'.pdf', $content); 
+
+                $inv->IVA = $request->iva;
+                $inv->IC = $request->IC;
+                $inv->status = $request->status;
+                $inv->discount = $request->discount;
+                $inv->save();
+
+                //send by email to admins and user only when status change to payed.
+                if($request->stats == "payed"){
+                    $message = 'NCI actualizada y emitida con éxito.';
+                    //send mail
+                }else{
+                    $message = 'NCI actualizada con éxito.';
+                }
+                return response()->json(['success'=> $message]);
+
+            }elseif($inv->type == "BCIP"){ //This type generates a new pdf with updated data
+                $pdf = PDF::loadView('pdf/BCIP', $data);
+                $content = $pdf->download('BCIP'.($Nro2).'.pdf')->getOriginalContent();
+                //name and number calculated to replace the existing file
+                file_put_contents('invoices/BCIP'.($Nro2).'.pdf', $content);
+                
+                $inv->IVA = $request->iva;
+                $inv->IC = $request->IC;
+                $inv->status = $request->status;
+                $inv->discount = $request->discount;
+                $inv->save();
+
+                //send by email to admins and user.
+                if($request->status == "payed"){
+                    $message = 'BCIP actualizada y emitida con éxito.';
+                    //send mail
+                }else{
+                    $message = 'BCIP actializada con éxito.';
+                }
+                return response()->json(['success'=> $message]);
+            }
         }
     }
+
+    public function postUploadInvoice(Request $request){
+        if($request->hasFile('invoice'))
+        {
+            $r = Reservation::where('id_res', $request->rsrv)->first();
+            $Nro = Invoice::where('type', $request->type)->count();
+            $invoice = Invoice::create([
+                'type'      => $request->type,
+                'pdf'       => 'invoices/'.$request->type.($Nro+1).'.pdf',
+                'rsrv_id'   => $request->rsrv,
+                'r_type'    => $r->roomType,
+                'status'    => 'other',
+                'IVA'       => 'N/A',
+            ]);
+            
+            $request->file('invoice')->storeAs('', 'invoices/'.$request->type.($Nro+1).'.pdf', 'invoice');
+
+            return redirect('/admin/payments/invoices-list')->with('status', 'Documento '.$request->type.($Nro+1).' subido exitosamente');
+        }else{
+            dd('no tengo doc');
+        }
+    }
+
+    public function getUploadInvoice(){
+        $rsrvs = Reservation::all();
+        return view('admin/payments/upload_invoice', compact('rsrvs'));
+    }
+
 
 }

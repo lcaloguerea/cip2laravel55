@@ -221,10 +221,6 @@
                                     <button id="btn_chOut" type="button" class="btn btn-primary btn-block">
                                         Check out
                                     </button>
-                                @elseif($reserv->status == "finished" and $reserv->confirmed == "confirmed")
-                                    <button id="invoice" type="button" class="btn btn-primary btn-block">
-                                        Boleta
-                                    </button>
                                 @endif   
                             </div> 
                         </div>
@@ -555,7 +551,6 @@ var table = $('#payments').DataTable( {
                                 jQuery.each(data.errors, function(key, value){
                                     html += '<li>' + value + '</li>';
                                 });
-                                alert(html)
                                 swal({
                                     title:"Ups!!",
                                     text: html,
