@@ -29,6 +29,8 @@ Route::get('/admin/payments/invoice-detail/{id}','AdminController@getInvoiceDeta
 Route::get('/admin/payments/upload', 'AdminController@getUploadInvoice');
 Route::post('/admin/payments/invoice-upload', 'AdminController@postUploadInvoice');
 Route::put('/admin/invoice-update', 'AdminController@putUpdateInvoice');
+Route::get('/admin/supplies', 'MaidController@getSupplies')->name('supplies');
+Route::get('/admin/maintenance', 'MaidController@getMaintenance')->name('maintenance');
 
 //maid routes
 Route::get('/maid', 'MaidController@index')->name('maid');

@@ -159,7 +159,13 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/single.png')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @if($Reserv->roomType == "single")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_8(1).JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @elseif($Reserv->roomType == "shared")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_3(1).JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @elseif($Reserv->roomType == "matrimonial")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_1.JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @endif                                          
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
@@ -226,7 +232,7 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="https://ironmaidencolombiafc.files.wordpress.com/2011/12/02_steve-harris.jpg?w=630&h=445" width="315" height="237" border="0" alt="" /></td>
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{$user->uAvatar}}" width="315" height="237" border="0" alt="" /></td>
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
@@ -243,7 +249,7 @@ hr {
                                                       <td style="padding-bottom: 8px;">
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://cipuach.uach.cl/cip/storage/app/public/DSC_2381.JPG" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://banner2.kisspng.com/20180412/phw/kisspng-computer-icons-youtube-avatar-person-people-vector-5acf0e1e251dc4.6874627715235190061521.jpg" width="10" height="20" border="0" alt="" /></td>
                                                                <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Nombre: {{$user->name}} {{$user->lName}}</td>
                                                             </tr>
                                                          </table>
@@ -454,7 +460,7 @@ hr {
                                     <th class="column-dir" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Las+Encinas+220,+Valdivia,+Regi%C3%B3n+de+los+R%C3%ADos/@-39.809574,-73.253185,16z/data=!4m5!3m4!1s0x9615ede0a0bed76b:0x33cd44510e455c4a!8m2!3d-39.809574!4d-73.2531849?hl=es-CL"><img src="http://img.fenixzone.net/i/UIHDkKc.png" width="315" height="470" border="0" alt="" /></a></td>
+                                             <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Las+Encinas+220,+Valdivia,+Regi%C3%B3n+de+los+R%C3%ADos/@-39.809574,-73.253185,16z/data=!4m5!3m4!1s0x9615ede0a0bed76b:0x33cd44510e455c4a!8m2!3d-39.809574!4d-73.2531849?hl=es-CL"><img src="{{asset('img/emails/map.jpeg')}}" width="315" height="470" border="0" alt="" /></a></td>
                                           </tr>
                                        </table>
                                     </th>

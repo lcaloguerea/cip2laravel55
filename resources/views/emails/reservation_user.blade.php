@@ -158,8 +158,14 @@ hr {
                                  <tr>
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/single.png')}}" width="315" height="237" border="0" alt="" /></td>
+                                                                                    <tr>
+                                             @if($Reserv->roomType == "single")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_8(1).JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @elseif($Reserv->roomType == "shared")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_3(1).JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @elseif($Reserv->roomType == "matrimonial")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_1.JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @endif                                             
                                           </tr>
                                           <tr>
                                              <td class="p0-15">

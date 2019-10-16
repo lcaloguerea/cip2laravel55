@@ -8,6 +8,7 @@ use App\PassengerGroup;
 use App\User;
 use App\Maintenance;
 use App\Supply;
+use App\Activity;
 use Carbon\Carbon;
 
 class MaidController extends Controller
@@ -73,6 +74,11 @@ class MaidController extends Controller
                 $sup->stock = "no";
                 $sup->save();
             }
+            $activity = Activity::create([
+                'event' => 'alert_some_supplies',
+                'group' => 'maid',
+                'responsible_id' => \Auth::id(),
+            ]);
             $message = 'La selección de insumos ha sido alertada y realizada por '.\Auth::user()->name.' '.\Auth::user()->lName;
             return response()->json(['message'=> $message,
                                     'outcome' => $outcome]);

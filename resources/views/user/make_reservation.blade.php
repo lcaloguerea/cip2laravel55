@@ -756,6 +756,9 @@ $(document).ready(function(){
             var email = $('#email').val();
             var phone = $('#phone').val();
             var university = $('#university').val();
+            //add dates to check if guest has conflict with other reservation
+            var checkin = $('#in').val();
+            var checkout = $('#out').val();
             if ($('#rt').val() == 'single'){
                 var capacity = 1;
             }
@@ -765,7 +768,7 @@ $(document).ready(function(){
 
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, "_token": "{{ csrf_token() }}"},
+               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, checkin:checkin, checkout:checkout, "_token": "{{ csrf_token() }}"},
                 //Cambiar a type: POST si necesario
                 type: 'POST',
                 // Formato de datos que se espera en la respuesta
@@ -901,6 +904,9 @@ $(document).ready(function(){
             var email = $('#email2').val();
             var phone = $('#phone2').val();
             var university = $('#university2').val();
+            //add dates to check if guest has conflict with other reservation
+            var checkin = $('#in').val();
+            var checkout = $('#out').val();
 
             if ($('#rt').val() == 'single'){
                 var capacity = 1;
@@ -911,7 +917,7 @@ $(document).ready(function(){
 
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, "_token": "{{ csrf_token() }}"},
+               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, checkin:checkin, checkout:checkout, "_token": "{{ csrf_token() }}"},
                 //Cambiar a type: POST si necesario
                 type: 'POST',
                 // Formato de datos que se espera en la respuesta

@@ -10,6 +10,7 @@ use App\Reservation;
 use App\Country;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Image;
 
@@ -128,7 +129,7 @@ class UserController extends Controller
             'country_o' => 'required',
             'nationality' => 'required|string|max:100',
             'phone' => 'required|string|max:255|regex:/^\+56?[0-9]+$/',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
         ]);
         
         if ($validator->fails())
@@ -163,9 +164,51 @@ class UserController extends Controller
         }
         else
         {
-            return response()->json(['passenger'=>$passenger,
-                                    'errors'=> "",
-                                    'passengerNew'=>""]);
+            //check if guest is in other reservation
+            $in =  Carbon::parse($request->checkin)->addDay(-1)->format('Y-m-d');
+            $out =  Carbon::parse($request->checkout)->addDay()->format('Y-m-d');
+            //$out = date_parse_from_format("d-m-Y", $request->checkOut);
+
+
+
+            //filtering by rooms that overlaps with the dates selected by user
+            //in order to remove them from the availables
+            $disp =  DB::table('reservations')
+                    ->select('id_res')
+                    ->where([
+                        ['status', '!=', 'cancelled'],
+                        ['status', '!=', 'finished'],
+                        ['check_out', '>=', $in],
+                        ['check_out', '<=', $out]
+                        ])
+                    ->orWhere([
+                        ['status', '!=', 'cancelled'],
+                        ['status', '!=', 'finished'],
+                        ['check_in', '>=', $in],
+                        ['check_in', '<=', $out]
+                        ])
+                    ->orWhere([
+                        ['status', '!=', 'cancelled'],
+                        ['status', '!=', 'finished'],
+                        ['check_in', '<=', $in],
+                        ['check_out', '>=', $out]
+                        ])
+                    ->get();
+            $dispArray = [];
+            foreach($disp as $d){
+                $dispArray[] =+ $d->id_res;
+            }
+            $bussy = PassengerGroup::whereIn('reservation_id', $dispArray)->select('passenger_id')->get();
+            $guest = Passenger::whereIn('id_passenger',$bussy)->get();
+            if($guest->contains('email', $request->email)){
+                return response()->json(['errors'=>['El huésped '.$request->name_1.' '.$request->lName_1.' no puede ser agregado a esta reserva debido a que ya se encuentra asignado a otra entre las fechas seleccionadas'],
+                    'passenger'=> "",
+                    'passengerNew' => ""]);
+            }else{
+                return response()->json(['passenger'=>$passenger,
+                    'errors'=> "",
+                    'passengerNew'=>""]);
+            }
         }
     }
 

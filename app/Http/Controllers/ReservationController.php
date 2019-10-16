@@ -283,6 +283,12 @@ class ReservationController extends Controller
             $reserv->invoice_id = $idr->id;
             $reserv->save();
 
+            $activity = Activity::create([
+                'event' => 'rsrv_invoice',
+                'responsible_id' => \Auth::id(),
+                'rsrv_id' => $reserv->id_res,
+            ]);            
+
             //send by email to admins and user.
 
             return response()->json(['success'=> $message]);
@@ -308,6 +314,12 @@ class ReservationController extends Controller
             $idr = Invoice::orderBy('id', 'desc')->first();
             $reserv->invoice_id = $idr->id;
             $reserv->save();
+
+            $activity = Activity::create([
+                'event' => 'rsrv_invoice',
+                'responsible_id' => \Auth::id(),
+                'rsrv_id' => $reserv->id_res,
+            ]);
 
             //send by email to admins and user.
 

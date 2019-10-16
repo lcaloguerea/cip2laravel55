@@ -38,16 +38,10 @@ class AdminController extends Controller
         }
 
         //count income by room
-        $rFinish = Reservation::where('status', 'finished')->get();
+        $rFinish = Invoice::where('status', 'payed')->get();
         $income = 0;
         foreach($rFinish as $rf){
-            if($rf->roomType == "single"){
-                $income += 30000;
-            }elseif($rf->roomType == "shared"){
-                $income += 35000;
-            }elseif($rf->roomType == "matrimonial"){
-                $income += 40000;
-            }
+            $income += $rf->total;
         }
  
         return view('/admin/index', compact('users', 'passengers', 'pActive', 'income', 'lUsers'));
@@ -245,6 +239,10 @@ class AdminController extends Controller
                 'message'=>""]);
         }
         else{
+            if($request->IC == "" and $request->status == "payed"){
+                return response()->json(['errors'=>['No puede cambiar el estado a "pagado" sin ingresar el código interno'],
+                'message'=>""]);
+            }
 
             $reserv = Reservation::where('id_res', $request->id)->first();
             $pGroup = PassengerGroup::where('reservation_id', $request->id)->get();
@@ -315,6 +313,12 @@ class AdminController extends Controller
                 //send by email to admins and user only when status change to payed.
                 if($request->stats == "payed"){
                     $message = 'NCI actualizada y emitida con éxito.';
+                    $activity = Activity::create([
+                        'event' => 'rsrv_pay',
+                        'responsible_id' => \Auth::id(),
+                        'involved_id' => $reserv->user_id,
+                        'rsrv_id' => $reserv->id_res,
+                    ]);
                     //send mail
                 }else{
                     $message = 'NCI actualizada con éxito.';
@@ -336,6 +340,12 @@ class AdminController extends Controller
                 //send by email to admins and user.
                 if($request->status == "payed"){
                     $message = 'BCIP actualizada y emitida con éxito.';
+                    $activity = Activity::create([
+                        'event' => 'rsrv_pay',
+                        'responsible_id' => \Auth::id(),
+                        'involved_id' => $reserv->user_id,
+                        'rsrv_id' => $reserv->id_res,
+                    ]);                    
                     //send mail
                 }else{
                     $message = 'BCIP actializada con éxito.';

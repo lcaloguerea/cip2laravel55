@@ -65,7 +65,7 @@
                                     <p class="name">{{$item->name}} {{$item->lName}}</p>
                                     <div class="information">
                                         <p class="">{{$item->type}}</p>
-                                        <p class="email"><a href="#">{{$item->email}}</a>
+                                        <p style="font-size: 12px" class="email"><a href="#">{{$item->email}}</a>
                                         </p>
                                         <p class="location text-muted">{{$item->phone}}</p>
                                     </div>

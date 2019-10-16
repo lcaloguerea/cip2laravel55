@@ -48,6 +48,9 @@
                     <div class="menu_area">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <!-- Logo -->
+                            <a class="navbar-brand" href="https://uach.cl">
+                                <img style="height: 70px; padding-right: 5px" src="https://www.derecho.uach.cl/static/pages/images/escudo.png" alt=""/>
+                            </a>
                             <a class="navbar-brand" href="#">CIP</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                             <!-- Menu Area -->
@@ -122,7 +125,7 @@
                     <div class="single-feature">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <h5>Ubicación</h5>
-                        <p>La Casa de Investigadores y Postgrado – CIP, se ubica en el 3° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
+                        <p>La Casa de Investigadores y Postgrado de la Universidad Austral de Chile – CIP, se ubica en el 3° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
                     </div>
                 </div>
                 <!-- Single Feature Start -->

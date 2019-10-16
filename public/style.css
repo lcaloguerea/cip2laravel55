@@ -324,7 +324,7 @@ p {
 -------------------------- */
 
 .header_area {
-    left: 0;
+    margin-left: auto;
     position: absolute;
     width: 100%;
     z-index: 99;
@@ -333,7 +333,7 @@ p {
 }
 
 .menu_area .navbar-brand {
-    font-size: 72px;
+    font-size: 55px;
     font-weight: 700;
     color: #fff;
     margin: 0;

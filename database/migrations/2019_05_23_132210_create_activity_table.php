@@ -20,6 +20,7 @@ class CreateActivityTable extends Migration
             $table->enum('event',[
                 'rsrv_created',
                 'rsrv_cancelled',
+                'rsrv_invoice',
                 'rsrv_pay',
                 'checkin',
                 'checkout',

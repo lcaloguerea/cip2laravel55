@@ -297,6 +297,16 @@
                                                                         @endif
                                                                         <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
                                                                     </div>
+                                                                @elseif($a->event == "rsrv_invoice")
+                                                                    <i class="fa fa-file-text-o bg-grey"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la creación y envío del comprobante de pago referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                                    </div>                                                                
                                                                 @elseif($a->event == "rsrv_pay")
                                                                     <i class="fa fa-usd bg-purple"></i>
                                                                     <div class="timeline-item">

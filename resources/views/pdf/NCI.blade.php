@@ -294,9 +294,9 @@ line-height: 1.6;
                         <!-- accepted payments column -->
                         <div class="">
                             <p class="lead">Métodos de pago:</p>
-                            <img style="height: 50px; width: 50px; padding-right:10px" src="{{ public_path('/img/credit/cash.png')}}" alt="Efectivo">
-                            <img style="height: 50px; width: 50px; padding-right:10px" src="{{ public_path('/img/credit/bank_trasfer-512.png')}}" alt="Mastercard">
-                            <img style="height: 50px; width: 50px; padding-right:10px" src="{{ public_path('/img/credit/p_code.png')}}" alt="American Express">
+                            <img style="height: 50px; width: 50px; padding-right:10px" src="img/credit/cash.png" alt="Efectivo">
+                            <img style="height: 50px; width: 50px; padding-right:10px" src="img/credit/bank_trasfer-512.png" alt="Mastercard">
+                            <img style="height: 50px; width: 50px; padding-right:10px" src="img/credit/p_code.png" alt="American Express">
                             <br>
                         </div>
                     </div>

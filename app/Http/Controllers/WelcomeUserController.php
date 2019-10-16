@@ -31,7 +31,7 @@ class WelcomeUserController extends Controller
     	//filtering by rooms that overlaps with the dates selected by user
     	//in order to remove them from the availables
     	$disp =  DB::table('reservations')
-    			->select('check_in', 'check_out', 'roomType as room')
+    			->select('check_in', 'check_out', 'roomType as room', 'id_res')
     			->where([
                     ['status', '!=', 'cancelled'],
                     ['status', '!=', 'finished'],
@@ -56,6 +56,7 @@ class WelcomeUserController extends Controller
         $single = 3;
         $shared = 1;
         $matrimonial = 4;
+
 
     	foreach($disp as $d)
             if($d->room == 'single'){

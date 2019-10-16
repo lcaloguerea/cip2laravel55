@@ -25,6 +25,9 @@
             <li class="treeview {{ request()->is('admin') ? 'active' : '' }}">
               <a href="/admin"><i class="fa fa-home"></i> <span>Inicio</span></a>
             </li>
+            <li class="treeview {{ request()->is('admin/calendar') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/calendar')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+            </li>
          <!--  <li class="treeview">
               <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-envelope"></i> <span>Mailbox</span></a>
             </li>-->
@@ -54,15 +57,17 @@
                   <a href="{{URL::to('admin/passengers/cards')}}">Ver ficha</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ request()->is('admin/rooms-*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-bed"></i><span>Habitaciones</span>
               <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
               </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{URL::to('admin/rooms-list')}}">Ver lista</a></li>
-                <li><a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
+                <li class="{{ request()->is('admin/rooms-list') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/rooms-list')}}">Ver lista</a></li>
+                <li class="{{ request()->is('admin/rooms-cards') ? 'active' : '' }}">
+                  <a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
               </ul>
             </li>
             <li class="treeview {{ request()->is('admin/reservations-list') ? 'active' : '' }}">
@@ -84,11 +89,11 @@
                 </li>
               </ul>
             </li>
-            <li class="treeview {{ request()->is('maid/supplies') ? 'active' : '' }}">
-              <a href="{{URL::to('maid/supplies')}}"><i class="fa fa-history"></i> <span>Insumos</span></a>
+            <li class="treeview {{ request()->is('admin/supplies') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/supplies')}}"><i class="fa fa-history"></i> <span>Insumos</span></a>
             </li>
-            <li class="treeview {{ request()->is('maid/maintenance') ? 'active' : '' }}">
-              <a href="{{URL::to('maid/maintenance')}}"><i class="fa fa-wrench"></i> <span>Mantenimiento</span></a>
+            <li class="treeview {{ request()->is('admin/maintenance') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/maintenance')}}"><i class="fa fa-wrench"></i> <span>Mantenimiento</span></a>
             </li>
          <!--    <li class="treeview">
               <a href="#"><i class="fa fa-area-chart"></i> <span>Reportes</span>
