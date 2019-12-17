@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'smtp.office365.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'cipuach@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'cip@uach.cl'),
         'name' => env('MAIL_FROM_NAME', 'CIP'),
     ],
 
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'STARTTLS'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,8 +84,8 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'cipuach@gmail.com'),
-    'password' => env('MAIL_PASSWORD', 'nyidazxvkbkztkhq'),
+    'username' => env('MAIL_USERNAME', 'cip@uach.cl'),
+    'password' => env('MAIL_PASSWORD', 'Casa$Huespedes2019'),
 
     /*
     |--------------------------------------------------------------------------

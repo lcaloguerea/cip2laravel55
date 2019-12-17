@@ -7,5 +7,7 @@
     "/js/user-profile.js": "/js/user-profile.js",
     "/js/swal2.js": "/js/swal2.js",
     "/js/calendar.js": "/js/calendar.js",
-    "/css/calendar.css": "/css/calendar.css"
+    "/css/calendar.css": "/css/calendar.css",
+    "/js/password.js": "/js/password.js",
+    "/css/password.css": "/css/password.css"
 }

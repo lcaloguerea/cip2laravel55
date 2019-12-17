@@ -27,6 +27,7 @@
         "@fullcalendar/list": "^4.2.0",
         "bootstrap-sass": "^3.4.1",
         "dropify": "^0.2.2",
+        "epic-spinners": "^1.1.0",
         "filepond": "^2.3.1",
         "filepond-plugin-file-encode": "^1.0.5",
         "filepond-plugin-file-validate-size": "^1.0.4",

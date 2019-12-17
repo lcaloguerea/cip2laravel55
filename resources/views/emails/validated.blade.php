@@ -268,7 +268,7 @@ hr {
                                     <td align="center">
                                        <table border="0" cellspacing="0" cellpadding="0" class="center" style="text-align:center;">
                                           <tr>
-                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="http://127.0.0.1:8000" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Ir a CIP</span></a></td>
+                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="{{ URL::to('') }}" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Ir a CIP</span></a></td>
                                           </tr>
                                        </table>
                                     </td>

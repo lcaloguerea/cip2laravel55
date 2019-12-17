@@ -16,6 +16,7 @@ class WelcomeUserController extends Controller
     {
         $testimonials = Testimonial::all();
         $p = Passenger::all();
+        //return view('updating');
     	return view('welcome', compact('testimonials','p'));
     }
 

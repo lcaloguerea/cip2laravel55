@@ -11,8 +11,7 @@
 */
 Auth::routes();
 Route::get('/', 'WelcomeUserController@index');
-Route::get('/admin', 'AdminController@index')->name('admin');
-Route::get('/admin/rooms-list', 'RoomsController@getList');
+
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('validate', 'Auth\RegisterController@getValidate');
 	
@@ -106,3 +105,8 @@ Route::put('/admin/user/update', 'AdminController@putUserUpdate')->name('adminUs
 
 //trying emails responsives views
 Route::get('/emails/welcome', 'EmailController@getWelcome');
+
+Route::group(['middleware' => 'Admin'], function(){
+	Route::get('/admin', 'AdminController@index')->name('admin');
+	Route::get('/admin/rooms-list', 'RoomsController@getList');
+});

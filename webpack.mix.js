@@ -54,3 +54,16 @@ mix.styles([
     'node_modules/@fullcalendar/daygrid/main.min.css',
     'node_modules/@fullcalendar/list/main.min.css',
   ], 'public/css/calendar.css');
+
+mix.scripts([
+    'public/jQuery/jquery-2.2.3.min.js',
+    'public/bootstrap/js/bootstrap.min.js',
+    'public/js/iCheck/icheck.min.js',
+    'public/js/pages/jquery-icheck.js',
+    'public/js/fastclick/fastclick.min.js',
+    'node_modules/epic-spinners/dist/lib/epic-spinners.min.js',
+  ], 'public/js/password.js');
+
+mix.styles([
+    'node_modules/epic-spinners/dist/lib/epic-spinners.min.css',
+  ], 'public/css/password.css');
