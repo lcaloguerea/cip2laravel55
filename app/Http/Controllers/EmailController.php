@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Room;
+use App\Activity;
 use App\Passenger;
 use App\Reservation;
 use App\Country;
@@ -21,11 +22,14 @@ class EmailController extends Controller
 
     public function getWelcome()
     {
-        $p1 = Passenger::where('id_passenger', 1)->first();
-        $p2 = Passenger::where('id_passenger', null)->first();
         $r = Room::where('type', 'single', '')->where('status', 'free')->firstOrFail();
+        $Reserv = Reservation::where('id_res',1)->first();
+        $p1 = Passenger::where('id_passenger', 1)->first();
+        $user = User::where('id',$Reserv->user_id)->first();
+        $p2 = Passenger::where('id_passenger', null)->first();
+        $act = Activity::where([['rsrv_id', 1],['event','rsrv_confirmed']])->first();
+        return view('/emails/reservation_confirmed_to_guest', compact('user','Reserv', 'p1', 'p2','r' ,'sp', 'act'));
         $uid = \Auth::id();
-        $user = User::where('id',$uid)->first();
         $u_dest = $p1->name;
         $u_email = 'l.caloguerea@gmail.com';
         $Reserv = Reservation::where('id_res',1)->first();
@@ -37,7 +41,6 @@ class EmailController extends Controller
                 ->subject('Testing mails views');
         });*/
         $sp = Supply::where('stock','no')->get();
-        return view('/emails/resuplyAll', compact('user','Reserv', 'p1', 'r','sp'));
     }  
 
 }

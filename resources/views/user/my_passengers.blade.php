@@ -70,7 +70,7 @@
                                         <tbody>
                                         @foreach($passengers as $item)
                                             <tr>
-                                                <td><a href="my-passengers/passenger-profile/{{$item->id_passenger}}">{{$item->id_passenger}}</a></td>
+                                                <td><a href="/user/passenger-profile/{{$item->id_passenger}}">{{$item->id_passenger}}</a></td>
                                                 <td>{{$item->name_1}}</td>
                                                 <td>{{$item->lName_1}}</td>
                                                 <td>{{$item->nationality}}</td>

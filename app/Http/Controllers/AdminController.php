@@ -15,6 +15,7 @@ use App\Invoice;
 use PDF;
 use Image;
 use Auth;
+use App\Supply;
 
 class AdminController extends Controller
 {
@@ -55,23 +56,6 @@ class AdminController extends Controller
     public function getPayment_b()
     {
         return view('/admin/payments/b_invoice');
-    }
-
-    public function postUpdateAvatar(Request $request)
-    {
-            if($request->hasFile('updAvatar'))
-            {
-                $avatar = $request->file('updAvatar');
-                $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(300, 300)->save( './uploads/avatars/' . $filename  );
-                $user = User::find($request->id);
-                $user->uAvatar = '/uploads/avatars/' . $filename;
-                $user->save();
-                return \Redirect::back();
-            }
-
-
-
     }
 
     public function postUpdatePassengerAvatar(Request $request)
@@ -158,11 +142,11 @@ class AdminController extends Controller
         $validator = \Validator::make($request->all(), [
             'name' => 'required|string|max:255',        
             'lName' => 'required|string|max:255',        
-            'rut' => 'required',         
+            'rut' => 'required|string|max:255|unique:users|regex:/^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/',         
             'confirmed' => 'required',         
             'department' => 'required',         
             'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|max:255',
+            'phone' => 'required|string|max:255|regex:/^\+56?[0-9]+$/',
             'type' => 'required',
         ]);
 
@@ -380,6 +364,12 @@ class AdminController extends Controller
     public function getUploadInvoice(){
         $rsrvs = Reservation::all();
         return view('admin/payments/upload_invoice', compact('rsrvs'));
+    }
+
+    public function getSupplies()
+    {
+        $supp = Supply::all();
+        return view('/maid/supplies', compact('supp'));
     }
 
 

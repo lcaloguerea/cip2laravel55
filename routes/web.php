@@ -28,11 +28,10 @@ Route::get('/admin/payments/invoice-detail/{id}','AdminController@getInvoiceDeta
 Route::get('/admin/payments/upload', 'AdminController@getUploadInvoice');
 Route::post('/admin/payments/invoice-upload', 'AdminController@postUploadInvoice');
 Route::put('/admin/invoice-update', 'AdminController@putUpdateInvoice');
-Route::get('/admin/supplies', 'MaidController@getSupplies')->name('supplies');
+Route::get('/admin/supplies', 'AdminController@getSupplies')->name('supplies');
 Route::get('/admin/maintenance', 'MaidController@getMaintenance')->name('maintenance');
 
 //maid routes
-Route::get('/maid', 'MaidController@index')->name('maid');
 Route::get('/maid/supplies', 'MaidController@getSupplies')->name('supplies');
 Route::get('/maid/maintenance', 'MaidController@getMaintenance')->name('maintenance');
 Route::post('/maid/supplies-alert', 'MaidController@postSuppliesAlert');
@@ -58,12 +57,14 @@ Route::get('/maid/reservations/reservation-detail/{id}', 'ReservationController@
 
 Route::get('my-profile', 'ProfileController@getMyProfile');
 
-Route::post('/admin/avatar', 'AdminController@postUpdateAvatar');
+Route::post('/admin/avatar', 'ProfileController@postUpdateAvatar');
+Route::post('/user/avatar', 'ProfileController@postUpdateAvatar');
+Route::post('/maid/avatar', 'ProfileController@postUpdateAvatar');
 Route::post('/admin/passenger/avatar', 'AdminController@postUpdatePassengerAvatar');
 
 Route::get('/user', 'UserController@index')->name('user');
-Route::get('/user/my-passengers', 'UserController@getMyPassengers')->name('myPassengers');
-Route::get('/user/my-passengers/passenger-profile/{id}', 'UserController@getPassengerProfile');
+Route::get('/user/passengers-list', 'UserController@getMyPassengers')->name('myPassengers');
+Route::get('/user/passenger-profile/{id}', 'UserController@getPassengerProfile');
 Route::post('/user/passenger/avatar', 'UserController@postUpdatePassengerAvatar');
 
 Route::get('register/verify/{confirmationCode}', 'Auth\RegisterController@confirm');
@@ -109,4 +110,8 @@ Route::get('/emails/welcome', 'EmailController@getWelcome');
 Route::group(['middleware' => 'Admin'], function(){
 	Route::get('/admin', 'AdminController@index')->name('admin');
 	Route::get('/admin/rooms-list', 'RoomsController@getList');
+});
+
+Route::group(['middleware' => 'Maid'], function(){
+	Route::get('/maid', 'MaidController@index')->name('maid');
 });

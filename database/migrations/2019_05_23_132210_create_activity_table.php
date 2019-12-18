@@ -18,27 +18,32 @@ class CreateActivityTable extends Migration
             $table->increments('id');
             $table->enum('group',['rsrv','room','maid']);
             $table->enum('event',[
-                'rsrv_created',
-                'rsrv_cancelled',
-                'rsrv_invoice',
-                'rsrv_pay',
-                'checkin',
-                'checkout',
-                'testimonial_created',
-                'rsrv_confirmed',
+                'rsrv_created',         //ok
+                'rsrv_cancelled',       //ok
+                'rsrv_invoice',         //ok
+                'rsrv_pay',             //ok
+                'checkin',              //ok
+                'checkout',             //ok
+                'testimonial_created',  //ok
+                'rsrv_confirmed',       //ok
                 //room
-                'room_locked',
-                'room_unlocked',
-                'room_cleaned',
+                'room_locked',          //ok
+                'room_unlocked',        //ok
+                'room_cleaned',         //ok
                 //maid
-                'alert_all_supplies',
-                'alert_some_supplies',
-                'resupply_all',
-                'resupply_some',
-                'alert_bread',
-                'resupply_bread',
-                'maintenance_expired',
-                'maintenance_done']);
+                'alert_all_supplies',   //ok
+                'alert_some_supplies',  //ok
+                'resupply_all',         //ok
+                'resupply_some',        //ok
+                'alert_bread',          //ok
+                'resupply_bread',       //ok
+                'maintenance_expired',  //ok
+                'maintenance_done',     //ok
+                //adminToUser
+                'access_denied',        //ok
+                'access_granted',       //ok
+                'change_type'           //ok
+                ]);
             $table->text('motive')->nullable();
 
             $table->integer('responsible_id')->unsigned(); //Fk

@@ -97,14 +97,21 @@
                                                 <td>{{date('d-m-Y', strtotime($reserv->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($reserv->check_out))}}</td>
                                                 <td>{{trans('attributes.'.$reserv->payment_m)}}</td>
-                                                <td>{{trans('attributes.'.$reserv->confirmed)}}</td>
+                                                <td>
+                                                @if($reserv->confirmed == "confirmed")
+                                                <span class="badge bg-green">
+                                                @else
+                                                <span class="badge bg-orange">
+                                                @endif
+                                                    {{trans('attributes.'.$reserv->confirmed)}}</td> 
+                                                    </span>
                                                 <td>
                                                     @if($reserv->status == "started")
                                                         <span class="badge bg-green">Iniciada</span>
                                                     @elseif($reserv->status == "cancelled")
                                                         <span class="badge bg-red">Cancelada</span>
                                                     @elseif($reserv->status == "waiting")
-                                                        <span class="badge bg-yellow">En espera</span>
+                                                        <span class="badge bg-orange">En espera</span>
                                                     @elseif($reserv->status == "finished")
                                                         <span class="badge bg-blue">Finalizada</span>
                                                     @endif

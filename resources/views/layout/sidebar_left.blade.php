@@ -146,8 +146,8 @@
             <li class="treeview {{ request()->is('user/my-reservations/*') ? 'active' : '' }}">
               <a href="{{URL::to('user/my-reservations/list')}}"><i class="fa fa-history"></i> <span>Mis reservas</span></a>
             </li>
-            <li class="treeview {{ request()->is('user/my-passengers/*') ? 'active' : '' }}">
-              <a href="{{URL::to('user/my-passengers')}}"><i class="fa fa-handshake-o"></i> <span>Huéspedes</span></a>
+            <li class="treeview {{ request()->is('user/passengers-list/*') ? 'active' : '' }}">
+              <a href="{{URL::to('user/passengers-list')}}"><i class="fa fa-handshake-o"></i> <span>Huéspedes</span></a>
             </li>
             <li class="treeview">
               <a href="{{URL::to('my-profile')}}"><i class="fa fa-id-badge"></i> <span>Mi perfil</span></a>

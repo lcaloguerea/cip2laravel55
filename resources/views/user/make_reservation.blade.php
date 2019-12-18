@@ -194,28 +194,32 @@
                                 <div class='row'>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>Nacionalidad</label>
-                                            <input class="form-control" id="na" name="na" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class='col-md-4'>
-                                        <div class="form-group">
-                                            <label>País de origen</label>
-                                            <select id="po" class="form-control">
-                                                <option value=""> -- </option>
-                                                @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                            <label>Nacionalidad <span id="fSelNA"></span></label>
+                                            <select id="na" class="form-control select2" style="width:100%">
+                                            @foreach($country as $c)
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>País de residencia</label>
-                                            <select id="pr" class="form-control">
+                                            <label>País de origen <span id="fSelPO"></span></label>
+                                            <select id="po" class="form-control select2"style="width:100%">
                                                 <option value=""> -- </option>
                                                 @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <div class="form-group">
+                                            <label>País de residencia <span id="fSelPR"></span></label>
+                                            <select id="pr" class="form-control select2"style="width:100%">
+                                                <option value=""> -- </option>
+                                                @foreach($country as $c)
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -302,28 +306,33 @@
                                 <div class='row'>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>Nacionalidad</label>
-                                            <input class="form-control" id="na2" name="na2" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class='col-md-4'>
-                                        <div class="form-group">
-                                            <label>País de origen</label>
-                                            <select id="po2" class="form-control">
+                                            <label>Nacionalidad <span id="fSelNA2"></span></label>
+                                            <select id="na2" class="form-control select2"style="width:100%">
                                                 <option value=""> -- </option>
                                                 @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>País de residencia</label>
-                                            <select id="pr2" class="form-control">
+                                            <label>País de origen <span id="fSelPO2"></span></label>
+                                            <select id="po2" class="form-control select2"style="width:100%">
                                                 <option value=""> -- </option>
                                                 @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <div class="form-group">
+                                            <label>País de residencia <span id="fSelPR2"></span></label>
+                                            <select id="pr2" class="form-control select2"style="width:100%">
+                                                <option value=""> -- </option>
+                                                @foreach($country as $c)
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -425,6 +434,31 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+
+
+    //handle flag behavior to label
+    $('#na').on('change', function(e){
+        e.preventDefault();
+        var iso3 = $('#na').val();
+        iso3 = iso3.toLowerCase();
+        console.log(iso3)
+        document.getElementById('fSelNA').innerHTML = "<img style='width:30px' src='https://restcountries.eu/data/"+iso3+".svg'>";
+    });
+
+    $('#po').on('change', function(e){
+        e.preventDefault();
+        var iso3 = $('#po').val();
+        iso3 = iso3.toLowerCase();
+        document.getElementById('fSelPO').innerHTML = "<img style='width:30px' src='https://restcountries.eu/data/"+iso3+".svg'>";
+    });
+
+    $('#pr').on('change', function(e){
+        e.preventDefault();
+        var iso3 = $('#pr').val();
+        iso3 = iso3.toLowerCase();
+        document.getElementById('fSelPR').innerHTML = "<img style='width:30px' src='https://restcountries.eu/data/"+iso3+".svg'>";
+    });
+
 
         //prevent auto hide on some chromes
         $('.datepicker').on('mousedown',function(event){

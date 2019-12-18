@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut 					= '111111111-1';
+        $user->rut 					= '11.111.111-1';
         $user->type 				= 'admin';
         $user->name				    = 'Leo';
         $user->lName 				= 'Caloguerea';
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut                  = '222222222-2';
+        $user->rut                  = '22.222.222-2';
         $user->type                 = 'user';
         $user->name                 = 'Patricia';
         $user->lName                = 'Sánchez';
@@ -48,7 +48,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut                  = '222222222-3';
+        $user->rut                  = '33.333.333-3';
         $user->type                 = 'user';
         $user->name                 = 'Rodrigo';
         $user->lName                = 'Browne';
@@ -64,7 +64,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut                  = '222222222-4';
+        $user->rut                  = '44.444.444-4';
         $user->type                 = 'user';
         $user->name                 = 'Carolina';
         $user->lName                = 'Díaz';
@@ -79,7 +79,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut                  = '222222222-5';
+        $user->rut                  = '55.555.555-5';
         $user->type                 = 'user';
         $user->name                 = 'Elizabeth';
         $user->lName                = 'Robles';
@@ -92,45 +92,19 @@ class UsersTableSeeder extends Seeder
 
         $user->save();
 
+        $user = new User();
 
-        $samples_temp = [];
+        $user->rut                  = '66.666.666-5';
+        $user->type                 = 'maid';
+        $user->name                 = 'Maid';
+        $user->lName                = 'CIP';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'maidcip@gmail.com';
+        $user->phone                = '+5665351233';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
 
-        for($i = 0; $i < 150; $i++)
-        {
-            
-            $samples_temp[] = [            
-            	'rut'			=> $faker->isbn10,
-            	'type'			=> 'user',
-                'name'   		=> $faker->firstName,
-                'lName' 		=> $faker->lastName,
-                'confirmed'		=> $faker->randomElement(['yes', 'no']),
-                'confirmed_code'=> str_random(),
-                'department'	=> $faker->randomElement([
-                    'Arquitectura y artes',
-                    'Ciencias',
-                    'Ciencias agrarias',
-                    'Cs. Económicas y administrativas',
-                    'Cs. Forestales y recursos naturales',
-                    'Cs. Jurídicas y sociales',
-                    'Ciencias veterinarias',
-                    'Ciencias de la ingeniería',
-                    'Filosofía y humanidades',
-                    'Medicina']),
-                'email'			=> $faker->unique->email ,
-                'phone'			=> $faker->e164PhoneNumber,
-                'password'		=> '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
-                'uAvatar'       => '/img/icons/icon-user.png',
-                'created_at'    => DB::raw('CURRENT_TIMESTAMP')
-            ];
-
-        }
-
-        User::insert($samples_temp);
-
-
-
-
-
-
+        $user->save();
     }
 }

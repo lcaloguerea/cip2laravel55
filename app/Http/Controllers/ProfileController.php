@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Jenssegers\Date\Date;
 use App\Activity;
+use Image;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -17,15 +19,20 @@ class ProfileController extends Controller
                     ->orderBy('created_at')
                     ->get();
 
-        foreach ($act as $a){
-                $aux = new Date($a->created_at);
-                $aux = $aux->format('d/m/Y');
-                $dates[] = $aux;
-            }
-        $dates = array_unique($dates);
-        //dd($dates);
-        $user = user::find(\Auth::user()->id);
-        return view('profile/my_profile', compact('user','act','dates'));
+        if($act->count() == 0){
+            $user = user::find(\Auth::user()->id);
+            return view('profile/my_profile', compact('user','act'));
+        }else{
+            foreach ($act as $a){
+                    $aux = new Date($a->created_at);
+                    $aux = $aux->format('d/m/Y');
+                    $datesAux[] = $aux;
+                }
+            $dates = array_unique($datesAux);
+            $user = user::find(\Auth::user()->id);
+            return view('profile/my_profile', compact('user','act','dates'));
+        }
+
     }
 
     public function postValidateEditForm(Request $request)
@@ -33,16 +40,35 @@ class ProfileController extends Controller
     	dd('yeah');
     }
 
+    public function postUpdateAvatar(Request $request)
+    {
+            if($request->hasFile('updAvatar'))
+            {
+                $avatar = $request->file('updAvatar');
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                Image::make($avatar)->resize(300, 300)->save( './uploads/avatars/' . $filename  );
+                $user = User::find($request->id);
+                $user->uAvatar = '/uploads/avatars/' . $filename;
+                $user->type = $request->type;
+                $user->save();
+                return \Redirect::back();
+            }
+
+
+
+    }
+
     public function putUpdate(Request $request)
     {
     	$validator = \Validator::make($request->all(), [
             'name' => 'required|string|max:255',        
             'lName' => 'required|string|max:255',        
-            'rut' => 'required',         
+            'rut' => 'required|string|max:255|regex:/^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/',         
             'confirmed' => 'required',         
             'department' => 'required',         
             'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|max:255',
+            'phone' => 'required|string|max:255|regex:/^\+56?[0-9]+$/',
+            'type' => 'required',
         ]);
 
         if ($validator->fails())
@@ -60,6 +86,7 @@ class ProfileController extends Controller
             $user->department = $request->department;
             $user->email = $request->email;
             $user->phone = $request->phone;
+            $user->type = $request->type;
             $user->save();
 
             $message = ' El registro '.$user->name.' '.$user->lName.' fue actualizado(a) exitosamente.';

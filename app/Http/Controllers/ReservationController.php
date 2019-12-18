@@ -164,14 +164,18 @@ class ReservationController extends Controller
         $gCount = PassengerGroup::where('reservation_id', $request->id)->select('passenger_id')->get();
 
     	$reserv = Reservation::where('id_res', $request->id)->first();
-    	$reserv->status = "cancelled";
+        $reserv->status = "cancelled";
+    	$reserv->confirmed = "cancellByUser";
     	$reserv->save();
 
-    	$room = Room::where('active_reservation_id', $reserv->id_res);
-    	$room->sanitization = 'required';
-        $room->status = 'free';
-    	$room->confirmed = 'cancellByUser';
-    	$room->save();
+        //handle if has room assigned
+        if($reserv->room_id){
+            $room = Room::where('active_reservation_id', $reserv->id_res)->first();
+            $room->sanitization = 'required';
+            $room->status = 'free';
+            $room->active_reservation_id = null;
+            $room->save();
+        }
 
         //create activity cancel for guest 1
         $activity = Activity::create([
@@ -357,6 +361,6 @@ class ReservationController extends Controller
         }
 
         $message = ' La reserva fue confirmada exitosamente.';
-            return response()->json(['message'=> $message]);
+        return response()->json(['message'=> $message]);
     }
 }

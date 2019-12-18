@@ -11,8 +11,6 @@
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
 
-        <link rel="stylesheet" href="{{asset('node_modules/filepond/dist/filepond.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css')}}">
         <link href="{{asset('js/sweetalert/sweetalert.css')}}" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/dropify.css')}}">
 
@@ -124,164 +122,175 @@
                             <div class="nav-tabs-custom">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#tab_1" data-toggle="tab">Historial de reservas</a></li>
-                                        <li><a href="#tab_2" data-toggle="tab">Actualizar</a></li>
+                                    <li><a href="#tab_2" data-toggle="tab">Actualizar</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1">
-                                            @if($act->count() == 0)
-                                                <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
-                                                <ul class="timeline">
-                                            @else
-                                            <div style="text-align: center" class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                                <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong></div>
-                                                <ul class="timeline">
-                                                    @foreach($dates as $d)
-                                                        <li class="time-label">
-                                                            <span class="">
+                                        @if($act->count() == 0)
+                                            <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
+                                            <ul class="timeline">
+                                        @else
+                                        <div style="text-align: center" class="alert alert-info alert-dismissable">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong>
+                                        </div>
+                                        <ul class="timeline">
+                                            @foreach($dates as $d)
+                                                <li class="time-label">
+                                                    <span class="">
+                                                        @if($d == date('d/m/Y'))
+                                                            Recientemente
+                                                        @else
+                                                            {{$d}}
+                                                        @endif
+                                                    </span>
+                                                </li>
+                                                @foreach($act as $a)
+                                                    @if($a->created_at->format('d/m/Y') == $d)
+                                                        <li>
+                                                        @if($a->event == "rsrv_created")
+                                                            <i class="fa fa-plus bg-green"></i>
+                                                            <div class="timeline-item">
                                                                 @if($d == date('d/m/Y'))
-                                                                    Recientemente
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
                                                                 @else
-                                                                    {{$d}}
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
                                                                 @endif
-                                                            </span>
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_confirmed")
+                                                            <i class="fa fa-check bg-yellow"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha confirmado manualmente la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_invoice")
+                                                            <i class="fa fa-file-text-o bg-grey"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la creación y envío del comprobante de pago referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>                                                                    
+                                                        @elseif($a->event == "checkin")
+                                                            <i class="fa fa-arrow-right bg-blue"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check in de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> y ha asignado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->actRsrvR->room_id}}">{{trans('attributes.'.$a->actRsrvR->roomType)}} N°{{$a->actRsrvR->room_id}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div> 
+                                                        @elseif($a->event == "checkout")
+                                                            <i class="fa fa-arrow-left bg-orange"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_pay")
+                                                            <i class="fa fa-usd bg-purple"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado y recepcionado el pago de la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_cancelled")
+                                                            <i class="fa fa-times bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la cancelación referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "room_locked")
+                                                            <i class="fa fa-lock bg-black"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha bloqueado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a> con la siguiente justificación:</h3>
+                                                                <div class="timeline-body">
+                                                                    <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "room_unlocked")
+                                                            <i class="fa fa-unlock bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha desbloqueado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a> con la siguiente justificación:</h3>
+                                                                <div class="timeline-body">
+                                                                    <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "room_cleaned")
+                                                            <i class="fa fa-paint-brush bg-blue"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> realizado y validado la limpieza de la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "testimonial_created")
+                                                            <i class="fa fa-comment bg-teal"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header"><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> ha realizado un testimonio sobre su estadia referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>.</h3>
+                                                                <div class="timeline-body">
+                                                                    @foreach($tst as $t)
+                                                                    @if($t->passenger_id == $a->invR->id_passenger)
+                                                                       <blockquote><cite>{{$t->comment}}</cite></blockquote>
+                                                                    @endif
+                                                                    @endforeach
+                                                                </div>
+                                                                <div class="timeline-footer">
+                                                                    <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
+                                                                </div>
+                                                            </div>
+                                                            @elseif($a->event == "alert_some_supplies")
+                                                            <i class="fa-check-square-o bg-pink"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la falta de stock de uno o más suministros</h3>
+                                                            </div>
+                                                        @endif
                                                         </li>
-                                                        @foreach($act as $a)
-                                                            @if($a->created_at->format('d/m/Y') == $d)
-                                                                <li>
-                                                                @if($a->event == "rsrv_created")
-                                                                    <i class="fa fa-plus bg-green"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "rsrv_confirmed")
-                                                                    <i class="fa fa-check bg-yellow"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha confirmado manualmente la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "rsrv_invoice")
-                                                                    <i class="fa fa-file-text-o bg-grey"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la creación y envío del comprobante de pago referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>                                                                    
-                                                                @elseif($a->event == "checkin")
-                                                                    <i class="fa fa-arrow-right bg-blue"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check in de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> y ha asignado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->actRsrvR->room_id}}">{{trans('attributes.'.$a->actRsrvR->roomType)}} N°{{$a->actRsrvR->room_id}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div> 
-                                                                @elseif($a->event == "checkout")
-                                                                    <i class="fa fa-arrow-left bg-orange"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "rsrv_pay")
-                                                                    <i class="fa fa-usd bg-purple"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado y recepcionado el pago de la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "rsrv_cancelled")
-                                                                    <i class="fa fa-times bg-red"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la cancelación referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "room_locked")
-                                                                    <i class="fa fa-lock bg-black"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha bloqueado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a> con la siguiente justificación:</h3>
-                                                                        <div class="timeline-body">
-                                                                            <blockquote><cite>{{$a->motive}}</cite></blockquote>
-                                                                        </div>
-                                                                    </div>
-                                                                @elseif($a->event == "room_unlocked")
-                                                                    <i class="fa fa-unlock bg-green"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha desbloqueado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a> con la siguiente justificación:</h3>
-                                                                        <div class="timeline-body">
-                                                                            <blockquote><cite>{{$a->motive}}</cite></blockquote>
-                                                                        </div>
-                                                                    </div>
-                                                                @elseif($a->event == "room_cleaned")
-                                                                    <i class="fa fa-paint-brush bg-blue"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> realizado y validado la limpieza de la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "testimonial_created")
-                                                                    <i class="fa fa-comment bg-teal"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header"><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> ha realizado un testimonio sobre su estadia referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>.</h3>
-                                                                        <div class="timeline-body">
-                                                                            @foreach($tst as $t)
-                                                                            @if($t->passenger_id == $a->invR->id_passenger)
-                                                                               <blockquote><cite>{{$t->comment}}</cite></blockquote>
-                                                                            @endif
-                                                                            @endforeach
-                                                                        </div>
-                                                                        <div class="timeline-footer">
-                                                                            <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
-                                                                        </div>
-                                                                    </div>
-                                                                @endif
-                                                                </li>
-                                                            @endif
-                                                        @endforeach                                                      
-                                                    @endforeach
-                                                </ul>
-                                            @endif
+                                                    @endif
+                                                @endforeach                                                      
+                                            @endforeach
+                                        </ul>
+                                        @endif
                                     </div>
                                     <!-- /.tab-pane -->
                                     <div class="tab-pane" id="tab_2">
@@ -430,15 +439,6 @@
         <!-- /. wrapper content-->
         <!-- JS scripts -->
         <script src="{{asset('jQuery/jquery-2.2.3.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond/dist/filepond.min.js')}}"></script>
-        <script src="{{asset('node_modules/jquery-filepond/filepond.jquery.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.js')}}"></script>
         <script src="{{asset('js/jquery-fullscreen/jquery.fullscreen-min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>

@@ -3294,7 +3294,7 @@ table.text-center,table.text-center td,table.text-center th{
     border-color:rgba(0,0,0,.2)
 }
 .error-page{
-    background: url("/img/password.jpeg") no-repeat center center fixed;
+    background: url("/img/bg-img/error-min.jpg") no-repeat center center fixed;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;

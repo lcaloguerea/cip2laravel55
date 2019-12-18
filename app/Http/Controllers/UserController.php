@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Activity;
+use App\Testimonial;
 use App\Room;
 use App\Passenger;
 use App\PassengerGroup;
@@ -13,6 +14,7 @@ use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Image;
+use Auth;
 
 
 class UserController extends Controller
@@ -20,7 +22,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('User');
+        $this->middleware(['auth','User']);
     }
     public function index()
     {
@@ -38,6 +40,7 @@ class UserController extends Controller
 
     public function postMakeReserv(Request $request)
     {
+
         $passengers = Passenger::all();
         $chin = $request->chIn_submit;
         $chout = $request->chOut_submit;
@@ -142,8 +145,8 @@ class UserController extends Controller
         $passenger = Passenger::where('email', '=', $request->email)->first();
         if ($passenger === null) 
         {
-            $co = Country::where('iso', '=', $request->country_o)->first();
-            $cr = Country::where('iso', '=', $request->country_r)->first();
+            $co = Country::where('iso3', '=', $request->country_o)->first();
+            $cr = Country::where('iso3', '=', $request->country_r)->first();
 
             $passengerNew = Passenger::create([
             'name_1' => $request->name_1,
@@ -342,8 +345,36 @@ class UserController extends Controller
 
     public function getPassengerProfile($id)
     {
-        $passenger = Passenger::where('id_passenger',$id) -> first();
-        return view('/user/passenger_profile', compact('passenger'));      
+        Date::setLocale('es');
+
+        $tst = Testimonial::all();
+
+        //dd($id);
+        $act = Activity::where([
+                                ['involved_id' ,$id],
+                                ['responsible_id', Auth::user()->id]])
+                    ->orderBy('created_at')
+                    ->get();
+
+        //dd($act->count());
+
+        if($act->count() == 0){
+            $passenger = Passenger::where('id_passenger', $id) -> first();
+            return view('user/passenger_profile', compact('passenger','act'));
+        }
+        else{
+            foreach ($act as $a){
+                $aux = new Date($a->created_at);
+                $aux = $aux->format('d/m/Y');
+                $dates[] = $aux;
+            }
+
+            $dates = array_unique($dates);
+
+
+            $passenger = Passenger::where('id_passenger', $id) -> first();
+            return view('user/passenger_profile', compact('passenger','act', 'dates','tst'));
+        }     
     }
 
     public function postUpdatePassengerAvatar(Request $request)

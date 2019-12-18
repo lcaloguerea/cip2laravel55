@@ -16,7 +16,7 @@ class MaidController extends Controller
 
     public function __construct()
     {
-        $this->middleware('Maid');
+        $this->middleware('auth');
     }
 
     public function index()

@@ -125,7 +125,9 @@
         <!-- Slimscroll is required when using the fixed layout. -->
         <script>
             $(function () {
-                $("#payments").DataTable();
+                $("#payments").DataTable({
+                    "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                });
                 $(".dataTables_filter input").addClass("dataTable_search");
             });
         </script>

@@ -76,7 +76,7 @@
                                                 <td>
                                                 @foreach($pGroups as $pg)
                                                     @if($pg->reservation_id == $item->id_res)
-                                                        <li><a href="/user/my-passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                        <li><a href="/user/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
                                                     @endif
                                                 @endforeach
                                                 </td>

@@ -97,10 +97,10 @@ return [
 
 	'custom' => [
 		'rut' => [
-			'regex'  => 'Error de formato (Ej: 12.345.678-9)',
+			'regex'  => 'El formato del RUT es inválido (Ej: 12.345.678-9)',
 		],
 		'phone' => [
-			'regex'  => 'Error de formato (Ej: debe comenzar con +56, sin parentesis ni espacios)',
+			'regex'  => 'El formato del Télefono es inválido (Ej: debe comenzar con +56, sin parentesis ni espacios)',
 		],
 	],
 
@@ -116,26 +116,26 @@ return [
 	*/
 
 	'attributes' => [
-		'username' => 'usuario',
-		'password' => 'contraseña',
-		'department' => 'departamento',
-		'name_1' => 'nombre',
-		'name' => 'nombre',
-		'type' => 'tipo',
-		'lName_1' => 'apellido paterno',
-		'lName' => 'apellido',
-		'lName_2' => 'apellido materno',
-		'lName_2' => 'apellido materno',
-		'phone' => 'teléfono',
-		'university' => 'universidad',
-		'nationality' => 'nacionalidad',
-		'country_o' => 'país de origen',
-		'country_r' => 'país de residencia',
+		'username' => 'Usuario',
+		'password' => 'Contraseña',
+		'department' => 'Departamento',
+		'name_1' => 'Nombre',
+		'name' => 'Nombre',
+		'type' => 'Tipo',
+		'lName_1' => 'Apellido paterno',
+		'lName' => 'Apellido',
+		'lName_2' => 'Apellido materno',
+		'phone' => 'Teléfono',
+		'university' => 'Universidad',
+		'nationality' => 'Nacionalidad',
+		'country_o' => 'País de Origen',
+		'country_r' => 'País de Residencia',
 		'monthly' => 'Mensual',
-		'motive' => 'motivo',
-		'program' => 'programa',
+		'motive' => 'Motivo',
+		'program' => 'Programa',
 		'payment_m' => 'método de pago',
-		'IC' => 'código interno',
-		'discount' => 'descuento',
+		'IC' => 'Código Interno',
+		'discount' => 'Descuento',
+		'email' => 'Email',
 	],
 ];

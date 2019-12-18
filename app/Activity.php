@@ -38,4 +38,9 @@ class Activity extends Model
         return $this->belongsTo('App\Reservation', 'rsrv_id', 'id_res'); //Id local
     }
 
+    //Relation with maintenance
+    public function maintR()
+    {
+        return $this->belongsTo('App\Maintenance', 'maintenance_id', 'id'); //Id local
+    }
 }
