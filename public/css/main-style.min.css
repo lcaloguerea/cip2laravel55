@@ -3245,6 +3245,58 @@ table.text-center,table.text-center td,table.text-center th{
 .forgot-page .forgot-form .form-action button:hover{
     border-color:rgba(0,0,0,.2)
 }
+
+
+.testimonial-page{
+    background: url("https://www.genmechanical.com/wp-content/uploads/2013/02/Testimonial-Background.jpg") no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover
+}
+.testimonial-page .box-forgot{
+    width:360px;
+    background-color:#fff;
+    margin:6% auto;
+    position:absolute;
+    right:0;
+    left:0;
+    border-top:3px solid #ffc824
+}
+@media (max-width:768px){
+    .testimonial-page .box-forgot{
+        width:90%;
+        margin-top:20px
+    }
+}
+.testimonial-page .box-forgot h3{
+    text-align:center
+}
+.testimonial-page .box-forgot-body{
+    background:#fff;
+    padding:20px;
+    border-top:0;
+    color:#666
+}
+.testimonial-page .box-forgot-msg{
+    margin:0;
+    text-align:center;
+    padding:0 20px 20px
+}
+.testimonial-page .forgot-form .form-action{
+    border-top:1px solid #e4e9f0;
+    padding-top:1.42rem;
+    margin:1.42rem 0
+}
+.testimonial-page .forgot-form .form-action button{
+    background-color:#DDD;
+    color:#000
+}
+.testimonial-page .forgot-form .form-action button:hover{
+    border-color:rgba(0,0,0,.2)
+}
+
+
 .offline-page{
     background-color:#e8e8e8;
     -webkit-background-size:cover;

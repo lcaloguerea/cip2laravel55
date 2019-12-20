@@ -122,7 +122,7 @@ hr {
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#038b71">
                         <tr>
                            <td class="nav" style="color:#ffffff; font-family:'Amaranth', sans-serif; font-size:20px; line-height:18px; font-weight: 500; text-align:center; min-width:auto !important; padding:15px;">
-                             <span class="link-white" style="color:#ffffff; text-decoration:none;">RESERVA CONFIRMADA</span>
+                             <span class="link-white" style="color:#ffffff; text-decoration:none;">CHECK IN</span>
                            </td>
                         </tr>
                      </table>
@@ -131,30 +131,29 @@ hr {
                      <!-- Hero -->
                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://letmetellyousomethingblogdotcom.files.wordpress.com/2015/03/checking-in.jpg" width="650" height="380" border="0" alt="" /></td>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{asset('img/emails/check-in-min.jpg')}}" width="650" height="380" border="0" alt="" /></td>
                         </tr>
                         <tr>
                            <td class="p30-15" style="padding: 50px 30px;">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Notificación de sistema:</td>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Estimado(a) {{$user->name}},</td>
                                  </tr>
                                  <tr>
-                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha confirmado una reserva en la plataforma CIP. <br> A continuación se muestran los detalles.</td>
+                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha completado exitosamente el ingreso a nuestras dependencias de su(s) huésped(es). <br> Como CIP queremos recordarle que ante cualquier inquietud o consulta puede contactarnos a través de cualquiera de las siguientes vías de contacto: <br><br><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785</td>
                                  </tr>
                               </table>
                            </td>
                         </tr>
 
                      </table>
-                     <hr>
                      <!-- END Hero -->
-                                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 0px">
+                  <hr>
+
+                     <!-- Properties / Two Columns -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="p30-15" style="padding: 50px 30px;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Confirmación:</td>
+                                    <td class="h2 center" style="padding-bottom: 25px;padding-top: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">La estadía...</td>
                                  </tr>
                                     <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -166,7 +165,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-                                                               <td class="text2" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">La confirmación de esta reserva ha sido efectuada por @if($Reserv->confirmed == "confirmedByTime")sistema debido al cumplimiento del tiempo de espera establecido he informado en los correos previos.@elseif($Reserv->confirmed == "confirmed")<strong>{{$act->rspnsblR->name}} {{$act->rspnsblR->lName}}</strong>.@endif con fecha <strong>{{$act->created_at}}</strong></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">Le entregamos a continuación el detalle con toda la información referente a la estadía junto a otros temas de interés.</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -176,15 +175,6 @@ hr {
                                           </tr>
                                        </table>
                                     </th>
-                              </table>
-                           </td>
-                        </tr>
-
-                     </table>
-                  <hr>
-
-                     <!-- Properties / Two Columns -->
-                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                            <td style="padding-bottom: 70px; padding-top: 70px;" class="pb30">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -226,7 +216,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://www.hotelcasamiguel.com/images/door.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$Reserv->roomType)}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$Reserv->roomType)}} N° {{$Reserv->room_id}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -246,7 +236,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://cdn3.iconfinder.com/data/icons/business-glyphs-vol-3/52/guest__house__hotel__home__Guesthouse__guestshome__visitor-512.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"> <strong><u>Huespedes:</u></strong> <br> {{$p1->name_1}}  {{$p1->lName_1}} 
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"> <strong><u>Huéspedes:</u></strong> <br> {{$p1->name_1}}  {{$p1->lName_1}} 
                                                                   @if($p2 != null)
                                                                   <br>{{$p2->name_1}}  {{$p2->lName_1}}
                                                                   @endif
@@ -255,6 +245,17 @@ hr {
                                                          </table>
                                                       </td>
                                                    </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://image.flaticon.com/icons/png/512/185/185539.png" width="15" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"> <strong><u>Check In validado por:</u></strong> <br> {{$act->rspnsblR->name}}  {{$act->rspnsblR->lName}} 
+                                                                  </td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                                                   
                                                 </table>
                                              </td>
                                           </tr>
@@ -354,6 +355,164 @@ hr {
                      <!-- END Properties / Two Columns -->                 
                      <hr>
 
+                     <!-- Hero -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 70px">
+                        <tr>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://paraquesirve.tv/wp-content/uploads/2017/10/para-que-sirve-un-reglamento_opt.jpg" width="650" height="380" border="0" alt="" /></td>
+                        </tr>
+                        <tr>
+                           <td class="p30-15" style="padding: 50px 30px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Servicio y normas:</td>
+                                 </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">No está permitido el ingreso de acompañantes, las habitaciones son de uso exclusivo de los huéspedes, si viene acompañado debe solicitar una reserva y pagar la tarifa correspondiente.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Las habitaciones cuentan con aire acondicionado, televisión satelital, Wi Fi, Frigobar, secador de pelo. Se entregan toallas y amenidades para el baño. Facilitamos plancha para ropa.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Ofrecemos una cocina completamente equipada. El desayuno funciona como autoservicio y está incluido en el precio, incluye: café de grano, leche, pan, mantequilla y mermelada.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr> 
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.pngio.com/check-correct-mark-success-tick-valid-yes-icon-check-icon-valid-png-512_512.png" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">El servicio de mucama y aseo, es sólo de lunes a viernes. Los fines de semana y festivos usted deberá mantener los espacios comunes en orden, considerando que comparte con otros
+                                                               huéspedes.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>  
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"><u><strong>No ofrecemos servicio de lavandería.</strong></u></td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                                                                                                   
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                              </table>
+                           </td>
+                        </tr>
+
+                     </table>
+                     <!-- END Hero -->
+
+                  <hr>
+
+                     <!-- Hero -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 0px">
+                        <tr>
+                           <td class="p30-15" style="padding: 50px 30px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Acceso:</td>
+                                 </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">El recinto es controlado por vigilancia las 24 horas. Por normativa, el personal de vigilancia hará registro de sus ingresos y salidas. De lunes a viernes después de las 21:00 horas, fines de semanas y festivos, debe ingresar por el costado izquierdo de la puerta principal.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>                          
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                              </table>
+                           </td>
+                        </tr>
+
+                     </table>
+                     <!-- END Hero -->
+
+                  <hr>
+
+                     <!-- Property / Image On the Right -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td style="padding-bottom: 70px; padding-top: 70px" class="pb30">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+
+                                  <th class="column-dir" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 18px; color:#0e2337; font-family:'Fira Sans', Arial, sans-serif; font-size:22px; line-height:32px; text-align:center;" class="h3">Conozca nuestra ubicación</td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td class="text2" style="padding-bottom: 18px; color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">La Casa de Investigación y Postgrado – CIP se encuentra ubicada en el 3° piso del módulo C del Ex Hotel Isla Teja, Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno universitario rodeado de naturaleza. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia. <br><br>Al hacer click en el mapa puede vernos en google maps.</td>
+                                                   </tr>
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                                    <th style="padding-bottom: 20px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="40"></th>
+                                    <th class="column-dir" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Las+Encinas+220,+Valdivia,+Regi%C3%B3n+de+los+R%C3%ADos/@-39.809574,-73.253185,16z/data=!4m5!3m4!1s0x9615ede0a0bed76b:0x33cd44510e455c4a!8m2!3d-39.809574!4d-73.2531849?hl=es-CL"><img src="{{asset('img/emails/map.jpeg')}}" width="315" height="470" border="0" alt="" /></a></td>
+                                          </tr>
+                                       </table>
+                                    </th>
+
+  
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                     <!-- END Property / Image On the Right -->
+                     <hr>
 
 
 
@@ -364,23 +523,20 @@ hr {
                            <td style="padding: 50px;" class="p30-15" bgcolor="#488edc">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Desea revisar?</td>
+                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Recuerde...</td>
                                  </tr>
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Recuerde que toda esta informacion puede ser revisada en cualquier momento en el portal de administracion respectivo.</td>
+                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Toda esta información se encuentra en su historial de reservas almacenadas en nuestra plataforma.</td>
                                  </tr>
                                  <tr>
                                     <td align="center">
                                        <table border="0" cellspacing="0" cellpadding="0" class="center" style="text-align:center;">
                                           <tr>
-                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="{{env('APP_URL')}}" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Ir a la cip</span></a></td>
+                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="{{env('APP_URL')}}" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Ir a la CIP</span></a></td>
                                           </tr>
                                        </table>
                                     </td>
                                  </tr>
-                                 <tr>
-                                    <td style="padding-bottom: 30px; padding-top: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:25px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Te esperamos!!</td>
-                                 </tr>                                 
                               </table>
                            </td>
                         </tr>

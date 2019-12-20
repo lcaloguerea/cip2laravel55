@@ -40,6 +40,7 @@ return [
 	'exists'                => 'El campo :attribute seleccionado es inválido.',
 	'file'                  => 'El campo :attribute debe ser un archivo.',
 	'filled'                => 'El campo :attribute es requerido.',
+	'testimonial'           => 'El campo :attribute es requerido.',
 	'image'                 => 'El campo :attribute debe ser una imagen.',
 	'in'                    => 'El campo :attribute seleccionado es inválido.',
 	'in_array'              => 'El campo :attribute no existe en :other.',

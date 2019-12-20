@@ -16,7 +16,7 @@ class CreateActivityTable extends Migration
         //table for activities that involves responsible and involved
         Schema::create('activity', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('group',['rsrv','room','maid']);
+            //$table->enum('group',['rsrv','room','maid']);
             $table->enum('event',[
                 'rsrv_created',         //ok
                 'rsrv_cancelled',       //ok

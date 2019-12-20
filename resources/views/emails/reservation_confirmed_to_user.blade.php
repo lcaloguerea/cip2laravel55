@@ -193,7 +193,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://www.hotelcasamiguel.com/images/door.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$r->type)}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$Reserv->roomType)}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>

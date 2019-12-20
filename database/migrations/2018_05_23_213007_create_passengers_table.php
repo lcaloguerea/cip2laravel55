@@ -29,6 +29,8 @@ class CreatePassengersTable extends Migration
             $table->integer('country_r')->unsigned(); //country of residence
             
             $table->string('university');
+            //for handle link code to create testimonial
+            $table->string('tCode')->default(null);
         });
     }
 

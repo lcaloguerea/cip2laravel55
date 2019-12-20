@@ -43,8 +43,7 @@ class Reservation extends Model
 
     public function pgR()
     {
-        return $this->hasOne('App\PassengerGroup', 'reservation_id' , 'id_res'); 
-
+        return $this->hasMany('App\PassengerGroup', 'reservation_id' , 'id_res'); 
     }
     /**
      * The attributes that should be hidden for arrays.

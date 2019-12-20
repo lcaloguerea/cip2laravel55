@@ -20,7 +20,7 @@ class CreateTestimonialsTable extends Migration
             $table->string('name');
             $table->string('department');
             $table->string('pAvatar')->default('/img/icons/icon-user.png');
-            $table->enum('visibility',['no','yes']);
+            $table->enum('visibility',['no','yes'])->default('no');
 
             $table->integer('reservation_id')->unsigned()->nullable(); //Fk
             $table->integer('passenger_id')->unsigned()->nullable(); //Fk

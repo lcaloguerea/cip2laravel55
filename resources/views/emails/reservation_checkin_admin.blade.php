@@ -122,7 +122,7 @@ hr {
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#038b71">
                         <tr>
                            <td class="nav" style="color:#ffffff; font-family:'Amaranth', sans-serif; font-size:20px; line-height:18px; font-weight: 500; text-align:center; min-width:auto !important; padding:15px;">
-                             <span class="link-white" style="color:#ffffff; text-decoration:none;">RESERVA CONFIRMADA</span>
+                             <span class="link-white" style="color:#ffffff; text-decoration:none;">CHECK IN</span>
                            </td>
                         </tr>
                      </table>
@@ -131,7 +131,7 @@ hr {
                      <!-- Hero -->
                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://letmetellyousomethingblogdotcom.files.wordpress.com/2015/03/checking-in.jpg" width="650" height="380" border="0" alt="" /></td>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{asset('img/emails/check-in-min.jpg')}}" width="650" height="380" border="0" alt="" /></td>
                         </tr>
                         <tr>
                            <td class="p30-15" style="padding: 50px 30px;">
@@ -140,7 +140,7 @@ hr {
                                     <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Notificación de sistema:</td>
                                  </tr>
                                  <tr>
-                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha confirmado una reserva en la plataforma CIP. <br> A continuación se muestran los detalles.</td>
+                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha realizado exitosamente un check In en la plataforma CIP.</td>
                                  </tr>
                               </table>
                            </td>
@@ -166,7 +166,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-                                                               <td class="text2" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">La confirmación de esta reserva ha sido efectuada por @if($Reserv->confirmed == "confirmedByTime")sistema debido al cumplimiento del tiempo de espera establecido he informado en los correos previos.@elseif($Reserv->confirmed == "confirmed")<strong>{{$act->rspnsblR->name}} {{$act->rspnsblR->lName}}</strong>.@endif con fecha <strong>{{$act->created_at}}</strong></td>
+                                                               <td class="text2" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">La confirmación de este Check In ha sido efectuada por <strong>{{$act->rspnsblR->name}} {{$act->rspnsblR->lName}}</strong>. Con fecha <strong>{{$act->created_at}}</strong></td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -226,7 +226,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://www.hotelcasamiguel.com/images/door.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$Reserv->roomType)}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Habitación {{trans('attributes.'.$Reserv->roomType)}} N° {{$Reserv->room_id}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -364,7 +364,7 @@ hr {
                            <td style="padding: 50px;" class="p30-15" bgcolor="#488edc">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Desea revisar?</td>
+                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">¿Desea revisar?</td>
                                  </tr>
                                  <tr>
                                     <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Recuerde que toda esta informacion puede ser revisada en cualquier momento en el portal de administracion respectivo.</td>
@@ -377,9 +377,6 @@ hr {
                                           </tr>
                                        </table>
                                     </td>
-                                 </tr>
-                                 <tr>
-                                    <td style="padding-bottom: 30px; padding-top: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:25px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Te esperamos!!</td>
                                  </tr>                                 
                               </table>
                            </td>

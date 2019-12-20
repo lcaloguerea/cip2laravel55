@@ -122,7 +122,7 @@ hr {
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#038b71">
                         <tr>
                            <td class="nav" style="color:#ffffff; font-family:'Amaranth', sans-serif; font-size:20px; line-height:18px; font-weight: 500; text-align:center; min-width:auto !important; padding:15px;">
-                             <span class="link-white" style="color:#ffffff; text-decoration:none;">RESERVA CONFIRMADA</span>
+                             <span class="link-white" style="color:#ffffff; text-decoration:none;">TESTIMONIO CREADO</span>
                            </td>
                         </tr>
                      </table>
@@ -131,7 +131,7 @@ hr {
                      <!-- Hero -->
                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://letmetellyousomethingblogdotcom.files.wordpress.com/2015/03/checking-in.jpg" width="650" height="380" border="0" alt="" /></td>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://www.computationalthinkers.com/wp-content/uploads/2015/12/Testimonial-Background.jpg" width="650" height="380" border="0" alt="" /></td>
                         </tr>
                         <tr>
                            <td class="p30-15" style="padding: 50px 30px;">
@@ -140,7 +140,7 @@ hr {
                                     <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Notificación de sistema:</td>
                                  </tr>
                                  <tr>
-                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha confirmado una reserva en la plataforma CIP. <br> A continuación se muestran los detalles.</td>
+                                    <td class="text center" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">Se ha realizado exitosamente la creación de un testimonio en la plataforma CIP.</td>
                                  </tr>
                               </table>
                            </td>
@@ -149,12 +149,12 @@ hr {
                      </table>
                      <hr>
                      <!-- END Hero -->
-                                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 0px">
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 0px">
                         <tr>
                            <td class="p30-15" style="padding: 50px 30px;">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Confirmación:</td>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Testimonio y Valoración</td>
                                  </tr>
                                     <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -165,8 +165,13 @@ hr {
                                                       <td style="padding-bottom: 8px;">
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
-                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-                                                               <td class="text2" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">La confirmación de esta reserva ha sido efectuada por @if($Reserv->confirmed == "confirmedByTime")sistema debido al cumplimiento del tiempo de espera establecido he informado en los correos previos.@elseif($Reserv->confirmed == "confirmed")<strong>{{$act->rspnsblR->name}} {{$act->rspnsblR->lName}}</strong>.@endif con fecha <strong>{{$act->created_at}}</strong></td>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:center;"></td>
+                                                               <td class="text2" style="padding-bottom: 25px; color:#313131; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;"><blockquote><cite style="color:gray; font-size: 20px">"{{$t->comment}}"</cite></blockquote><span>
+                                                                   @for($i = 0; $i <= $t->rate; $i++)
+                                                                  <img style="width: 20px" src="https://img.pngio.com/green-star-png-image-purepng-free-transparent-cc0-png-image-green-star-png-1100_1100.png">
+                                                                  @endfor
+                                                                  </span>
+                                                               </td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -186,8 +191,12 @@ hr {
                      <!-- Properties / Two Columns -->
                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
+                           <tr>
+                              <td class="h2 center" style="padding-top: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Reserva asociada:</td>
+                           </tr>
                            <td style="padding-bottom: 70px; padding-top: 70px;" class="pb30">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
                                  <tr>
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -246,9 +255,9 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://cdn3.iconfinder.com/data/icons/business-glyphs-vol-3/52/guest__house__hotel__home__Guesthouse__guestshome__visitor-512.png" width="15" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"> <strong><u>Huespedes:</u></strong> <br> {{$p1->name_1}}  {{$p1->lName_1}} 
-                                                                  @if($p2 != null)
-                                                                  <br>{{$p2->name_1}}  {{$p2->lName_1}}
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;"> <strong><u>Huespedes:</u></strong> <br> {{$Reserv->pgR[0]->passengersR[0]->name_1}}  {{$Reserv->pgR[0]->passengersR[0]->lName_1}} 
+                                                                  @if($Reserv->pgR->count() == 2)
+                                                                  <br>{{$Reserv->pgR[1]->passengersR[1]->name_1}}  {{$Reserv->pgR[1]->passengersR[1]->lName_1}}
                                                                   @endif
                                                                   </td>
                                                             </tr>
@@ -269,7 +278,7 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:center;" ><img style="width:237px; height: 237px" src="{{$user->uAvatar}}" width="315" height="237" border="0" alt="" /></td>
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:center;" ><img style="width:237px; height: 237px" src="{{$Reserv->userR->uAvatar}}" width="315" height="237" border="0" alt="" /></td>
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
@@ -287,7 +296,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://banner2.kisspng.com/20180412/phw/kisspng-computer-icons-youtube-avatar-person-people-vector-5acf0e1e251dc4.6874627715235190061521.jpg" width="10" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Nombre: {{$user->name}} {{$user->lName}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Nombre: {{$Reserv->userR->name}} {{$Reserv->userR->lName}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -297,7 +306,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://image.flaticon.com/icons/png/512/138/138228.png" width="10" height="15" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Departamento: {{$user->department}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Departamento: {{$Reserv->userR->department}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -307,7 +316,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://img.icons8.com/cotton/2x/secured-letter--v1.png" width="10" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Email: {{$user->email}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Email: {{$Reserv->userR->email}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -317,7 +326,7 @@ hr {
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://www.siatechschools.org/wp-content/uploads/2014/10/Mobile-Phone-icon.png" width="10" height="20" border="0" alt="" /></td>
-                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Teléfono: {{$user->phone}}</td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Teléfono: {{$Reserv->userR->phone}}</td>
                                                             </tr>
                                                          </table>
                                                       </td>
@@ -336,26 +345,57 @@ hr {
                               </table>
                            </td>
                         </tr>
-                        @if($Reserv->user_obs != "")
-                        <tr>
-                           <td class="p30-15" style="padding: 0px 30px; padding-bottom: 70px;">
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                 <tr>
-                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Observaciones del responsable:</td>
-                                 </tr>
-                                 <tr>
-                                    <td class="text center" style="background-color:#e28f00;padding: 25px; color:#ffffff; font-family:'Fira Sans', Arial, sans-serif; font-size:14px; line-height:32px; min-width:auto !important; text-align:center;">{{$Reserv->user_obs}}</td>
-                                 </tr>
-                              </table>
-                           </td>
-                           @endif
-                        </tr>
                      </table>
                      <!-- END Properties / Two Columns -->                 
                      <hr>
 
 
+                     <!-- END Hero -->
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 70px">
+                        <tr>
+                           <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://minutes.co/wp-content/uploads/2019/04/audiences-attention.png" width="650" height="380" border="0" alt="" /></td>
+                        </tr>
+                        <tr>
+                           <td class="p30-15" style="padding: 50px 30px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td class="h2 center" style="padding-bottom: 25px; color:#313131; font-family:'Amaranth', Arial, sans-serif; font-size:34px; line-height:44px; text-align:center;">Importante:</td>
+                                 </tr>
+                                    <th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td class="p0-15">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://icon2.cleanpng.com/20171220/euw/exclamation-mark-png-5a3a528f0b35d2.1572392815137716630459.jpg" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Este testimonio ha sido ingresado a los registros de la plataforma CIP, pero este no será visible en la página principal hasta que un administrador lo autorice.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr> 
+                                                   <tr>
+                                                      <td style="padding-bottom: 8px;">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                               <td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="https://icon2.cleanpng.com/20171220/euw/exclamation-mark-png-5a3a528f0b35d2.1572392815137716630459.jpg" width="10" height="20" border="0" alt="" /></td>
+                                                               <td class="text2" style="color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:left; min-width:auto !important;">Puede autorizar o o denegar la publicacion de testimonios en el portal CIP Admin en cualquier momento.</td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                </table>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </th>
+                              </table>
+                           </td>
+                        </tr>
 
+                     </table>
 
 
                      <!-- CTA -->
@@ -364,10 +404,10 @@ hr {
                            <td style="padding: 50px;" class="p30-15" bgcolor="#488edc">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Desea revisar?</td>
+                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">¿Desea revisar?</td>
                                  </tr>
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Recuerde que toda esta informacion puede ser revisada en cualquier momento en el portal de administracion respectivo.</td>
+                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Recuerde que toda esta informacion puede ser revisada en cualquier momento en el portal de administración respectivo.</td>
                                  </tr>
                                  <tr>
                                     <td align="center">
@@ -377,9 +417,6 @@ hr {
                                           </tr>
                                        </table>
                                     </td>
-                                 </tr>
-                                 <tr>
-                                    <td style="padding-bottom: 30px; padding-top: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:25px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Te esperamos!!</td>
                                  </tr>                                 
                               </table>
                            </td>

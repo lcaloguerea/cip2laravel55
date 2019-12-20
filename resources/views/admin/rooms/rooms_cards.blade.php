@@ -81,7 +81,7 @@
                           @if($item->status != 'free')
                             @foreach($pGroups as $pg)
                               @if($pg->reservation_id == $item->active_reservation_id)
-                                <a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}"><img class="img-circle" src="{{$pg->passengersR[0]->pAvatar}}" style="height: 35px; width: 35px;"></a>
+                                <a href="passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}"><img class="img-circle" src="{{$pg->passengersR[0]->pAvatar}}" style="height: 35px; width: 35px;"></a>
                               @endif
                             @endforeach
                           @else

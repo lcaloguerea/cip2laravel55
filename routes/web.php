@@ -107,6 +107,10 @@ Route::put('/admin/user/update', 'AdminController@putUserUpdate')->name('adminUs
 //trying emails responsives views
 Route::get('/emails/welcome', 'EmailController@getWelcome');
 
+//testimonials
+Route::get('testimonial/{confirmationCode}', 'TestimonialController@getTestimonial');
+Route::post('testimonial/save', 'TestimonialController@postTestimonialSave')->name('testimonial.save');
+
 Route::group(['middleware' => 'Admin'], function(){
 	Route::get('/admin', 'AdminController@index')->name('admin');
 	Route::get('/admin/rooms-list', 'RoomsController@getList');
