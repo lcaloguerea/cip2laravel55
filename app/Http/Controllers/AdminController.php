@@ -372,5 +372,28 @@ class AdminController extends Controller
         return view('/maid/supplies', compact('supp'));
     }
 
+    public function getTestimonials(){
+        $tstm = Testimonial::all();
+        $t = Testimonial::where('id', 1)->first();
+        //dd($t->psngrR->name_1);
+        return view('admin/testimonials/index', compact('tstm'));
+    }
+
+    public function postUpdateTestimonialV(Request $request){
+        $t = Testimonial::where('id',$request->t_id)->first();
+        $t->visibility = $request->visibility;
+        $t->save();
+
+        if($t->visibility == "yes"){
+            $status = "visible";
+        }else{
+            $status = "oculto";
+        }
+
+        $message = 'El testimonio N°'.$t->id.' ha cambiado a '.$status;
+        return response()->json(['message'=> $message]);
+        
+    }
+
 
 }

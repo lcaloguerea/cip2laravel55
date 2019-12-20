@@ -74,6 +74,10 @@
               <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
               </a>
             </li>
+            <li class="treeview {{ request()->is('admin/testimonials') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/testimonials')}}"><i class="fa fa-comments"></i><span>Testimonios</span>
+              </a>
+            </li>
             <li class="treeview {{ request()->is('admin/payments/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-usd"></i> <span>Pagos</span>
               <span class="pull-right-container">

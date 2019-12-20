@@ -53,7 +53,7 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="table responsive">
+                                    <table id="payments" class="table responsive datatable">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -127,8 +127,8 @@
             $(function () {
                 $("#payments").DataTable({
                     "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                    "lengthChange": false,
                 });
-                $(".dataTables_filter input").addClass("dataTable_search");
             });
         </script>
     </body>

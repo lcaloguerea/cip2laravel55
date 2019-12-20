@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="{{asset('animate.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
+<link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap.css')}}">
+        <link rel="stylesheet" href="{{asset('responsive-tables/responsivetables.css')}}">
+
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
         
         <link href="{{asset('pickadate.js-3.5.6/lib/themes/default.css')}}" rel="stylesheet">
@@ -109,177 +112,179 @@
                                     <li><a href="#tab_2" data-toggle="tab">Historial</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_1" style="overflow-y: scroll; height: 510px">
-                                            @if($rAct->count() == 0)
-                                                <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
-                                                <ul class="timeline">
-                                            @else
-                                            <div style="text-align: center" class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                                <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong></div>
-                                                <ul class="timeline">
-                                                    @foreach($dates as $d)
-                                                        <li class="time-label">
-                                                            <span class="">
-                                                                @if($d == date('d/m/Y'))
-                                                                    Recientemente
-                                                                @else
-                                                                    {{$d}}
-                                                                @endif
-                                                            </span>
-                                                        </li>
+                                    <div class="tab-pane active" id="tab_1">
+                                    @if($rAct->count() == 0)
+                                        <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
+                                        <ul class="timeline">
+                                    @else
+                                    <div style="text-align: center" class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong>
+                                    </div>
+                                        <ul class="timeline">
+                                            @foreach($dates as $d)
+                                                <li class="time-label">
+                                                    <span class="">
+                                                        @if($d == date('d/m/Y'))
+                                                            Recientemente
+                                                        @else
+                                                            {{$d}}
+                                                        @endif
+                                                    </span>
+                                                </li>
 
-                                                        @foreach($rAct as $a)
-                                                            @if($a->created_at->format('d/m/Y') == $d)
-                                                                <li>
-                                                                @if($a->event == "room_locked")
-                                                                    <i class="fa fa-lock bg-black"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha bloqueado la habitación con la siguiente justificación:</h3>
-                                                                        <div class="timeline-body">
-                                                                            <blockquote><cite>{{$a->motive}}</cite></blockquote>
-                                                                        </div>
-                                                                    </div>
-                                                                @elseif($a->event == "room_unlocked")
-                                                                    <i class="fa fa-unlock bg-green"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha desbloqueado la habitación con la siguiente justificación:</h3>
-                                                                        <div class="timeline-body">
-                                                                            <blockquote><cite>{{$a->motive}}</cite></blockquote>
-                                                                        </div>
-                                                                    </div>
-                                                                @elseif($a->event == "room_cleaned")
-                                                                    <i class="fa fa-paint-brush bg-blue"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha realizado y validado la limpieza de la habitación</h3>
-                                                                    </div> 
-                                                                @elseif($a->event == "checkout")
-                                                                    <i class="fa fa-arrow-left bg-orange"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "rsrv_pay")
-                                                                    <i class="fa fa-usd bg-purple"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado y recepcionado el pago de la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "rsrv_cancelled")
-                                                                    <i class="fa fa-times bg-red"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la cancelación referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
-                                                                    </div>
-                                                                @elseif($a->event == "testimonial_created")
-                                                                    <i class="fa fa-comment bg-teal"></i>
-                                                                    <div class="timeline-item">
-                                                                        @if($d == date('d/m/Y'))
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
-                                                                        @else
-                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
-                                                                        @endif
-                                                                        <h3 class="timeline-header"><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> ha realizado un testimonio sobre su estadia referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>.</h3>
-                                                                        <div class="timeline-body">
-                                                                            @foreach($tst as $t)
-                                                                            @if($t->passenger_id == $a->invR->id_passenger)
-                                                                               <blockquote><cite>{{$t->comment}}</cite></blockquote>
-                                                                            @endif
-                                                                            @endforeach
-                                                                        </div>
-                                                                        <div class="timeline-footer">
-                                                                            <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
-                                                                        </div>
-                                                                    </div>
+                                                @foreach($rAct as $a)
+                                                    @if($a->created_at->format('d/m/Y') == $d)
+                                                        <li>
+                                                        @if($a->event == "room_locked")
+                                                            <i class="fa fa-lock bg-black"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
                                                                 @endif
-                                                                </li>
-                                                            @endif
-                                                        @endforeach                                                      
-                                                    @endforeach
-                                                </ul>
-                                            @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha bloqueado la habitación con la siguiente justificación:</h3>
+                                                                <div class="timeline-body">
+                                                                    <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "room_unlocked")
+                                                            <i class="fa fa-unlock bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha desbloqueado la habitación con la siguiente justificación:</h3>
+                                                                <div class="timeline-body">
+                                                                    <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "room_cleaned")
+                                                            <i class="fa fa-paint-brush bg-blue"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha realizado y validado la limpieza de la habitación</h3>
+                                                            </div> 
+                                                        @elseif($a->event == "checkout")
+                                                            <i class="fa fa-arrow-left bg-orange"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_pay")
+                                                            <i class="fa fa-usd bg-purple"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado y recepcionado el pago de la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_cancelled")
+                                                            <i class="fa fa-times bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la cancelación referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "testimonial_created")
+                                                            <i class="fa fa-comment bg-teal"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header"><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> ha realizado un testimonio sobre su estadia referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>.</h3>
+                                                                <div class="timeline-body">
+                                                                    @foreach($tst as $t)
+                                                                    @if($t->passenger_id == $a->invR->id_passenger)
+                                                                       <blockquote><cite>{{$t->comment}}</cite></blockquote>
+                                                                    @endif
+                                                                    @endforeach
+                                                                </div>
+                                                                <div class="timeline-footer">
+                                                                    <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        </li>
+                                                    @endif
+                                                @endforeach                                                      
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                     </div>
                                     <!-- /.tab-pane -->
+                    
                                     <div class="tab-pane" id="tab_2">
                                         <div class="box box-form no-shadow">
                                             <!-- /.box-header -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                </div>
-                                <div class="box-body">
-                                    <table id="payments" class="table responsive">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Usuario</th>
-                                                <th>Huésped(es)</th>
-                                                <th>Estado</th>
-                                                <th>Check In</th>
-                                                <th>Check Out</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($Rsrvs as $item)
-                                            <tr class="disabled">
-                                                <td><a href="#">{{$item->id_res}}</a></td>
-                                                <td><a href="/{{Auth::user()->type}}/users/user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
-                                                <td>
-                                                @foreach($pGroups as $pg)
-                                                    @if($pg->reservation_id == $item->id_res)
-                                                        <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
-                                                    @endif
-                                                @endforeach
-                                                </td>
-                                                <td>
-                                                    @if($item->status == "started")
-                                                        <span class="badge bg-green">Iniciada</span>
-                                                    @elseif($item->status == "cancelled")
-                                                        <span class="badge bg-red">Cancelada</span>
-                                                    @elseif($item->status == "waiting")
-                                                        <span class="badge bg-yellow">En espera</span>
-                                                    @elseif($item->status == "finished")
-                                                        <span class="badge bg-blue">Finalizada</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
-                                                <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="box">
+                                                        <div class="box-header">
+                                                        </div>
+                                                        <div class="box-body">
+                                                            <table id="payments" class="table responsive datatable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Usuario</th>
+                                                                        <th>Huésped(es)</th>
+                                                                        <th>Estado</th>
+                                                                        <th>Check In</th>
+                                                                        <th>Check Out</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @foreach($Rsrvs as $item)
+                                                                    <tr class="disabled">
+                                                                        <td><a href="#">{{$item->id_res}}</a></td>
+                                                                        <td><a href="/{{Auth::user()->type}}/users/user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
+                                                                        <td>
+                                                                        @foreach($pGroups as $pg)
+                                                                            @if($pg->reservation_id == $item->id_res)
+                                                                                <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                                            @endif
+                                                                        @endforeach
+                                                                        </td>
+                                                                        <td>
+                                                                            @if($item->status == "started")
+                                                                                <span class="badge bg-green">Iniciada</span>
+                                                                            @elseif($item->status == "cancelled")
+                                                                                <span class="badge bg-red">Cancelada</span>
+                                                                            @elseif($item->status == "waiting")
+                                                                                <span class="badge bg-yellow">En espera</span>
+                                                                            @elseif($item->status == "finished")
+                                                                                <span class="badge bg-blue">Finalizada</span>
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
+                                                                        <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
+                                                                    </tr>
+                                                                @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- /.box-body -->
                                         </div>
                                     </div>
@@ -304,12 +309,15 @@
         <script src="{{asset('js/jquery-fullscreen/jquery.fullscreen-min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>
-
         <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
 
+
         <script src="{{asset('js/swal2.js')}}"></script>
 
+        <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('datatables/dataTables.bootstrap.min.js')}}"></script>
+        <script src="{{asset('responsive-tables/responsivetables.js')}}"></script>
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->
     </body>
@@ -345,6 +353,11 @@
             }
         });
      
+        $("#payments").DataTable({
+            "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+            "lengthChange": false,
+        });
+
 
     $('#btn_locked').on('click',function(e){
 

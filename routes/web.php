@@ -114,6 +114,8 @@ Route::post('testimonial/save', 'TestimonialController@postTestimonialSave')->na
 Route::group(['middleware' => 'Admin'], function(){
 	Route::get('/admin', 'AdminController@index')->name('admin');
 	Route::get('/admin/rooms-list', 'RoomsController@getList');
+	Route::get('/admin/testimonials', 'AdminController@getTestimonials');
+	Route::post('/admin/testimonial/updateV', 'AdminController@postUpdateTestimonialV');
 });
 
 Route::group(['middleware' => 'Maid'], function(){

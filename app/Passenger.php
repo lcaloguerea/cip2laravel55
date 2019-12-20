@@ -41,6 +41,11 @@ class Passenger extends Model
         return $this->belongsTo('App\Country', 'country_r', 'id_country'); //Id local
     }
 
+    public function tstmR()
+    {
+        return $this->hasMany('App\Testimonial', 'id_passenger', 'passenger_id'); //Id local
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
