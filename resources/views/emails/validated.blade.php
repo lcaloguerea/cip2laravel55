@@ -163,7 +163,7 @@ hr {
                                                       <td style="padding-bottom: 18px; color:#0e2337; font-family:'Fira Sans', Arial, sans-serif; font-size:22px; line-height:32px; text-align:center;" class="h3">Conozca nuestra ubicación</td>
                                                    </tr>
                                                    <tr>
-                                                      <td class="text2" style="padding-bottom: 18px; color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">La Casa de Investigación y Postgrado – CIP se encuentra ubicada en el 3° piso del módulo C del Ex Hotel Isla Teja, Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno universitario rodeado de naturaleza. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia. <br><br>Hal hacer click en la magina puede vernos en google maps.</td>
+                                                      <td class="text2" style="padding-bottom: 18px; color:#666666; font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:26px; text-align:center; min-width:auto !important;">La Casa de Investigación y Postgrado – CIP se encuentra ubicada en el 3° piso del módulo C del Ex Hotel Isla Teja, Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno universitario rodeado de naturaleza. Cercana a bancos, restaurantes, supermercado y a minutos del centro de Valdivia. <br><br>Al hacer click en la imágen puede vernos en google maps.</td>
                                                    </tr>
                                                 </table>
                                              </td>
@@ -174,7 +174,7 @@ hr {
                                     <th class="column-dir" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Las+Encinas+220,+Valdivia,+Regi%C3%B3n+de+los+R%C3%ADos/@-39.809574,-73.253185,16z/data=!4m5!3m4!1s0x9615ede0a0bed76b:0x33cd44510e455c4a!8m2!3d-39.809574!4d-73.2531849?hl=es-CL"><img src="http://img.fenixzone.net/i/UIHDkKc.png" width="315" height="470" border="0" alt="" /></a></td>
+                                             <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Las+Encinas+220,+Valdivia,+Regi%C3%B3n+de+los+R%C3%ADos/@-39.809574,-73.253185,16z/data=!4m5!3m4!1s0x9615ede0a0bed76b:0x33cd44510e455c4a!8m2!3d-39.809574!4d-73.2531849?hl=es-CL"><img src="{{asset('img/emails/map.jpeg')}}" width="315" height="470" border="0" alt="" /></a></td>
                                           </tr>
                                        </table>
                                     </th>
@@ -268,7 +268,7 @@ hr {
                                     <td align="center">
                                        <table border="0" cellspacing="0" cellpadding="0" class="center" style="text-align:center;">
                                           <tr>
-                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="http://127.0.0.1:8000" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Ir a CIP</span></a></td>
+                                             <td class="text-button white-button" style="font-family:'Fira Sans', Arial, sans-serif; font-size:15px; line-height:19px; text-align:center; min-width:auto !important; text-transform:uppercase; padding:15px 20px; background:#ffffff; color:#488edc;"><a href="{{ URL::to('') }}" target="_blank" class="link" style="color:#488edc; text-decoration:none;"><span class="link" style="color:#488edc; text-decoration:none;">Ir a CIP</span></a></td>
                                           </tr>
                                        </table>
                                     </td>

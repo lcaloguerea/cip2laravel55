@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CIP Admin</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
     <!-- Icons -->
     <link href="{{asset('icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
@@ -29,7 +21,7 @@
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
     -->
-  <body class="skin-yellow sidebar-mini">
+  <body class="skin-yellow sidebar-mini fixed">
     <div class="page-loader-wrapper" >
       <div class="spinner"></div>
     </div>
@@ -46,7 +38,7 @@
             <small></small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i>Inicio</a></li>
+            <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
             <li class="active">Habitaciones</li>
             <li class="active">Fichas</li>
           </ol>
@@ -62,12 +54,22 @@
                 <div class="ribbon-red ribbon-top-left"><span>Ocupada</span></div>
               @endif
 
-                	@if($item->type == 'single')
-                  		<img class="img-responsive" alt="room" src="{{asset('img/single.png')}}">
-                  	@elseif($item->type == 'shared')
-                  		<img class="img-responsive" alt="room" src="{{asset('img/shared_single.png')}}">
-                  	@else
-                  		<img class="img-responsive" alt="room" src="{{asset('img/matrimonial.png')}}">
+                	@if($item->id_room == 1)
+                  		<img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_1.JPG')}}">
+                	@elseif($item->id_room == 2)
+                		  <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_2(1).JPG')}}">
+                	@elseif($item->id_room == 3)
+                      <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_3(1).JPG')}}">
+                  @elseif($item->id_room == 4)
+                      <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_4.JPG')}}">
+                  @elseif($item->id_room == 5)
+                      <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_5.JPG')}}">
+                  @elseif($item->id_room == 6)
+                      <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_6(3).JPG')}}">
+                  @elseif($item->id_room == 7)
+                      <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_2(1).JPG')}}">
+                  @elseif($item->id_room == 8)
+                      <img class="img-responsive" alt="room" src="{{asset('img/rooms/HAB_8(1).JPG')}}">
                   	@endif
 
                 <div class="box-body body-car">
@@ -79,7 +81,7 @@
                           @if($item->status != 'free')
                             @foreach($pGroups as $pg)
                               @if($pg->reservation_id == $item->active_reservation_id)
-                                <a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}"><img class="img-circle" src="{{$pg->passengersR[0]->pAvatar}}" style="height: 35px; width: 35px;"></a>
+                                <a href="passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}"><img class="img-circle" src="{{$pg->passengersR[0]->pAvatar}}" style="height: 35px; width: 35px;"></a>
                               @endif
                             @endforeach
                           @else
@@ -102,7 +104,7 @@
                     </div>
                   </div>
                   <div class="text-center action-profile">
-                      <a href="room-detail/{{$item->id_room}}" class="btn btn-info btn-block">ver habitación</a>
+                      <a href="room-detail/{{$item->id_room}}" class="btn btn-block">ver habitación</a>
                   </div>
                 </div>
               </div>
@@ -127,7 +129,7 @@
     <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
     <script src="{{asset('js/chartjs/Chart.min.js')}}"></script>
     <script src="{{asset('js/sparkline/jquery.sparkline.min.js')}}"></script>
-    <<script src="{{asset('js/app2.js')}}"></script>
+    <script src="{{asset('js/app2.js')}}"></script>
     <!-- Slimscroll is required when using the fixed layout. -->
   </body>
 </html>

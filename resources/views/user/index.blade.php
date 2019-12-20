@@ -7,9 +7,10 @@
         <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
         <!--animate css-->
         <link rel="stylesheet" href="{{asset('animate.css')}}">
-        <!-- fullCalendar 2.2.5-->
-        <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.min.css')}}"/>
-        <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.print.css')}}" media="print">
+
+        <!-- calendar style -->
+        <link rel="stylesheet" href="{{asset('css/calendar.css')}}">
+
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
@@ -32,7 +33,7 @@
       |               | sidebar-mini                            |
       |---------------------------------------------------------|
     -->
-    <body class="skin-yellow sidebar-mini">
+    <body class="skin-yellow sidebar-mini fixed">
         <div class="page-loader-wrapper" >
             <div class="spinner"></div>
         </div>
@@ -60,11 +61,15 @@
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
-                                    {!! $calendar->calendar() !!}
+                                    <div id='calendar'></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-5">
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                                <strong>Info!</strong> Para brindar un mejor servicio, las habitaciones quedan fuera de disponibilidad luego terminarse una estadía (Mantenimiento y limpieza), es por ello que a pesar de ver un espacio disponible en el calendario, si este esta directamente seguido de un checkin o checkout de una reserva, no se contabilizara como disponible (dependiendo de la cantidad y tipo de habitacion en dicha fecha).
+                            </div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">
                                     <h4 class="box-title">Consultar disponibilidad</h4>
@@ -128,13 +133,9 @@
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>
         <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
-        <script src="{{asset('js/iCheck/icheck.min.js')}}"></script>
-        <script src="{{asset('js/pages/jquery-icheck.js')}}"></script>
-        <!-- fullCalendar 2.2.5 -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-        <script src="{{asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
-        <script src="{{asset('js/pages/events.js')}}"></script>
-        <script src="{{asset('js/pages/dialogs.js')}}"></script>
+
+        <script src="{{asset('js/calendar.js')}}"></script>
+
         <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 
         <script src="{{asset('pickadate.js-3.5.6/lib/picker.js')}}"></script>
@@ -149,6 +150,61 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        //calendar
+        var calendarEl = document.getElementById('calendar');
+        
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid' ],
+          locale: 'es',
+          events:[
+           @foreach($Reservations as $r)
+                {
+                    @if($r->user_id == Auth::user()->id)
+                        title : '{{ '(*) ' . trans('attributes.'.$r->roomType) . ' R' . $r->id_res }}',
+                    @else
+                        title : '{{ trans('attributes.'.$r->roomType) . ' R' . $r->id_res }}',
+                    @endif
+                    start : '{{ $r->check_in}}',
+                    end   : '{{ $r->check_out}}',
+                    @if($r->roomType == "single")
+                        color : '#d81b60'
+                    @elseif($r->roomType == "shared")
+                        color : '#605ca8'
+                    @elseif($r->roomType == "matrimonial")
+                        color : 'orange'
+                    @endif
+                },
+                @endforeach
+          ]
+
+        });
+        //calendar.addEvents($calendar.event);
+        calendar.render();
+
+
+        //prevent auto hide on some chromes
+        $('.datepicker').on('mousedown',function(event){
+            event.preventDefault();
+        })
+        
+        $('.datepicker2').on('mousedown',function(event){
+            event.preventDefault();
+        })
+
+        var yesterday = new Date((new Date()).valueOf()-1000*60*60*24);
+
+        $('.datepicker').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        });
+
+        $('.datepicker2').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        }); 
 
         var $input = $('.datepicker').pickadate()
         var picker = $input.pickadate('picker')
@@ -185,6 +241,12 @@
                     type: "warning"
                 });
 
+            }else if((checkOut >= checkIn) == false){
+                swal({
+                    title:"Ups!!",
+                    text: "El check out no puede tener fecha antes del check in, intenta nuevamente",
+                    type: "warning"
+                });
             }
             else{
 
@@ -212,6 +274,3 @@
 
 });
 </script>
-
-
-{!! $calendar->script() !!}

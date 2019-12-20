@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CIP Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+@include('layout.header')
 
         <link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap.css')}}">
         <link rel="stylesheet" href="{{asset('responsive-tables/responsivetables.css')}}">
@@ -49,7 +41,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Habitaciones</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -59,9 +51,10 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
+                                    <button class="btn btn-default pull-right" onclick="window.print();" style="margin-right: 5px;"><i class="fa fa-print"></i> Imprimir</button>
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="table responsive">
+                                    <table id="payments" class="table responsive datatable">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -76,17 +69,17 @@
                                         @foreach($rooms as $item)
                                             <tr>
                                                 <td><a href="/{{Auth::user()->type}}/room-detail/{{$item->id_room}}">{{$item->id_room}}</a></td>
-                                                @if($item->type == 'shared')
-                                                  <td>Single compartida</td>
-                                                  @else
-                                                  <td>{{$item->type}}</td>
-                                                @endif
+                                                  <td>{{trans('attributes.'.$item->type)}}</td>
                                                 <td>{{$item->price}}</td>
-                                                @if($item->status == 'free')
-                                                  <td>Libre</td>
-                                                  @else
-                                                  <td>Ocupada</td>
-                                                @endif
+                                                <td>
+                                                    @if($item->status == "free")
+                                                    <p><span class="badge bg-green">{{trans('attributes.'.$item->status)}}</span></p>
+                                                    @elseif($item->status == "occupied")
+                                                        <p><span class="badge bg-blue">{{trans('attributes.'.$item->status)}}</span></p>
+                                                    @else
+                                                        <p><span class="badge bg-red">{{trans('attributes.'.$item->status)}}</span></p>
+                                                    @endif
+                                                </td>
                                                 <td>{{$item->active_reservation_id}}</td>
                                                 @if($item->status == 'occupied')
                                                     <td>
@@ -136,8 +129,10 @@
         <!-- Slimscroll is required when using the fixed layout. -->
         <script>
             $(function () {
-                $("#payments").DataTable();
-                $(".dataTables_filter input").addClass("dataTable_search");
+                $("#payments").DataTable({
+                    "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                    "lengthChange": false,
+                });
             });
         </script>
     </body>

@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Santiago',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,9 @@ return [
         gfazioli\Morris\MorrisServiceProvider::class,
         'Jenssegers\Date\DateServiceProvider',
 
+        //DomPDF
+        Barryvdh\DomPDF\ServiceProvider::class,
+
 
     ],
 
@@ -234,6 +237,9 @@ return [
         //For development - Leo
         'Morris' => gfazioli\Morris\Facades\MorrisFacade::class,
         'Date' => Jenssegers\Date\Date::class,
+
+        //DomPDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

@@ -159,7 +159,13 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="http://cipuach.uach.cl/cip/storage/app/public/DSC_2381.JPG" width="315" height="237" border="0" alt="" /></td>
+                                             @if($Reserv->roomType == "single")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_8(1).JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @elseif($Reserv->roomType == "shared")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_3(1).JPG')}}" width="315" height="237" border="0" alt="" /></td>
+                                             @elseif($Reserv->roomType == "matrimonial")
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{asset('img/rooms/HAB_1.JPG')}}" width="315" height="237" border="0" alt="" /></td>  
+                                             @endif                                           
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
@@ -236,7 +242,7 @@ hr {
                                     <th class="column-top" width="315" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="https://ironmaidencolombiafc.files.wordpress.com/2011/12/02_steve-harris.jpg?w=630&h=445" width="315" height="237" border="0" alt="" /></td>
+                                             <td style="padding-bottom: 22px; font-size:0pt; line-height:0pt; text-align:left;" class="fluid-img"><img src="{{$user->uAvatar}}" width="315" height="237" border="0" alt="" /></td>
                                           </tr>
                                           <tr>
                                              <td class="p0-15">
@@ -382,7 +388,7 @@ hr {
                                              <th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 4, Isla Teja - Valdivia. <br /><br /></td>
+                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 3, Isla Teja - Valdivia. <br /><br /></td>
                                                    </tr>
                                                 </table>
                                              </th>

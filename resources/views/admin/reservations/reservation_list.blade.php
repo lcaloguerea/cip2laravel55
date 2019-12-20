@@ -41,7 +41,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Reservas</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -69,12 +69,12 @@
                                         <tbody>
                                         @foreach($reservs as $item)
                                             <tr>
-                                                <td><a href="/admin/reservations/reservation-detail/{{$item->id_res}}">{{$item->id_res}}</a></td>
-                                                <td><a href="user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
+                                                <td><a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$item->id_res}}">{{$item->id_res}}</a></td>
+                                                <td><a href="/{{Auth::user()->type}}/users/user-profile/{{$item->userR->id}}">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
                                                 <td>
                                                 @foreach($pGroups as $pg)
                                                     @if($pg->reservation_id == $item->id_res)
-                                                        <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                        <li><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
                                                     @endif
                                                 @endforeach
                                                 </td>
@@ -125,7 +125,9 @@
         <!-- Slimscroll is required when using the fixed layout. -->
         <script>
             $(function () {
-                $("#payments").DataTable();
+                $("#payments").DataTable({
+                    "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
+                });
                 $(".dataTables_filter input").addClass("dataTable_search");
             });
         </script>

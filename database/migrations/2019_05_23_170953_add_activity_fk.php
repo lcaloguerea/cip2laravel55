@@ -29,6 +29,16 @@ class AddActivityFk extends Migration
                     ->on('reservations')
                     ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
+            $table  ->foreign('room_id','activity_room_id_foreign')
+                    ->references('id_room')
+                    ->on('rooms')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
+            $table  ->foreign('maintenance_id','activity_maintenance_id_foreign')
+                    ->references('id')
+                    ->on('maintenance')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
         });
     }
 
@@ -43,6 +53,8 @@ class AddActivityFk extends Migration
             $table->dropForeign('activity_responsible_id_foreign');
             $table->dropForeign('activity_involved_id_foreign');
             $table->dropForeign('activity_rsrv_id_foreign');
+            $table->dropForeign('activity_room_id_foreign');
+            $table->dropForeign('activity_maintenance_id_foreign');
         });
     }
 }

@@ -24,7 +24,7 @@
         |---------------------------------------------------------|
     -->
 
-    <body class="skin-yellow sidebar-mini">
+    <body class="skin-yellow sidebar-mini fixed">
         <div class="page-loader-wrapper">
             <div class="spinner"></div>
         </div>
@@ -46,7 +46,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li class="">Usuarios</li>
                         <li class="active">Fichas</li>
                     </ol>
@@ -65,7 +65,7 @@
                                     <p class="name">{{$item->name}} {{$item->lName}}</p>
                                     <div class="information">
                                         <p class="">{{$item->type}}</p>
-                                        <p class="email"><a href="#">{{$item->email}}</a>
+                                        <p style="font-size: 12px" class="email"><a href="#">{{$item->email}}</a>
                                         </p>
                                         <p class="location text-muted">{{$item->phone}}</p>
                                     </div>
@@ -90,7 +90,6 @@
                     </div>
                 </section>
                 <!-- /. main content -->
-                <a href="add-client.html" class="add-icon"><i class="fa fa-plus"></i></a>
                 <span class="return-up"><i class="fa fa-chevron-up"></i></span>
             </div>
             <!-- /. content-wrapper -->

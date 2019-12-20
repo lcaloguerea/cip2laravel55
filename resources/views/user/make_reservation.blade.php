@@ -61,14 +61,14 @@
                                     <div class='col-md-6'>
                                         <div class='form-group'>
                                             <label>Checkin</label>
-                                            <input value="{{$check_in}}" id="chIn" name="chIn" type="date" class="form-control datepicker">
+                                            <input data-value="{{$chin}}" id="chIn" name="chIn" class="form-control datepicker">
                                             <input id="in" type="in" name="in" style="display: none">
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
                                             <label>Checkout</label>
-                                            <input value="{{$check_out}}" id="chOut" name="chOut" type="date" class="form-control datepicker2"/>
+                                            <input data-value="{{$chout}}" id="chOut" name="chOut" class="form-control datepicker2"/>
                                             <input id="out" type="out" name="out" style="display: none">
                                         </div>
                                     </div>
@@ -194,28 +194,32 @@
                                 <div class='row'>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>Nacionalidad</label>
-                                            <input class="form-control" id="na" name="na" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class='col-md-4'>
-                                        <div class="form-group">
-                                            <label>País de origen</label>
-                                            <select id="po" class="form-control">
-                                                <option value=""> -- </option>
-                                                @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                            <label>Nacionalidad <span id="fSelNA"></span></label>
+                                            <select id="na" class="form-control select2" style="width:100%">
+                                            @foreach($country as $c)
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>País de residencia</label>
-                                            <select id="pr" class="form-control">
+                                            <label>País de origen <span id="fSelPO"></span></label>
+                                            <select id="po" class="form-control select2"style="width:100%">
                                                 <option value=""> -- </option>
                                                 @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <div class="form-group">
+                                            <label>País de residencia <span id="fSelPR"></span></label>
+                                            <select id="pr" class="form-control select2"style="width:100%">
+                                                <option value=""> -- </option>
+                                                @foreach($country as $c)
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -302,28 +306,33 @@
                                 <div class='row'>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>Nacionalidad</label>
-                                            <input class="form-control" id="na2" name="na2" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class='col-md-4'>
-                                        <div class="form-group">
-                                            <label>País de origen</label>
-                                            <select id="po2" class="form-control">
+                                            <label>Nacionalidad <span id="fSelNA2"></span></label>
+                                            <select id="na2" class="form-control select2"style="width:100%">
                                                 <option value=""> -- </option>
                                                 @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class='col-md-4'>
                                         <div class="form-group">
-                                            <label>País de residencia</label>
-                                            <select id="pr2" class="form-control">
+                                            <label>País de origen <span id="fSelPO2"></span></label>
+                                            <select id="po2" class="form-control select2"style="width:100%">
                                                 <option value=""> -- </option>
                                                 @foreach($country as $c)
-                                                    <option value="{{$c->iso}}">{{ $c->name }} {{CountryFlag::get($c->iso)}}</option>
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <div class="form-group">
+                                            <label>País de residencia <span id="fSelPR2"></span></label>
+                                            <select id="pr2" class="form-control select2"style="width:100%">
+                                                <option value=""> -- </option>
+                                                @foreach($country as $c)
+                                                    <option value="{{$c->iso3}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -379,7 +388,7 @@
                                         <input id="idP2" type="text" name="idP1" style="display:none">
                                     </div>
                                     <div style="position: middle" class="image col-md-4">
-                                        <img id="imgR" style="width: 80px; height: 80px; margin: 20px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEX///8AAACenp7V1dXc3NxLS0tWVlb09PQeHh4+Pj7u7u59fX27u7vi4uKkpKT39/ePj49qamovLy+urq41NTUKCgqEhITLy8tcXFxQUFDDw8O0tLRjY2MqKirS0tJra2tERESLi4sTExMSEhKoQdVzAAAECElEQVR4nO2da1fiMBBAXR6CPEoVLCCgsvv//+Muu8dzMkkfmbZpwnrvVxmca0rzmA4+PAAAAAAAAAAAAAAAAAAAAAAAAHw33rPifJymxPFcZO996e0/fqTKx74Hv+0ltkYtl21Hv/VLbIVGXtZdBLPY6XuRtRd8jp27J89tBY+xM/fm+H+P4I1WoziKnbWKkV5wHDtnJWO1YfrThORFK7iNnbEa7dQfO189rzrBVex8W7BSGT7a4dPtfpIS++3UTvFRI7ixo/tYw/fN3k5yowh+k6E/Z8HS7MLsl0zzTRGby1D9XDMM1pydK0Llgk11gQ+KvF1olm47Eam7SQ2JvOXvFJFyX99pixmUtcjzooici8hFsAy7shB5zhWRGKYChtVgmAoYVoNhKmBYDYapgGE1GJrM9qe8WNZy3ZYVpN+31/qwIj/t689PBjCcZc6RVwUHuY9eHTzjplmNZHDDia48lX8dhm3y5hcbPE9iGS5Ved74V609qeOWUQwn6jz/cNw8bJzTZh/KhzGoYcvSzfxt3vyiMkoLLyENh6+fltVAAxrGKL6VjGI4wzgFYvfoPZihU7gZCKf0Esww1oNuH0MZtponesGeM0IZ+i64+ucwjKEsFgyLVUIJZHh1fu8yW9VwGp0r8j2PTnWBmbssvA5i+Gr9Vo/C5KLM8eyx77SX6NYDF2EM7YvUr7bs7ib8KrZWvd26TMMYWjsD3wfK7PW2b2HZWh6exA/DGObt3tUeeu+yq8xFjnwYQ7nr9X864FPEfXrHyb+orNWHMZSzof8THoWIK7zj5CdRzohhDOUHyv9BFPmB8n8eVK7y5ccXw2owxLAMDKsYwlAeOsvZovKw1kH23/j3ucjdqJwtZj0Z5iODTD7zVow8yeTi+5z5Bsp5dCfiWq6vHMN7AUMM0wdDg/torHTxnoLuryPoC8/OIKeP4Y7wamCPVZToB5+ukngn2n1gn4r/Z9fojeb+pV3zmyRNY9PFvQ9h8yC6pcGD9/YhAoV713CKjBb266+alrcYbK52yvWvty/SFPsObXQ5WwWUrl8cMgzWGqz+GF5uxDXNYDGR9//6Jj3ZtHYfQ2gPYn1nvqx++h8zxUUeVtW3rcsrOs32Xxd55FZ/M8UwTTA0wTBNMDTBME0wNMEwTTA0wTBNMDTBME0wNMEwTTA0wTBNMDTBME0wNMEwTTA0wTBNMDT5poaTcapMejJM978FXXoyfBouZSVPGGKIYXQwxBDD+GCI4VcTUfKGVquWwnC8vrGQj1FPH2MivxB2t/ibofUVgArDUuJ+q/CiOcHOhnH/J4vPV6nVvgGGGAYHQwwxxDA8GGL4DQyfGrlENrw0pxg1QQAAAAAAAAAAAAAAAAAAgA78BraMYuNxleD1AAAAAElFTkSuQmCC" class="img-circle" alt="User Image">
+                                        <img id="imgR" style="width: 80px; height: 80px; margin: 20px;" src="{{asset('img/icons/bed.png')}}" class="img-circle" alt="User Image">
                                         <label id="lblR" style="color:white">No seleccionada</label>
                                     </div>
                                     <div style="padding: 20px" class='col-md-12'>
@@ -425,6 +434,54 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+
+
+    //handle flag behavior to label
+    $('#na').on('change', function(e){
+        e.preventDefault();
+        var iso3 = $('#na').val();
+        iso3 = iso3.toLowerCase();
+        console.log(iso3)
+        document.getElementById('fSelNA').innerHTML = "<img style='width:30px' src='https://restcountries.eu/data/"+iso3+".svg'>";
+    });
+
+    $('#po').on('change', function(e){
+        e.preventDefault();
+        var iso3 = $('#po').val();
+        iso3 = iso3.toLowerCase();
+        document.getElementById('fSelPO').innerHTML = "<img style='width:30px' src='https://restcountries.eu/data/"+iso3+".svg'>";
+    });
+
+    $('#pr').on('change', function(e){
+        e.preventDefault();
+        var iso3 = $('#pr').val();
+        iso3 = iso3.toLowerCase();
+        document.getElementById('fSelPR').innerHTML = "<img style='width:30px' src='https://restcountries.eu/data/"+iso3+".svg'>";
+    });
+
+
+        //prevent auto hide on some chromes
+        $('.datepicker').on('mousedown',function(event){
+            event.preventDefault();
+        })
+        
+        $('.datepicker2').on('mousedown',function(event){
+            event.preventDefault();
+        })
+
+        var yesterday = new Date((new Date()).valueOf()-1000*60*60*24);
+
+        $('.datepicker').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        });
+
+        $('.datepicker2').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        });   
 
 
     $('.select2').select2({
@@ -647,6 +704,12 @@ $(document).ready(function(){
                     type: "warning"
                 });
 
+            }else if((checkOut >= checkIn) == false){
+                swal({
+                    title:"Ups!!",
+                    text: "El check out no puede tener fecha antes del check in, intenta nuevamente",
+                    type: "warning"
+                });
             }
             else{
 
@@ -727,6 +790,9 @@ $(document).ready(function(){
             var email = $('#email').val();
             var phone = $('#phone').val();
             var university = $('#university').val();
+            //add dates to check if guest has conflict with other reservation
+            var checkin = $('#in').val();
+            var checkout = $('#out').val();
             if ($('#rt').val() == 'single'){
                 var capacity = 1;
             }
@@ -736,7 +802,7 @@ $(document).ready(function(){
 
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, "_token": "{{ csrf_token() }}"},
+               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, checkin:checkin, checkout:checkout, "_token": "{{ csrf_token() }}"},
                 //Cambiar a type: POST si necesario
                 type: 'POST',
                 // Formato de datos que se espera en la respuesta
@@ -818,7 +884,7 @@ $(document).ready(function(){
                             $("#showGuestForm").hide(1000);
                             document.getElementById('imgP1').src= data.passengerNew.pAvatar;
                             document.getElementById('lblP1').innerHTML = data.passengerNew.name_1+"<br>"+data.passengerNew.lName_1;
-                            document.getElementById('idP1').value = data.passengerNew.id;
+                            document.getElementById('idP1').value = data.passengerNew.id_passenger;
                             document.getElementById('acceptReserv').disabled = false;
                             document.getElementById('lblCapacity').innerHTML = "1/"+capacity+" (Asignado/Capacidad)";
                         }
@@ -872,6 +938,9 @@ $(document).ready(function(){
             var email = $('#email2').val();
             var phone = $('#phone2').val();
             var university = $('#university2').val();
+            //add dates to check if guest has conflict with other reservation
+            var checkin = $('#in').val();
+            var checkout = $('#out').val();
 
             if ($('#rt').val() == 'single'){
                 var capacity = 1;
@@ -882,7 +951,7 @@ $(document).ready(function(){
 
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, "_token": "{{ csrf_token() }}"},
+               data:{name_1:name_1, lName_1:lName_1, lName_2:lName_2, nationality:nationality, country_o:country_o, country_r:country_r, email:email, phone:phone, university:university, checkin:checkin, checkout:checkout, "_token": "{{ csrf_token() }}"},
                 //Cambiar a type: POST si necesario
                 type: 'POST',
                 // Formato de datos que se espera en la respuesta
@@ -957,6 +1026,7 @@ $(document).ready(function(){
                 confirmButtonColor: "#2ECCFA",
                 confirmButtonText: "Si, crear reserva!",
                 closeOnConfirm: false,
+                showLoaderOnConfirm: true,
                 }, function () {
 
                     var passenger1 =   $('#idP1').val();
@@ -979,14 +1049,28 @@ $(document).ready(function(){
                         // URL a la que se enviará la solicitud Ajax
                         url: '/user/create-reservation' ,
                         success:function(data){
-                        swal({
-                            title:"Reserva registrada!!",
-                            text: "Gracias por completar la reserva, hemos enviado a ti y a tu(s) huésped(es) un correo con el detalle de la reserva.",
-                            type: "success",
-                            html: true,
-                        }, function () {
-                                window.location.href = "/user";
-                        });
+                            if(data.success){
+                                swal({
+                                    title:"Reserva registrada!!",
+                                    text: "Gracias por completar la reserva, hemos enviado a ti y a tu(s) huésped(es) un correo con el detalle de la reserva.",
+                                    type: "success",
+                                    html: true,
+                                },function () {
+                                    window.location.href = "/user";
+                                });
+                            }else if(data.errors){
+                                html = '<p>Por favor corregir los siguientes errores</p><br><div class="alert alert-danger fade in">';
+                                jQuery.each(data.errors, function(key, value){
+                                    html += '<li>' + value + '</li>';
+                                });
+
+                                swal({
+                                    title:"Ups!!",
+                                    text: html,
+                                    type: "warning",
+                                    html: true
+                                });
+                            }
                         }
                     }); 
                 });

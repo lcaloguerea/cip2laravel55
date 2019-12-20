@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut 					= '111111111-1';
+        $user->rut 					= '11.111.111-1';
         $user->type 				= 'admin';
         $user->name				    = 'Leo';
         $user->lName 				= 'Caloguerea';
@@ -33,8 +33,8 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
 
-        $user->rut                  = '222222222-2';
-        $user->type                 = 'maid';
+        $user->rut                  = '22.222.222-2';
+        $user->type                 = 'user';
         $user->name                 = 'Patricia';
         $user->lName                = 'Sánchez';
         $user->confirmed            = 'yes';
@@ -46,43 +46,65 @@ class UsersTableSeeder extends Seeder
             
         $user->save();
 
-        $samples_temp = [];
+        $user = new User();
 
-        for($i = 0; $i < 150; $i++)
-        {
+        $user->rut                  = '33.333.333-3';
+        $user->type                 = 'user';
+        $user->name                 = 'Rodrigo';
+        $user->lName                = 'Browne';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'rodrigobrowne@uach.cl';
+        $user->phone                = '+56612312312';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+        $user->uAvatar              = '/img/team-img/Rodrigo-Browne.jpg';
             
-            $samples_temp[] = [            
-            	'rut'			=> $faker->isbn10,
-            	'type'			=> 'user',
-                'name'   		=> $faker->firstName,
-                'lName' 		=> $faker->lastName,
-                'confirmed'		=> $faker->randomElement(['yes', 'no']),
-                'confirmed_code'=> str_random(),
-                'department'	=> $faker->randomElement([
-                    'Arquitectura y artes',
-                    'Ciencias',
-                    'Ciencias agrarias',
-                    'Cs. Económicas y administrativas',
-                    'Cs. Forestales y recursos naturales',
-                    'Cs. Jurídicas y sociales',
-                    'Ciencias veterinarias',
-                    'Ciencias de la ingeniería',
-                    'Filosofía y humanidades',
-                    'Medicina']),
-                'email'			=> $faker->unique->email ,
-                'phone'			=> $faker->e164PhoneNumber,
-                'password'		=> '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
-                'uAvatar'       => '/img/icons/icon-user.png' 
-            ];
+        $user->save();
 
-        }
+        $user = new User();
 
-        User::insert($samples_temp);
+        $user->rut                  = '44.444.444-4';
+        $user->type                 = 'user';
+        $user->name                 = 'Carolina';
+        $user->lName                = 'Díaz';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'cip_reservas@uach.cl';
+        $user->phone                = '+56989209785';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+            
+        $user->save();
 
+        $user = new User();
 
+        $user->rut                  = '55.555.555-5';
+        $user->type                 = 'user';
+        $user->name                 = 'Elizabeth';
+        $user->lName                = 'Robles';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'elizabethroblesazocar84@gmail.com';
+        $user->phone                = '+5663321233';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
 
+        $user->save();
 
+        $user = new User();
 
+        $user->rut                  = '66.666.666-5';
+        $user->type                 = 'maid';
+        $user->name                 = 'Maid';
+        $user->lName                = 'CIP';
+        $user->confirmed            = 'yes';
+        $user->confirmed_code       =  str_random();
+        $user->department           = 'CIP';
+        $user->email                = 'maidcip@gmail.com';
+        $user->phone                = '+5665351233';
+        $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
 
+        $user->save();
     }
 }

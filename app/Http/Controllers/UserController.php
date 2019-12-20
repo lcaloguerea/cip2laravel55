@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Activity;
+use App\Testimonial;
 use App\Room;
 use App\Passenger;
 use App\PassengerGroup;
@@ -10,8 +11,10 @@ use App\Reservation;
 use App\Country;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Image;
+use Auth;
 
 
 class UserController extends Controller
@@ -19,61 +22,28 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','User']);
     }
     public function index()
     {
         //user cannot see cancelled or finished
         $Reservations = Reservation::all()->where('status', '!=', 'cancelled')->where('status', '!=', 'finished');
 
-        $events = [];
-        foreach($Reservations as $r)
-
-            if($r->roomType == 'single'){
-                $events[] = \Calendar::event(
-                    $r->roomType.' '.$r->room_id, //event title
-                    true, //full day event?
-                    new \DateTime($r->check_in),
-                    new \DateTime($r->check_out.' +1 day'),
-                    $r->id_res,
-                    [
-                    'color' => '#d81b60',
-                ]);
-            }
-            elseif($r->roomType == 'shared'){
-                $events[] = \Calendar::event(
-                    $r->roomType.' '.$r->room_id, //event title
-                    true, //full day event?
-                    new \DateTime($r->check_in),
-                    new \DateTime($r->check_out.' +1 day'),
-                    $r->id_res,
-                    [
-                    'color' => '#605ca8',
-                ]);
-            }
-            elseif($r->roomType == 'matrimonial'){
-                $events[] = \Calendar::event(
-                    $r->roomType.' '.$r->room_id, //event title
-                    true, //full day event?
-                    new \DateTime($r->check_in),
-                    new \DateTime($r->check_out.' +1 day'),
-                    $r->id_res,
-                    [
-                    'color' => 'orange',
-                ]);
-            }
+        //handle fullcalendar not been able to display last day in use
+        foreach($Reservations as $r){
+            $r->check_out = Carbon::parse($r->check_out)->addDay()->format('Y-m-d');
+        }
 
 
-
-        $calendar = \Calendar::addEvents($events); //add an array with addEvents
-
-
-        return view('/user/index', compact('calendar', 'events'));
+        return view('/user/index', compact('Reservations'));
     }
 
     public function postMakeReserv(Request $request)
     {
+
         $passengers = Passenger::all();
+        $chin = $request->chIn_submit;
+        $chout = $request->chOut_submit;
 
         Date::setLocale('es');
         if($request->chIn_submit != null){
@@ -87,7 +57,9 @@ class UserController extends Controller
 
         $country = Country::all();
 
-        return view('/user/make_reservation', compact('passengers', 'country','check_in','check_out'));
+        //dd(compact('passengers', 'country','check_in','check_out','chin','chout'));
+
+        return view('/user/make_reservation', compact('passengers', 'country','chin','chout'));
     }
 
     public function postLoadGuest(Request $request)
@@ -160,7 +132,7 @@ class UserController extends Controller
             'country_o' => 'required',
             'nationality' => 'required|string|max:100',
             'phone' => 'required|string|max:255|regex:/^\+56?[0-9]+$/',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
         ]);
         
         if ($validator->fails())
@@ -173,8 +145,8 @@ class UserController extends Controller
         $passenger = Passenger::where('email', '=', $request->email)->first();
         if ($passenger === null) 
         {
-            $co = Country::where('iso', '=', $request->country_o)->first();
-            $cr = Country::where('iso', '=', $request->country_r)->first();
+            $co = Country::where('iso3', '=', $request->country_o)->first();
+            $cr = Country::where('iso3', '=', $request->country_r)->first();
 
             $passengerNew = Passenger::create([
             'name_1' => $request->name_1,
@@ -195,16 +167,85 @@ class UserController extends Controller
         }
         else
         {
-            return response()->json(['passenger'=>$passenger,
-                                    'errors'=> "",
-                                    'passengerNew'=>""]);
+            //check if guest is in other reservation
+            $in =  Carbon::parse($request->checkin)->addDay(-1)->format('Y-m-d');
+            $out =  Carbon::parse($request->checkout)->addDay()->format('Y-m-d');
+            //$out = date_parse_from_format("d-m-Y", $request->checkOut);
+
+
+
+            //filtering by rooms that overlaps with the dates selected by user
+            //in order to remove them from the availables
+            $disp =  DB::table('reservations')
+                    ->select('id_res')
+                    ->where([
+                        ['status', '!=', 'cancelled'],
+                        ['status', '!=', 'finished'],
+                        ['check_out', '>=', $in],
+                        ['check_out', '<=', $out]
+                        ])
+                    ->orWhere([
+                        ['status', '!=', 'cancelled'],
+                        ['status', '!=', 'finished'],
+                        ['check_in', '>=', $in],
+                        ['check_in', '<=', $out]
+                        ])
+                    ->orWhere([
+                        ['status', '!=', 'cancelled'],
+                        ['status', '!=', 'finished'],
+                        ['check_in', '<=', $in],
+                        ['check_out', '>=', $out]
+                        ])
+                    ->get();
+            $dispArray = [];
+            foreach($disp as $d){
+                $dispArray[] =+ $d->id_res;
+            }
+            $bussy = PassengerGroup::whereIn('reservation_id', $dispArray)->select('passenger_id')->get();
+            $guest = Passenger::whereIn('id_passenger',$bussy)->get();
+            if($guest->contains('email', $request->email)){
+                return response()->json(['errors'=>['El huésped '.$request->name_1.' '.$request->lName_1.' no puede ser agregado a esta reserva debido a que ya se encuentra asignado a otra entre las fechas seleccionadas'],
+                    'passenger'=> "",
+                    'passengerNew' => ""]);
+            }else{
+                return response()->json(['passenger'=>$passenger,
+                    'errors'=> "",
+                    'passengerNew'=>""]);
+            }
         }
     }
 
     public function postCreateReservation(Request $request)
     {
+        $null = "null";
+
+        $validator = \Validator::make($request->all(), [
+            'motive' => 'required',
+            'program' => 'required',
+            'payment_m' => 'required|not_in:'.$null,
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all(),
+            'passenger'=> "",
+            'passengerNew' => ""]);
+        }else{
+            $admins = User::where('type', 'admin')
+                    ->orWhere('type', 'maid')
+                    ->orderBy('email')
+                    ->get();
+
+
+        foreach($admins as $a){
+            $gaemail[] = $a->email;
+        }
+
+
         $p1 = Passenger::where('id_passenger', $request->passenger1)->first();
         $p2 = Passenger::where('id_passenger', $request->passenger2)->first();
+
         $r = Room::where('type', $request->roomType, '')->where('status', 'free')->firstOrFail();
         $uid = \Auth::id();
         $user = User::where('id',$uid)->first();
@@ -212,8 +253,7 @@ class UserController extends Controller
         $u_email = $user->email;
         $p1name = $p1->name_1;
         $p1email = $p1->email;
-        //$p2name = $p2->name_1;
-        //$p2email = $p2->email;        
+       
         
         //create reservation first
         $Reserv = Reservation::create([
@@ -226,6 +266,7 @@ class UserController extends Controller
             'roomType' => $r->type,
             'user_obs' => $request->user_obs,
             'user_id' => $uid,
+            'confirmed' => 'tbc'
         ]);
 
 
@@ -250,12 +291,14 @@ class UserController extends Controller
 
 
         if($p2 != null){
+            $p2name = $p2->name_1;
+            $p2email = $p2->email; 
             $pGrp = PassengerGroup::create([
                 'reservation_id' => $Reserv->id_res,
                 'passenger_id' => $request->passenger2,
             ]);
 
-            //mail to guest1
+            //mail to guest2
              \Mail::send('emails.reservation_guest',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p2, 'r' => $r), function($message) use ($p2email, $p2name) {
                 $message->to($p2email, $p2name)
                     ->subject('Reserva registrada');
@@ -272,7 +315,7 @@ class UserController extends Controller
         }
 
         //mail to user
-        \Mail::send('emails.reservation_user',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($u_email, $u_dest) {
+        \Mail::send('emails.reservation_user',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'p2' => $p2, 'r' => $r), function($message) use ($u_email, $u_dest) {
             $message->to($u_email,$u_dest)
                 ->subject('Reserva registrada');
         });
@@ -281,13 +324,17 @@ class UserController extends Controller
         $aemail = 'l.caloguerea@gmail.com';
 
         //mail to CIP staff
-        \Mail::send('emails.reservation_staff',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($aemail, $admin) {
-            $message->to($aemail,$admin)
+        //use $gaemail instead of aemail to masive send
+        \Mail::send('emails.reservation_staff',array('user' => $user, 'Reserv' => $Reserv, 'p1' => $p1, 'r' => $r), function($message) use ($gaemail, $admin) {
+            $message->to($gaemail,$gaemail)
                 ->subject('Reserva registrada');
         });
 
 
-        return response()->json(['success'=>"Reserva registrada, enviaremos un correo con mayor información"]);
+        return response()->json(['success'=>"Reserva registrada, le enviaremos un correo con mayor información"]);
+        }
+
+        
     }
 
     public function getMyPassengers()
@@ -298,8 +345,36 @@ class UserController extends Controller
 
     public function getPassengerProfile($id)
     {
-        $passenger = Passenger::where('id_passenger',$id) -> first();
-        return view('/user/passenger_profile', compact('passenger'));      
+        Date::setLocale('es');
+
+        $tst = Testimonial::all();
+
+        //dd($id);
+        $act = Activity::where([
+                                ['involved_id' ,$id],
+                                ['responsible_id', Auth::user()->id]])
+                    ->orderBy('created_at')
+                    ->get();
+
+        //dd($act->count());
+
+        if($act->count() == 0){
+            $passenger = Passenger::where('id_passenger', $id) -> first();
+            return view('user/passenger_profile', compact('passenger','act'));
+        }
+        else{
+            foreach ($act as $a){
+                $aux = new Date($a->created_at);
+                $aux = $aux->format('d/m/Y');
+                $dates[] = $aux;
+            }
+
+            $dates = array_unique($dates);
+
+
+            $passenger = Passenger::where('id_passenger', $id) -> first();
+            return view('user/passenger_profile', compact('passenger','act', 'dates','tst'));
+        }     
     }
 
     public function postUpdatePassengerAvatar(Request $request)

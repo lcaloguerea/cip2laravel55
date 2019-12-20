@@ -41,7 +41,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Reservas</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -60,6 +60,7 @@
                                                 <th>#</th>
                                                 <th>Usuario</th>
                                                 <th>Huésped(es)</th>
+                                                <th>Confirmación</th>
                                                 <th>Estado</th>
                                                 <th>Check In</th>
                                                 <th>Check Out</th>
@@ -75,10 +76,11 @@
                                                 <td>
                                                 @foreach($pGroups as $pg)
                                                     @if($pg->reservation_id == $item->id_res)
-                                                        <li><a href="/user/my-passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                        <li><a href="/user/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
                                                     @endif
                                                 @endforeach
                                                 </td>
+                                                <td>{{trans('attributes.'.$item->confirmed)}}</td>
                                                 <td>
                                                     @if($item->status == "started")
                                                         <span class="badge bg-green">Iniciada</span>
@@ -92,7 +94,7 @@
                                                 </td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
-                                                <td>{{$item->payment_m}}</td>
+                                                <td>{{trans('attributes.'.$item->payment_m)}}</td>
                                                 <td>{{$item->room_id}}</td>
                                             </tr>
                                         @endforeach

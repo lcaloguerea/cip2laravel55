@@ -24,7 +24,7 @@
         |---------------------------------------------------------|
     -->
 
-    <body class="skin-yellow sidebar-mini">
+    <body class="skin-yellow sidebar-mini fixed">
         <div class="page-loader-wrapper">
             <div class="spinner"></div>
         </div>
@@ -46,7 +46,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li class="">Huéspedes</li>
                         <li class="active">Fichas</li>
                     </ol>
@@ -55,12 +55,11 @@
                     <div id= "js_card" class="row">
                     @foreach($passengers as $item)
 
-                     @if($loop->index <= 7)
                             
                         
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="box all-drivers">
-                                <div class="box-body">
+                                <div style="height: 320px" class="box-body">
                                     <img class="member-online img-circle" src="{{$item->pAvatar}}" alt="User Image">
                                     <p class="name">{{$item->name_1}} {{$item->lName_1}} {{$item->lName_2}}</p>
                                     <div class="information">
@@ -69,9 +68,7 @@
                                         </p>
                                         <p class="name">Nacionalidad <span><img style="height: 20px; width: 30px" src="/img/icons/flag-cl.icon"></span></p>
                                     </div>
-                                    <div class="text-center action-profile">
-                                        <a href="passenger-profile/{{$item->id_passenger}}" class="btn btn-default">Ver Perfil</a>
-                                    </div>
+
                                     <!-- <div class="socials-networks">
                                         <ul>
                                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -80,9 +77,11 @@
                                         </ul>
                                     </div> -->
                                 </div>
+                                                                <div class="text-center action-profile">
+                                        <a href="passenger-profile/{{$item->id_passenger}}" class="btn btn-default btn-block">Ver Perfil</a>
+                                    </div>
                             </div>
                         </div>
-                        @endif
 
                     @endforeach
 

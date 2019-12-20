@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/iCheck/all.css')}}" /> 
         <!-- Icons -->
+        <link rel="stylesheet" href="{{asset('select2/select2.min.css')}}">
+
         <link href="{{asset('icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
         <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
         <!-- Theme style -->
@@ -47,10 +49,10 @@
                         @endif
                     </div>
                     <div class="form-group input-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <span class="input-group-addon"><i style="width: 14px" class="fa fa-university"></i></span>
                                         <div class='form-group'>
                                             <label>Departamento</label>
-                                            <select id="department" name="department" class="form-control select2">
+                                            <select id="department" name="department" class="form-control select2" style="width: 100%;" value="{{ old('lName') }}" required>
                                                 <option selected="selected" value=>--</option>
                                                 <option value="CIP">CIP</option>
                                                 <option value="Arquitectura y Artes">Arquitectura y artes</option>
@@ -74,7 +76,7 @@
                                         </div>
                     </div>
                     <div class="form-group input-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <span class="input-group-addon"><i style="width: 14px" class="fa fa-phone"></i></span>
                         <input id="phone" class="form-control" type="text" name='phone' placeholder="Telefono" value="{{ old('phone') }}" required autofocus>
                         @if ($errors->has('phone'))
                                     <span class="help-block">
@@ -83,7 +85,7 @@
                         @endif
                     </div>
                     <div class="form-group input-group{{ $errors->has('rut') ? ' has-error' : '' }}">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <span class="input-group-addon"><i style="width: 14px" class="fa fa-id-card"></i></span>
                         <input id="rut" class="form-control" type="text" name='rut' placeholder="Rut (EJ: 12.345.678-9)" value="{{ old('rut') }}" required autofocus>
                         @if ($errors->has('rut'))
                                     <span class="help-block">
@@ -114,7 +116,7 @@
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar contraseña" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-block btn-default">Registrar</button>
+                        <button type="submit" class="btn btn-block btn-default"><i></i> Registrar</button>
                     </div>
                     <div class="form-group text-center">
                         <a href="/login">Ya tengo cuenta</a>
@@ -129,6 +131,22 @@
         <script src="{{asset('jQuery/jquery-2.2.3.min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/iCheck/icheck.min.js')}}"></script>
+        <script src="{{asset('select2/select2.min.js')}}"></script>
         <script src="{{asset('js/pages/jquery-icheck.js')}}"></script>
+        <script src="{{asset('js/jquery.buttonloadingindicator.js')}}"></script>
         <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
 </html>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+
+        $('.select2').select2({
+                });
+
+        $('.btn').on('click',function(e) {
+              $(this).startLoading();
+            });
+    });
+</script>

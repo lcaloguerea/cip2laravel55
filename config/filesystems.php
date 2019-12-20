@@ -63,6 +63,11 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'invoice' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/',
+        ],
+
     ],
 
 ];

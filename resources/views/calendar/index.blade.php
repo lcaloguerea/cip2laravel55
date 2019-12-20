@@ -7,9 +7,7 @@
         <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
         <!--animate css-->
         <link rel="stylesheet" href="{{asset('animate.css')}}">
-        <!-- fullCalendar 2.2.5-->
-        <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.min.css')}}"/>
-        <link rel="stylesheet" href="{{asset('js/fullcalendar/fullcalendar.print.css')}}" media="print">
+        <link rel="stylesheet" href="{{asset('css/calendar.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
@@ -27,7 +25,7 @@
       |               | sidebar-mini                            |
       |---------------------------------------------------------|
     -->
-    <body class="skin-yellow sidebar-mini">
+    <body class="skin-yellow sidebar-mini fixed">
         <div class="page-loader-wrapper" >
             <div class="spinner"></div>
         </div>
@@ -53,41 +51,16 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="box box-solid">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">Habitaciones</h4>
-                                </div>
-                                <div class="box-body">
-                                    <!-- the events -->
-                                    <div id="external-events">
-                                        <div class="event-title b-maroon">Single 1</div>
-                                        <div class="event-title b-maroon">Single 2</div>
-                                        <div class="event-title b-maroon">Single 3</div>
-                                        <div class="event-title b-purple">Compartida 4</div>
-                                        <div class="event-title b-orange">Matrimonial 5</div>
-                                        <div class="event-title b-orange">Matrimonial 6</div>
-                                        <div class="event-title b-orange">Matrimonial 7</div>
-                                        <div class="event-title b-orange">Matrimonial 8</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
-                                        {!! $calendar->calendar() !!}
+                                    <div id='calendar'></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- Main content -->
-                <section class="content">
-                    <!-- Your Page Content Here -->
-                </section>
-                <!-- /. main content -->
                 <span class="return-up"><i class="fa fa-chevron-up"></i></span>
             </div>
             <!-- /. content-wrapper -->
@@ -104,10 +77,7 @@
         <script src="{{asset('js/fastclick/fastclick.min.js')}}"></script>
         <script src="{{asset('js/iCheck/icheck.min.js')}}"></script>
         <script src="{{asset('js/pages/jquery-icheck.js')}}"></script>
-        <!-- fullCalendar 2.2.5 -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-        <script src="{{asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
-        <script src="{{asset('js/pages/events.js')}}"></script>
+        <script src="{{asset('js/calendar.js')}}"></script>
         <!-- JS app -->
         <script src="{{asset('js/app2.js')}}"></script>
         <!-- Slimscroll is required when using the fixed layout. -->
@@ -116,7 +86,37 @@
 
 <script type="text/javascript">
 
+        //calendar
+        var calendarEl = document.getElementById('calendar');
+        
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid' ],
+          locale: 'es',
+          height: 'auto',
+          events:[
+           @foreach($Reservations as $r)
+                {
+                    @if($r->user_id == Auth::user()->id)
+                        title : '{{ '(*) ' . trans('attributes.'.$r->roomType) . ' R' . $r->id_res }}',
+                    @else
+                        title : '{{ trans('attributes.'.$r->roomType) . ' R' . $r->id_res }}',
+                    @endif
+                    start : '{{ $r->check_in}}',
+                    end   : '{{ $r->check_out}}',
+                    url   : '/admin/reservations/reservation-detail/{{$r->id_res}}',
+                    @if($r->roomType == "single")
+                        color : '#d81b60'
+                    @elseif($r->roomType == "shared")
+                        color : '#605ca8'
+                    @elseif($r->roomType == "matrimonial")
+                        color : 'orange'
+                    @endif
+                },
+                @endforeach
+          ]
+
+        });
+        //calendar.addEvents($calendar.event);
+        calendar.render();
 
 </script>
-
-{!! $calendar->script() !!}

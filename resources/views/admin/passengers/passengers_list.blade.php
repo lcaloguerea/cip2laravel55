@@ -41,7 +41,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Huéspedes</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -116,7 +116,8 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
-                "scrollX": true
+                "scrollX": true,
+                "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
             });
             });
         </script>

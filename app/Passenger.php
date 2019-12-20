@@ -23,6 +23,7 @@ class Passenger extends Model
                 'country_o',
                 'country_r',
                 'pAvatar',
+                'tCode',
 
     ];
 

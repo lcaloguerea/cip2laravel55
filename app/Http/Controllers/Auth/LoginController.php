@@ -37,14 +37,15 @@ class LoginController extends Controller
         if($user->confirmed == 'yes'){
             if($user->type=='admin'){
                 return redirect()->route('admin');
+                $this->middleware('auth','Admin')->except('logout');
                 }
             elseif($user->type=='user'){
                 return redirect()->route('user');
-                $this->middleware('guest')->except('logout');
+                $this->middleware('auth','User')->except('logout');
                 }
             elseif($user->type=='maid'){
                 return redirect()->route('maid');
-                $this->middleware('guest')->except('logout');
+                $this->middleware('auth')->except('logout');
                 }
             }
         else{

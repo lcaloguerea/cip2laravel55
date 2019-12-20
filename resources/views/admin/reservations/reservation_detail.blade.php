@@ -46,7 +46,7 @@
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="/admin"><i class="fa fa-home"></i>Inicio</a></li>
+                        <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
                         <li>Reservas</li>
                         <li class="active">Lista</li>
                     </ol>
@@ -58,43 +58,30 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="display nowrap" style="width:100%">
+                                    <table id="payments" class="display wrap" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Usuario</th>
                                                 <th>Huésped(es)</th>
-                                                <th>Estado</th>
+                                                <th>Tipo de habitación</th>
+                                                <th>Habitación</th>
                                                 <th>Check In</th>
                                                 <th>Check Out</th>
                                                 <th>Tipo de pago</th>
-                                                <th>Tipo de habitación</th>
-                                                <th>Habitación</th>
+                                                <th>Confirmación</th>
+                                                <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><a href="user-profile/{{$reserv->userR->id}}">{{$reserv->userR->name}} {{$reserv->userR->lName}}</a></td>
+                                                <td><a href="/{{Auth::user()->type}}/users/user-profile/{{$reserv->userR->id}}">{{$reserv->userR->name}} {{$reserv->userR->lName}}</a></td>
                                                 <td>
                                                 @foreach($pGroups as $pg)
                                                     @if($pg->reservation_id == $reserv->id_res)
-                                                        <li><a href="passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
+                                                        <li><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$pg->passengersR[0]->id_passenger}}">{{$pg->passengersR[0]->name_1}} {{$pg->passengersR[0]->lName_1}}</a></li>
                                                     @endif
                                                 @endforeach
                                                 </td>
-                                                <td>
-                                                    @if($reserv->status == "started")
-                                                        <span class="badge bg-green">Iniciada</span>
-                                                    @elseif($reserv->status == "cancelled")
-                                                        <span class="badge bg-red">Cancelada</span>
-                                                    @elseif($reserv->status == "waiting")
-                                                        <span class="badge bg-yellow">En espera</span>
-                                                    @elseif($reserv->status == "finished")
-                                                        <span class="badge bg-blue">Finalizada</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{date('d-m-Y', strtotime($reserv->check_in))}}</td>
-                                                <td>{{date('d-m-Y', strtotime($reserv->check_out))}}</td>
-                                                <td>{{trans('attributes.'.$reserv->payment_m)}}</td>
                                                 <td>{{trans('attributes.'.$reserv->roomType)}}</td>
                                                 <td>@if($reserv->room_id == null)
                                                         <select id="room" class="form-control">
@@ -105,6 +92,28 @@
                                                         </select>
                                                     @else
                                                         <a href="/admin/room-detail/{{$reserv->room_id}}">{{$reserv->room_id}}</a>
+                                                    @endif
+                                                </td>
+                                                <td>{{date('d-m-Y', strtotime($reserv->check_in))}}</td>
+                                                <td>{{date('d-m-Y', strtotime($reserv->check_out))}}</td>
+                                                <td>{{trans('attributes.'.$reserv->payment_m)}}</td>
+                                                <td>
+                                                @if($reserv->confirmed == "confirmed")
+                                                <span class="badge bg-green">
+                                                @else
+                                                <span class="badge bg-orange">
+                                                @endif
+                                                    {{trans('attributes.'.$reserv->confirmed)}}</td> 
+                                                    </span>
+                                                <td>
+                                                    @if($reserv->status == "started")
+                                                        <span class="badge bg-green">Iniciada</span>
+                                                    @elseif($reserv->status == "cancelled")
+                                                        <span class="badge bg-red">Cancelada</span>
+                                                    @elseif($reserv->status == "waiting")
+                                                        <span class="badge bg-orange">En espera</span>
+                                                    @elseif($reserv->status == "finished")
+                                                        <span class="badge bg-blue">Finalizada</span>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -130,73 +139,230 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
+
+        @if($reserv->confirmed == "confirmed" and $reserv->invoice_id == null and Auth::user()->type == "admin")
+          <div class="row">
+
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-12">
+              <div class="info-box">
+                <div class="info-box-content">
+                  <div class="text-center value">Emitir boleta</div>
+                  <br>
+                  <div class="box-body no-padding">
+                    <div class='row'>
+                        @if($reserv->payment_m == "p_code")
+                        <div class='col-md-4'>
                             <div class='form-group'>
-                                @if($reserv->status != "waiting")
-                                    <button id="confirm" type="button" class="btn btn-primary btn-block disabled">
-                                        Confirmar
-                                    </button>
-                                @else
-                                    <button id="confirm" type="button" class="btn btn-primary btn-block">
-                                        Confirmar
-                                    </button>
-                                @endif      
+                                <label>IVA</label>
+                                <select id="iva" class="form-control select2" style="width: 100%;">
+                            <option selected="selected" value="yes">Con</option>
+                            <option value="no">Sin</option>
+                        </select>
                             </div>
                         </div>
-                    	<div class="col-md-2">
+                        <div class='col-md-4{{ $errors->has('discount') ? ' has-error' : '' }}'>
                             <div class='form-group'>
-                            	@if($reserv->status != "waiting")
-                                	<button id="btn_chIn" type="button" class="btn btn-primary btn-block disabled">
-                                		Check in
-                            		</button>
-                            	@else
-                                    <button id="btn_chIn" type="button" class="btn btn-primary btn-block">
-                                		Check in
-                            		</button>
-                            	@endif   	
+                                <label>Descuento</label>
+                                <input class="form-control" id="discount" name="discount" type="text" placeholder="Dejar vacío si no aplica" />
+                                @if ($errors->has('lName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('discount') }}</strong>
+                                     </span>
+                                @endif
                             </div>
-                    	</div>
-                    	<div class="col-md-2">
+                        </div>
+                        <div class='col-md-4'>
                             <div class='form-group'>
-                            	@if($reserv->status != "started")
-                                	<button id="btn_chOut" type="button" class="btn btn-primary btn-block disabled">
-                                		Check out
-                            		</button>
-                            	@else
-                                    <button id="btn_chOut" type="button" class="btn btn-primary btn-block">
-                                		Check out
-                            		</button>
-                            	@endif 
+                                <label>Código interno</label>
+                                <input class="form-control" id="IC" name="IC" type="text"  />
                             </div>
-                    	</div>
-                    	<div class="col-md-3">
+                        </div>
+                        @else
+                        <div class='col-md-4'>
                             <div class='form-group'>
-                            	@if($reserv->status != "started" or $reserv->status != "cancelled")
-                                	<button id="btn_cancel" type="button" class="btn btn-primary btn-block disabled">
-                                		Cancelar
-                            		</button>
-                            	@else
-                                    <button id="btn_cancel" type="button" class="btn btn-primary btn-block">
-                                		Cancelar
-                            		</button>
-                            	@endif 
+                                <label>IVA</label>
+                                <select id="iva" class="form-control select2" style="width: 100%;">
+                            <option selected="selected" value="yes">Con</option>
+                            <option value="no">Sin</option>
+                        </select>
                             </div>
-                    	</div>
-                        <div class="col-md-2">
+                        </div>
+                        <div class='col-md-8'>
                             <div class='form-group'>
-                                @if($reserv->status != "finished")
-                                    <button id="invoice" type="button" class="btn btn-primary btn-block disabled">
-                                        Boleta
-                                    </button>
-                                @else
-                                    <button id="invoice" type="button" class="btn btn-primary btn-block disabled">
-                                        Boleta
-                                    </button>
-                                @endif 
+                                <label>Descuento</label>
+                                <input class="form-control" id="discount" name="discount" type="text" placeholder="Dejar vacío si no aplica" />
                             </div>
-                        </div>                        
+                        </div>
+                        <div class='col-md-1' hidden>
+                            <div class='form-group'>
+                                <label>Código interno</label>
+                                <input class="form-control" id="IC" name="IC" type="text"  />
+                            </div>
+                        </div>
+                        @endif
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+          @endif
+
+                    <div class="row">
+                        <div class="col-md-3 pull-left">
+                            <div class='form-group'>
+                                @if($reserv->confirmed == "tbc")
+                                    <button id="btn_confirm" type="button" class="btn btn-primary btn-block">
+                                        Confirmar
+                                    </button>
+                                    <button id="btn_cancel" type="button" class="btn btn-primary btn-block">
+                                        Cancelar
+                                    </button>
+                                @elseif($reserv->status == "waiting" and $reserv->confirmed == "confirmed")
+                                    <button id="btn_chIn" type="button" class="btn btn-primary btn-block">
+                                        Check in
+                                    </button>
+                                @elseif($reserv->status == "started" and $reserv->confirmed == "confirmed")
+                                    <button id="btn_chOut" type="button" class="btn btn-primary btn-block">
+                                        Check out
+                                    </button>
+                                @endif   
+                            </div> 
+                        </div>
+                        @if($reserv->confirmed == "confirmed" and $reserv->invoice_id == null and Auth::user()->type == "admin")
+                        <div class="col-md-3 pull-left">
+                            <div class='form-group'>
+                                    <button id="invoice" type="button" class="btn btn-primary btn-block">
+                                        Boleta
+                                    </button>
+                            </div>
+                        </div>
+                        @endif                      
+                    </div>
+                                    <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                            @if($act->count() == 0)
+                                                <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
+                                                <ul class="timeline">
+                                            @else
+                                            <div style="text-align: center" class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong></div>
+                                                <ul class="timeline">
+                                                    @foreach($dates as $d)
+                                                        <li class="time-label">
+                                                            <span class="">
+                                                                @if($d == date('d/m/Y'))
+                                                                    Recientemente
+                                                                @else
+                                                                    {{$d}}
+                                                                @endif
+                                                            </span>
+                                                        </li>
+                                                        @foreach($act as $a)
+                                                            @if($a->created_at->format('d/m/Y') == $d)
+                                                                <li>
+                                                                @if($a->event == "rsrv_created")
+                                                                    <i class="fa fa-plus bg-green"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                                    </div>
+                                                                @elseif($a->event == "rsrv_confirmed")
+                                                                    <i class="fa fa-check bg-yellow"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha confirmado manualmente la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                                    </div>
+                                                                @elseif($a->event == "checkin")
+                                                                    <i class="fa fa-arrow-right bg-blue"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check in de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> y ha asignado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->actRsrvR->room_id}}">{{trans('attributes.'.$a->actRsrvR->roomType)}} N°{{$a->actRsrvR->room_id}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                                    </div> 
+                                                                @elseif($a->event == "checkout")
+                                                                    <i class="fa fa-arrow-left bg-orange"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                                    </div>
+                                                                @elseif($a->event == "rsrv_invoice")
+                                                                    <i class="fa fa-file-text-o bg-grey"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la creación y envío del comprobante de pago referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                                    </div>                                                                
+                                                                @elseif($a->event == "rsrv_pay")
+                                                                    <i class="fa fa-usd bg-purple"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado y recepcionado el pago de la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                                    </div>
+                                                                @elseif($a->event == "rsrv_cancelled")
+                                                                    <i class="fa fa-times bg-red"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la cancelación referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                                    </div>
+                                                                @elseif($a->event == "testimonial_created")
+                                                                    <i class="fa fa-comment bg-teal"></i>
+                                                                    <div class="timeline-item">
+                                                                        @if($d == date('d/m/Y'))
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                        @else
+                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                        @endif
+                                                                        <h3 class="timeline-header"><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> ha realizado un testimonio sobre su estadia referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>.</h3>
+                                                                        <div class="timeline-body">
+                                                                            @foreach($tst as $t)
+                                                                            @if($t->passenger_id == $a->invR->id_passenger)
+                                                                               <blockquote><cite>{{$t->comment}}</cite></blockquote>
+                                                                            @endif
+                                                                            @endforeach
+                                                                        </div>
+                                                                        <div class="timeline-footer">
+                                                                            <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                                </li>
+                                                            @endif
+                                                        @endforeach                                                      
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                    </div>
+                                </div>
                 </section>
                 <!-- /. main content -->
                 <span class="return-up"><i class="fa fa-chevron-up"></i></span>
@@ -282,6 +448,46 @@ var table = $('#payments').DataTable( {
 
     });
 
+    $('#btn_confirm').on('click',function(e){
+
+        e.preventDefault();
+
+        var id = {{$reserv->id_res}};
+
+        swal({
+            title:"Esta seguro?",
+            text: "Esta por confirmar esta reserva ",
+            type: "success",
+            html: true,
+            showCancelButton: true,
+            CancelButtonText: "cancelar",
+        }, function () {
+
+            $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+               data:{id:id, "_token": "{{ csrf_token() }}"},
+                //Cambiar a type: POST si necesario
+                type: 'PUT',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url: '/admin/reservations/confirm' , //this is different because it can change user type
+                success:function(data){
+                        swal({
+                            title:"Actualizado!!",
+                            text: "<strong>"+data.message+"</strong>",
+                            type: "success",
+                            html: true,
+                        },function () {
+                            window.location.reload(true);
+                        });
+                }
+            }); 
+        });
+
+
+    });
+
     $('#btn_chOut').on('click',function(e){
 
         e.preventDefault();
@@ -321,11 +527,11 @@ var table = $('#payments').DataTable( {
     });
 
     $('#invoice').on('click',function(e){
-
         e.preventDefault();
-
         var id = {{$reserv->id_res}};
-
+        var iva = document.getElementById("iva").value;
+        var discount = document.getElementById("discount").value;
+        var IC = document.getElementById("IC").value;
         swal({
             title:"Esta seguro?",
             text: "Esta por emitir un comprobante del cobro asociado a esta reserva",
@@ -333,11 +539,14 @@ var table = $('#payments').DataTable( {
             html: true,
             showCancelButton: true,
             CancelButtonText: "cancelar",
+            confirmButtonColor: "#2ECCFA",
+            confirmButtonText: "Si, generar",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
         }, function () {
-
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{id:id, "_token": "{{ csrf_token() }}"},
+               data:{id:id, iva:iva, discount:discount, IC:IC, "_token": "{{ csrf_token() }}"},
                 //Cambiar a type: POST si necesario
                 type: 'PUT',
                 // Formato de datos que se espera en la respuesta
@@ -345,15 +554,28 @@ var table = $('#payments').DataTable( {
                 // URL a la que se enviará la solicitud Ajax
                 url: '/admin/reservations/invoice' , //this is different because it can change user type
                 success:function(data){
-                        swal({
-                            title:"Actualizado!!",
-                            text: "<strong>"+data.message+"</strong>",
-                            type: "success",
-                            html: true,
-                        },function () {
-                            window.location.reload(true);
-                        });
-                }
+                            if(data.success){
+                                swal({
+                                    title:"Boleta emitida!!",
+                                    text: "Se ha generado la boleta exitosamente, puede revisarla en el menú pagos",
+                                    type: "success",
+                                    html: true,
+                                },function () {
+                                    window.location.reload(true);
+                                });
+                            }else if(data.errors){
+                                html = '<p>Por favor corregir los siguientes errores</p><br><div class="alert alert-danger fade in">';
+                                jQuery.each(data.errors, function(key, value){
+                                    html += '<li>' + value + '</li>';
+                                });
+                                swal({
+                                    title:"Ups!!",
+                                    text: html,
+                                    type: "warning",
+                                    html: true
+                                });
+                            }
+                        }
             }); 
         });
     });

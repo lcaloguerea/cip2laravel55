@@ -15,7 +15,7 @@ return [
 
     'password' => 'Las contraseñas deben contener al menos 6 caracters y coincidir.',
     'reset' => 'Su contraseña ha sido cambiada.',
-    'sent' => 'Le hemos enviado un correo de cambio de contraseña!',
+    'sent' => 'Le hemos enviado un correo con instrucciones para restablecer su contraseña!',
     'token' => 'El código de cambio de contraseña es inválido.',
     'user' => "No podemos encontrar un usuario con ese Email.",
 

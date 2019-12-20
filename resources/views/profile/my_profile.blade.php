@@ -7,15 +7,15 @@
         <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
         <!--animate css-->
         <link rel="stylesheet" href="{{asset('animate.css')}}">
+        <link rel="stylesheet" href="{{asset('select2/select2.min.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
 
-        <link rel="stylesheet" href="{{asset('node_modules/filepond/dist/filepond.css')}}">
-        <link rel="stylesheet" href="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css')}}">
         <link href="{{asset('js/sweetalert/sweetalert.css')}}" rel="stylesheet">
 
-        <link rel="stylesheet" href="{{asset('node_modules/dropify/dist/css/dropify.min.css')}}">
+
+        <link rel="stylesheet" href="{{asset('css/dropify.css')}}">
 
 
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -119,60 +119,276 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab_1">
+                                        @if($act->count() == 0)
+                                            <div style="text-align: center" class="alert alert-warning alert-dismissable"><strong>No registra actividad</strong></div>
+                                            <ul class="timeline">
+                                        @else
+                                        <div style="text-align: center" class="alert alert-info alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        <strong>Todas las horas aqui mostradas estan en GTM-4 (Zona horaria Santiago de Chile)</strong></div>
                                         <ul class="timeline">
-                                            <!-- timeline time label -->
-                                            <li class="time-label">
-                                                <span class="">
-                                                    22 Jan. 2017
-                                                </span>
-                                            </li>
-                                            <!-- /.timeline-label -->
-                                            <!-- timeline item -->
-                                            <li>
-                                                <i class="fa fa-clock-o bg-orange"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header">Ingreso de reserva</h3>
-                                                </div>
-                                            </li>
-                                            <!-- /. timeline item -->
-                                            <!-- timeline item -->
-                                            <li>
-                                                <i class="fa fa-clock-o bg-green"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 13:00</span>
-                                                    <h3 class="timeline-header">Validación de reserva</h3>
-                                                </div>
-                                            </li>
-                                            <!-- /. timeline item -->
-                                            <!-- timeline item -->
-                                            <li>
-                                                <i class="fa fa-clock-o bg-blue"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 17:00</span>
-                                                    <h3 class="timeline-header">Pago realizado</h3>
-                                                </div>
-                                            </li>
-                                            <!-- /. timeline item -->
-                                            <!-- timeline item -->
-                                            <li>
-                                                <i class="fa fa-bookmark bg-teal"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-                                                    <h3 class="timeline-header"><a href="#">Berry Cosmo</a> ha realizado un testimonio sobre su estadia.</h3>
-                                                    <div class="timeline-body">
-                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <!-- /. timeline item -->
-                                            <!-- timeline time label -->
+                                            @foreach($dates as $d)
+                                                <li class="time-label">
+                                                    <span class="">
+                                                        @if($d == date('d/m/Y'))
+                                                            Recientemente
+                                                        @else
+                                                            {{$d}}
+                                                        @endif
+                                                    </span>
+                                                </li>
+                                                @foreach($act as $a)
+                                                    @if($a->created_at->format('d/m/Y') == $d)
+                                                        <li>
+                                                        @if($a->event == "rsrv_created")
+                                                            <i class="fa fa-plus bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_confirmed")
+                                                            <i class="fa fa-check bg-yellow"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha confirmado manualmente la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_invoice")
+                                                            <i class="fa fa-file-text-o bg-grey"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la creación y envío del comprobante de pago referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>                                                                    
+                                                        @elseif($a->event == "checkin")
+                                                            <i class="fa fa-arrow-right bg-blue"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check in de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> y ha asignado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->actRsrvR->room_id}}">{{trans('attributes.'.$a->actRsrvR->roomType)}} N°{{$a->actRsrvR->room_id}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div> 
+                                                        @elseif($a->event == "checkout")
+                                                            <i class="fa fa-arrow-left bg-orange"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check out de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_pay")
+                                                            <i class="fa fa-usd bg-purple"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado y recepcionado el pago de la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "rsrv_cancelled")
+                                                            <i class="fa fa-times bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado la cancelación referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "room_locked")
+                                                            <i class="fa fa-lock bg-black"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha bloqueado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a> con la siguiente justificación:</h3>
+                                                                <div class="timeline-body">
+                                                                    <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "room_unlocked")
+                                                            <i class="fa fa-unlock bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha desbloqueado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a> con la siguiente justificación:</h3>
+                                                                <div class="timeline-body">
+                                                                    <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "room_cleaned")
+                                                            <i class="fa fa-paint-brush bg-blue"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> realizado y validado la limpieza de la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->room_id}}"> N°{{$a->room_id}}</a></h3>
+                                                            </div>
+                                                        @elseif($a->event == "testimonial_created")
+                                                            <i class="fa fa-comment bg-teal"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header"><a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> ha realizado un testimonio sobre su estadia referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>.</h3>
+                                                                <div class="timeline-body">
+                                                                    @foreach($tst as $t)
+                                                                    @if($t->passenger_id == $a->invR->id_passenger)
+                                                                       <blockquote><cite>{{$t->comment}}</cite></blockquote>
+                                                                    @endif
+                                                                    @endforeach
+                                                                </div>
+                                                                <div class="timeline-footer">
+                                                                    <a href="#!" class="btn btn-warning btn-flat btn-xs">ir a la página de testimonios</a>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($a->event == "alert_some_supplies")
+                                                            <i class="fa fa-check-square-o bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la falta de stock de uno o más suministros</h3>
+                                                            </div>
+                                                        @elseif($a->event == "alert_all_supplies")
+                                                            <i class="fa fa-shopping-basket bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la falta de stock de TODOS los suministros</h3>
+                                                            </div>
+                                                        @elseif($a->event == "resupply_all")
+                                                            <i class="fa fa-shopping-basket bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la reposición de stock de TODOS los suministros</h3>
+                                                            </div>
+                                                        @elseif($a->event == "resupply_some")
+                                                            <i class="fa fa-check-square-o bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la reposición de uno o más suministros.</h3>
+                                                            </div>
+                                                        @elseif($a->event == "alert_bread")
+                                                            <i class="fa fa-cutlery bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la falta pan.</h3>
+                                                            </div>
+                                                        @elseif($a->event == "resupply_bread")
+                                                            <i class="fa fa-cutlery bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado la reposición de pan.</h3>
+                                                            </div>
+                                                        @elseif($a->event == "maintenance_expired")
+                                                            <i class="fa fa-wrench bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha alertado que {{$a->maintR->name}} ha expirado y requiere mantenimiento.</h3>
+                                                            </div>
+                                                        @elseif($a->event == "maintenance_done")
+                                                            <i class="fa fa-wrench bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el mantenimiento de {{$a->maintR->name}}</h3>
+                                                            </div>
+                                                        @elseif($a->event == "access_denied")
+                                                            <i class="fa fa-user bg-red"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha restringido el acceso a la plataforma CIP al usuario {{$a->invR->name}} {{$a->invR->lName}}.</h3>
+                                                            </div>
+                                                            </div>
+                                                        @elseif($a->event == "access_granted")
+                                                            <i class="fa fa-user bg-green"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha otorgado acceso a la plataforma CIP al usuario {{$a->invR->name}} {{$a->invR->lName}}.</h3>
+                                                            </div>
+                                                        @elseif($a->event == "change_type")
+                                                            <i class="fa fa-id-badge bg-black"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha cambiado el rol de {{$a->invR->name}} {{$a->invR->lName}}.</h3>
+                                                                <div class="timeline-body">
+                                                                       <blockquote><cite>{{$a->motive}}</cite></blockquote>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        </li>
+                                                    @endif
+                                                @endforeach                                                      
+                                            @endforeach
                                         </ul>
+                                    @endif
                                     </div>
-                                    <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
                                     <div class="tab-pane" id="tab_2">
                                         <div class="box box-form no-shadow">
                                             <div class="box-header">
@@ -181,7 +397,7 @@
                                             <!-- /.box-header -->
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <form enctype="multipart/form-data" action="/admin/avatar" method="POST">
+                                                    <form enctype="multipart/form-data" action="/{{$user->type}}/avatar" method="POST">
                                                         <label>Imagen de perfil</label>
                                                         <input id="updAvatar" name="updAvatar" class="dropify" type="file" required >
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -204,43 +420,88 @@
                                                         </div>
                                                     </div>
                                                     <div class='row'>
-                                                        <div class='col-md-4'>
+                                                        <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Rut</label>
                                                                 <input class="form-control" id="rut" name="rut" type="text" value="{{$user->rut}}" />
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-4'>
+                                                        <div class='col-md-6'>
                                                             <div class="form-group">
-                                                                <label>Estado</label>
-                                                                <select id="confirmed" class="form-control">
+                                                                <label>Confirmación</label>
+                                                                <select id="confirmed" class="form-control select2" style="width: 100%;"
+                                                                @if($user->type != "admin")disabled="disabled"@endif>
                                                                 @if($user->confirmed == "yes")
-                                                                    <option value="yes">Verificado</option>
-                                                                @else
+                                                                    <option selected="selected" value="yes">Verificado</option>
                                                                     <option value="no">Pendiente</option>
+                                                                @else
                                                                     <option value="yes">Verificado</option>
+                                                                    <option selected="selected" value="no">Pendiente</option>
                                                                 @endif
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-4'>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Teléfono</label>
                                                                 <input class="form-control" id="phone" name="phone" type="text" value="{{$user->phone}}"/>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class='row'>
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Email</label>
-                                                                <input class="form-control" id="email" name="email" type="text" value="{{$user->email}}"/>
+                                                                <input class="form-control" id="email" name="email" type="text" value="{{$user->email}}" @if($user->type != "admin")disabled="disabled"@endif/>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Departamento</label>
-                                                                <input class="form-control" id="department" name="department" type="text" value="{{$user->department}}"/>
+                                                                 <select id="department" name="department" class="form-control select2" style="width: 100%;">
+                                                                    <option selected="selected" value=>--</option>
+                                                                    <option value="CIP">CIP</option>
+                                                                    <option value="Arquitectura y Artes">Arquitectura y artes</option>
+                                                                    <option value="Ciencias">Ciencias</option>
+                                                                    <option value="Ciencias Agrarias">Ciencias agrarias</option>
+                                                                    <option value="Cs. Económicas y Administrativas">Cs. Económicas y administrativas</option>
+                                                                    <option value="Cs. Forestales y Recursos Naturales">Cs. Forestales y recursos naturales</option>
+                                                                    <option value="Cs. Jurídicas y Sociales">Cs. Jurídicas y sociales</option>
+                                                                    <option value="Ciencias Veterinarias">Ciencias veterinarias</option>
+                                                                    <option value="Ciencias de la Ingeniería">Ciencias de la ingeniería</option>
+                                                                    <option value="Filosofía y Humanidades">Filosofía y humanidades</option>
+                                                                    <option value="Medicina">Medicina</option>
+                                                                    <option value="Rectoría">Rectoría</option>
+                                                                    <option value="Prorrectoría">Prorrectoría</option>
+                                                                    <option value="Vicerrectoría Académica">Vicerrectoría Académica</option>
+                                                                    <option value="Vicerrectoría Sede Puerto Montt">Vicerrectoría Sede Puerto Montt</option>
+                                                                    <option value="Vicerrectoría de Gestión Económica y Administrativa">Vicerrectoría de Gestión Económica y Administrativa</option>
+                                                                    <option value="Vicerrectoría de Investigación, Desarrollo y Creación">Vicerrectoría de Investigación, Desarrollo y Creación</option>
+                                                                    <option value="Campus Patagonia">Campus Patagonia</option>
+                                                                    <option selected="selected" value="{{$user->department}}">{{$user->department}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            <div class="form-group">
+                                                                <label>Tipo</label>
+                                                                <select id="type" name="type" class="form-control select2" style="width: 100%;" @if($user->type != "admin")disabled="disabled"@endif>
+                                                                    @if($user->type == 'admin')
+                                                                        <option selected="selected" value="admin">Administrador</option>
+                                                                        <option value="user">Usuario</option>
+                                                                        <option value="maid">Maid</option>
+                                                                    @elseif($user->type == 'user')
+                                                                        <option value="admin">Administrador</option>
+                                                                        <option selected="selected" value="user">Usuario</option>
+                                                                        <option value="maid">Maid</option>
+                                                                    @elseif($user->type == 'maid')
+                                                                        <option value="admin">Administrador</option>
+                                                                        <option value="user">Usuario</option>
+                                                                        <option selected="selected" value="maid">Maid</option>
+                                                                    @endif
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -274,15 +535,6 @@
         <!-- /. wrapper content-->
         <!-- JS scripts -->
         <script src="{{asset('jQuery/jquery-2.2.3.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond/dist/filepond.min.js')}}"></script>
-        <script src="{{asset('node_modules/jquery-filepond/filepond.jquery.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.js')}}"></script>
-        <script src="{{asset('node_modules/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.js')}}"></script>
         <script src="{{asset('js/jquery-fullscreen/jquery.fullscreen-min.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/slimScroll/jquery.slimscroll.min.js')}}"></script>
@@ -290,10 +542,11 @@
         <script src="{{asset('pickadate/picker.js')}}"></script>
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
         <script src="{{asset('js/pages/jquery-pickadate.js')}}"></script>
+        <script src="{{asset('select2/select2.min.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
         <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 
-        <script src="{{asset('node_modules/dropify/dist/js/dropify.min.js')}}"></script>
+        <script src="{{asset('js/user-profile.js')}}"></script>
 
 
         <script src="{{asset('js/app2.js')}}"></script>
@@ -315,6 +568,12 @@
 
     $('.dropify').dropify();
 
+    $('.select2').select2({
+                minimumResultsForSearch: 5,
+                placeholder: "Buscar huésped existente",
+                allowClear: true,
+            });
+
 
 });
 
@@ -329,10 +588,11 @@
         var phone = $('#phone').val();
         var email = $('#email').val();
         var department = $('#department').val();
+        var type = $('#type').val();
 
         $.ajax({
             // En data puedes utilizar un objeto JSON, un array o un query string
-           data:{name:name, lName:lName, rut:rut, confirmed:confirmed, phone:phone, email:email, department:department, "_token": "{{ csrf_token() }}"},
+           data:{name:name, lName:lName, rut:rut, confirmed:confirmed, phone:phone, email:email, department:department, type:type, "_token": "{{ csrf_token() }}"},
             //Cambiar a type: POST si necesario
             type: 'PUT',
             // Formato de datos que se espera en la respuesta

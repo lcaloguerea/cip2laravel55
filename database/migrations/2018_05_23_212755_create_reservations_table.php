@@ -23,11 +23,14 @@ class CreateReservationsTable extends Migration
             $table->date('check_out');
             $table->enum('payment_m',['cash','e_transfer_l','e_transfer_e', 'p_code']);
             //Se identifica el tipo al hacer la reserva. al hacer checkin se cambia en habitacion la reserva
-            $table->string('roomType');
+            $table->enum('roomType',['single','shared','matrimonial']);
 
             //fk rooms se asigna cualquiera disponible, en recepción al validar se cambia dependiendo
             // de las necesidades de la hostal
             $table->integer('room_id')->unsigned()->nullable();
+
+            //fk to invoice generated or uploaded
+            $table->integer('invoice_id')->unsigned()->nullable();
 
             //fk usuario responsable 
             $table->integer('user_id')->unsigned();

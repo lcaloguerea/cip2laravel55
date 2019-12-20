@@ -48,6 +48,9 @@
                     <div class="menu_area">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <!-- Logo -->
+                            <a class="navbar-brand" href="https://uach.cl">
+                                <img style="height: 70px; padding-right: 5px" src="https://www.derecho.uach.cl/static/pages/images/escudo.png" alt=""/>
+                            </a>
                             <a class="navbar-brand" href="#">CIP</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                             <!-- Menu Area -->
@@ -122,7 +125,7 @@
                     <div class="single-feature">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <h5>Ubicación</h5>
-                        <p>La Casa de Investigadores y Postgrado – CIP, se ubica en el 3° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
+                        <p>La Casa de Investigadores y Postgrado de la Universidad Austral de Chile – CIP, se ubica en el 3° piso del módulo C del Ex Hotel Isla Teja, ubicada en Las Encinas 220, Isla Teja. Es una excelente alternativa para descansar y disfrutar del entorno rodeado de naturaleza y cercanía a las instalaciones universitarias. Próxima a bancos, restaurantes, supermercado y a minutos del centro de Valdivia</p>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -130,7 +133,7 @@
                     <div class="single-feature">
                         <i class="fa fa-building" aria-hidden="true"></i>
                         <h5>Habitaciones y recepción</h5>
-                        <p>Disponemos de 4 habitaciones con cama matrimonial y 4 single con cama nido. La recepción y entrega de llaves se coordina con la Sra. Patricia Sánchez, quien se encuentra de lunes a viernes en horario continuado de 08:00 a 12:30 PM. La llegada de huéspedes en otro horario debe informarse con antelación.</p>
+                        <p>Disponemos de 8 habitaciones completamente equipadas con aire acondicionado, frigobar, servicio de mucama, Wifi, secador de pelo, toallas y amenidades. La recepción y entrega de llaves se coordina de lunes a viernes 08:00 – 12:30 AM y 14:30 - 18:00 horas.</p>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -184,13 +187,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="single-team-member">
                         <div class="member-image">
-                            <img src="http://www.culturalnarratives.co.uk/wp-content/uploads/2016/08/Rodrigo-Browne.jpg" alt="">
-                            <div class="team-hover-effects">
-                                <div class="team-social-icon">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
+                            <img src="img/team-img/Rodrigo-Browne.jpg" alt="">
                         </div>
                         <div class="member-text">
                             <h4>Rodrigo Browne Sartori</h4>
@@ -268,22 +265,20 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <h5>Check in</h5>
-                        <input id="chIn" class="datepicker"></input>
+                        <input id="chIn" class="form-control datepicker"></input>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
                         <h5>Check out</h5>
-                        <input id="chOut" class="datepicker2"></input>
+                        <input id="chOut" class="form-control datepicker2"></input>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-feature">
-                        <div class="col-12">
                            <button type="button" id="srchDisp" class="btn submit-btn">Buscar</button>
-                        </div>
                     </div>
                 </div>
                 <!-- Single Feature Start -->
@@ -299,9 +294,9 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Video Area Start -->
-                    <div class="video-area" style="background-image: url(img/front_building.JPG);">
+                    <div class="video-area" style="background-image: url(img/front_building-min.JPG);">
                         <div class="video-play-btn">
-                            <a href="https://www.youtube.com/watch?v=YSZgU6GxDJU" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/watch?v=Bd3AO_qnvxg" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -392,7 +387,7 @@
                             <img src="img/building/DSC_7033.JPG" alt="">
                         </div>
                         <div class="item">
-                            <img src="img/building/DSC_7041.JPG" alt="">
+                            <img src="img/building/front_building-min.JPG" alt="">
                         </div>
                         <div class="item">
                             <img src="img/recreation/DSC_7050.JPG" alt="">
@@ -485,7 +480,7 @@
                             <p>TV Satelital</p>
                             <p>WiFi</p>
                             <p>Frigobar</p>
-                            <img class="img-responsive" src="{{asset('img/single.png')}}">
+                            <img class="img-responsive" src="{{asset('img/rooms/HAB_8(1).JPG')}}">
                         </div>
                         <!-- Plan Button  -->
                         <div class="plan-button">
@@ -509,7 +504,7 @@
                             <p>TV Satelital</p>
                             <p>WiFi</p>
                             <p>Frigobar</p>
-                            <img class="img-responsive" src="{{asset('img/shared_single.png')}}">
+                            <img class="img-responsive" src="{{asset('img/rooms/HAB_3(1).JPG')}}">
                         </div>
                         <!-- Plan Button  -->
                         <div class="plan-button">
@@ -533,7 +528,7 @@
                             <p>TV Satelital</p>
                             <p>WiFi</p>
                             <p>Frigobar</p>
-                            <img class="img-responsive" src="{{asset('img/matrimonial.png')}}">
+                            <img class="img-responsive" src="{{asset('img/rooms/HAB_1.JPG')}}">
                         </div>
                         <!-- Plan Button  -->
                         <div class="plan-button">
@@ -579,7 +574,11 @@
                     <div class="slider slider-nav">
                     @foreach($testimonials as $tp)
                     <div class="client-thumbnail">
-                        <img src="{{$tp->pAvatar}}">
+                        @if($tp->passenger_id != NULL)
+                            <img src="{{$tp->psngrR->pAvatar}}">
+                        @else
+                            <img src="{{$tp->pAvatar}}">
+                        @endif
                     </div>
                     @endforeach                       
                     </div>
@@ -640,6 +639,7 @@
                     <!-- Form Start-->
                     <div class="contact_from">
                         <form action="#" method="post">
+                            <fieldset disabled="disabled">
                             <!-- Message Input Area Start -->
                             <div class="contact_input_area">
                                 <div class="row">
@@ -663,7 +663,7 @@
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-12">
-                                        <button type="submit" class="btn submit-btn">Enviar</button>
+                                        <button type="submit" class="btn submit-btn">Enviar (Próximamente)</button>
                                     </div>
                                 </div>
                             </div>
@@ -700,31 +700,41 @@
       }
 </style>
 
+
+
+
     <!-- Jquery-2.2.4 JS -->
     <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('js/index_mixed.js')}}"></script>
 
-    <script src="{{asset('pickadate.js-3.5.6/lib/picker.js')}}"></script>
-    <script src="{{asset('pickadate.js-3.5.6/lib/picker.date.js')}}"></script>
-    <script src="{{asset('pickadate.js-3.5.6/lib/picker.time.js')}}"></script>
-    <script src="{{asset('pickadate.js-3.5.6/lib/translations/es_ES.js')}}"></script>
-
-    <!-- Popper js -->
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <!-- Bootstrap-4 Beta JS -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <!-- All Plugins JS -->
-    <script src="{{asset('js/plugins.js')}}"></script>
-    <!-- Slick Slider Js-->
-    <script src="{{asset('js/slick-1.8.1/slick/slick.min.js')}}"></script>
-    <!-- Footer Reveal JS -->
-    <script src="{{asset('js/footer-reveal.min.js')}}"></script>
-    <!-- Active JS -->
-    <script src="{{asset('js/active.js')}}"></script>
 
     @include('search_modal')
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        //prevent auto hide on some chromes
+        $('.datepicker').on('mousedown',function(event){
+            event.preventDefault();
+        })
+        
+        $('.datepicker2').on('mousedown',function(event){
+            event.preventDefault();
+        })
+
+        var yesterday = new Date((new Date()).valueOf()-1000*60*60*24);
+
+        $('.datepicker').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        });
+
+        $('.datepicker2').pickadate({
+          disable: [
+            { from: [0,0,0], to: yesterday }
+          ]
+        }); 
 
         var $input = $('.datepicker').pickadate()
         var picker = $input.pickadate('picker')
@@ -790,24 +800,32 @@ dots: false,
             var checkIn = hola;
             var checkOut = hola2;
 
-            $.ajax({
-                // En data puedes utilizar un objeto JSON, un array o un query string
-               data:{checkIn:checkIn, checkOut:checkOut},
-                //Cambiar a type: POST si necesario
-                type: 'POST',
-                // Formato de datos que se espera en la respuesta
-                dataType: "json",
-                // URL a la que se enviará la solicitud Ajax
-                url: '/disp' ,
-                success:function(data){
-                    $('#s').text(data.single);
-                    $('#c').text(data.compartida);
-                    $('#m').text(data.matrimonial);
-                    $("#exampleModalCenter").modal();
-
-
-           }
-            }); 
+            if((checkOut >= checkIn) == false){
+                swal({
+                    title:"Ups!!",
+                    text: "El check out no puede tener fecha antes del check in, intenta nuevamente",
+                    type: "warning"
+                });
+            }else{
+            
+                        $.ajax({
+                            // En data puedes utilizar un objeto JSON, un array o un query string
+                           data:{checkIn:checkIn, checkOut:checkOut},
+                            //Cambiar a type: POST si necesario
+                            type: 'POST',
+                            // Formato de datos que se espera en la respuesta
+                            dataType: "json",
+                            // URL a la que se enviará la solicitud Ajax
+                            url: '/disp' ,
+                            success:function(data){
+                                $('#s').text(data.single);
+                                $('#c').text(data.compartida);
+                                $('#m').text(data.matrimonial);
+                                $("#exampleModalCenter").modal();
+            
+            
+                       }
+                        }); }
 
         });
 

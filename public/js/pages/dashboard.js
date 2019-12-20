@@ -4,54 +4,56 @@ $(function () {
 });
 
 function MorrisArea() {
-    Morris.Area({
+    Morris.Bar({
         element: 'area_chart',
+        barGap:0,
         data: [{
                 period: '2012',
-                Positive: 10,
-                Negative: 0,
-                Neutral: 0
+                Simple: 4,
+                Compartida: 4,
+                Matrimonial: 3
             }, {
                 period: '2013',
-                Positive: 30,
-                Negative: 65,
-                Neutral: 10
+                Simple: 5,
+                Compartida: 4,
+                Matrimonial: 5
             }, {
                 period: '2014',
-                Positive: 85,
-                Negative: 42,
-                Neutral: 32
+                Simple: 4,
+                Compartida: 5,
+                Matrimonial: 5
             }, {
                 period: '2015',
-                Positive: 60,
-                Negative: 4,
-                Neutral: 20
+                Simple: 4.5,
+                Compartida: 5,
+                Matrimonial: 5
             }, {
                 period: '2016',
-                Positive: 30,
-                Negative: 32,
-                Neutral: 40
+                Simple: 5,
+                Compartida: 3.5,
+                Matrimonial: 4
             }, {
                 period: '2018',
-                Positive: 120,
-                Negative: 60,
-                Neutral: 30
+                Simple: 5,
+                Compartida: 5,
+                Matrimonial:3
             }, {
                 period: '2019',
-                Positive: 30,
-                Negative: 8,
-                Neutral: 22
+                Simple: 4,
+                Compartida: 5,
+                Matrimonial: 4
             }
 
         ],
-        lineColors: ['#f7cf68', '#666666', '#a890d3'],
+        lineColors: ['#d81b60', '#605ca8', 'orange'],
         xkey: 'period',
-        ykeys: ['Positive', 'Negative', 'Neutral'],
-        labels: ['Positive', 'Negative', 'Neutral'],
-        pointSize: 0,
+        ymax: 5,
+        ykeys: ['Simple', 'Compartida', 'Matrimonial'],
+        labels: ['Simple', 'Compartida', 'Matrimonial'],
+        pointSize: 1,
         lineWidth: 0,
         resize: true,
-        fillOpacity: 0.8,
+        fillOpacity: 0.5,
         behaveLikeLine: true,
         gridLineColor: '#e0e0e0',
         hideHover: 'auto'

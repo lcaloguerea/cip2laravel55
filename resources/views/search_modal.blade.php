@@ -16,6 +16,8 @@
             <li>Single compartida: <span id="c"></span> habitaciones disponibles</li>
             <li>matrimonial: <span id="m"></span> habitaciones disponibles</li>
         </ul>
+        <br>
+        Te recordamos que para formalizar una reserva debes realizarlo ingresando al portal de usuarios, para ello debes ingresar al <a href="/login">LOGIN</a> o ir al <a href="/register">REGISTRO</a> si aún no posees cuenta.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn submit-btn" data-dismiss="modal">Cerrar</button>

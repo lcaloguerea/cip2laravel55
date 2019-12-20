@@ -7,42 +7,49 @@ use Illuminate\Http\Request;
 use App\Room;
 use App\Reservation;
 use App\Testimonial;
+use App\Passenger;
+use Carbon\Carbon;
 
 class WelcomeUserController extends Controller
 {
     public function index()
     {
         $testimonials = Testimonial::all();
-    	return view('welcome', compact('testimonials'));
+        $p = Passenger::all();
+        //return view('updating');
+    	return view('welcome', compact('testimonials','p'));
     }
 
     public function postDisp(Request $request)
     {
-    	$in = date_parse_from_format("d-m-Y", $request->checkIn);
-    	$out = date_parse_from_format("d-m-Y", $request->checkOut);
+
+        $in =  Carbon::parse($request->checkIn)->addDay(-1)->format('Y-m-d');
+    	$out =  Carbon::parse($request->checkOut)->addDay()->format('Y-m-d');
+    	//$out = date_parse_from_format("d-m-Y", $request->checkOut);
+
 
 
     	//filtering by rooms that overlaps with the dates selected by user
     	//in order to remove them from the availables
     	$disp =  DB::table('reservations')
-    			->select('check_in', 'check_out', 'roomType as room')
+    			->select('check_in', 'check_out', 'roomType as room', 'id_res')
     			->where([
                     ['status', '!=', 'cancelled'],
                     ['status', '!=', 'finished'],
-                    ['check_out', '>=', $request->checkIn],
-                    ['check_out', '<=', $request->checkOut]
+                    ['check_out', '>=', $in],
+                    ['check_out', '<=', $out]
                 	])
                 ->orWhere([
                 	['status', '!=', 'cancelled'],
                     ['status', '!=', 'finished'],
-                	['check_in', '>=', $request->checkIn],
-                	['check_in', '<=', $request->checkOut]
+                	['check_in', '>=', $in],
+                	['check_in', '<=', $out]
                 	])
                 ->orWhere([
                 	['status', '!=', 'cancelled'],
                     ['status', '!=', 'finished'],
-                	['check_in', '<=', $request->checkIn],
-                	['check_out', '>=', $request->checkOut]
+                	['check_in', '<=', $in],
+                	['check_out', '>=', $out]
                 	])
     			->get();
 
@@ -50,6 +57,7 @@ class WelcomeUserController extends Controller
         $single = 3;
         $shared = 1;
         $matrimonial = 4;
+
 
     	foreach($disp as $d)
             if($d->room == 'single'){
@@ -59,6 +67,10 @@ class WelcomeUserController extends Controller
             }elseif($d->room == 'matrimonial'){
                 $matrimonial -= 1;
             }
+
+        if($single < 0){$single = 0;}
+        if($shared < 0){$shared = 0;}
+        if($matrimonial < 0){$matrimonial = 0;}
     		
         $aux[] = $single;
         $aux[] = $shared;

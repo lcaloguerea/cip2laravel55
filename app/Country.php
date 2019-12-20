@@ -14,6 +14,19 @@ class Country extends Model
      * @var array
      */
 
+    protected $table = 'countries';
+
+    protected $fillable = [
+                'name',
+                'iso',
+                'iso3',
+                'nameTrans',
+                'nationality',
+                'flag',
+            ];
+    public $timestamps  = false;
+    protected $primaryKey = 'id_country';
+
     //Relación huespedes por pais de origen
     public function passengers_o()
     {
