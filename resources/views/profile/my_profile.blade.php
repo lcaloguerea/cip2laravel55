@@ -32,7 +32,7 @@
       |               | sidebar-mini                            |
       |---------------------------------------------------------|
     -->
-    <body class="skin-yellow sidebar-mini">
+    <body class="skin-yellow sidebar-mini fixed">
         <div class="page-loader-wrapper">
             <div class="spinner"></div>
         </div>

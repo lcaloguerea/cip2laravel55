@@ -21,7 +21,7 @@
         <div class="box-register">
             <div class="box-register-body">
                 <h3><span><b>CIP</b> Panel</span></h3>
-                <p class="box-register-msg">Gracias por registrarte con nosotros. Por favor valida el correo que te hemos enviado.</p>
+                <p class="box-register-msg">Gracias por registrarte con nosotros. Por favor valida el correo que te hemos enviado. (Es posible que el correo llegue a la carpeta de Spam en algunos proveedores distintos a la nuve coorporativa UACh, favor revisar y marcar como "no es spam")</p>
 
                 <img style="width: 120px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 30px;" src="http://cdn.onlinewebfonts.com/svg/img_542962.png">
                     <div class="form-group text-center">
