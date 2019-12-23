@@ -44,6 +44,10 @@
                   <a href="{{URL::to('admin/users/cards')}}">Ver fichas</a></li>
               </ul>
             </li>
+            <li class="treeview {{ request()->is('admin/admins') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/admins')}}"><i class="fa fa-id-badge"></i><span>Administradores</span>
+              </a>
+            </li>
             <li class="treeview {{ request()->is('admin/passengers/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-user"></i> <span>Huéspedes</span>
               <span class="pull-right-container">
@@ -76,6 +80,10 @@
             </li>
             <li class="treeview {{ request()->is('admin/testimonials') ? 'active' : '' }}">
               <a href="{{URL::to('admin/testimonials')}}"><i class="fa fa-comments"></i><span>Testimonios</span>
+              </a>
+            </li>
+            <li class="treeview {{ request()->is('admin/questions') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/questions')}}"><i class="fa fa-question"></i><span>Preguntas</span>
               </a>
             </li>
             <li class="treeview {{ request()->is('admin/payments/*') ? 'active' : '' }}">

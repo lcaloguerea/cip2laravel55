@@ -10,6 +10,8 @@ use App\PassengerGroup;
 use App\Room;
 use App\Activity;
 use App\Testimonial;
+use App\Question;
+use App\ARE;
 use Jenssegers\Date\Date;
 use App\Invoice;
 use PDF;
@@ -391,9 +393,49 @@ class AdminController extends Controller
         }
 
         $message = 'El testimonio N°'.$t->id.' ha cambiado a '.$status;
-        return response()->json(['message'=> $message]);
-        
+        return response()->json(['message'=> $message]);      
     }
 
+    public function getQuestions(){
+        $questions = Question::all();
+        return view('admin/questions/index', compact('questions'));
+    }
 
+    public function postQuestionAnswer(Request $request){
+        $question = Question::where('id', $request->q_id)->first();
+        $question->status = "answered";
+        $question->ansBy = Auth::id();
+        $question->save();
+        $message = 'La pregunta N°'.$question->id.' ha cambiado a respondida';
+        return response()->json(['message'=> $message]);
+    }
+
+    public function postQuestionDelete(Request $request){
+        $question = Question::where('id', $request->q_id)->first();
+        $question->delete();
+        $message = 'La pregunta N°'.$question->id.' ha sido eliminada';
+        return response()->json(['message'=> $message]);
+    }
+
+    public function getAdmins(){
+        $admins = User::where('type', 'admin')
+                    ->orWhere('type', 'maid')
+                    ->orderBy('email')
+                    ->get();
+
+        return view('admin/admins/index', compact('admins'));
+    }
+
+    public function postARE(Request $request){
+        $admin = User::where('id', $request->ida)->first();
+        $admin->canR = $request->canR;
+        $admin->save();
+        if($admin->canR == "yes"){
+            $canRE = "Se ha habilitado la recepción de correos para administrador(a)";
+        }else{
+            $canRE = "Se ha bloqueado la recepción de correos para administrador(a)";
+        }
+        $message = $canRE.' '.$admin->name.' ';
+        return response()->json(['message'=> $message]);
+    }
 }

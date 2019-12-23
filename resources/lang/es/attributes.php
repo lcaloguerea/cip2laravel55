@@ -28,4 +28,5 @@ return [
     'Boleta' => 'Boleta',
     'Factura' => 'Factura',
     'CR' => 'CR',
+    'answered' => 'Respondido',
 ];

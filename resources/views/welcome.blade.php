@@ -638,37 +638,34 @@
                 <div class="col-md-6">
                     <!-- Form Start-->
                     <div class="contact_from">
-                        <form action="#" method="post">
-                            <fieldset disabled="disabled">
                             <!-- Message Input Area Start -->
                             <div class="contact_input_area">
                                 <div class="row">
                                     <!-- Single Input Area Start -->
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required>
+                                        <div class="form-group ">
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required value="{{ old('name') }}">
                                         </div>
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
+                                        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required value="{{ old('email') }}">
                                         </div>
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Tu mensaje *" required></textarea>
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Tu mensaje *" required>{{old('message') }}</textarea>
                                         </div>
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-12">
-                                        <button type="submit" class="btn submit-btn">Enviar (Próximamente)</button>
+                                        <button type="submit" class="btn submit-btn contact">Enviar</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- Message Input Area End -->
-                        </form>
                     </div>
                 </div>
             </div>
@@ -694,10 +691,27 @@
     <!-- ***** Footer Area Start ***** -->
 
 <style type="text/css">
-          .slick-prev:before,
-      .slick-next:before {
-        color: green;
-      }
+.slick-prev:before,
+.slick-next:before {
+color: green;
+}
+
+.swal2-popup {
+  font-size: 1rem !important;
+}    
+
+.swal2-actions {
+  z-index: 0;
+}
+
+.swal2-progress-steps .swal2-progress-step {
+  z-index: 0;
+}
+
+.swal2-progress-steps .swal2-progress-step-line {
+  z-index: 0;
+}
+
 </style>
 
 
@@ -705,6 +719,8 @@
 
     <!-- Jquery-2.2.4 JS -->
     <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('js/swal2.js')}}"></script>
+
     <script src="{{asset('js/index_mixed.js')}}"></script>
 
 
@@ -712,6 +728,62 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('.contact').on('click', function(e){
+            e.preventDefault(); //load swel and show data from form contact us
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            if((!email) || (!name) || (!message)){
+                Swal.fire({
+                        title:'Falta completar',
+                        text:'Debe llenar todos los campos del formulario',
+                        confirmButtonText:'Cerrar',
+                        type:'error'
+                    })
+            }else{
+                Swal.fire({
+                        title:'Verificando',
+                        text:'Se esta comprobando la información',
+                        confirmButtonText:'Cerrar',
+                        onBeforeOpen: () => {
+                            Swal.showLoading()
+                            $.ajax({
+                                // En data puedes utilizar un objeto JSON, un array o un query string
+                               data:{name:name, email:email, message:message, "_token": "{{ csrf_token() }}"},
+                                //Cambiar a type: POST si necesario
+                                type: 'POST',
+                                // Formato de datos que se espera en la respuesta
+                                dataType: "json",
+                                // URL a la que se enviará la solicitud Ajax
+                                url: '/contactUs' ,
+                                success:function(data){
+                                    if(data.errors != ""){
+                                        html = '<p>Por favor corregir los siguientes errores</p><br><div class="alert alert-danger fade in">';
+                                        jQuery.each(data.errors, function(key, value){
+                                            html += '<li>' + value + '</li>';
+                                        });
+                                        Swal.fire({
+                                            title:"Ups!!",
+                                            html: html,
+                                            type: "error",
+                                        })
+                                    }else{
+                                        Swal.fire({
+                                            title:"Consulta ingresada",
+                                            html: data.message,
+                                            type: "success",
+                                        }).then((result) => {
+                                            window.location.reload(true);
+                                        });
+                                    }
+
+                                }
+                            });
+                        }
+                    })
+            }
+        });
 
         //prevent auto hide on some chromes
         $('.datepicker').on('mousedown',function(event){

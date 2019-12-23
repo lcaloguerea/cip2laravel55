@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('rut')->unique();
             $table->enum('type',['admin','maid','user']);
+            $table->enum('canR',['yes','no'])->default('no');
             $table->string('name');
             $table->string('lName');
             $table->string('uAvatar')->default('/img/icons/icon-user.png');

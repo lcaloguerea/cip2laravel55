@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Room;
 use App\Reservation;
 use App\Testimonial;
+use App\Question;
+use App\User;
 use App\Passenger;
 use Carbon\Carbon;
 
@@ -101,5 +103,42 @@ class WelcomeUserController extends Controller
 			return "no ajax";
 		}
 
+    }
+
+    public function postContactUs(Request $request){
+        $validator = \Validator::make($request->all(), [         
+            'email' => 'required|string|email|max:255',
+            'name' => 'required',
+            'message' => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+  
+        }else{
+            $admin = 'Administradores';
+            $admins = User::where('type', 'admin')
+                        ->orderBy('email')
+                        ->get();
+
+
+            foreach($admins as $a){
+                $gaemail[] = $a->email;
+            }
+
+            $question = Question::create([
+                'name'      => $request->name,
+                'email'     => $request->email,
+                'message'   => $request->message
+            ]);
+
+            \Mail::send('emails.contact_us',array('request' => $request), function($message) use ($gaemail, $admin) {
+                    $message->to($gaemail, $admin)
+                ->subject('Consulta Recibida');
+            });
+            return response()->json(['errors'=>'',
+                                    'message'=>'Su consulta ha sido ingresada, pronto un administrador CIP se pondrá en contacto con usted.']);
+        }
     }
 }

@@ -32,7 +32,7 @@ class EmailController extends Controller
         $user = User::where('id',$Reserv->user_id)->first();
         $p2 = Passenger::where('id_passenger', null)->first();
         $act = Activity::where([['rsrv_id', 1],['event','rsrv_confirmed']])->first();
-        return view('/emails/testimonial_admin', compact('t', 'user','Reserv', 'p1', 'p2','r' ,'sp', 'act'));
+        return view('/emails/contact_us', compact('t', 'user','Reserv', 'p1', 'p2','r' ,'sp', 'act'));
         $uid = \Auth::id();
         $u_dest = $p1->name;
         $u_email = 'l.caloguerea@gmail.com';

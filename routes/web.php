@@ -11,6 +11,7 @@
 */
 Auth::routes();
 Route::get('/', 'WelcomeUserController@index');
+Route::post('/contactUs', 'WelcomeUserController@postContactUs')->name('contactUs');
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('validate', 'Auth\RegisterController@getValidate');
@@ -113,8 +114,13 @@ Route::post('testimonial/save', 'TestimonialController@postTestimonialSave')->na
 
 Route::group(['middleware' => 'Admin'], function(){
 	Route::get('/admin', 'AdminController@index')->name('admin');
+	Route::get('/admin/admins', 'AdminController@getAdmins');
 	Route::get('/admin/rooms-list', 'RoomsController@getList');
 	Route::get('/admin/testimonials', 'AdminController@getTestimonials');
+	Route::get('/admin/questions', 'AdminController@getQuestions');
+	Route::post('/admin/questions/answer', 'AdminController@postQuestionAnswer');
+	Route::post('/admin/questions/delete', 'AdminController@postQuestionDelete');
+	Route::post('/admin/admins/are', 'AdminController@postARE');
 	Route::post('/admin/testimonial/updateV', 'AdminController@postUpdateTestimonialV');
 });
 
