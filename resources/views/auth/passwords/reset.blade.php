@@ -80,11 +80,3 @@
         <script src="{{asset('js/jquery.buttonloadingindicator.js')}}"></script>
     </body>
 </html>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.btn').on('click',function(e) {
-              $(this).startLoading();
-            });
-    });
-</script>
