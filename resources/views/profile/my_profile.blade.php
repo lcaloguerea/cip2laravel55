@@ -570,8 +570,6 @@
 
     $('.select2').select2({
                 minimumResultsForSearch: 5,
-                placeholder: "Buscar huésped existente",
-                allowClear: true,
             });
 
 

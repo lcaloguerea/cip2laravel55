@@ -7,6 +7,7 @@
         <link href="{{asset('icons/themify-icons/themify-icons.css')}}" rel="stylesheet">
         <!--animate css-->
         <link rel="stylesheet" href="{{asset('animate.css')}}">
+        <link rel="stylesheet" href="{{asset('select2/select2.min.css')}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset('css/main-style.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/skins/all-skins.css')}}">
@@ -333,7 +334,8 @@
                                                         <div class='col-md-6'>
                                                             <div class="form-group">
                                                                 <label>Confirmación</label>
-                                                                <select id="confirmed" class="form-control">
+                                                                <select id="confirmed" class="form-control select2" style="width: 100%;"
+                                                                @if($user->type != "admin")disabled="disabled"@endif>
                                                                 @if($user->confirmed == "yes")
                                                                     <option selected="selected" value="yes">Verificado</option>
                                                                     <option value="no">Pendiente</option>
@@ -355,7 +357,7 @@
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Email</label>
-                                                                <input class="form-control" id="email" name="email" type="text" value="{{$user->email}}"/>
+                                                                <input class="form-control" id="email" name="email" type="text" value="{{$user->email}}" @if($user->type != "admin")disabled="disabled"@endif/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -363,35 +365,34 @@
                                                         <div class='col-md-6'>
                                                             <div class='form-group'>
                                                                 <label>Departamento</label>
-                                                                 <select id="department" name="department" class="form-control select2">
-                                                <option selected="selected" value=>--</option>
-                                                <option value="CIP">CIP</option>
-                                                <option value="Arquitectura y Artes">Arquitectura y artes</option>
-                                                <option value="Ciencias">Ciencias</option>
-                                                <option value="Ciencias Agrarias">Ciencias agrarias</option>
-                                                <option value="Cs. Económicas y Administrativas">Cs. Económicas y administrativas</option>
-                                                <option value="Cs. Forestales y Recursos Naturales">Cs. Forestales y recursos naturales</option>
-                                                <option value="Cs. Jurídicas y Sociales">Cs. Jurídicas y sociales</option>
-                                                <option value="Ciencias Veterinarias">Ciencias veterinarias</option>
-                                                <option value="Ciencias de la Ingeniería">Ciencias de la ingeniería</option>
-                                                <option value="Filosofía y Humanidades">Filosofía y humanidades</option>
-                                                <option value="Medicina">Medicina</option>
-                                                <option value="Rectoría">Rectoría</option>
-                                                <option value="Prorrectoría">Prorrectoría</option>
-                                                <option value="Vicerrectoría Académica">Vicerrectoría Académica</option>
-                                                <option value="Vicerrectoría Sede Puerto Montt">Vicerrectoría Sede Puerto Montt</option>
-                                                <option value="Vicerrectoría de Gestión Económica y Administrativa">Vicerrectoría de Gestión Económica y Administrativa</option>
-                                                <option value="Vicerrectoría de Investigación, Desarrollo y Creación">Vicerrectoría de Investigación, Desarrollo y Creación</option>
-                                                <option value="Campus Patagonia">Campus Patagonia</option>
-                                                <option selected="selected" value="{{$user->department}}">{{$user->department}}</option>
-                                            </select>
+                                                                 <select id="department" name="department" class="form-control select2" style="width: 100%;">
+                                                                    <option selected="selected" value=>--</option>
+                                                                    <option value="CIP">CIP</option>
+                                                                    <option value="Arquitectura y Artes">Arquitectura y artes</option>
+                                                                    <option value="Ciencias">Ciencias</option>
+                                                                    <option value="Ciencias Agrarias">Ciencias agrarias</option>
+                                                                    <option value="Cs. Económicas y Administrativas">Cs. Económicas y administrativas</option>
+                                                                    <option value="Cs. Forestales y Recursos Naturales">Cs. Forestales y recursos naturales</option>
+                                                                    <option value="Cs. Jurídicas y Sociales">Cs. Jurídicas y sociales</option>
+                                                                    <option value="Ciencias Veterinarias">Ciencias veterinarias</option>
+                                                                    <option value="Ciencias de la Ingeniería">Ciencias de la ingeniería</option>
+                                                                    <option value="Filosofía y Humanidades">Filosofía y humanidades</option>
+                                                                    <option value="Medicina">Medicina</option>
+                                                                    <option value="Rectoría">Rectoría</option>
+                                                                    <option value="Prorrectoría">Prorrectoría</option>
+                                                                    <option value="Vicerrectoría Académica">Vicerrectoría Académica</option>
+                                                                    <option value="Vicerrectoría Sede Puerto Montt">Vicerrectoría Sede Puerto Montt</option>
+                                                                    <option value="Vicerrectoría de Gestión Económica y Administrativa">Vicerrectoría de Gestión Económica y Administrativa</option>
+                                                                    <option value="Vicerrectoría de Investigación, Desarrollo y Creación">Vicerrectoría de Investigación, Desarrollo y Creación</option>
+                                                                    <option value="Campus Patagonia">Campus Patagonia</option>
+                                                                    <option selected="selected" value="{{$user->department}}">{{$user->department}}</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class='col-md-6'>
                                                             <div class="form-group">
                                                                 <label>Tipo</label>
-                                                                <select id="type" class="form-control">
-                                                                    <option value="null"></option>
+                                                                <select id="type" name="type" class="form-control select2" style="width: 100%;" @if($user->type != "admin")disabled="disabled"@endif>
                                                                     @if($user->type == 'admin')
                                                                         <option selected="selected" value="admin">Administrador</option>
                                                                         <option value="user">Usuario</option>
@@ -446,6 +447,7 @@
         <script src="{{asset('pickadate/picker.js')}}"></script>
         <script src="{{asset('pickadate/picker-date.js')}}"></script>
         <script src="{{asset('js/pages/jquery-pickadate.js')}}"></script>
+        <script src="{{asset('select2/select2.min.js')}}"></script>
         <script src="{{asset('material-buttons/ripple-effects.js')}}"></script>
         <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 
@@ -468,6 +470,10 @@
 
 
     $('.dropify').dropify();
+
+$('.select2').select2({
+                minimumResultsForSearch: 5,
+            });
 
 });
 

@@ -144,7 +144,7 @@ class AdminController extends Controller
         $validator = \Validator::make($request->all(), [
             'name' => 'required|string|max:255',        
             'lName' => 'required|string|max:255',        
-            'rut' => 'required|string|max:255|unique:users|regex:/^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/',         
+            'rut' => 'required|string|max:255|regex:/^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/',         
             'confirmed' => 'required',         
             'department' => 'required',         
             'email' => 'required|string|email|max:255',
