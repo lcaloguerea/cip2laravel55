@@ -87,6 +87,7 @@ Route::get('/admin/passengers/list', 'PassengersController@getList');
 Route::get('/admin/passengers/passenger-profile/{id}', 'PassengersController@getProfile');
 Route::get('/admin/passengers/cards', 'PassengersController@getCards');
 Route::get('/admin/reservations-list', 'ReservationController@getList');
+Route::get('/admin/reservations-hist', 'ReservationController@getHRes');
 Route::post('/admin/reservations/update', 'ReservationController@postReservationUpdate')->name('updateReservation');
 Route::put('/admin/reservations/invoice', 'ReservationController@putReservationInvoice')->name('reservationInvoice');
 Route::put('/admin/reservations/checkin', 'ReservationController@putReservationCheckin')->name('checkin');

@@ -7,6 +7,7 @@ use App\Reservation;
 use App\PassengerGroup;
 use App\Passenger;
 use App\Room;
+use App\HRes;
 use App\User;
 use App\Testimonial;
 use App\Activity;
@@ -28,6 +29,13 @@ class ReservationController extends Controller
     	$pGroups = PassengerGroup::all();
 
     	return view('/admin/reservations/reservation_list', compact('reservs','pGroups'));
+    }
+
+    public function getHRes()
+    {
+        $hres = HRes::all();
+
+        return view('/admin/reservations/hres_index', compact('hres'));
     }
 
     public function getReservationDetail($id)

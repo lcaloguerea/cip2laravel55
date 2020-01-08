@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\HRes;
 use Jenssegers\Date\Date;
 use Carbon\Carbon;
 use App\Reservation;
@@ -56,10 +57,16 @@ class CalendarController extends Controller
             $r->check_out = Carbon::parse($r->check_out)->addDay()->format('Y-m-d');
         }
 
+        //to handle last day in use for historical data
+        $hres = HRes::all();
+        foreach($hres as $h){
+            $h->check_out = Carbon::parse($h->check_out)->addDay()->format('Y-m-d');
+        }
+
         $calendar = \Calendar::addEvents($events); //add an array with addEvents
 
 
-        return view('/calendar/index', compact('calendar', 'events','Reservations'));
+        return view('/calendar/index', compact('calendar', 'events','Reservations', 'hres'));
     }
 
 }

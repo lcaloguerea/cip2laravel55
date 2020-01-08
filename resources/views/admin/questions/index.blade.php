@@ -99,11 +99,11 @@
                                                 @endif
                                                 <td style="text-align: center">
                                                     @if($q->status != "answered")
-                                                    <button id="{{$q->id}}" class="btn btn-success">
+                                                    <button id="{{$q->id}}" class="btn btn-success check">
                                                         <i class="fa fa-check"></i>
                                                     @endif
                                                     </button>
-                                                    <button id="{{$q->id}}" class="btn btn-danger">
+                                                    <button id="{{$q->id}}" class="btn btn-danger del">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
@@ -188,7 +188,7 @@
             "oLanguage": { "sUrl": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json" },
         });
 
-        $('.btn-success').on('click', function(e){
+        $('.check').on('click', function(e){
             var q_id = $(this).attr('id');
             Swal.fire({
                         title: 'Gestionar Pregunta',
@@ -235,7 +235,7 @@
 
         });
 
-        $('.btn-danger').on('click', function(e){
+        $('.del').on('click', function(e){
             var q_id = $(this).attr('id');
             Swal.fire({
                         title: 'Eliminar Pregunta',

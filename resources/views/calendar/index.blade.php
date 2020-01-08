@@ -113,6 +113,14 @@
                     @endif
                 },
                 @endforeach
+            @foreach($hres as $r)
+                {
+                    title : 'Respaldo {{$r->id}}',
+                    start : '{{ $r->check_in}}',
+                    end   : '{{ $r->check_out}}',
+                    color : 'gray'
+                },
+                @endforeach
           ]
 
         });

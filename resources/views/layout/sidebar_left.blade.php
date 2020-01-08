@@ -74,9 +74,18 @@
                   <a href="{{URL::to('admin/rooms-cards')}}">Ver ficha</a></li>
               </ul>
             </li>
-            <li class="treeview {{ request()->is('admin/reservations-list') ? 'active' : '' }}">
-              <a href="{{URL::to('admin/reservations-list')}}"><i class="fa fa-book"></i><span>Reservas</span>
+            <li class="treeview {{ request()->is('admin/reservations-*') ? 'active' : '' }}">
+              <a href="#"><i class="fa fa fa-book"></i><span>Reservas</span>
+              <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+              </span>
               </a>
+              <ul class="treeview-menu">
+                <li class="treeview {{ request()->is('admin/reservations-list') ? 'active' : '' }}">
+                <a href="{{URL::to('admin/reservations-list')}}">Lista</span></a></li>
+                <li class="treeview {{ request()->is('admin/reservations-hist') ? 'active' : '' }}">
+                <a href="{{URL::to('admin/reservations-hist')}}">Respaldo previo</span></a></li>
+              </ul>
             </li>
             <li class="treeview {{ request()->is('admin/testimonials') ? 'active' : '' }}">
               <a href="{{URL::to('admin/testimonials')}}"><i class="fa fa-comments"></i><span>Testimonios</span>

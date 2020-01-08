@@ -71,7 +71,7 @@ class UsersTableSeeder extends Seeder
         $user->confirmed            = 'yes';
         $user->confirmed_code       =  str_random();
         $user->department           = 'CIP';
-        $user->email                = 'cip_reservas@uach.cl';
+        $user->email                = 'carolinadiaz@uach.cl';
         $user->phone                = '+56989209785';
         $user->password             = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
             

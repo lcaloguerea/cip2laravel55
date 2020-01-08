@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TestimonialsTableSeeder::class);
         $this->call(MaintenanceTableSeeder::class);
         $this->call(SuppliesTableSeeder::class);
+        $this->call(HResTableSeeder::class);
 
     }
 }
