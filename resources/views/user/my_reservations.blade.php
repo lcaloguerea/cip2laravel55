@@ -71,7 +71,7 @@
                                         <tbody>
                                         @foreach($reservs as $item)
                                             <tr>
-                                                <td><a href="#">{{$item->id_res}}</a></td>
+                                                <td>{{$item->id_res}}</td>
                                                 <td><a href="/user/my-profile">{{$item->userR->name}} {{$item->userR->lName}}</a></td>
                                                 <td>
                                                 @foreach($pGroups as $pg)

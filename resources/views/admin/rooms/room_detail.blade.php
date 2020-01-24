@@ -171,7 +171,17 @@
                                                                 <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
                                                                 @endif
                                                                 <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha realizado y validado la limpieza de la habitación</h3>
-                                                            </div> 
+                                                            </div>
+                                                        @elseif($a->event == "checkin")
+                                                            <i class="fa fa-arrow-right bg-blue"></i>
+                                                            <div class="timeline-item">
+                                                                @if($d == date('d/m/Y'))
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->diffForHumans()}}</span>
+                                                                @else
+                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
+                                                                @endif
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha validado el Check in de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a> y ha asignado la habitación <a href="/{{Auth::user()->type}}/room-detail/{{$a->actRsrvR->room_id}}">{{trans('attributes.'.$a->actRsrvR->roomType)}} N°{{$a->actRsrvR->room_id}}</a> referente a la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a></h3>
+                                                            </div>                                                          
                                                         @elseif($a->event == "checkout")
                                                             <i class="fa fa-arrow-left bg-orange"></i>
                                                             <div class="timeline-item">

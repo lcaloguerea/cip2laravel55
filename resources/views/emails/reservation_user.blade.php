@@ -535,10 +535,10 @@ hr {
                            <td style="padding: 50px;" class="p30-15" bgcolor="#488edc">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Recuerde...</td>
+                                    <td style="padding-bottom: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:40px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">¿Desea revisar?</td>
                                  </tr>
                                  <tr>
-                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Toda esta información se encuentra en su historial de reservas almacenadas en nuestra plataforma.</td>
+                                    <td style="padding-bottom: 30px; font-family:'Fira Sans', Arial, sans-serif; font-size:16px; line-height:32px; min-width:auto !important; color:#ffffff; text-align:center;" class="text white center">Recuerde que toda esta información puede ser revisada en su historial de reservas almacenadas en nuestra plataforma.</td>
                                  </tr>
                                  <tr>
                                     <td align="center">
@@ -548,6 +548,9 @@ hr {
                                           </tr>
                                        </table>
                                     </td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding-bottom: 30px; padding-top: 30px; font-family:'Amaranth', Arial, sans-serif; font-size:25px; line-height:44px; color:#ffffff; text-align:center;" class="h2 white center">Te esperamos!!</td>
                                  </tr>
                               </table>
                            </td>
@@ -583,7 +586,7 @@ hr {
                                              <th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                    <tr>
-                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 8 9209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 4, Isla Teja - Valdivia. <br /><br /></td>
+                                                      <td class="text-footer m-center" style="color:#666666; font-family:'Roboto', Arial, sans-serif; font-size:13px; line-height:26px; text-align:center; min-width:auto !important;"><strong>cip_reservas<span>@</span>uach<span>.</span>cl</strong><br/>CIP: (63) 2 211136<br/>Administración: +56 9 89209785 <br/>Avda. Las Encinas 220, Módulo C, Piso 4, Isla Teja - Valdivia. <br /><br /></td>
                                                    </tr>
                                                 </table>
                                              </th>

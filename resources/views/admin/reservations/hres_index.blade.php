@@ -42,7 +42,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
-                        <li>Reservas</li>
+                        <li>Respaldo de reservas</li>
                         <li class="active">Lista</li>
                     </ol>
                 </section>
@@ -53,7 +53,7 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <table id="payments" class="table responsive datatable">
+                                    <table id="payments" class="table table-bordered table-striped datatable">
                                         <thead>
                                             <tr>
                                                 <th>Check In</th>
@@ -61,28 +61,23 @@
                                                 <th>Noches</th>
                                                 <th>Huéspedes</th>
                                                 <th>Patrocinante</th>
-                                                <th>Departamento</th>
-                                                <th>$ Habitación</th>
-                                                <th>Total</th>
-                                                <th>FDP</th>
                                                 <th>Código</th>
-                                                <th>Email</th>
+                                                <th>Detalle</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($hres as $h)
                                             <tr>
-                                                <td>{{$h->check_in}}</td>
-                                                <td>{{$h->check_out}}</td>
+                                                <td>{{date('d-m-Y', strtotime($h->check_in))}}</td>
+                                                <td>{{date('d-m-Y', strtotime($h->check_out))}}</td>
                                                 <td>{{$h->nights}}</td>
                                                 <td>{{$h->guests}}</td>
                                                 <td>{{$h->sponsor}}</td>
-                                                <td>{{$h->department}}</td>
-                                                <td>{{$h->rprice}}</td>
-                                                <td>{{$h->rtotal}}</td>
-                                                <td>{{$h->payment_m}}</td>
                                                 <td>{{$h->code}}</td>
-                                                <td>{{$h->email}}</td>
+                                                <td style="text-align: center">
+                                                     <a href="/admin/reservations-hist/{{$h->id}}" class="btn btn-success moreInfo bg-blue">
+                                                        <i class="fa fa-info-circle"></i>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

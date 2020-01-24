@@ -89,15 +89,20 @@ class ReservationController extends Controller
     public function putReservationCheckin(Request $request)
     {
 
-        $admins = User::where('type', 'admin')
-                    ->orWhere('type', 'maid')
+        $admins = User::where([
+                    ['type', 'admin'],
+                    ['canR', 'yes'],
+                    ])
+                    ->orWhere([
+                    ['type', 'maid'],
+                    ['canR', 'yes'],
+                    ])
                     ->orderBy('email')
                     ->get();
 
         foreach($admins as $a){
             $gaemail[] = $a->email;
         }
-
         //to obtain id and quantity of passengers involved in reserv
         $gCount = PassengerGroup::where('reservation_id', $request->id)->select('passenger_id')->get();
         //dd($gCount[0]->passenger_id);
@@ -134,6 +139,7 @@ class ReservationController extends Controller
             'responsible_id' => \Auth::id(),
             'involved_id' => $gCount[0]->passenger_id,
             'rsrv_id' => $reserv->id_res,
+            'room_id' => $request->room,
         ]);
 
         //serialize data needed to mailing
@@ -191,8 +197,14 @@ class ReservationController extends Controller
 
     public function putReservationCheckout(Request $request)
     {
-        $admins = User::where('type', 'admin')
-                    ->orWhere('type', 'maid')
+        $admins = User::where([
+                    ['type', 'admin'],
+                    ['canR', 'yes'],
+                    ])
+                    ->orWhere([
+                    ['type', 'maid'],
+                    ['canR', 'yes'],
+                    ])
                     ->orderBy('email')
                     ->get();
 
@@ -204,9 +216,18 @@ class ReservationController extends Controller
         $gCount = PassengerGroup::where('reservation_id', $request->id)->select('passenger_id')->get();
 
         $p1 = Passenger::where('id_passenger', $gCount[0]->passenger_id)->first();
-        $p1->tCode = $codigo =  str_random(); //generate code for testimonial action
+        $p1->tCode = $code =  str_random(); //generate code for testimonial action
+        $p1->save();
         $p1name = $p1->name_1;
         $p1email = $p1->email;
+
+        if($gCount->count() == 2){
+            $p2 = Passenger::where('id_passenger', $gCount[1]->passenger_id)->first();
+                    $p2name = $p2->name_1;
+                    $p2email = $p2->email;
+        }else{
+            $p2 = null;
+        }
 
     	$reserv = Reservation::where('id_res', $request->id)->first();
     	$reserv->status = "finished";
@@ -218,25 +239,63 @@ class ReservationController extends Controller
         $r->sanitization = "required";
         $r->save();
 
+
         //create activity checkout for guest 1
         $activity = Activity::create([
             'event' => 'checkout',
             'responsible_id' => \Auth::id(),
             'involved_id' => $gCount[0]->passenger_id,
             'rsrv_id' => $reserv->id_res,
+            'room_id' => $r->id_room,
         ]);
+
+        //serialize data needed to mailing
+        $act = $activity;
+        $user = User::where('id',$reserv->user_id)->first();
+        $u_dest = $user->name;
+        $u_email = $user->email;
+
+        //mail to guest1     
+        \Mail::send('emails.checkout.guest',array('code' => $code, 'user' => $user, 'Reserv' => $reserv, 'p1' => $p1, 'p2'=> $p2, 'act' => $act), function($message) use ($p1email, $p1name) {
+                $message->to($p1email, $p1name)
+                    ->subject('Check Out');    
+            });
 
         //if reserv has 2 guest
         if($gCount->count() == 2){
              //create activity checkout for guest 2
+            $p2 = Passenger::where('id_passenger', $gCount[1]->passenger_id)->first();
+            $p2->tCode = $code2 =  str_random(); //generate code for testimonial action
+            $p2->save();
+
+            $aux = $p1; //pivote for email addresse
+            $p1 = $p2;
+            $p2 = $aux;
+
             $activity = Activity::create([
                 'event' => 'checkout',
                 'responsible_id' => \Auth::id(),
                 'involved_id' => $gCount[1]->passenger_id,
                 'rsrv_id' => $reserv->id_res,
-            ]);           
+                'room_id' => $r->id_room,
+
+            ]);
+
+            //mail to guest2     
+             \Mail::send('emails.checkout.guest',array('code' => $code2, 'user' => $user, 'Reserv' => $reserv, 'p1' => $p1, 'p2'=> $p2, 'act' => $act), function($message) use ($p2email, $p2name) {
+                $message->to($p2email, $p2name)
+                    ->subject('Check Out');    
+            });           
+
         }
 
+        $admin = "CIP Staff";
+        //mail to CIP staff
+        //use $gaemail instead of aemail to masive send
+        \Mail::send('emails.checkout.admin',array('user' => $user, 'Reserv' => $reserv, 'p1' => $p1,'p2'=> $p2, 'act' => $act), function($message) use ($gaemail, $admin) {
+            $message->to($gaemail)
+                ->subject('Check Out');
+        });
 
  		$message = ' La reserva fue actualizada exitosamente.';
             return response()->json(['message'=> $message]);
@@ -417,8 +476,14 @@ class ReservationController extends Controller
 
     public function putReservationConfirm(Request $request)
     {
-        $admins = User::where('type', 'admin')
-                    ->orWhere('type', 'maid')
+            $admins = User::where([
+                    ['type', 'admin'],
+                    ['canR', 'yes'],
+                    ])
+                    ->orWhere([
+                    ['type', 'maid'],
+                    ['canR', 'yes'],
+                    ])
                     ->orderBy('email')
                     ->get();
 

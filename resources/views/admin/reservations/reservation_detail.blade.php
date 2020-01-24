@@ -420,6 +420,8 @@ var table = $('#payments').DataTable( {
             html: true,
             showCancelButton: true,
             CancelButtonText: "cancelar",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
         }, function () {
 
             $.ajax({
@@ -461,6 +463,8 @@ var table = $('#payments').DataTable( {
             html: true,
             showCancelButton: true,
             CancelButtonText: "cancelar",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
         }, function () {
 
             $.ajax({
@@ -501,6 +505,8 @@ var table = $('#payments').DataTable( {
             html: true,
             showCancelButton: true,
             CancelButtonText: "cancelar",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
         }, function () {
 
 	        $.ajax({

@@ -48,12 +48,12 @@
             <div class="content-wrapper">
                 <section class="content-title">
                     <h1>
-                        Administradores
+                        Funcionarios
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="/{{Auth::user()->type}}"><i class="fa fa-home"></i>Inicio</a></li>
-                        <li class="active">Administradores</li>
+                        <li class="active">Funcionarios</li>
                     </ol>
                 </section>
 

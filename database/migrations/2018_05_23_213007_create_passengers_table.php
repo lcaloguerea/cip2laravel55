@@ -30,7 +30,7 @@ class CreatePassengersTable extends Migration
             
             $table->string('university');
             //for handle link code to create testimonial
-            $table->string('tCode')->default(null);
+            $table->string('tCode')->nullable()->default(null);
         });
     }
 

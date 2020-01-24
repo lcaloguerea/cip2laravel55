@@ -83,7 +83,6 @@ class RoomsController extends Controller
         $room->save();
 
         $ra = Activity::create([
-            'group' => 'room',
             'motive' => "",
             'event' => 'room_cleaned',
             'room_id' => $request->id,

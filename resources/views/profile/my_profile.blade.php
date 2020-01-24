@@ -148,7 +148,7 @@
                                                                 @else
                                                                 <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
                                                                 @endif
-                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passengers/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                                <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="/{{Auth::user()->type}}/users/user-profile/{{$a->rspnsblR->id}}">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="/{{Auth::user()->type}}/passenger-profile/{{$a->invR->id_passenger}}">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
                                                             </div>
                                                         @elseif($a->event == "rsrv_confirmed")
                                                             <i class="fa fa-check bg-yellow"></i>
@@ -514,6 +514,40 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <hr>
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class='row'>
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label>Contraseña Actual</label>
+                                                                <input class="form-control" id="pswA" name="pswA" type="password"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label>Contraseña Nueva</label>
+                                                                <input class="form-control" id="pswN" name="pswN" type="password" required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class='row'>
+                                                        <div class='col-md-6'>
+                                                            <div class='form-group'>
+                                                                <label>Confirmar</label>
+                                                                <input class="form-control" id="pswN_confirmation" name="pswN_confirmation" type="password" required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class='row'>
+                                                        <div class='col-md-12'>
+                                                            <div class='form-group'>
+                                                                <button id="btn_update_psw" type="button" class="btn btn-primary">Cambiar Contraseña</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
                                             <!-- /.box-body -->
                                         </div>
                                     </div>
@@ -623,5 +657,50 @@
             }
         }); 
     });
+
+    $('#btn_update_psw').on('click',function(e){
+
+        e.preventDefault();
+
+        var pswA = $('#pswA').val();
+        var pswN = $('#pswN').val();
+        var pswN_confirmation = $('#pswN_confirmation').val();
+
+        $.ajax({
+            // En data puedes utilizar un objeto JSON, un array o un query string
+           data:{pswA:pswA, pswN:pswN, pswN_confirmation:pswN_confirmation, "_token": "{{ csrf_token() }}"},
+            //Cambiar a type: POST si necesario
+            type: 'PUT',
+            // Formato de datos que se espera en la respuesta
+            dataType: "json",
+            // URL a la que se enviará la solicitud Ajax
+            url: '/profile/updatePsw' ,
+            success:function(data){
+                    if(data.errors != ""){
+                        html = '<p>Por favor corregir los siguientes errores</p><br><div class="alert alert-danger fade in">';
+                        jQuery.each(data.errors, function(key, value){
+                            html += '<li>' + value + '</li>';
+                        });
+                        swal({
+                            title:"Ups!!",
+                            text: html,
+                            type: "warning",
+                            html: true
+                        });
+                    }
+                if(data.message != ""){
+                    swal({
+                        title:"Actualizado!!",
+                        text: "<strong>"+data.message+"</strong>",
+                        type: "success",
+                        html: true,
+                    },function () {
+                        window.location.href = "my-profile";
+                    });
+                }
+            }
+        }); 
+    });
+
 });
 </script>

@@ -97,9 +97,9 @@
            @foreach($Reservations as $r)
                 {
                     @if($r->user_id == Auth::user()->id)
-                        title : '{{ '(*) ' . trans('attributes.'.$r->roomType) . ' R' . $r->id_res }}',
+                        title : '{{$r->payment_m}}',
                     @else
-                        title : '{{ trans('attributes.'.$r->roomType) . ' R' . $r->id_res }}',
+                        title : '{{$r->payment_m}}',
                     @endif
                     start : '{{ $r->check_in}}',
                     end   : '{{ $r->check_out}}',

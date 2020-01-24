@@ -109,14 +109,6 @@
                                 <!-- /.box-body -->
                             </div>
 
-                            <div class="box">
-                            @if($user->id != Auth::user()->id)
-                                <div class="box-body">
-                                    <button id="btn_destroy" type="button" class="btn btn-raised ripple-effect btn-block btn-danger">Borrar usuario</button>
-                                </div>
-                                @endif
-                                <!-- /.box-body -->
-                            </div>
 
                         </div>
                         <div class="col-md-8">
@@ -526,54 +518,5 @@ $('.select2').select2({
         }); 
     });
 
-    $('#btn_destroy').on('click',function(e){
-
-        var id = {{$user->id}};
-        e.preventDefault();
-
-            swal({
-            title: "Esta seguro(a)?",
-            text: name+" se borrará permanentemente del sistema!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Si, borrar!",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false
-        }, function () {
-            $.ajax({
-                data:{
-                id:id, "_token": "{{ csrf_token() }}",
-                },
-                //Cambiar type si necesario
-                type: 'POST',
-                // Formato de datos que se espera en la respuesta
-                dataType: "json",
-                // URL a la que se enviará la solicitud Ajax
-                url: '/admin/user-destroy' , 
-                success: function(json){
-                    if(json.error == ""){
-                        swal({
-                            title:"Usuario eliminado!!",
-                            text: json.message,
-                            type: "success",
-                            html: true,
-                        }, function () {
-                            window.location.href = "/admin";
-                        });
-                    }
-                    if(json.message == "")
-                    {
-                        swal({
-                            title:"Lo sentimos...",
-                            text: json.error,
-                            type: "warning",
-                            html: true
-                        });
-                    }                    
-                } 
-            });
-        });
-    });
 
 </script>

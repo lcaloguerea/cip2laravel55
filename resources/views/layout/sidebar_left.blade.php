@@ -31,6 +31,10 @@
          <!--  <li class="treeview">
               <a href="{{URL::to('admin/mailbox')}}"><i class="fa fa-envelope"></i> <span>Mailbox</span></a>
             </li>-->
+            <li class="treeview {{ request()->is('admin/admins') ? 'active' : '' }}">
+              <a href="{{URL::to('admin/admins')}}"><i class="fa fa-id-badge"></i><span>Funcionarios</span>
+              </a>
+            </li>
             <li class="treeview {{ request()->is('admin/users/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-id-card"></i> <span>Usuarios</span>
               <span class="pull-right-container">
@@ -43,10 +47,6 @@
                 <li class="{{ request()->is('admin/users/cards') ? 'active' : '' }}">
                   <a href="{{URL::to('admin/users/cards')}}">Ver fichas</a></li>
               </ul>
-            </li>
-            <li class="treeview {{ request()->is('admin/admins') ? 'active' : '' }}">
-              <a href="{{URL::to('admin/admins')}}"><i class="fa fa-id-badge"></i><span>Administradores</span>
-              </a>
             </li>
             <li class="treeview {{ request()->is('admin/passengers/*') ? 'active' : '' }}">
               <a href="#"><i class="fa fa-user"></i> <span>Huéspedes</span>

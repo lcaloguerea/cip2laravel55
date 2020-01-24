@@ -104,6 +104,7 @@ Route::get('/user/my-profile', 'ProfileController@getMyProfile');
 Route::get('/maid/my-profile', 'ProfileController@getMyProfile');
 
 Route::put('/profile/update', 'ProfileController@putUpdate')->name('profileUpdate');
+Route::put('/profile/updatePsw', 'ProfileController@putUpdatePsw')->name('profileUpdatePsw');
 Route::put('/admin/user/update', 'AdminController@putUserUpdate')->name('adminUserUpdate');
 
 //trying emails responsives views
@@ -115,6 +116,8 @@ Route::post('testimonial/save', 'TestimonialController@postTestimonialSave')->na
 
 Route::group(['middleware' => 'Admin'], function(){
 	Route::get('/admin', 'AdminController@index')->name('admin');
+	Route::get('/admin/reservations-hist/{id}', 'AdminController@getHResDetail');
+	Route::put('/admin/reservations-hist/update', 'AdminController@putHResUpdate');
 	Route::get('/admin/admins', 'AdminController@getAdmins');
 	Route::get('/admin/rooms-list', 'RoomsController@getList');
 	Route::get('/admin/testimonials', 'AdminController@getTestimonials');
@@ -127,4 +130,7 @@ Route::group(['middleware' => 'Admin'], function(){
 
 Route::group(['middleware' => 'Maid'], function(){
 	Route::get('/maid', 'MaidController@index')->name('maid');
+	Route::get('/maid/reservations-list', 'MaidController@getReservList')->name('maidReserv');
+	Route::get('/maid/passengers/passenger-profile/{id}', 'MaidController@getPassengerProfile')->name('maidPassProf');
+	Route::get('/maid/users/user-profile/{id}', 'MaidController@getUserProfile')->name('maidUserProf');
 });

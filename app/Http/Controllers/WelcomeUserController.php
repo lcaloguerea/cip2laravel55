@@ -117,15 +117,9 @@ class WelcomeUserController extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
   
         }else{
-            $admin = 'Administradores';
-            $admins = User::where('type', 'admin')
-                        ->orderBy('email')
-                        ->get();
+            $admin = 'Cip Reservas';
+            $gaemail = 'cip_reservas@uach.cl';
 
-
-            foreach($admins as $a){
-                $gaemail[] = $a->email;
-            }
 
             $question = Question::create([
                 'name'      => $request->name,

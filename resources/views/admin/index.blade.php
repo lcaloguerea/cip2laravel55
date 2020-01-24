@@ -93,7 +93,7 @@
             <div class="box-header">
               <h3 class="box-title">Encuesta de satisfacción</h3>
               <div class="box-tools pull-right">
-                <a href="#" class=" btn-box-tool">Ir a testimonios</a>
+                <a href="/admin/testimonials" class=" btn-box-tool">Ir a testimonios</a>
               </div>
             </div>
             <!-- /.box-header -->
@@ -102,6 +102,21 @@
             </div>
             <!-- /.box-body -->
           </div>
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Registro de ingresos $</h3>
+              <div class="box-tools pull-right">
+                <a href="/admin/testimonials" class=" btn-box-tool">Ir a testimonios</a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div id="income_chart" class="graph"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Últimos usuarios registrados</h3>
@@ -272,50 +287,124 @@
         MorrisArea();
  
         function MorrisArea() {
+
+        const monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+          "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+          var d = new Date()
+          y = d.getFullYear()
+          lasty = y-1
+          d = d.getMonth()
+          d5 = 11-d
+          if((d-d5) < 0){y5=lasty}else{y5=y} 
+          d4 = 11-(d+1)
+          if((d-d4) < 0){y4=lasty}else{y4=y} 
+          d3 = 11-(d+2)
+          if((d-d3) < 0){y3=lasty}else{y3=y}  
+          d2 = 11-(d+3) 
+          if((d-d2) < 0){y2=lasty}else{y2=y} 
+          d1 = 11-(d+4) 
+          if((d-d1) < 0){y1=lasty}else{y1=y} 
+          console.log(lasty)
             Morris.Bar({
                 element: 'area_chart',
                 barGap:0,
                 data: [{
-                        period: '2012',
+                        period: 'Histórico',
                         Simple: 4,
                         Compartida: 4,
                         Matrimonial: 3
                     }, {
-                        period: '2013',
-                        Simple: 5,
+                        period: monthNames[d2]+' '+y2,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d3]+' '+y3,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d4]+' '+y4,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d5]+' '+y5,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d]+' '+y,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial:0
+                    }, {
+                        period: 'Global',
+                        Simple: 4,
                         Compartida: 4,
-                        Matrimonial: 5
-                    }, {
-                        period: '2014',
-                        Simple: 4,
-                        Compartida: 5,
-                        Matrimonial: 5
-                    }, {
-                        period: '2015',
-                        Simple: 4.5,
-                        Compartida: 5,
-                        Matrimonial: 5
-                    }, {
-                        period: '2016',
-                        Simple: 5,
-                        Compartida: 3.5,
-                        Matrimonial: 4
-                    }, {
-                        period: '2018',
-                        Simple: 5,
-                        Compartida: 5,
-                        Matrimonial:3
-                    }, {
-                        period: '2019',
-                        Simple: 4,
-                        Compartida: 5,
-                        Matrimonial: 4
+                        Matrimonial: 3
                     }
 
                 ],
                 lineColors: ['#d81b60', '#605ca8', 'orange'],
                 xkey: 'period',
                 ymax: 5,
+                ykeys: ['Simple', 'Compartida', 'Matrimonial'],
+                labels: ['Simple', 'Compartida', 'Matrimonial'],
+                pointSize: 1,
+                lineWidth: 0,
+                resize: true,
+                fillOpacity: 0.5,
+                behaveLikeLine: true,
+                gridLineColor: '#e0e0e0',
+                hideHover: 'auto'
+            });
+
+            Morris.Bar({
+                element: 'income_chart',
+                barGap:0,
+                data: [{
+                        period: 'Histórico',
+                        Simple: {{$hr[0]}},
+                        Compartida: {{$hr[1]}},
+                        Matrimonial: {{$hr[2]}}
+                    }, {
+                        period: monthNames[d1]+' '+y1,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d2]+' '+y2,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d3]+' '+y3,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d4]+' '+y4,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial: 0
+                    }, {
+                        period: monthNames[d5]+' '+y5,
+                        Simple: 0,
+                        Compartida: 0,
+                        Matrimonial:0
+                    }, {
+                        period: monthNames[d]+' '+y,
+                        Simple: 4,
+                        Compartida: 4,
+                        Matrimonial: 3
+                    }
+
+                ],
+                lineColors: ['#d81b60', '#605ca8', 'orange'],
+                xkey: 'period',
+                ymax: {{$hr[0]}},
                 ykeys: ['Simple', 'Compartida', 'Matrimonial'],
                 labels: ['Simple', 'Compartida', 'Matrimonial'],
                 pointSize: 1,

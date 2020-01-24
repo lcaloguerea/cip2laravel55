@@ -135,7 +135,7 @@
                                                                         @else
                                                                         <span class="time"><i class="fa fa-clock-o"></i> {{$a->created_at->format('H:i')}}</span>
                                                                         @endif
-                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="#">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/my-reservations/list">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="#">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
+                                                                        <h3 class="timeline-header">{{trans('attributes.'.$a->rspnsblR->type)}} <a href="#">{{$a->rspnsblR->name}} {{$a->rspnsblR->lName}}</a> ha creado la <a href="/{{Auth::user()->type}}/reservations/reservation-detail/{{$a->actRsrvR->id_res}}">Reserva N°{{$a->actRsrvR->id_res}}</a>  a nombre de <a href="#">{{$a->invR->name_1}} {{$a->invR->lName_1}}</a></h3>
                                                                     </div>
                                                                 @elseif($a->event == "rsrv_confirmed")
                                                                     <i class="fa fa-check bg-yellow"></i>

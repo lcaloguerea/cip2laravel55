@@ -138,5 +138,11 @@ return [
 		'IC' => 'Código Interno',
 		'discount' => 'Descuento',
 		'email' => 'Email',
+		'pswA' => 'Contraseña Actual',
+		'pswN' => 'Contraseña Nueva',
+		'pswC' => 'Confirmar',
+		'guests' => 'Huésped(es)',
+		'sponsor' => 'Patrocinante',
+		'code' => 'Código',
 	],
 ];

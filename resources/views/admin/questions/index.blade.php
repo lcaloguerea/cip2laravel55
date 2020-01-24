@@ -67,10 +67,10 @@
                                     <table id="passengers" class="table table-bordered table-striped datatable">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
                                                 <th>Nombre</th>
                                                 <th>Email</th>
                                                 <th>Mensaje</th>
+                                                <th>Fecha</th>
                                                 <th>Respondido por</th>
                                                 <th>Estado</th>
                                                 <th>Acción</th>
@@ -79,10 +79,10 @@
                                         <tbody>
                                         @foreach($questions as $q)
                                             <tr>
-                                                <td>{{$q->id}}</td>
                                                 <td>{{$q->name}}</td>
                                                 <td>{{$q->email}}</td>
                                                 <td>{{$q->message}}</td>
+                                                <td>{{$q->created_at->format('d-m-Y')}}</td>
                                                 @if($q->ansBy)
                                                 <td>{{$q->userR->name}}</td>
                                                 @else

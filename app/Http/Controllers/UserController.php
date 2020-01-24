@@ -232,15 +232,21 @@ class UserController extends Controller
             'passenger'=> "",
             'passengerNew' => ""]);
         }else{
-            $admins = User::where('type', 'admin')
-                    ->orWhere('type', 'maid')
+            //check roles permited and who can receive
+            $admins = User::where([
+                    ['type', 'admin'],
+                    ['canR', 'yes'],
+                    ])
+                    ->orWhere([
+                    ['type', 'maid'],
+                    ['canR', 'yes'],
+                    ])
                     ->orderBy('email')
                     ->get();
 
-
         foreach($admins as $a){
             $gaemail[] = $a->email;
-        }
+        }           
 
 
         $p1 = Passenger::where('id_passenger', $request->passenger1)->first();

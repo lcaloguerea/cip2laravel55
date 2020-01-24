@@ -12,6 +12,7 @@ use App\Activity;
 use App\Testimonial;
 use App\Question;
 use App\ARE;
+use App\HRes;
 use Jenssegers\Date\Date;
 use App\Invoice;
 use PDF;
@@ -46,8 +47,17 @@ class AdminController extends Controller
         foreach($rFinish as $rf){
             $income += $rf->total;
         }
+
+        //add here testimonial data to graphic
+
+        //income by room by month
+        $hres = HRes::all(); //historical data
+        $hr[] =+ $hres->where('rprice','30000')->sum('rtotal');
+        $hr[] =+ $hres->where('rprice','35000')->sum('rtotal');
+        $hr[] =+ $hres->where('rprice','40000')->sum('rtotal');
+
  
-        return view('/admin/index', compact('users', 'passengers', 'pActive', 'income', 'lUsers'));
+        return view('/admin/index', compact('users', 'passengers', 'pActive', 'income', 'lUsers', 'hr'));
     }
 
     public function getMailbox()
@@ -225,7 +235,7 @@ class AdminController extends Controller
                 'message'=>""]);
         }
         else{
-            if($request->IC == "" and $request->status == "payed"){
+            if($request->IC == "" and $request->status == "payed" and $request->type == "NCI"){
                 return response()->json(['errors'=>['No puede cambiar el estado a "pagado" sin ingresar el código interno'],
                 'message'=>""]);
             }
@@ -302,7 +312,7 @@ class AdminController extends Controller
                     $activity = Activity::create([
                         'event' => 'rsrv_pay',
                         'responsible_id' => \Auth::id(),
-                        'involved_id' => $reserv->user_id,
+                        'involved_id' => null,
                         'rsrv_id' => $reserv->id_res,
                     ]);
                     //send mail
@@ -329,7 +339,7 @@ class AdminController extends Controller
                     $activity = Activity::create([
                         'event' => 'rsrv_pay',
                         'responsible_id' => \Auth::id(),
-                        'involved_id' => $reserv->user_id,
+                        'involved_id' => null,
                         'rsrv_id' => $reserv->id_res,
                     ]);                    
                     //send mail
@@ -437,5 +447,42 @@ class AdminController extends Controller
         }
         $message = $canRE.' '.$admin->name.' ';
         return response()->json(['message'=> $message]);
+    }
+
+    public function getHResDetail($id){
+        $hres = HRes::where('id', $id)->first();
+        return view('admin/reservations/hres_detail', compact('hres'));
+    }
+
+    public function putHResUpdate(Request $request){
+        $validator = \Validator::make($request->all(), [
+            'guests' => 'required|string|max:255',        
+            'sponsor' => 'required|string|max:255',        
+            'code' => 'required',               
+            'department' => 'required',         
+            'email' => 'required|string|email|max:255',
+            'payment_m' => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all(),
+                'message'=>""]);
+        }
+        else{
+            $hres = HRes::where('id', $request->id)->first();
+            $hres->guests = $request->guests;
+            $hres->sponsor = $request->sponsor;
+            $hres->code = $request->code;
+            $hres->department = $request->department;
+            $hres->email = $request->email;
+            $hres->payment_m = $request->payment_m;
+            $hres->save();
+
+            $message = ' El registro histórico N°'.$hres->id.' ha sido actualizado exitosamente.';
+            return response()->json(['errors'=> "",
+                'message'=> $message
+                ]);
+        }
     }
 }

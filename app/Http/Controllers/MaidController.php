@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Jenssegers\Date\Date;
 use App\Room;
+use App\Reservation;
+use App\Testimonial;
 use App\PassengerGroup;
+use App\Passenger;
 use App\User;
 use App\Maintenance;
 use App\Supply;
@@ -211,4 +215,70 @@ class MaidController extends Controller
             return response()->json(['message'=> $message]);
     }
 
+    public function getReservList(){
+        $reservs = Reservation::all();
+        $pGroups = PassengerGroup::all();
+
+        return view('/maid/reservations_list', compact('reservs','pGroups'));
+    }
+
+    public function getPassengerProfile($id){
+         Date::setLocale('es');
+
+        $tst = Testimonial::all();
+
+        $act = Activity::where('involved_id',$id)
+                    ->orderBy('created_at')
+                    ->get();
+
+        //dd($act->count());
+
+        if($act->count() == 0){
+            $passenger = Passenger::where('id_passenger',$id) -> first();
+            return view('/admin/passengers.passenger_profile', compact('passenger','act'));
+        }
+        else{
+            foreach ($act as $a){
+                $aux = new Date($a->created_at);
+                $aux = $aux->format('d/m/Y');
+                $dates[] = $aux;
+            }
+
+            $dates = array_unique($dates);
+
+
+            $passenger = Passenger::where('id_passenger',$id) -> first();
+            return view('/maid/passenger_profile', compact('passenger','act', 'dates','tst'));
+        }
+    }
+
+    public function getUserProfile($id){
+        Date::setLocale('es');
+
+        $tst = Testimonial::all();
+
+        $act = Activity::where('responsible_id',$id)
+                    ->orderBy('created_at')
+                    ->get();
+
+        //dd($act->count());
+
+        if($act->count() == 0){
+            $user = User::where('id', $id) -> first();
+            return view('/admin/users/user_profile', compact('user','act'));
+        }
+        else{
+            foreach ($act as $a){
+                $aux = new Date($a->created_at);
+                $aux = $aux->format('d/m/Y');
+                $dates[] = $aux;
+            }
+
+            $dates = array_unique($dates);
+
+
+            $user = User::where('id', $id) -> first();
+            return view('/maid/user_profile', compact('user','act', 'dates','tst'));
+        }
+    }
 }

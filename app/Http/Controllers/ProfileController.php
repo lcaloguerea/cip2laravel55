@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Jenssegers\Date\Date;
 use App\Activity;
 use Image;
@@ -49,7 +50,6 @@ class ProfileController extends Controller
                 Image::make($avatar)->resize(300, 300)->save( './uploads/avatars/' . $filename  );
                 $user = User::find($request->id);
                 $user->uAvatar = '/uploads/avatars/' . $filename;
-                $user->type = $request->type;
                 $user->save();
                 return \Redirect::back();
             }
@@ -93,6 +93,36 @@ class ProfileController extends Controller
             return response()->json(['errors'=> "",
                 'message'=> $message
                 ]);
+        }
+
+    }
+
+    public function putUpdatePsw (Request $request){
+
+        $validator = \Validator::make($request->all(), [
+            'pswA' => 'required|string|min:6',
+            'pswN' => 'required|string|min:6|confirmed',        
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all(),
+                'message'=>""]);
+        }else{
+            $user = user::find(\Auth::user()->id);
+            
+            if(\Hash::check($request->pswA,$user->password)){
+                $user->password = bcrypt($request->pswN);
+                $user->save();
+                $message = 'Su contraseña se ha actualizado exitosamente.';
+                
+                return response()->json(['errors'=> "",
+                                        'message'=> $message
+                                    ]);
+            }else{
+                return response()->json(['errors'=>['La contraseña actual no coincide con la registrada en nuestro sistema'],
+                'message'=>""]);
+            }
         }
 
     }

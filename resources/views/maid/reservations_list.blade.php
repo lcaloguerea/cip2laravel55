@@ -60,6 +60,7 @@
                                                 <th>Usuario</th>
                                                 <th>Huésped(es)</th>
                                                 <th>Estado</th>
+                                                <th>Confirmación</th>
                                                 <th>Check In</th>
                                                 <th>Check Out</th>
                                                 <th>Tipo de pago</th>
@@ -89,6 +90,14 @@
                                                         <span class="badge bg-blue">Finalizada</span>
                                                     @endif
                                                 </td>
+                                                <td>@if($item->confirmed == "confirmed")
+                                                <span class="badge bg-green">
+                                                @else
+                                                <span class="badge bg-orange">
+                                                @endif
+                                                    {{trans('attributes.'.$item->confirmed)}}</td> 
+                                                    </span>
+                                                <td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_in))}}</td>
                                                 <td>{{date('d-m-Y', strtotime($item->check_out))}}</td>
                                                 <td>{{trans('attributes.'.$item->payment_m)}}</td>

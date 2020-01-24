@@ -145,8 +145,10 @@
         $('.select2').select2({
                 });
 
+        /* validar que los campos esten llenos luego aplicar gif
+
         $('.btn').on('click',function(e) {
               $(this).startLoading();
-            });
+            });*/
     });
 </script>
