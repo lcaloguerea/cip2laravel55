@@ -38,7 +38,7 @@
         "filepond-plugin-image-transform": "^2.0.1",
         "inputmask": "^4.0.0",
         "jquery-filepond": "^1.0.0",
-        "jquery-ui": "^1.12.1",
+        "jquery-ui": "^1.13.0",
         "pickadate": "^5.0.0-alpha.3",
         "sweetalert2": "^8.13.0",
         "wowjs": "^1.1.3"
